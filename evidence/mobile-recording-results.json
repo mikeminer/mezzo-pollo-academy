@@ -1,0 +1,10 @@
+{
+  "url": "https://mezzo-pollo-academy.vercel.app/",
+  "methodology": "Actual production game, Chromium headless with 390x844 mobile and touch emulation. Real taps and swipe events only; game state unmodified. Silent capture, not a physical phone test.",
+  "pageErrors": [],
+  "pause": true,
+  "resume": true,
+  "gameOverSeen": false,
+  "browser": "Chromium 153.0.8010.12 (headless)",
+  "playwrightBrowserRevision": 1243
+}

@@ -1,0 +1,36 @@
+{
+  "startedAt": "2026-09-25T16:34:00.360Z",
+  "browser": "Chromium 153.0.8010.12 (headless)",
+  "methodology": "Unmodified game; actual keyboard/pointer input only. Desktop/mobile emulation are not physical device tests.",
+  "desktop": {
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)",
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "requestFailures": [],
+    "loaded": "Mezzo Pollo Academy",
+    "pause": true,
+    "resume": true,
+    "gameOver": true,
+    "result": "Il pollo si è fermato\n🥚 Uovo\nPunteggio\n94\nRisposte giuste\n0\nRecord personale (locale)\n94\n\nRiprova\nCondividi il grado\nMenu",
+    "restart": true,
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "mobile": {
+    "pageErrors": [],
+    "consoleErrors": [
+      "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    ],
+    "requestFailures": [],
+    "started": true,
+    "pause": true,
+    "resume": true,
+    "horizontalOverflow": false
+  },
+  "finishedAt": "2026-09-25T16:34:49.474Z",
+  "playwrightBrowserRevision": 1243
+}

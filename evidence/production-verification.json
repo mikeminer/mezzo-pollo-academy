@@ -1,0 +1,16 @@
+{
+  "url": "https://mezzo-pollo-academy.vercel.app/",
+  "startedAt": "2026-09-25T16:36:53.105Z",
+  "pageErrors": [],
+  "badResponses": [],
+  "requestFailures": [],
+  "httpStatus": 200,
+  "title": "Mezzo Pollo Academy",
+  "started": true,
+  "question": "Il doppio di 10?",
+  "pause": true,
+  "resume": true,
+  "finishedAt": "2026-09-25T16:37:05.434Z",
+  "browser": "Chromium 153.0.8010.12 (headless)",
+  "playwrightBrowserRevision": 1243
+}

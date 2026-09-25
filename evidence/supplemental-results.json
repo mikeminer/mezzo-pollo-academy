@@ -1,0 +1,7 @@
+{
+  "badResponses": [],
+  "pageErrors": [],
+  "mobileSwipe": "Dispatched a real emulated left swipe; before/after screenshots captured.",
+  "browser": "Chromium 153.0.8010.12 (headless)",
+  "playwrightBrowserRevision": 1243
+}
