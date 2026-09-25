@@ -1,5 +1,7 @@
 # Mezzo Pollo Academy 🐔✂️
 
+The game and demo interface are in English, including word challenges, wallet messages and share cards. The Italian soundtrack includes English subtitles. [Play on mezzopollo.it](https://mezzopollo.it/) · [English demo](https://mezzopollo.it/demo).
+
 Un runner 3D per browser in cui un pollo di peluche tagliato a metà corre verso la porta con la metà giusta: numeri, parole e figure da completare.
 Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackathon DevFridge.
 

@@ -1,0 +1,398 @@
+{
+  "date": "2026-09-25",
+  "browser": "Chromium 153.0.8010.12",
+  "methodology": "Local unmodified application. Isolated headless Chromium and default autoplay policy. Entire Phantom provider and exact SDK endpoint are synthetic mocks; no real wallet connection, signature, transaction or mainnet request. Date.now is anchored to explicit synthetic 2026-09-25T18:00:00Z plus real elapsed browser performance time. Pointer/keyboard UI actions and mock-provider lifecycle events. Mobile viewports are emulated.",
+  "purpose": "Focused English localization audit. Seeded question harness is isolated from the game; browser uses synthetic Phantom/SDK data and real audio. Native Web Share disabled only in test environment so clicking Share generates the local preview without posting anywhere.",
+  "passed": true,
+  "checks": [
+    {
+      "name": "word bank has unique English alphabetic targets and nonempty clues",
+      "passed": true
+    },
+    {
+      "name": "100seeds x3levels produce clue-matched target and distinct wrong endings",
+      "passed": true
+    },
+    {
+      "name": "localized math prompts use English decimal point and distinct options",
+      "passed": true
+    },
+    {
+      "name": "Menu visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "How to play visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "Disconnected access visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "Missing wallet visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "English missing-wallet flow preserves mandatory gate without audio",
+      "passed": true
+    },
+    {
+      "name": "noWallet no signing/sending or uncaught errors",
+      "passed": true
+    },
+    {
+      "name": "Eligible access visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "eligible amount uses English number grouping",
+      "passed": true
+    },
+    {
+      "name": "localization preserves1m equals1 life and music playback",
+      "passed": true
+    },
+    {
+      "name": "Gameplay HUD visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "Pause visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "Muted music and disabled captions visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "English toggles retain pressed state behavior",
+      "passed": true
+    },
+    {
+      "name": "natural1life game over still works",
+      "passed": true
+    },
+    {
+      "name": "Game over visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "observed gameplay prompts and feedback contain no Italian UI copy",
+      "passed": true
+    },
+    {
+      "name": "share card draws English score and challenge copy",
+      "passed": true
+    },
+    {
+      "name": "Share preview visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "retry still starts a new1life run",
+      "passed": true
+    },
+    {
+      "name": "eligibleDesktop no signing/sending or uncaught errors",
+      "passed": true
+    },
+    {
+      "name": "portrait menu visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "portrait instructions visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "portrait eligible access visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "portrait English access copy fits without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portrait English Back button is reachable",
+      "passed": true
+    },
+    {
+      "name": "portrait gameplay visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "portrait localized game preserves1 total life",
+      "passed": true
+    },
+    {
+      "name": "portrait pause visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "portrait English Resume restores music",
+      "passed": true
+    },
+    {
+      "name": "portrait no signing/sending or uncaught errors",
+      "passed": true
+    },
+    {
+      "name": "landscape menu visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "landscape instructions visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "landscape eligible access visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "landscape English access copy fits without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "landscape English Back button is reachable",
+      "passed": true
+    },
+    {
+      "name": "landscape gameplay visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "landscape localized game preserves1 total life",
+      "passed": true
+    },
+    {
+      "name": "landscape pause visible and accessible copy is English",
+      "passed": true
+    },
+    {
+      "name": "landscape English Resume restores music",
+      "passed": true
+    },
+    {
+      "name": "landscape no signing/sending or uncaught errors",
+      "passed": true
+    }
+  ],
+  "finalQuestionRevision": {
+    "purpose": "Only localized question generator rechecked after LION clue changed from Big cat to Pride leader; prior43browser/UIchecks remain in english-ui-review.json.",
+    "passed": true,
+    "checks": [
+      {
+        "name": "word bank has unique English alphabetic targets and nonempty clues",
+        "passed": true
+      },
+      {
+        "name": "100seeds x3levels produce clue-matched target and distinct wrong endings",
+        "passed": true
+      },
+      {
+        "name": "localized math prompts use English decimal point and distinct options",
+        "passed": true
+      }
+    ]
+  },
+  "limitations": [
+    "Synthetic Phantom provider and lock evidence; no real wallet approval or transaction.",
+    "Mobile viewport emulation, not physical devices.",
+    "Seeded question samples do not exhaust every random combination."
+  ],
+  "recordings": {
+    "passed": true,
+    "purpose": "New visible English demo media, explicitly simulated wallet and synthetic3m balance. No real wallet or chain API. Silent browser recordings include real English caption display.",
+    "checks": [
+      {
+        "name": "desktop English demo captures authorized mock play and pause",
+        "passed": true
+      },
+      {
+        "name": "desktop no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "mobile English demo captures authorized mock play and pause",
+        "passed": true
+      },
+      {
+        "name": "mobile no signing/sending or uncaught errors",
+        "passed": true
+      }
+    ],
+    "captures": {
+      "desktop": {
+        "viewport": {
+          "width": 1280,
+          "height": 720
+        },
+        "startedAt": "2026-09-25T20:06:02.815Z",
+        "method": "Real local browser inputs; actual natural3life run, synthetic Phantom+3m lock proof. No internal game state changes. Timed DOM clicks use existing Pause/Resume controls. Playwright WebM is silent, with real English subtitles and test-only Demo · simulated wallet watermark.",
+        "video": "mezzo-pollo-gameplay-en-desktop.webm",
+        "poster": "english-desktop-question.png",
+        "question": "Find the other half",
+        "elapsedMs": 21568,
+        "pauseCount": 1,
+        "gameOver": false,
+        "final": {
+          "status": "eligible",
+          "message": "Timelocks confirmed: 3,000,000 MEMEZZO actively locked. Each new game starts with 3 lives.",
+          "wallet": "Wallet: 7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+          "memberVisible": true,
+          "accessVisible": false,
+          "pauseVisible": false,
+          "menuVisible": false,
+          "hud": "MEMEZZO · 3 starting lives · local best",
+          "notice": "",
+          "resumeLabel": "Resume",
+          "audio": {
+            "paused": false,
+            "time": 4.426304,
+            "duration": 130.612167,
+            "error": null
+          },
+          "mockCalls": {
+            "connect": 1,
+            "disconnect": 0,
+            "sign": 0,
+            "send": 0,
+            "request": []
+          },
+          "accessEvents": [
+            {
+              "eligible": false,
+              "wallet": null,
+              "status": "connecting",
+              "livesPerGame": 0,
+              "at": 1790359212.7748
+            },
+            {
+              "eligible": false,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "checking",
+              "livesPerGame": 0,
+              "at": 1790359212.7768002
+            },
+            {
+              "eligible": false,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "checking",
+              "livesPerGame": 0,
+              "at": 1790359212.7775
+            },
+            {
+              "eligible": true,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "eligible",
+              "livesPerGame": 3,
+              "at": 1790359215.3802
+            },
+            {
+              "eligible": true,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "eligible",
+              "livesPerGame": 3,
+              "at": 1790359218.6111999
+            },
+            {
+              "eligible": true,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "eligible",
+              "livesPerGame": 3,
+              "at": 1790359223.7591999
+            }
+          ],
+          "rejections": []
+        },
+        "bytes": 3940072
+      },
+      "mobile": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "startedAt": "2026-09-25T20:09:34.018Z",
+        "method": "Real local browser inputs; actual natural3life run, synthetic Phantom+3m lock proof. No internal game state changes. Timed DOM clicks use existing Pause/Resume controls. Playwright WebM is silent, with real English subtitles and test-only Demo · simulated wallet watermark.",
+        "video": "mezzo-pollo-gameplay-en-mobile.webm",
+        "poster": "english-mobile-question.png",
+        "question": "Cheesy slice: PI___",
+        "elapsedMs": 21205,
+        "pauseCount": 1,
+        "gameOver": true,
+        "final": {
+          "status": "eligible",
+          "message": "Timelocks confirmed: 3,000,000 MEMEZZO actively locked. Each new game starts with 3 lives.",
+          "wallet": "Wallet: 7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+          "memberVisible": true,
+          "accessVisible": false,
+          "pauseVisible": false,
+          "menuVisible": false,
+          "hud": "MEMEZZO · 3 starting lives · local best",
+          "notice": "",
+          "resumeLabel": "Resume",
+          "audio": {
+            "paused": true,
+            "time": 12.402358,
+            "duration": 130.612167,
+            "error": null
+          },
+          "mockCalls": {
+            "connect": 1,
+            "disconnect": 0,
+            "sign": 0,
+            "send": 0,
+            "request": []
+          },
+          "accessEvents": [
+            {
+              "eligible": false,
+              "wallet": null,
+              "status": "connecting",
+              "livesPerGame": 0,
+              "at": 1790359204.8275
+            },
+            {
+              "eligible": false,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "checking",
+              "livesPerGame": 0,
+              "at": 1790359204.8296
+            },
+            {
+              "eligible": false,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "checking",
+              "livesPerGame": 0,
+              "at": 1790359204.8298998
+            },
+            {
+              "eligible": true,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "eligible",
+              "livesPerGame": 3,
+              "at": 1790359204.9381
+            },
+            {
+              "eligible": true,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "eligible",
+              "livesPerGame": 3,
+              "at": 1790359205.3723998
+            },
+            {
+              "eligible": true,
+              "wallet": "7YttLkHDoNj9wyDur5ZizKDGiAMrU3yDwvmDAAEsnJsE",
+              "status": "eligible",
+              "livesPerGame": 3,
+              "at": 1790359208.4661002
+            }
+          ],
+          "rejections": []
+        },
+        "bytes": 2681745
+      }
+    }
+  }
+}

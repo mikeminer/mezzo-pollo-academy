@@ -23,8 +23,7 @@
   function render() {
     for (const button of document.querySelectorAll('[data-caption-toggle]')) {
       button.setAttribute('aria-pressed', String(enabled));
-      button.textContent = document.documentElement.lang === 'it'
-        ? `CC English: ${enabled ? 'sì' : 'no'}` : `English subtitles: ${enabled ? 'on' : 'off'}`;
+      button.textContent = `English subtitles: ${enabled ? 'on' : 'off'}`;
     }
     for (const player of players) {
       // Audio elements have no native subtitle viewport; render cues as text.

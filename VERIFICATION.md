@@ -1,5 +1,13 @@
 # Verification: Mezzo Pollo Academy
 
+## English interface — 25 September 2026
+
+All **43 focused localization checks passed** in Chromium 153.0.8010.12. Coverage includes menu, instructions, wallet states, music/subtitle controls, pause, game over, share-card preview, and desktop/portrait/landscape layouts. The 40 word-completion targets now use English clues and answers; math uses English prompts and decimal points. After clarifying the LION clue to avoid another valid animal completion, **3 question-generator checks passed again**, covering 300 seeded word questions and 300 math questions. No page or console errors were observed in the focused browser run. [Localization results](evidence/english-ui-verification.json).
+
+The English UI check reconfirmed that 1,000,000 active MEMEZZO gives exactly 1 starting life. This revision changes display text and question content; it does not change the access policy. Wallet and API evidence were simulated in an isolated browser. The share action produced a local image preview with native sharing disabled in the test environment; nothing was posted.
+
+The demo page now embeds English desktop and portrait recordings. They are silent browser captures with a visible simulated-wallet label, using actual gameplay inputs and synthetic qualifying lock evidence. They do not establish real Phantom approval, a mainnet transaction, or physical-phone behavior. The Italian soundtrack remains available with English subtitles. Earlier recordings below remain historical evidence.
+
 ## Revised mandatory access and lives — 25 September 2026
 
 The revised rule requires at least 1,000,000 active MEMEZZO across locks of the same wallet and exact mint, without any minimum duration. Each new run receives one total life per full active million, with no base lives: 1,000,000 → 1; 1,999,999 → 1; 2,000,000 → 2. There is no free-play path or cosmetic-only gate.

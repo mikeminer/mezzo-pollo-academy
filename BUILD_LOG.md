@@ -61,3 +61,9 @@ La documentazione e i metadata di submission sono aggiornati a questa regola, ve
 ## Sottotitoli inglesi — 25 settembre 2026
 
 Su richiesta dell'utente, Codex ha trascritto localmente il file MP3 generato, tradotto il testo cantato e aggiunto una traccia WebVTT inglese. Il player del gioco e quello della demo leggono gli stessi cue dal tempo effettivo dell'audio; pausa, seek e loop non dipendono da un timer separato. Il controllo CC English salva la preferenza. I passaggi vocali senza parole riconoscibili sono segnalati, senza sostituirli con versi del vecchio draft. Provenienza e limiti in [SOUNDTRACK.md](SOUNDTRACK.md).
+
+## English interface — 25 September 2026
+
+The user requested English for all visible text. Codex translated the game and demo interface, accessible labels, wallet status messages, music/subtitle controls, generated prompts, feedback, ranks and share card. The word-completion bank now contains 40 English targets with short clues, and math prompts use decimal points. The project name and MEMEZZO mint stay the same. The existing rule remains one total life per full active million, with no access below one million.
+
+English desktop and portrait recordings replace the historical recordings embedded on the demo page. Their wallet and lock evidence is explicitly simulated, including an on-screen label; gameplay inputs do not modify internal game state. The original Italian song keeps its English subtitle track. Focused verification passed 43 checks, plus 3 question checks after a clue refinement. Details and limitations are in [VERIFICATION.md](VERIFICATION.md).
