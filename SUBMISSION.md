@@ -14,6 +14,8 @@ Endless runner 3D a tre corsie. In alto appare una domanda-metà, e sulla pista 
 
 Modalità: Mezzo Numero (calcolo, frazioni), Mezza Parola (lessico), Mezza Figura (simmetria), POLLO INTERO (controllo inibitorio: non cambiare corsia), Cambio Regola ogni 30 secondi (flessibilità cognitiva).
 
+All’apertura si sceglie una bandiera: Italia per l’italiano, Stati Uniti per l’inglese, Polonia per il polacco. La scelta aggiorna anche le domande, i messaggi del wallet e la pagina demo. Ogni lingua dispone di 40 parole da completare. Il selettore ricompare a ogni caricamento e ricorda l’ultima scelta; il menu permette di cambiarla. La preferenza linguistica non modifica la regola dei timelock.
+
 Colonna sonora originale generata con Google Lyria in Gemini: avvio con Gioca, volume regolabile, musica disattivabile separatamente dagli effetti, pausa sincronizzata e riduzione del volume durante gli avvisi. Il brano completo è nella [pagina demo](https://mezzo-pollo-academy.vercel.app/demo#soundtrack); provenienza e prompt in [SOUNDTRACK.md](SOUNDTRACK.md).
 
 ## Token e accesso
@@ -30,9 +32,9 @@ Colonna sonora originale generata con Google Lyria in Gemini: avvio con Gioca, v
 
 ## Link
 
-- **Play URL:** [mezzo-pollo-academy.vercel.app](https://mezzo-pollo-academy.vercel.app)
+- **Play URL:** [mezzopollo.it](https://mezzopollo.it/)
 - **Repository:** [mikeminer/mezzo-pollo-academy](https://github.com/mikeminer/mezzo-pollo-academy), commit indicato nel file di registro
-- **Demo:** [pagina pubblica](https://mezzo-pollo-academy.vercel.app/demo), [copia nel progetto](demo.html). I video silenziosi sono prove storiche della build precedente a musica e accesso wallet; non dimostrano la nuova regola.
+- **Demo:** [pagina pubblica](https://mezzopollo.it/demo), [copia nel progetto](demo.html). I video silenziosi attuali mostrano l’interfaccia inglese, con wallet e saldo simulati dichiarati in sovrimpressione. Non attestano approvazioni reali di Phantom o transazioni mainnet. I vecchi video restano evidenze storiche nel repository. La canzone italiana dispone di sottotitoli inglesi.
 
 ## Setup
 

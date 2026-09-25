@@ -1,0 +1,160 @@
+/* Static UI copy and native word exercises. Dynamic game/access text lives elsewhere. */
+(function () {
+  'use strict';
+
+  // Each row expands to the same selector and entry schema in every language.
+  // Only leaf copy is replaced: controls, dynamic output and event listeners survive.
+  const rows = [
+    ['#c', 'aria-label', 'Game track', 'Pista di gioco', 'Tor gry'],
+    ['#pauseBtn', 'aria-label', 'Pause', 'Pausa', 'Pauza'],
+    ['#scrMenu .chop', 'text',
+      'A plush chicken has lost half of itself. Help it run through the gate with the matching half.',
+      'Un pollo di peluche ha perso metà di sé. Aiutalo a passare dal portale con la metà giusta.',
+      'Pluszowy kurczak zgubił połowę siebie. Pomóż mu przebiec przez bramkę z pasującą połową.'],
+    ['#btnHow', 'text', 'How to play', 'Come si gioca', 'Jak grać'],
+    ['#btnAccess', 'text', 'DevFridge access', 'Accesso DevFridge', 'Dostęp DevFridge'],
+    ['[data-volume-label]', 'text', 'Volume', 'Volume', 'Głośność'],
+    ['#scrMenu [data-music-volume]', 'aria-label', 'Music volume', 'Volume della musica', 'Głośność muzyki'],
+    ['#scrPause [data-music-volume]', 'aria-label', 'Music volume while paused', 'Volume della musica in pausa', 'Głośność muzyki podczas pauzy'],
+    ['#scrMenu .song-link', 'text', 'Listen to the full song ↗', 'Ascolta il brano completo ↗', 'Posłuchaj całej piosenki ↗'],
+    ['#scrHow h2', 'text', 'How to play', 'Come si gioca', 'Jak grać'],
+    ['#scrHow li:nth-child(1)', 'html',
+      '<b>Change lanes</b> by swiping left or right, or pressing ← → or A D.',
+      '<b>Cambia corsia</b> scorrendo a sinistra o a destra, oppure premendo ← → o A D.',
+      '<b>Zmieniaj pas</b>, przesuwając palcem w lewo lub w prawo albo naciskając ← → lub A D.'],
+    ['#scrHow li:nth-child(2)', 'html',
+      '<b>Jump</b> over hay bales by swiping up, or pressing ↑, W or Space.',
+      '<b>Salta</b> le balle di fieno scorrendo verso l’alto, oppure premendo ↑, W o la barra spaziatrice.',
+      '<b>Przeskakuj</b> bele siana, przesuwając palcem w górę albo naciskając ↑, W lub spację.'],
+    ['#scrHow li:nth-child(3)', 'html',
+      'Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.',
+      'Leggi la domanda in alto. Passa dal portale con <b>la metà giusta</b>: completa numeri, parole e figure.',
+      'Przeczytaj pytanie u góry. Przebiegnij przez bramkę z <b>pasującą połową</b>: uzupełniaj liczby, słowa i figury.'],
+    ['#scrHow li:nth-child(4)', 'html',
+      'When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.',
+      'Quando compare il <b>POLLO INTERO</b>, resta nella tua corsia finché la statua non è passata.',
+      'Gdy pojawi się <b>CAŁY KURCZAK</b>, pozostań na swoim pasie, aż miniesz posąg.'],
+    ['#scrHow li:nth-child(5)', 'html',
+      'Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.',
+      'A volte la regola si inverte: in <b>modalità inversa</b>, scegli una risposta sbagliata.',
+      'Czasem zasada się odwraca: w <b>trybie odwrotnym</b> wybierz błędną odpowiedź.'],
+    ['#scrHow li:nth-child(6)', 'html',
+      'You get <b>1 life per full million MEMEZZO in active timelocks</b>. Start with 1 life for 1 million, or 2 lives for 2 million. Each mistake costs one life.',
+      'Hai <b>1 vita per ogni milione intero di MEMEZZO in blocchi a tempo attivi</b>. Parti con 1 vita per 1 milione, o 2 vite per 2 milioni. Ogni errore costa una vita.',
+      'Dostajesz <b>1 życie za każdy pełny milion MEMEZZO w aktywnych blokadach czasowych</b>. Zaczynasz z 1 życiem za 1 milion lub 2 życiami za 2 miliony. Każdy błąd kosztuje jedno życie.'],
+    ['#scrHow li:nth-child(7)', 'html',
+      'Starting or continuing requires at least <b>1,000,000 MEMEZZO</b> in active timelocks. Lives are calculated for each new game; pausing or checking locks does not refill them.',
+      'Per iniziare o continuare servono almeno <b>1.000.000 MEMEZZO</b> in blocchi a tempo attivi. Le vite si calcolano per ogni nuova partita: mettere in pausa o ricontrollare i blocchi non le ripristina.',
+      'Aby rozpocząć lub wznowić grę, potrzebujesz co najmniej <b>1 000 000 MEMEZZO</b> w aktywnych blokadach czasowych. Liczba żyć jest obliczana dla każdej nowej gry; pauza ani sprawdzanie blokad ich nie odnawia.'],
+    ['[data-back]', 'text', 'Back', 'Indietro', 'Wstecz'],
+    ['#scrAccess h2', 'text', 'Timelocks & lives', 'Blocchi a tempo e vite', 'Blokady czasowe i życia'],
+    ['#scrAccess > p:nth-of-type(1)', 'html',
+      "To play, connect Phantom with at least <b>1,000,000 MEMEZZO</b> in active DevFridge timelocks on Solana. We add up your wallet's locks for this token, with no minimum duration. Expired locks stop counting.",
+      'Per giocare, collega Phantom con almeno <b>1.000.000 MEMEZZO</b> in blocchi a tempo DevFridge attivi su Solana. Sommiamo i blocchi del tuo portafoglio per questo token, senza durata minima. I blocchi scaduti non contano più.',
+      'Aby grać, połącz Phantom z co najmniej <b>1 000 000 MEMEZZO</b> w aktywnych blokadach czasowych DevFridge na Solanie. Sumujemy blokady tego tokena w twoim portfelu, bez minimalnego czasu trwania. Wygasłe blokady przestają się liczyć.'],
+    ['#scrAccess > p:nth-of-type(2)', 'html',
+      '<b>Each full million = 1 life per game.</b> 1 million → 1 life, 2 million → 2 lives. There are no base lives; amounts below a full million do not add lives.',
+      '<b>Ogni milione intero = 1 vita per partita.</b> 1 milione → 1 vita, 2 milioni → 2 vite. Non ci sono vite di base; le frazioni di milione non aggiungono vite.',
+      '<b>Każdy pełny milion = 1 życie na grę.</b> 1 milion → 1 życie, 2 miliony → 2 życia. Nie ma żyć podstawowych; niepełne miliony nie dają dodatkowych żyć.'],
+    ['#scrAccess > p:nth-of-type(3)', 'text',
+      'You cannot play below the minimum. Lives are assigned at the start of each game; pausing and checking locks do not refill them. If access can no longer be confirmed, the game stays paused. To resume, reconnect the same wallet with enough active locked tokens.',
+      'Sotto il minimo non puoi giocare. Le vite sono assegnate all’inizio di ogni partita: mettere in pausa e controllare i blocchi non le ripristina. Se l’accesso non può più essere confermato, il gioco resta in pausa. Per riprendere, ricollega lo stesso portafoglio con abbastanza token in blocchi attivi.',
+      'Poniżej minimum nie możesz grać. Życia są przyznawane na początku każdej gry; pauza ani sprawdzanie blokad ich nie odnawia. Jeśli nie można potwierdzić dostępu, gra pozostaje wstrzymana. Aby ją wznowić, połącz ponownie ten sam portfel z wystarczającą liczbą tokenów w aktywnych blokadach.'],
+    ['#scrAccess > p:nth-of-type(4)', 'text', 'MEMEZZO mint · Solana mainnet', 'Indirizzo del token MEMEZZO · rete principale Solana', 'Adres tokena MEMEZZO · główna sieć Solana'],
+    ['#copyMint', 'text', 'Copy mint', 'Copia indirizzo', 'Kopiuj adres tokena'],
+    ['#disconnectWallet', 'text', 'Disconnect', 'Scollega', 'Rozłącz'],
+    ['#playMember', 'text', 'New game', 'Nuova partita', 'Nowa gra'],
+    ['#resumeRun', 'text', 'Resume game', 'Riprendi la partita', 'Wznów grę'],
+    ['#phantomBrowse', 'text', 'Open in Phantom browser ↗', 'Apri nel browser Phantom ↗', 'Otwórz w przeglądarce Phantom ↗'],
+    ['#scrAccess a[href^="https://pump.fun/"]', 'text', 'Token on Pump.fun ↗', 'Token su Pump.fun ↗', 'Token na Pump.fun ↗'],
+    ['#scanToken', 'text', 'Explore timelocks ↗', 'Esplora i blocchi a tempo ↗', 'Przeglądaj blokady czasowe ↗'],
+    ['#scrAccess h3', 'text', 'Before creating a timelock', 'Prima di creare un blocco a tempo', 'Przed utworzeniem blokady czasowej'],
+    ['#scrAccess li:nth-child(1)', 'text',
+      'Tokens stay locked until your chosen expiry, with no early withdrawal.',
+      'I token restano bloccati fino alla scadenza scelta, senza possibilità di ritiro anticipato.',
+      'Tokeny pozostają zablokowane do wybranego terminu, bez możliwości wcześniejszej wypłaty.'],
+    ['#scrAccess li:nth-child(2)', 'text',
+      'Redemption includes a 2% fee that buys and burns PASTA. Network fees are separate.',
+      'Il riscatto prevede una commissione del 2% che acquista e brucia PASTA. Le commissioni di rete sono separate.',
+      'Wypłata obejmuje opłatę 2%, przeznaczoną na zakup i spalanie PASTA. Opłaty sieciowe są naliczane osobno.'],
+    ['#scrAccess li:nth-child(3)', 'text',
+      'Redeeming MEMEZZO requires an available Jupiter route. New or low-liquidity tokens may lack a route even after expiry.',
+      'Per riscattare MEMEZZO serve un percorso di scambio disponibile su Jupiter. I token nuovi o con poca liquidità potrebbero non averne uno anche dopo la scadenza.',
+      'Wypłata MEMEZZO wymaga dostępnej ścieżki wymiany w Jupiter. Nowe tokeny lub tokeny o niskiej płynności mogą jej nie mieć nawet po wygaśnięciu blokady.'],
+    ['#scrAccess li:nth-child(4)', 'text',
+      'Locking does not guarantee prizes or price increases.',
+      'Il blocco non garantisce premi né aumenti di prezzo.',
+      'Blokada nie gwarantuje nagród ani wzrostu ceny.'],
+    ['#scrAccess > p.note', 'text',
+      'Wallet and timelock features are for adults. The game reads timelocks; creation and redemption take place on DevFridge, with your wallet approval.',
+      'Le funzioni relative al portafoglio e ai blocchi a tempo sono riservate agli adulti. Il gioco legge i blocchi; creazione e riscatto avvengono su DevFridge, con la tua approvazione nel portafoglio.',
+      'Funkcje portfela i blokad czasowych są przeznaczone dla dorosłych. Gra odczytuje blokady; ich tworzenie i wypłata odbywają się na DevFridge za twoją zgodą w portfelu.'],
+    ['#scrAccess a[href^="https://devfridge.cool/"]', 'text', 'Open MEMEZZO on DevFridge ↗', 'Apri MEMEZZO su DevFridge ↗', 'Otwórz MEMEZZO na DevFridge ↗'],
+    ['#scrPause h2', 'text', 'Paused', 'In pausa', 'Pauza'],
+    ['#btnVerifyAccess', 'text', 'Check access', 'Verifica accesso', 'Sprawdź dostęp'],
+    ['#btnQuit', 'text', 'Back to menu', 'Torna al menu', 'Wróć do menu'],
+    ['#scrOver h2', 'text', 'The chicken stopped', 'Il pollo si è fermato', 'Kurczak się zatrzymał'],
+    ['#scrOver .stat:nth-of-type(2) > span', 'text', 'Score', 'Punteggio', 'Wynik'],
+    ['#scrOver .stat:nth-of-type(3) > span', 'text', 'Correct answers', 'Risposte giuste', 'Poprawne odpowiedzi'],
+    ['#scrOver .stat:nth-of-type(4) > span', 'text', 'Personal best (local)', 'Record personale (locale)', 'Rekord osobisty (lokalny)'],
+    ['#shareImg', 'alt', 'Your score card', 'La tua scheda punteggio', 'Karta twojego wyniku'],
+    ['#btnAgain', 'text', 'Try again', 'Riprova', 'Spróbuj ponownie'],
+    ['#btnShare', 'text', 'Share your rank', 'Condividi il tuo grado', 'Udostępnij swoją rangę'],
+    ['#btnMenu', 'text', 'Menu', 'Menu', 'Menu'],
+    ['#glLost', 'text',
+      'The graphics stopped working. Reload the page to continue.',
+      'La grafica ha smesso di funzionare. Ricarica la pagina per continuare.',
+      'Grafika przestała działać. Odśwież stronę, aby kontynuować.']
+  ];
+
+  const words = {
+    en: [
+      ['CHIC','KEN','Farm bird'],['RAB','BIT','Long ears'],['TUR','TLE','Shell animal'],['PEN','GUIN','Polar bird'],
+      ['DOL','PHIN','Sea mammal'],['BUTTER','FLY','Winged insect'],['RAIN','BOW','Sky colors'],['SUN','SHINE','Solar light'],
+      ['AP','PLE','Orchard fruit'],['PI','ZZA','Cheesy slice'],['PAS','TA','Italian noodles'],['CAR','ROT','Orange root'],
+      ['COO','KIE','Sweet snack'],['BA','NANA','Yellow fruit'],['WA','TER','Drink'],['LEM','ON','Sour citrus'],
+      ['CHE','ESE','Dairy food'],['HOR','SE','Riding animal'],['ZEB','RA','Striped animal'],['EAG','LE','Bird of prey'],
+      ['DU','CK','Pond bird'],['BE','AR','Big furry animal'],['SHE','EP','Woolly animal'],['LI','ON','Pride leader'],
+      ['TI','GER','Striped cat'],['PAN','DA','Bamboo eater'],['MOU','SE','Small rodent'],['CLO','UD','Sky vapor'],
+      ['WIN','DOW','Glass opening'],['FLO','WER','Garden bloom'],['GAR','DEN','Plant patch'],['BAS','KET','Woven carrier'],
+      ['BU','CKET','Water container'],['SC','HOOL','Learning place'],['PEN','CIL','Writing tool'],['MA','RKER','Coloring pen'],
+      ['BOOK','SHELF','Book storage'],['FEA','THER','Bird covering'],['MO','ON','Night light'],['ST','AR','Twinkling light']
+    ],
+    it: [
+      ['POL','LO','Uccello da cortile'],['GAT','TO','Fa le fusa'],['CA','NE','Abbaia'],['TO','PO','Piccolo roditore'],
+      ['SO','LE','Stella del giorno'],['LU','NA','Satellite terrestre'],['ME','LA','Frutto del melo'],['PE','RA','Frutto del pero'],
+      ['PA','NE','Cibo del fornaio'],['LAT','TE','Bevanda della mucca'],['MA','RE','Acqua salata'],['CA','SA','Abitazione'],
+      ['LI','BRO','Pagine da leggere'],['FIO','RE','Corolla e petali'],['ALBE','RO','Pianta con tronco'],['CAR','OTA','Radice arancione'],
+      ['BAN','ANA','Frutto ricurvo'],['LIM','ONE','Agrume giallo'],['FORMA','GGIO','Fatto con il latte'],['CONI','GLIO','Orecchie lunghe'],
+      ['TARTA','RUGA','Rettile col guscio'],['PING','UINO','Uccello del Polo Sud'],['DEL','FINO','Mammifero marino'],['FAR','FALLA','Insetto con ali'],
+      ['ARCO','BALENO','Colori dopo la pioggia'],['SCU','OLA','Luogo dove si studia'],['MAT','ITA','Scrive con grafite'],['SEC','CHIO','Recipiente con manico'],
+      ['CE','STINO','Contenitore intrecciato'],['CAVA','LLO','Animale da cavalcare'],['PEC','ORA','Animale da lana'],['LE','ONE','Re della savana'],
+      ['TI','GRE','Felino a strisce'],['OR','SO','Grande animale peloso'],['ANA','TRA','Uccello dello stagno'],['AQU','ILA','Rapace montano'],
+      ['NUV','OLA','Vapore nel cielo'],['FINE','STRA','Apertura con vetro'],['GIAR','DINO','Spazio per le piante'],['PIU','MA','Riveste gli uccelli']
+    ],
+    pl: [
+      ['KU','RA','Ptak znoszący jajka'],['KO','TEK','Mały kot'],['PI','ES','Szczeka'],['MY','SZ','Mały gryzoń'],
+      ['SŁO','ŃCE','Gwiazda dnia'],['KSIĘ','ŻYC','Satelita Ziemi'],['JAB','ŁKO','Owoc jabłoni'],['GRU','SZKA','Owoc gruszy'],
+      ['CH','LEB','Wypiek z piekarni'],['MLE','KO','Biały napój'],['MO','RZE','Słona woda'],['DO','MEK','Mały dom'],
+      ['KSIĄ','ŻKA','Do czytania'],['KWI','AT','Ma płatki'],['DRZE','WO','Roślina z pniem'],['MARC','HEW','Pomarańczowy korzeń'],
+      ['BA','NAN','Żółty, zakrzywiony owoc'],['CY','TRYNA','Kwaśny cytrus'],['SER','EK','Produkt z mleka'],['KRÓ','LIK','Zwierzę z długimi uszami'],
+      ['ŻÓ','ŁW','Gad ze skorupą'],['PING','WIN','Ptak z Antarktydy'],['DEL','FIN','Morski ssak'],['MO','TYL','Owad z barwnymi skrzydłami'],
+      ['TĘ','CZA','Kolory po deszczu'],['SZKO','ŁA','Miejsce nauki'],['OŁÓ','WEK','Pisze grafitem'],['WIA','DRO','Naczynie z uchwytem'],
+      ['KOS','ZYK','Pleciony pojemnik'],['KON','IK','Mały koń'],['OW','CA','Daje wełnę'],['LWIĄ','TKO','Młode lwa'],
+      ['TY','GRYS','Duży kot w pasy'],['NIEDŹ','WIEDŹ','Duży ssak z lasu'],['KA','CZKA','Ptak ze stawu'],['OR','ZEŁ','Duży ptak drapieżny'],
+      ['CHMU','RA','Para wodna na niebie'],['OK','NO','Szyba w ścianie'],['OGR','ÓD','Rosną w nim kwiaty'],['PIÓ','RO','Pokrywa ciało ptaka']
+    ]
+  };
+
+  window.MezzoContent = {};
+  ['en', 'it', 'pl'].forEach((locale, index) => {
+    window.MezzoContent[locale] = {
+      static: rows.map(([selector, kind, ...translations]) => {
+        const value = translations[index];
+        return kind === 'html' ? { selector, html: value } :
+          kind === 'text' ? { selector, text: value } : { selector, attr: kind, text: value };
+      }),
+      words: words[locale]
+    };
+  });
+})();

@@ -20,11 +20,19 @@
     }
     return { track, update };
   }).filter(Boolean);
-  function render() {
+  function renderLabels() {
+    const requested = window.MezzoLocale?.code || document.documentElement.lang;
+    const code = ['it', 'en', 'pl'].includes(requested) ? requested : 'en';
+    const key = enabled ? 'captionsOn' : 'captionsOff';
+    const text = window.MezzoAccessTranslations?.[code]?.[key]
+      ?? window.MezzoAccessTranslations?.en?.[key] ?? `English subtitles: ${enabled ? 'on' : 'off'}`;
     for (const button of document.querySelectorAll('[data-caption-toggle]')) {
       button.setAttribute('aria-pressed', String(enabled));
-      button.textContent = `English subtitles: ${enabled ? 'on' : 'off'}`;
+      button.textContent = text;
     }
+  }
+  function render() {
+    renderLabels();
     for (const player of players) {
       // Audio elements have no native subtitle viewport; render cues as text.
       player.track.mode = enabled ? 'hidden' : 'disabled';
@@ -38,5 +46,6 @@
       render();
     });
   }
+  document.addEventListener('mezzopollo:language', renderLabels);
   render();
 })();

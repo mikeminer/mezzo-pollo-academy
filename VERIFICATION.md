@@ -1,5 +1,13 @@
 # Verification: Mezzo Pollo Academy
 
+## Country chooser and three languages — 25 September 2026
+
+Every page load opens a country dialog with bundled SVG flags for Italy, the United States and Poland. The last choice is highlighted, but selecting a flag remains required on each load. The game stays inert and keyboard gameplay is blocked until selection. Tab and Shift+Tab stay inside the dialog; Escape does not bypass it. Country choice is a local language preference and does not establish geographic location or wallet eligibility.
+
+Focused verification covers Italian, English and Polish menu/access copy and chooser layouts at 1280 × 800, 390 × 844 and 844 × 390; remembered, invalid and unavailable local storage; changing country from the menu; localized wallet states and subtitle controls; blocked access below the threshold; and unchanged 1m → 1 life / 2m → 2 lives. The 40 native word targets per language were checked with 900 generated questions. A final word-only check covers the refined CESTINO, NUVOLA and KOSZYK splits, avoiding valid alternative completions. [Country and language results](evidence/country-language-verification.json).
+
+Wallet evidence is simulated and phone layouts are emulated. No real wallet approval, signature or transaction is established by these tests. The song and its English subtitle content are unchanged; the controls follow the chosen UI language. Demo text is localized while the embedded recordings remain labelled as English recordings with simulated wallet evidence. Earlier English-only results below describe the preceding revision.
+
 ## English interface — 25 September 2026
 
 All **43 focused localization checks passed** in Chromium 153.0.8010.12. Coverage includes menu, instructions, wallet states, music/subtitle controls, pause, game over, share-card preview, and desktop/portrait/landscape layouts. The 40 word-completion targets now use English clues and answers; math uses English prompts and decimal points. After clarifying the LION clue to avoid another valid animal completion, **3 question-generator checks passed again**, covering 300 seeded word questions and 300 math questions. No page or console errors were observed in the focused browser run. [Localization results](evidence/english-ui-verification.json).

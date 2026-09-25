@@ -1,0 +1,459 @@
+{
+  "date": "2026-09-25",
+  "browser": "Chromium 153.0.8010.12",
+  "passed": true,
+  "checks": [
+    {
+      "name": "it: native word bank has unique alphabetic targets and clues",
+      "passed": true
+    },
+    {
+      "name": "it: all three difficulty pools produce meaningful unique choices (300 seeds)",
+      "passed": true
+    },
+    {
+      "name": "en: native word bank has unique alphabetic targets and clues",
+      "passed": true
+    },
+    {
+      "name": "en: all three difficulty pools produce meaningful unique choices (300 seeds)",
+      "passed": true
+    },
+    {
+      "name": "pl: native word bank has unique alphabetic targets and clues",
+      "passed": true
+    },
+    {
+      "name": "pl: all three difficulty pools produce meaningful unique choices (300 seeds)",
+      "passed": true
+    },
+    {
+      "name": "Initial chooser contains Italy, United States and Poland SVG flags",
+      "passed": true
+    },
+    {
+      "name": "Initial chooser traps the application behind inert roots",
+      "passed": true
+    },
+    {
+      "name": "No audio, wallet prompt or lock request before country selection",
+      "passed": true
+    },
+    {
+      "name": "Tab wraps from last flag to first",
+      "passed": true
+    },
+    {
+      "name": "Shift+Tab wraps from first flag to last",
+      "passed": true
+    },
+    {
+      "name": "Escape cannot bypass initial country choice",
+      "passed": true
+    },
+    {
+      "name": "Keyboard country selection opens the English menu",
+      "passed": true
+    },
+    {
+      "name": "pl: chosen language and readiness",
+      "passed": true
+    },
+    {
+      "name": "Reload always shows chooser and highlights saved Poland",
+      "passed": true
+    },
+    {
+      "name": "it: chosen language and readiness",
+      "passed": true
+    },
+    {
+      "name": "Italian no-wallet gate stays closed with native feedback",
+      "passed": true
+    },
+    {
+      "name": "chooser-keyboard: no runtime errors or signing",
+      "passed": true
+    },
+    {
+      "name": "invalid-storage: safe English highlight and chooser",
+      "passed": true
+    },
+    {
+      "name": "invalid-storage: Poland works without persisted storage or access",
+      "passed": true
+    },
+    {
+      "name": "invalid-storage: no runtime errors or signing",
+      "passed": true
+    },
+    {
+      "name": "blocked-storage: safe English highlight and chooser",
+      "passed": true
+    },
+    {
+      "name": "blocked-storage: Poland works without persisted storage or access",
+      "passed": true
+    },
+    {
+      "name": "blocked-storage: no runtime errors or signing",
+      "passed": true
+    },
+    {
+      "name": "it: chooser makes no automatic wallet calls",
+      "passed": true
+    },
+    {
+      "name": "it desktop chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it desktop menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "it desktop menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it desktop access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it portrait chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it portrait menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "it portrait menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it portrait access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it landscape chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it landscape menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "it landscape menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it landscape access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "it: disconnected buttons and message localized",
+      "passed": true
+    },
+    {
+      "name": "it: copy-mint label uses dynamic locale dictionary",
+      "passed": true
+    },
+    {
+      "name": "it: eligible wallet message uses localized million and life",
+      "passed": true
+    },
+    {
+      "name": "it: one million still gives exactly one life",
+      "passed": true
+    },
+    {
+      "name": "it: captions toggle localized while track remains English",
+      "passed": true
+    },
+    {
+      "name": "it: captions can be disabled in selected language",
+      "passed": true
+    },
+    {
+      "name": "it: changing country keeps pause, lives, wallet and caption state",
+      "passed": true
+    },
+    {
+      "name": "it: two million still gives exactly two total lives",
+      "passed": true
+    },
+    {
+      "name": "it: insufficient amount denies new gameplay in chosen language",
+      "passed": true
+    },
+    {
+      "name": "it: network error remains fail-closed and localized",
+      "passed": true
+    },
+    {
+      "name": "it: wallet rejection localized without signing",
+      "passed": true
+    },
+    {
+      "name": "locale-it: no runtime errors or signing",
+      "passed": true
+    },
+    {
+      "name": "en: chooser makes no automatic wallet calls",
+      "passed": true
+    },
+    {
+      "name": "en desktop chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en: chosen language and readiness",
+      "passed": true
+    },
+    {
+      "name": "en desktop menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "en desktop menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en desktop access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en portrait chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en portrait menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "en portrait menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en portrait access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en landscape chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en landscape menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "en landscape menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en landscape access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "en: disconnected buttons and message localized",
+      "passed": true
+    },
+    {
+      "name": "en: copy-mint label uses dynamic locale dictionary",
+      "passed": true
+    },
+    {
+      "name": "en: eligible wallet message uses localized million and life",
+      "passed": true
+    },
+    {
+      "name": "en: one million still gives exactly one life",
+      "passed": true
+    },
+    {
+      "name": "en: captions toggle localized while track remains English",
+      "passed": true
+    },
+    {
+      "name": "en: captions can be disabled in selected language",
+      "passed": true
+    },
+    {
+      "name": "en: changing country keeps pause, lives, wallet and caption state",
+      "passed": true
+    },
+    {
+      "name": "en: two million still gives exactly two total lives",
+      "passed": true
+    },
+    {
+      "name": "en: insufficient amount denies new gameplay in chosen language",
+      "passed": true
+    },
+    {
+      "name": "en: network error remains fail-closed and localized",
+      "passed": true
+    },
+    {
+      "name": "en: wallet rejection localized without signing",
+      "passed": true
+    },
+    {
+      "name": "locale-en: no runtime errors or signing",
+      "passed": true
+    },
+    {
+      "name": "pl: chooser makes no automatic wallet calls",
+      "passed": true
+    },
+    {
+      "name": "pl desktop chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl desktop menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "pl desktop menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl desktop access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl portrait chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl portrait menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "pl portrait menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl portrait access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl landscape chooser: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl landscape menu: all available static labels match chosen language",
+      "passed": true
+    },
+    {
+      "name": "pl landscape menu: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl landscape access: no horizontal overflow or clipped controls",
+      "passed": true
+    },
+    {
+      "name": "pl: disconnected buttons and message localized",
+      "passed": true
+    },
+    {
+      "name": "pl: copy-mint label uses dynamic locale dictionary",
+      "passed": true
+    },
+    {
+      "name": "pl: eligible wallet message uses localized million and life",
+      "passed": true
+    },
+    {
+      "name": "pl: one million still gives exactly one life",
+      "passed": true
+    },
+    {
+      "name": "pl: captions toggle localized while track remains English",
+      "passed": true
+    },
+    {
+      "name": "pl: captions can be disabled in selected language",
+      "passed": true
+    },
+    {
+      "name": "pl: changing country keeps pause, lives, wallet and caption state",
+      "passed": true
+    },
+    {
+      "name": "pl: two million still gives exactly two total lives",
+      "passed": true
+    },
+    {
+      "name": "pl: insufficient amount denies new gameplay in chosen language",
+      "passed": true
+    },
+    {
+      "name": "pl: network error remains fail-closed and localized",
+      "passed": true
+    },
+    {
+      "name": "pl: wallet rejection localized without signing",
+      "passed": true
+    },
+    {
+      "name": "locale-pl: no runtime errors or signing",
+      "passed": true
+    },
+    {
+      "name": "Demo also starts at country chooser without audio",
+      "passed": true
+    },
+    {
+      "name": "Polish demo: all 24 prose markers and accessible heading labels localize",
+      "passed": true
+    },
+    {
+      "name": "Demo retains the two English gameplay recordings",
+      "passed": true
+    },
+    {
+      "name": "Demo English caption track and Polish toggle coexist",
+      "passed": true
+    },
+    {
+      "name": "demo-polish: no runtime errors or signing",
+      "passed": true
+    }
+  ],
+  "finalWordDataChecks": [
+    {
+      "name": "it: native word bank has unique alphabetic targets and clues",
+      "passed": true
+    },
+    {
+      "name": "it: all three difficulty pools produce meaningful unique choices (300 seeds)",
+      "passed": true
+    },
+    {
+      "name": "en: native word bank has unique alphabetic targets and clues",
+      "passed": true
+    },
+    {
+      "name": "en: all three difficulty pools produce meaningful unique choices (300 seeds)",
+      "passed": true
+    },
+    {
+      "name": "pl: native word bank has unique alphabetic targets and clues",
+      "passed": true
+    },
+    {
+      "name": "pl: all three difficulty pools produce meaningful unique choices (300 seeds)",
+      "passed": true
+    }
+  ],
+  "methodology": "Isolated local browser tests of the committed app; synthetic Phantom provider and lock evidence, no real wallet or chain transaction. Desktop 1280x800 and emulated 390x844 portrait / 844x390 landscape. Native user input through the picker; question generator also sampled in an isolated VM. Final word-data recheck covers all 3 locales and levels with 900 generated questions.",
+  "limitations": [
+    "Phone emulation, not physical-device testing.",
+    "Existing English audio subtitle content and English demo recordings are unchanged.",
+    "Known dictionary ambiguities were corrected; seeded samples are not an exhaustive language dictionary."
+  ]
+}
