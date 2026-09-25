@@ -24,7 +24,7 @@ Secondo il log storico: codice di gioco, geometrie e texture procedurali, genera
 
 ## Cosa non ha fatto l'AI
 
-La build presentata non collega wallet, non firma transazioni e non compra token. Non contiene un nuovo contratto.
+La build iniziale documentata nel log storico non collegava wallet, non firmava transazioni e non comprava token. Le revisioni successive collegano Phantom per leggere i lock; il gioco continua a non richiedere firme o transazioni e non contiene un nuovo contratto.
 
 ## Packaging con Codex — 25 settembre 2026
 
@@ -43,3 +43,21 @@ Richiesta dell'utente: preparare e inviare la submission a hackathon.devfridge.c
 L'utente ha successivamente richiesto una canzone brainrot completa con Google Lyria, poi di adattarla al gioco. Codex ha preparato testo e direzione musicale; Gemini Create Music ha generato un MP3 di circa 2:10. Prompt e provenienza sono in [SOUNDTRACK.md](SOUNDTRACK.md).
 
 Codex ha aggiunto un controller musicale separato e adattato gli eventi di gioco: avvio dopo gesto dell'utente, volume iniziale 25%, loop, conservazione della posizione tra partite, pausa su fine partita/menu/background, impostazioni persistenti e riduzione del volume durante gli avvisi. Il menu, la pausa e l'HUD permettono di gestire la musica. Il player completo e il download sono nella demo. Questa fase modifica il codice di gioco, a differenza del packaging iniziale; le prove aggiornate sono in [VERIFICATION.md](VERIFICATION.md).
+
+## Prima integrazione MEMEZZO — storico, 25 settembre 2026
+
+L'utente ha fornito il mint `Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump` e richiesto qualsiasi timelock attivo con minimo 1.000.000 MEMEZZO. Codex ha verificato mint, decimali ed estensioni tramite RPC mainnet e adottato la somma dei lock attivi dello stesso wallet e mint. La prima integrazione conservava la modalità educativa gratuita e sbloccava una skin Pollo dorato. Questa scelta è stata superata dalla successiva regola dell'utente descritta sotto.
+
+Il controller legge l'endpoint dietro l'SDK DevFridge e usa il valutatore esatto della skill, perché le subscription dell'SDK arrotondano i giorni residui. Connessione Phantom su gesto, cancellazione delle prove al cambio wallet, controlli di freschezza/scadenza e gestione degli errori sono separati dal rendering e dall'audio. Non sono state firmate transazioni, creati lock reali o introdotti contratti, classifiche o premi. Evidenze e limiti in [ACCESS.md](ACCESS.md).
+
+## Revisione richiesta: accesso obbligatorio e vite — 25 settembre 2026
+
+L'utente ha precisato che per giocare occorrono almeno **1.000.000 MEMEZZO** attivi, sommati tra tutti i lock dello stesso wallet e mint, senza durata minima. Ogni milione intero corrisponde a **una vita totale**, senza vite di base, per ogni nuova partita: 1.000.000 → 1 vita; 1.999.999 → 1; 2.000.000 → 2. La revisione elimina il free play e lo sblocco soltanto cosmetico.
+
+Le vite iniziali vengono fissate all'avvio della partita e non si ricaricano con refresh o ripresa. Finché il totale resta sopra soglia, le variazioni cambiano soltanto le vite della partita successiva. Perdita della soglia, disconnessione, dati scaduti o errore mettono in pausa e bloccano la continuazione fino a una verifica fresca dello stesso wallet sopra soglia. Un cambio wallet richiede una nuova partita.
+
+La documentazione e i metadata di submission sono aggiornati a questa regola, verificata con 43 test della logica e 53 controlli nel browser su wallet e lock simulati. Le prove precedenti del gate cosmetico e i video anteriori a musica e wallet sono evidenze storiche. Punteggi e vite restano lato browser, senza autenticazione server, classifica o premi.
+
+## Sottotitoli inglesi — 25 settembre 2026
+
+Su richiesta dell'utente, Codex ha trascritto localmente il file MP3 generato, tradotto il testo cantato e aggiunto una traccia WebVTT inglese. Il player del gioco e quello della demo leggono gli stessi cue dal tempo effettivo dell'audio; pausa, seek e loop non dipendono da un timer separato. Il controllo CC English salva la preferenza. I passaggi vocali senza parole riconoscibili sono segnalati, senza sostituirli con versi del vecchio draft. Provenienza e limiti in [SOUNDTRACK.md](SOUNDTRACK.md).

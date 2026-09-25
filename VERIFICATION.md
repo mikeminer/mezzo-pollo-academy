@@ -1,6 +1,18 @@
 # Verification: Mezzo Pollo Academy
 
-## Submission checks — 25 September 2026
+## Revised mandatory access and lives — 25 September 2026
+
+The revised rule requires at least 1,000,000 active MEMEZZO across locks of the same wallet and exact mint, without any minimum duration. Each new run receives one total life per full active million, with no base lives: 1,000,000 → 1; 1,999,999 → 1; 2,000,000 → 2. There is no free-play path or cosmetic-only gate.
+
+The revised rule passed **43 unit checks and 53 browser checks**. Unit coverage includes exact raw thresholds, flooring, aggregation, expiration, stale evidence, provider events and response races. Browser coverage includes 1m → 1 life, 2m → 2, 1,999,999 → 1, blocked play below threshold, keyboard admission, natural loss of a life, no refill on refresh/resume, next-run recalculation, paused audio on lost access, and same-wallet revalidation before resume. Desktop, 390 × 844 portrait and 844 × 390 landscape were tested with Chromium 153.0.8010.12. No uncaught page errors or signature/send requests were observed. The access run preceded the caption file and logged that expected missing asset plus the intentionally injected SDK network failure; caption checks are recorded separately. [Current access results](evidence/timelock-verification.json).
+
+These checks use a mock Phantom provider, synthetic API evidence and an explicit fixture clock. They do not establish real wallet approval or mainnet transaction success. Earlier cosmetic-gate results are superseded. The older evidence below is historical coverage of prior revisions.
+
+A further **7 focused browser checks passed** after cancelling the delayed game-over timer on menu/reset. A natural collision reduced lives to zero, followed by rapid pause/menu/new-run input; the earlier timer did not end the healthy new run. Pausing a dead run until its timer elapsed and then resuming correctly showed game over. No internal game state was altered in these checks.
+
+Required verification includes threshold/aggregation boundaries; per-run life snapshots; no refill after refresh or resume; balance changes above threshold taking effect on the next run only; blocking continuation after lost access, disconnect, stale evidence or errors; recovery only with fresh qualifying evidence for the same wallet; and a new run after switching wallets.
+
+## Historical submission checks — 25 September 2026
 
 Checked by Codex using Playwright with Chromium 153.0.8010.12 (Playwright browser revision 1243) in headless mode. The game source was not modified during testing. Browser interactions used keyboard/pointer input, without changing scores, lives or other game state. These are browser tests and mobile emulation, not physical-device certification or a performance benchmark.
 
@@ -16,7 +28,7 @@ Checked by Codex using Playwright with Chromium 153.0.8010.12 (Playwright browse
 
 The initial local-server run logged HTTP 404 console messages. They did not recur in the supplementary local check or the production smoke test; their original cause was not established. They are not reported as a confirmed game defect or silently treated as a clean initial console.
 
-## Recorded evidence
+## Historical recordings and evidence
 
 - [Public demo page](https://mezzo-pollo-academy.vercel.app/demo)
 - [Desktop gameplay recording](media/mezzo-pollo-gameplay-desktop.webm): start, movement, pause/resume, game over and restart; silent browser capture.
@@ -28,9 +40,11 @@ The initial local-server run logged HTTP 404 console messages. They did not recu
 - [Production checks](evidence/production-verification.json)
 - [Mobile production recording checks](evidence/mobile-recording-results.json)
 
-The supplied historical verification described a PMREM environment-map fix. The current source still uses `PMREMGenerator`; the present desktop/mobile screenshots show a rendered scene. The historical fix itself was not reproduced or independently established.
+These recordings and screenshots predate music and wallet integration. They show the earlier gameplay and layout, not the current access requirement, starting-life calculation or recovery behavior.
 
-## Music integration checks — 25 September 2026
+The supplied historical verification described a PMREM environment-map fix. The source at these checks still used `PMREMGenerator`; the desktop/mobile screenshots show a rendered scene. The historical fix itself was not reproduced or independently established.
+
+## Historical music integration checks — 25 September 2026
 
 The actual MP3 was decoded and exercised with the browser's default autoplay policy: no bypass flag. Desktop 1280 × 800, phone portrait 390 × 844 and phone landscape 844 × 390 were tested in headless Chromium 153.0.8010.12. All 38 music checks passed. Phone profiles are emulation, not physical Safari/iPhone tests.
 
@@ -43,20 +57,31 @@ The actual MP3 was decoded and exercised with the browser's default autoplay pol
 - Music and pause buttons remain visible in portrait and landscape without horizontal overflow. Screenshots were visually inspected.
 - Seeking the actual MP3 near its end demonstrated a real loop boundary: 129.632 seconds to 0.089 seconds, with playback continuing.
 
-Synthetic lifecycle checks explicitly override `document.hidden` and dispatch `visibilitychange`: hiding pauses the game/audio and suspends AudioContext, returning leaves playback paused, and a trusted **Riprendi** click resumes it. This verifies the handler, not physical background-tab behavior: the original headless background/foreground attempt did not produce a true hidden-document transition. Physical screen lock, browser interruptions and iOS audio behavior remain unverified. Detailed current results: [music-verification.json](evidence/music-verification.json).
+Synthetic lifecycle checks explicitly override `document.hidden` and dispatch `visibilitychange`: hiding pauses the game/audio and suspends AudioContext, returning leaves playback paused, and a trusted **Riprendi** click resumes it. This verifies the earlier handler, not physical background-tab behavior: the original headless background/foreground attempt did not produce a true hidden-document transition. Physical screen lock, browser interruptions and iOS audio behavior remain unverified. Detailed historical results: [music-verification.json](evidence/music-verification.json). Music behavior after the mandatory-access revision requires current regression checks.
+
+## Earlier MEMEZZO integration evidence — 25 September 2026
+
+The exact user-supplied mint and its six decimals were checked through finalized Solana mainnet RPC. The live SDK endpoint and published response schema were inspected read-only. See [ACCESS.md](ACCESS.md) for slots, sources, policy and API cache limitations.
+
+The earlier automated tests used synthetic lock evidence and a mock Phantom provider. They do not establish the revised mandatory-access/life policy or that a physical Phantom extension/mobile wallet or a real user's qualifying lock has completed this flow. No token was bought, locked or redeemed, and no signature or transaction was requested during those checks.
+
+## English subtitle checks — 25 September 2026
+
+All **26 browser checks passed** with the actual MP3 and 43 native WebVTT cues. Captions do not trigger MP3 prefetch or autoplay before an authorized Play gesture. Cue text follows playback and seeks, clears on pause, returns on resume, and follows a real loop boundary. The on/off preference survives reload and applies to the demo player. Portrait 390 × 844 and landscape 844 × 390 screenshots were inspected: two-line English captions fit without covering the question or HUD. No console errors, page errors, unhandled promises or wallet signing/sending occurred. Game admission used synthetic qualifying evidence. [Caption results](evidence/caption-verification.json); [transcription and timing limitations](CAPTIONS.md).
 
 ## Not tested or not implemented
 
 - Physical phones, real touch hardware and physical landscape orientation, sustained frame rate, audio after screen lock, and WebGL context loss on a real device.
-- Phantom desktop/mobile: this build has no wallet connection or transaction flow.
-- DevFridge gate, qualifying/non-qualifying locks, wallet cancellation and on-chain transactions: not implemented; no mint exists for this project.
+- Physical Phantom extension/mobile integration and a complete user-approved connection against a real qualifying mainnet wallet.
+- Creation, redemption and approval of real timelock transactions. The game reads existing locks and links to external DevFridge; it does not submit transactions.
+- Server-authenticated access, ranked scores, multiplayer, seasonal challenges or rewards.
 - Every randomly generated question or long-session gameplay boundary.
 - TypeScript checks and a bundler build are not applicable to this static HTML/JavaScript prototype.
 
 ## Score authority, assets and network
 
-Scores and personal records exist only in local browser storage and are unverified. There is no leaderboard, prize system, multiplayer or on-chain reward.
+Scores and personal records exist only in local browser storage and are unverified. Access checks and the starting-life calculation run client-side; they do not establish a server-authenticated session or authoritative score. There is no leaderboard, prize system, multiplayer or on-chain reward.
 
-Art is generated by geometry and canvas textures; sound effects are synthesized using WebAudio. The soundtrack is a Google Lyria-generated MP3 hosted with the game, documented in [SOUNDTRACK.md](SOUNDTRACK.md). External dependencies are version-pinned Three.js r128 from cdnjs (MIT) and Caveat Brush/Fredoka from Google Fonts (SIL OFL). Internet access is required for these dependencies. The original silent submission videos predate music integration and record this project's own procedural game.
+Art is generated by geometry and canvas textures; sound effects are synthesized using WebAudio. The soundtrack is a Google Lyria-generated MP3 hosted with the game, documented in [SOUNDTRACK.md](SOUNDTRACK.md). External dependencies are version-pinned Three.js r128 from cdnjs (MIT) and Caveat Brush/Fredoka from Google Fonts (SIL OFL). Internet access is required for these dependencies and fresh lock evidence. The original silent submission videos predate music and wallet integration and record this project's own procedural game.
 
 The source contains no wallet keys, credentials or API secrets found in the submission review. This check is not an independent security audit.

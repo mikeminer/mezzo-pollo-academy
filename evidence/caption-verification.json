@@ -1,0 +1,115 @@
+{
+  "reviewedAt": "2026-09-25T18:44:07.061Z",
+  "browser": "Chromium 153.0.8010.12",
+  "pass": true,
+  "passed": 26,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "caption overlay silent and hidden before playback",
+      "passed": true
+    },
+    {
+      "name": "native text track causes no MP3 request or autoplay before authorized Play",
+      "passed": true
+    },
+    {
+      "name": "game native TextTrack parses valid English VTT",
+      "passed": true
+    },
+    {
+      "name": "game overlay equals native active cue text after real media seek",
+      "passed": true
+    },
+    {
+      "name": "pause hides caption and freezes actual media clock",
+      "passed": true
+    },
+    {
+      "name": "resume restores caption at unchanged cue position",
+      "passed": true
+    },
+    {
+      "name": "cue boundary follows native track with no stale line",
+      "passed": true
+    },
+    {
+      "name": "seek to late lyrics changes visible line to native cue",
+      "passed": true
+    },
+    {
+      "name": "loop wrap clears stale end captions and follows native beginning",
+      "passed": true
+    },
+    {
+      "name": "first lyric renders correctly after loop",
+      "passed": true
+    },
+    {
+      "name": "caption toggle disables display without stopping soundtrack",
+      "passed": true
+    },
+    {
+      "name": "caption preference persists reload",
+      "passed": true
+    },
+    {
+      "name": "caption preference shared with demo",
+      "passed": true
+    },
+    {
+      "name": "demo native English track matches game cues",
+      "passed": true
+    },
+    {
+      "name": "demo renders real active English cue",
+      "passed": true
+    },
+    {
+      "name": "demo native pause hides subtitle",
+      "passed": true
+    },
+    {
+      "name": "demo has no JavaScript exceptions",
+      "passed": true
+    },
+    {
+      "name": "desktopCaptions no signing/sending or uncaught errors",
+      "passed": true
+    },
+    {
+      "name": "portrait caption visible within viewport without overflow",
+      "passed": true
+    },
+    {
+      "name": "portrait pause hides overlay",
+      "passed": true
+    },
+    {
+      "name": "portrait resume keeps caption in sync",
+      "passed": true
+    },
+    {
+      "name": "portrait no signing/sending or uncaught errors",
+      "passed": true
+    },
+    {
+      "name": "landscape caption visible within viewport without overflow",
+      "passed": true
+    },
+    {
+      "name": "landscape pause hides overlay",
+      "passed": true
+    },
+    {
+      "name": "landscape resume keeps caption in sync",
+      "passed": true
+    },
+    {
+      "name": "landscape no signing/sending or uncaught errors",
+      "passed": true
+    }
+  ],
+  "cues": 43,
+  "method": "Native browser TextTrack with actual MP3 and WebVTT; synthetic8m wallet evidence for game admission; seeks and playback controls for timing tests; desktop and phone emulation. No real wallet approvals or transactions. Caption language/timing quality limits documented in CAPTIONS.md."
+}

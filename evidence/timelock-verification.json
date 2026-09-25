@@ -1,0 +1,272 @@
+{
+  "reviewedAt": "2026-09-25T18:32:48.821Z",
+  "policy": {
+    "mint": "Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump",
+    "minimumRaw": "1000000000000",
+    "aggregation": "sum",
+    "minOriginalSeconds": 0,
+    "minRemainingSeconds": 0,
+    "lives": "floor(activeRaw / 1000000000000)",
+    "baseLives": 0
+  },
+  "unit": {
+    "passed": 43,
+    "failed": 0,
+    "command": "node --test --test-isolation=none tests/lock-access.test.mjs tests/timelock-gate.test.mjs"
+  },
+  "browser": {
+    "version": "Chromium 153.0.8010.12",
+    "checks": [
+      {
+        "name": "no wallet cannot start mandatory game or audio",
+        "passed": true
+      },
+      {
+        "name": "keyboard cannot bypass initial gate",
+        "passed": true
+      },
+      {
+        "name": "missing wallet link retains trusted origin",
+        "passed": true
+      },
+      {
+        "name": "mandatory UI offers no free play path",
+        "passed": true
+      },
+      {
+        "name": "noWallet no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "one raw unit below minimum cannot play",
+        "passed": true
+      },
+      {
+        "name": "1m gives exactly1 total life and starts soundtrack",
+        "passed": true
+      },
+      {
+        "name": "higher eligible balance never refills current paused run",
+        "passed": true
+      },
+      {
+        "name": "resume preserves original life snapshot",
+        "passed": true
+      },
+      {
+        "name": "2m gives exactly2 total lives on next new run",
+        "passed": true
+      },
+      {
+        "name": "lower still eligible balance does not change running life snapshot",
+        "passed": true
+      },
+      {
+        "name": "resume after lower balance retains2 total lives",
+        "passed": true
+      },
+      {
+        "name": "1999999 tokens gives exactly1 total life on next run",
+        "passed": true
+      },
+      {
+        "name": "600k plus400k aggregates and grants1 total life",
+        "passed": true
+      },
+      {
+        "name": "explicit disconnect revokes paused run admission",
+        "passed": true
+      },
+      {
+        "name": "lifeRules no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "partial expiry pauses game/music and removes admission",
+        "passed": true
+      },
+      {
+        "name": "keyboard resume cannot bypass expired gate",
+        "passed": true
+      },
+      {
+        "name": "fresh same-wallet proof enables resume without refilling",
+        "passed": true
+      },
+      {
+        "name": "verified resume restores music and original remaining lives",
+        "passed": true
+      },
+      {
+        "name": "partialExpiry no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "stale denies all play/resume routes",
+        "passed": true
+      },
+      {
+        "name": "malformed denies all play/resume routes",
+        "passed": true
+      },
+      {
+        "name": "foreignWallet denies all play/resume routes",
+        "passed": true
+      },
+      {
+        "name": "foreignOwner denies all play/resume routes",
+        "passed": true
+      },
+      {
+        "name": "networkFailure denies all play/resume routes",
+        "passed": true
+      },
+      {
+        "name": "deniedEvidence no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "connection rejection cannot play and sends no SDK request",
+        "passed": true
+      },
+      {
+        "name": "rejected no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "old account response cannot grant mandatory admission",
+        "passed": true
+      },
+      {
+        "name": "accountRace no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "different eligible wallet still pauses existing bound run",
+        "passed": true
+      },
+      {
+        "name": "different eligible wallet cannot resume old run",
+        "passed": true
+      },
+      {
+        "name": "different wallet can begin new run with its own2 total lives",
+        "passed": true
+      },
+      {
+        "name": "accountSwitch no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "3m starts with exactly3 total lives",
+        "passed": true
+      },
+      {
+        "name": "natural gameplay collision consumes a life",
+        "passed": true
+      },
+      {
+        "name": "refresh after damage never restores lost lives",
+        "passed": true
+      },
+      {
+        "name": "resume after damage retains remaining lives",
+        "passed": true
+      },
+      {
+        "name": "next new run uses refreshed4m balance for4 total lives",
+        "passed": true
+      },
+      {
+        "name": "naturalLifeLoss no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "portrait mandatory access has no horizontal overflow",
+        "passed": true
+      },
+      {
+        "name": "portrait back remains reachable",
+        "passed": true
+      },
+      {
+        "name": "portrait eligible play shows1 total life and real music",
+        "passed": true
+      },
+      {
+        "name": "portrait pause stops soundtrack",
+        "passed": true
+      },
+      {
+        "name": "portrait eligible resume restarts audio without bonus refill",
+        "passed": true
+      },
+      {
+        "name": "portrait no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "landscape mandatory access has no horizontal overflow",
+        "passed": true
+      },
+      {
+        "name": "landscape back remains reachable",
+        "passed": true
+      },
+      {
+        "name": "landscape eligible play shows1 total life and real music",
+        "passed": true
+      },
+      {
+        "name": "landscape pause stops soundtrack",
+        "passed": true
+      },
+      {
+        "name": "landscape eligible resume restarts audio without bonus refill",
+        "passed": true
+      },
+      {
+        "name": "landscape no signing/sending or uncaught errors",
+        "passed": true
+      }
+    ],
+    "passed": 53,
+    "failed": 0
+  },
+  "method": "Synthetic lock API and mock Phantom provider, explicit fixture clock; actual game interactions and MP3; desktop and phone emulation. No real wallet approvals, signatures, token transactions, server authentication or score verification.",
+  "deathTimerRegression": {
+    "passed": 7,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "natural collision reached zero lives for restart",
+        "passed": true
+      },
+      {
+        "name": "death pause quit new run survives old450ms timer",
+        "passed": true
+      },
+      {
+        "name": "deathRestart no signing/sending or uncaught errors",
+        "passed": true
+      },
+      {
+        "name": "natural collision reached zero lives for paused death",
+        "passed": true
+      },
+      {
+        "name": "death remains paused and audio stopped after old timer deadline",
+        "passed": true
+      },
+      {
+        "name": "resume at zero lives enters game over without restarting music",
+        "passed": true
+      },
+      {
+        "name": "deathPaused no signing/sending or uncaught errors",
+        "passed": true
+      }
+    ],
+    "method": "Natural collision; UI pause/quit/new-run within pending timeout; no internal game state mutation."
+  }
+}

@@ -4,31 +4,36 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mezzo Pollo Academy — gameplay demo</title>
-  <meta name="description" content="Recorded gameplay and honest testing notes for the free practice prototype of Mezzo Pollo Academy.">
+  <meta name="description" content="Mezzo Pollo Academy: MEMEZZO timelock access, one life per full active million, soundtrack and historical gameplay recordings.">
   <style>
     *{box-sizing:border-box}body{margin:0;background:#1f2a23;color:#f2efe4;font:17px/1.6 system-ui,sans-serif}main{max-width:1000px;margin:auto;padding:40px 20px 60px}h1,h2{line-height:1.15}h1{font-size:clamp(32px,6vw,54px);margin:16px 0}h2{margin-top:40px}a{color:#f4cb66}nav{display:flex;gap:24px;flex-wrap:wrap}.tag{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#f4cb66}video{display:block;width:100%;border:1px solid #536250;border-radius:12px;background:#111}.mobile{max-width:390px;margin:auto}p{max-width:76ch}.note{color:#c9cbbd;font-size:15px}footer{margin-top:40px;border-top:1px solid #536250;padding-top:20px}
   </style>
-  <style>audio{width:100%;margin:12px 0}</style>
+  <style>audio{width:100%;margin:12px 0}.song-captions{min-height:3em;padding:12px;border-radius:8px;background:#111;color:#fff;white-space:pre-line;text-align:center;font-size:19px;line-height:1.4}.caption-toggle{min-height:44px;padding:8px 12px;border:1px solid #f4cb66;background:transparent;border-radius:8px;color:#f2efe4;font:inherit;cursor:pointer}[hidden]{display:none!important}</style>
 </head>
 <body><main>
-  <div class="tag">DevFridge Hackathon · Practice prototype</div>
+  <div class="tag">DevFridge Hackathon · MEMEZZO access</div>
   <h1>Mezzo Pollo Academy</h1>
   <p>A plush half-chicken runs through three lanes, choosing the missing half of numbers, words and shapes. Dodge obstacles, collect feathers, and stay still when the WHOLE CHICKEN appears.</p>
-  <nav><a href="/">Play for free →</a><a href="https://github.com/mikeminer/mezzo-pollo-academy">Source &amp; submission evidence</a></nav>
+  <nav><a href="/">Connect Phantom to play →</a><a href="https://github.com/mikeminer/mezzo-pollo-academy">Source &amp; submission evidence</a></nav>
   <section id="soundtrack">
     <h2>Mezza piuma, doppio volo</h2>
     <p>The complete Italian brainrot theme, generated with Google Lyria in Gemini. In the game it starts with Play, loops at a lower volume, pauses with the run and softens during gameplay cues. Music controls are available in the menu, pause screen and HUD.</p>
-    <audio controls preload="none" aria-label="Mezzo Pollo — complete soundtrack"><source src="media/mezzo-pollo-lyria.mp3" type="audio/mpeg"></audio>
+    <audio controls preload="none" aria-label="Mezzo Pollo — complete soundtrack" data-captions-target="songCaptions"><source src="media/mezzo-pollo-lyria.mp3" type="audio/mpeg"><track kind="subtitles" src="media/mezzo-pollo-en.vtt" srclang="en" label="English"></audio>
+    <button type="button" class="caption-toggle" data-caption-toggle aria-pressed="true">English subtitles: on</button>
+    <p id="songCaptions" class="song-captions" lang="en" hidden></p>
+    <p class="note">English subtitles follow the song during playback. <a href="media/mezzo-pollo-en.vtt" download>Download English subtitles</a>.</p>
     <p class="note">2:10 · <a href="media/mezzo-pollo-lyria.mp3" download="mezzo-pollo-lyria.mp3">Download MP3</a> · <a href="/">Play with music →</a></p>
   </section>
-  <h2>Desktop gameplay</h2>
-  <p class="note">Actual browser recording at 1280 × 720: start, movement, pause, resume, game over and restart. Silent video, recorded in headless Chromium on 25 September 2026 before soundtrack integration. The current playable build includes music. No game state was modified for this recording.</p>
+  <h2>Historical desktop gameplay</h2>
+  <p class="note">Actual browser recording at 1280 × 720: start, movement, pause, resume, game over and restart. Silent video, recorded in headless Chromium on 25 September 2026 before music and wallet integration. It does not show the current access rule or life calculation. No game state was modified for this recording.</p>
   <video controls playsinline preload="metadata" poster="media/desktop-question.png"><source src="media/mezzo-pollo-gameplay-desktop.webm" type="video/webm"><a href="media/mezzo-pollo-gameplay-desktop.webm">Download desktop recording</a></video>
-  <h2>Mobile layout — emulation</h2>
-  <p class="note">390 × 844 browser emulation with touch input, recorded before soundtrack integration. This is not a physical-phone test.</p>
+  <h2>Historical mobile layout — emulation</h2>
+  <p class="note">390 × 844 browser emulation with touch input, recorded before music and wallet integration. It does not verify the current access rule and is not a physical-phone test.</p>
   <video class="mobile" controls playsinline preload="metadata" poster="media/mobile-question.png"><source src="media/mezzo-pollo-gameplay-mobile.webm" type="video/webm"><a href="media/mezzo-pollo-gameplay-mobile.webm">Download mobile recording</a></video>
   <h2>Access and limitations</h2>
-  <p>This build is free practice only. No token has launched, no wallet is connected and no DevFridge gate or transaction is implemented. Local scores are unverified; there are no leaderboards, prizes or on-chain rewards. Planned token features are for adults and would unlock cosmetics and seasonal challenges only.</p>
-  <p>Any future lock would have no early withdrawal and a 2% redemption fee for PASTA buy-and-burn, plus network fees. Redemption of non-PASTA tokens needs an executable Jupiter route. The future mint, minimum amount, aggregation rules and token compatibility remain undecided or unverified.</p>
+  <p>Playing requires at least 1,000,000 MEMEZZO summed across active DevFridge timelocks of the same connected Phantom wallet and mint. No minimum duration applies; expired locks stop counting. Mint: <code style="overflow-wrap:anywhere">Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump</code>. There is no free-play route or cosmetic-only unlock.</p>
+  <p>Each new run starts with one total life per full active million, with no base lives: 1,000,000 MEMEZZO gives 1 life, 1,999,999 gives 1, and 2,000,000 gives 2. Starting lives are fixed for that run. Refreshing or resuming never refills lives; balance changes above the threshold affect the next run only.</p>
+  <p>Losing the threshold, disconnecting, stale data or verification errors pause the run and block continuation until fresh qualifying evidence returns for the same wallet. Switching wallets requires a new run. The game reads locks and never asks for transaction signatures. Access, lives and unverified local scores are browser-side, without server authentication, leaderboards or rewards. The rule passed 43 unit and 53 browser checks with simulated wallets and locks; these are not real-wallet or transaction tests.</p>
+  <p>Locks are created and redeemed on DevFridge, with no early withdrawal and a 2% redemption fee for PASTA buy-and-burn, plus network fees. Redemption of MEMEZZO needs an executable Jupiter route. Wallet features are for adults.</p>
   <footer class="note">Team: Pappardelle · Public contact: <a href="https://github.com/mikeminer">mikeminer</a>. Gallery submission is subject to review; it does not confirm competition eligibility or a prize.</footer>
-</main></body></html>
+</main><script src="song-captions.js"></script></body></html>

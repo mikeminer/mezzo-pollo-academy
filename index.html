@@ -20,6 +20,7 @@
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --chalk:#f2efe4; } }
 :root[data-theme="dark"]{ --chalk:#f2efe4; }
 *,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
 html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
 html,body{margin:0;height:100%;overflow:hidden;background:#9cc7e0;font-family:var(--ui);color:var(--chalk);-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
 #app{position:relative;width:100%;height:100%}
@@ -31,8 +32,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #hud{position:absolute;inset:0;pointer-events:none;display:grid;grid-template-rows:auto auto 1fr auto;padding:10px 12px 12px;gap:8px}
 #hud[hidden]{display:none}
 .hud-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
-#legs{font-size:26px;letter-spacing:2px;filter:drop-shadow(0 2px 0 rgba(0,0,0,.25))}
-#legs .gone{opacity:.22;filter:grayscale(1)}
+#legs{font-size:24px;white-space:nowrap;filter:drop-shadow(0 2px 0 rgba(0,0,0,.25))}
 .score-wrap{display:flex;align-items:center;gap:8px}
 #score{font-weight:700;font-size:22px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.35)}
 #combo{font-weight:600;font-size:14px;background:var(--straw);color:#3a2a10;border-radius:999px;padding:2px 9px}
@@ -47,6 +47,14 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 .music-volume input{min-height:44px;min-width:80px;width:100%;accent-color:var(--straw)}
 .music-status{font-size:13px;color:var(--straw);margin:4px 0}
 .song-link{font-size:13px;color:var(--chalk-dim)}
+.song-captions{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);width:max-content;max-width:min(92%,650px);padding:7px 12px;border-radius:8px;background:rgba(0,0,0,.8);color:#fff;text-align:center;white-space:pre-line;font:500 clamp(14px,3.6vw,17px)/1.35 var(--ui);pointer-events:none}
+.access-note{font-size:14px;line-height:1.45;color:var(--chalk-dim);overflow-wrap:anywhere}
+.access-status{padding:12px;border:2px solid var(--wood);border-radius:8px;line-height:1.45;background:var(--slate-deep)}
+.access-status[data-status="eligible"]{border-color:var(--straw);color:var(--straw)}
+.mint{display:block;overflow-wrap:anywhere;font:13px/1.6 monospace;color:var(--chalk);margin:8px 0;user-select:all}
+.access-links{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
+.access-links a{color:var(--straw);min-height:44px;display:inline-flex;align-items:center}
+.btn:disabled{opacity:.55;cursor:wait;transform:none}
 #board{justify-self:center;width:min(560px,100%);background:var(--slate);border:8px solid var(--wood);border-radius:6px;box-shadow:inset 0 0 0 2px var(--wood-dark),0 6px 0 rgba(0,0,0,.18);padding:8px 14px 10px;text-align:center;position:relative}
 #qtext{font-family:var(--hand);font-size:clamp(26px,6.5vw,38px);line-height:1.1;color:var(--chalk)}
 #qfig{display:none;margin:2px auto 0;width:150px;height:100px}
@@ -88,11 +96,11 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 <body>
 <div id="app">
   <canvas id="c" aria-label="Pista di gioco" tabindex="0"></canvas>
-  <audio id="gameMusic" src="media/mezzo-pollo-lyria.mp3" preload="none" loop></audio>
+  <audio id="gameMusic" src="media/mezzo-pollo-lyria.mp3" preload="none" loop data-captions-target="songCaptions"><track kind="subtitles" src="media/mezzo-pollo-en.vtt" srclang="en" label="English"></audio>
 
   <div id="hud" hidden>
     <div class="hud-row">
-      <div id="legs" aria-label="Cosce rimaste"></div>
+      <div id="legs" aria-label="Vite rimaste" role="status"></div>
       <div class="score-wrap"><span id="combo"></span><span id="score">0</span><button id="musicBtn" data-music-toggle aria-label="Musica" aria-pressed="true">♫</button><button id="pauseBtn" aria-label="Pausa">II</button></div>
     </div>
     <div id="board" aria-live="polite">
@@ -101,7 +109,8 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div id="qrule"></div>
     </div>
     <div></div>
-    <div id="practice">Modalità prova, nessun wallet collegato</div>
+    <div id="practice">MEMEZZO · record locale</div>
+    <div id="songCaptions" class="song-captions" lang="en" hidden></div>
     <div id="toast"></div>
   </div>
   <div id="flash"></div>
@@ -111,13 +120,15 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <h1 class="title">Mezzo pollo<small>Academy</small></h1>
       <p class="chop">Un pollo di peluche ha perso metà di sé. Aiutalo a correre verso la porta con la metà giusta.</p>
       <div class="btns">
-        <button class="btn primary" id="btnPlay">Gioca</button>
+        <button class="btn primary" id="btnPlay">Verifica e gioca</button>
         <button class="btn" id="btnHow">Come si gioca</button>
         <button class="btn ghost" id="btnAccess">Accesso DevFridge</button>
       </div>
+      <p class="access-note" id="memberHint">Per giocare servono almeno 1.000.000 MEMEZZO in timelock attivi. Ogni milione completo dà 1 vita a ogni partita.</p>
       <p class="note" id="bestLine"></p>
       <div class="music-controls">
         <div class="music-row"><button class="music-toggle" data-music-toggle aria-pressed="true">♫ Musica: sì</button><label class="music-volume">Volume<input data-music-volume aria-label="Volume musica" type="range" min="0" max="100" value="25"></label></div>
+        <button class="music-toggle" data-caption-toggle aria-pressed="true">CC English: sì</button>
         <p class="music-status" data-music-status aria-live="polite"></p>
         <a class="song-link" href="demo.html#soundtrack" target="_blank" rel="noopener">Ascolta la canzone completa ↗</a>
       </div>
@@ -131,32 +142,53 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <li>In alto c'è la domanda. Passa sotto la porta con <b>la metà giusta</b>: numeri, parole e figure da completare.</li>
         <li>Quando arriva il <b>POLLO INTERO</b>, non cambiare corsia finché la statua non passa.</li>
         <li>A volte la regola si capovolge: <b>al contrario</b> devi scegliere una porta sbagliata.</li>
-        <li>Hai tre cosce. Ogni errore ne costa una.</li>
+        <li>Hai <b>1 vita per ogni milione completo di MEMEZZO in timelock attivi</b>. Con 1 milione parti con 1 vita, con 2 milioni con 2 vite. Ogni errore costa una vita.</li>
+        <li>Per iniziare e continuare servono almeno <b>1.000.000 MEMEZZO</b> attivi. Le vite si calcolano a ogni nuova partita; pausa e verifica non le ricaricano.</li>
       </ul>
       <div class="btns"><button class="btn" data-back>Indietro</button></div>
     </section>
 
     <section class="panel" id="scrAccess" hidden>
-      <h2>Accesso DevFridge</h2>
-      <p>Stai giocando in modalità prova. Tutte le modalità educative sono libere e restano sempre gratis.</p>
-      <p>Quando il token sarà lanciato e verificato, chi ha un <b>lock attivo</b> nel programma Fridge potrà sbloccare skin e sfide di stagione.</p>
+      <h2>Timelock e vite</h2>
+      <p>Per giocare collega Phantom con almeno <b>1.000.000 MEMEZZO</b> in timelock DevFridge attivi su Solana. Sommiamo i lock del tuo wallet per questo token, senza durata minima. Alla scadenza smettono di contare.</p>
+      <p><b>Ogni milione completo = 1 vita a ogni partita.</b> 1 milione → 1 vita, 2 milioni → 2 vite. Non ci sono vite di base; la parte inferiore a un milione non aggiunge vite.</p>
+      <p class="access-note">Sotto la soglia non si può giocare. Le vite si assegnano a inizio partita: pausa e verifica non le ricaricano. Se il requisito non è più confermato, la partita resta in pausa; per riprenderla serve lo stesso wallet con un timelock sufficiente.</p>
+      <p class="access-note">Mint MEMEZZO · Solana mainnet</p>
+      <code class="mint" id="tokenMint">Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump</code>
+      <button class="music-toggle" id="copyMint">Copia mint</button>
+      <p class="access-status" id="accessStatus" role="status" aria-live="polite">Collega Phantom per controllare i tuoi timelock. Nessuna transazione verrà richiesta dal gioco.</p>
+      <p class="access-note" id="accessWallet" hidden></p>
+      <div class="btns">
+        <button class="btn primary" id="connectWallet" disabled>Collega Phantom</button>
+        <button class="btn" id="checkLocks" hidden>Ricontrolla i lock</button>
+        <button class="btn ghost" id="disconnectWallet" hidden>Scollega</button>
+        <button class="btn primary" id="playMember" hidden>Nuova partita</button>
+        <button class="btn" id="resumeRun" hidden>Riprendi la partita</button>
+      </div>
+      <div class="access-links"><a id="phantomBrowse" href="https://phantom.app/" hidden>Apri nel browser Phantom ↗</a><a href="https://pump.fun/coin/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Token su Pump.fun ↗</a><a href="https://scan.devfridge.cool/t/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" id="scanToken" target="_blank" rel="noopener noreferrer">Esplora i lock ↗</a></div>
+      <h3>Prima di creare un timelock</h3>
       <ul>
         <li>I token restano bloccati fino alla scadenza scelta, senza ritiro anticipato.</li>
         <li>Al riscatto si applica una fee del 2% che compra e brucia PASTA. I costi di rete sono a parte.</li>
+        <li>Il riscatto di MEMEZZO richiede una rotta Jupiter disponibile. Per token nuovi o poco liquidi può mancare anche dopo la scadenza.</li>
         <li>Il lock non garantisce premi né aumenti di prezzo.</li>
       </ul>
-      <p class="note">Wallet e lock sono funzioni per maggiorenni. Questa versione non collega wallet e non firma transazioni.</p>
+      <p class="note">Wallet e lock sono funzioni per maggiorenni. Il gioco legge i timelock; creazione e riscatto avvengono su DevFridge, con la tua approvazione nel wallet.</p>
+      <div class="access-links"><a href="https://devfridge.cool/?mint=Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Apri MEMEZZO su DevFridge ↗</a></div>
       <div class="btns"><button class="btn" data-back>Indietro</button></div>
     </section>
 
     <section class="panel" id="scrPause" hidden>
       <h2>Pausa</h2>
+      <p id="accessNotice" class="access-note" role="status" hidden></p>
       <div class="btns">
         <button class="btn primary" id="btnResume">Riprendi</button>
+        <button class="btn" id="btnVerifyAccess">Verifica accesso</button>
         <button class="btn ghost" id="btnQuit">Torna al menu</button>
       </div>
       <div class="music-controls">
         <div class="music-row"><button class="music-toggle" data-music-toggle aria-pressed="true">♫ Musica: sì</button><label class="music-volume">Volume<input data-music-volume aria-label="Volume musica in pausa" type="range" min="0" max="100" value="25"></label></div>
+        <button class="music-toggle" data-caption-toggle aria-pressed="true">CC English: sì</button>
         <p class="music-status" data-music-status aria-live="polite"></p>
       </div>
     </section>
@@ -181,6 +213,8 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="game-music.js"></script>
+<script src="song-captions.js"></script>
+<script type="module" src="game-access.mjs"></script>
 <script>
 (function(){
 "use strict";
@@ -412,6 +446,26 @@ function buildChicken(whole,mat){
 }
 const hero=buildChicken(false); scene.add(hero);
 const statue=buildChicken(true,M.bronze); statue.scale.setScalar(2.2); statue.visible=false; scene.add(statue);
+let accessEligible=false, accessWallet=null, accessLives=0, runWallet=null;
+function canResumeRun(){return accessEligible&&runWallet!==null&&accessWallet===runWallet}
+function syncAccessUi(){
+  $('btnPlay').textContent=accessEligible?`Gioca · ${accessLives} ${accessLives===1?'vita':'vite'}`:'Verifica e gioca';
+  $('memberHint').textContent=accessEligible?`Timelock confermato: ${accessLives} ${accessLives===1?'vita':'vite'} a ogni nuova partita.`:'Per giocare servono almeno 1.000.000 MEMEZZO in timelock attivi. Ogni milione completo dà 1 vita a ogni partita.';
+  $('resumeRun').hidden=state!=='pause'||!canResumeRun();
+  $('btnResume').textContent=canResumeRun()?'Riprendi':'Verifica per riprendere';
+}
+document.addEventListener('mezzopollo:access',event=>{
+  accessWallet=event.detail.wallet;
+  accessLives=event.detail.livesPerGame;
+  accessEligible=event.detail.eligible===true&&typeof accessWallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives>=1;
+  if(!canResumeRun()&&runWallet!==null){
+    if(state==='play')pause();
+    $('accessNotice').hidden=false;$('accessNotice').textContent=accessWallet&&accessWallet!==runWallet?'Il wallet è cambiato. Ricollega il wallet della partita per riprenderla, oppure verifica il nuovo wallet e avvia una nuova partita.':'Accesso in pausa: servono almeno 1.000.000 MEMEZZO in timelock attivi confermati. Ricontrolla i lock per riprendere con lo stesso wallet.';
+  }else if(canResumeRun()){
+    $('accessNotice').hidden=true;
+  }
+  syncAccessUi();
+});
 
 /* ---------- feather particles ---------- */
 const particles=[];
@@ -526,9 +580,12 @@ function qFigura(){
 /* ---------- game state ---------- */
 let state='menu';
 const G={};
+let deathTimer=null;
+function clearDeathTimer(){if(deathTimer!==null){clearTimeout(deathTimer);deathTimer=null}}
 function resetGame(){
+  clearDeathTimer();
   music.setFocus(false);
-  Object.assign(G,{time:0,dist:0,score:0,speed:11,level:1,legs:3,streak:0,wrongStreak:0,levelUps:0,right:0,interoErr:0,modesOk:new Set(),
+  Object.assign(G,{time:0,dist:0,score:0,speed:11,level:1,legs:accessLives,initialLegs:accessLives,streak:0,wrongStreak:0,levelUps:0,right:0,interoErr:0,modesOk:new Set(),
     lane:1,x:0,y:0,vy:0,rule:'normal',ruleTimer:30,row:null,movers:[],cooldown:1.2,lastIntero:false,shake:0,hitCd:0});
   hero.position.set(0,0,0);
   updateLegs();updateScore();
@@ -542,7 +599,7 @@ function clearWorld(){
 }
 
 /* ---------- HUD helpers ---------- */
-function updateLegs(){ $('legs').innerHTML=[0,1,2].map(i=>`<span class="${i<G.legs?'':'gone'}">🍗</span>`).join(''); }
+function updateLegs(){const remaining=Math.max(0,G.legs);$('legs').textContent=`🍗 ${remaining}`;$('legs').setAttribute('aria-label',`Vite rimaste: ${remaining} su ${G.initialLegs}`);$('practice').textContent=`MEMEZZO · ${G.initialLegs} ${G.initialLegs===1?'vita iniziale':'vite iniziali'} · record locale`;}
 function updateScore(){ $('score').textContent=Math.floor(G.score); const m=1+Math.floor(G.streak/3); $('combo').textContent=m>1?`×${m}`:''; }
 let toastT=0;
 function toast(t,bad){const el=$('toast');el.textContent=t;el.classList.toggle('bad',!!bad);el.classList.add('show');toastT=.9}
@@ -588,11 +645,12 @@ function spawnRow(){
 
 /* ---------- resolution ---------- */
 function loseLeg(msg){
+  if(G.legs<=0)return;
   G.legs--;updateLegs();G.streak=0;G.wrongStreak++;
   if(G.wrongStreak>=2){G.speed=Math.max(10,G.speed-2);G.level=Math.max(1,G.level-1);G.wrongStreak=0}
   sfx.squawk();flash();toast(msg,true);G.shake=.45;burst(G.x,1.2,0,10);
   updateScore();
-  if(G.legs<=0)setTimeout(gameOver,450);
+  if(G.legs<=0)deathTimer=setTimeout(()=>{deathTimer=null;if(G.legs<=0)gameOver()},450);
 }
 function gainRight(mode,msg){
   G.right++;G.streak++;G.wrongStreak=0;if(mode)G.modesOk.add(mode);
@@ -645,9 +703,10 @@ canvas.addEventListener('touchmove',e=>{if(state==='play')e.preventDefault()},{p
 const screens=['scrMenu','scrHow','scrAccess','scrPause','scrOver'];
 function show(id){$('overlay').hidden=!id;screens.forEach(s=>$(s).hidden=s!==id);if(id){const f=$(id).querySelector('button');f&&f.focus({preventScroll:true})}}
 function menuBest(){const b=loadBest();$('bestLine').textContent=b?`Record personale su questo dispositivo: ${b}`:''}
-function startGame(){audio();clearWorld();resetGame();state='play';music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true})}
-function pause(){if(state!=='play')return;state='pause';music.pause();show('scrPause')}
-function resume(){if(state!=='pause')return;audio();state='play';music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
+function refreshAdmission(){document.dispatchEvent(new Event('mezzopollo:revalidate'))}
+function startGame(){refreshAdmission();if(!accessEligible){show('scrAccess');return}runWallet=accessWallet;$('accessNotice').hidden=true;audio();clearWorld();resetGame();state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true})}
+function pause(){if(state!=='play')return;state='pause';music.pause();syncAccessUi();show('scrPause')}
+function resume(){if(state!=='pause')return;refreshAdmission();if(!canResumeRun()){show('scrAccess');return}state='play';syncAccessUi();if(G.legs<=0){gameOver();return}audio();music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
 function gradeOf(){
   if(G.right>=60&&['numero','parola','figura','intero'].every(m=>G.modesOk.has(m)))return'👑 Pollo leggendario';
   if(G.right>=40&&G.interoErr===0)return'🐔 Pollo intero';
@@ -663,10 +722,12 @@ function gameOver(){
   $('hud').hidden=true;show('scrOver');
 }
 $('btnPlay').onclick=startGame;$('btnAgain').onclick=startGame;
+$('playMember').onclick=startGame;$('resumeRun').onclick=resume;
 $('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=()=>show('scrAccess');
-document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show('scrMenu'));
+$('btnVerifyAccess').onclick=()=>{refreshAdmission();show('scrAccess')};
+document.querySelectorAll('[data-back]').forEach(b=>b.onclick=toMenu);
 $('pauseBtn').onclick=pause;$('btnResume').onclick=resume;
-function toMenu(){music.pause();clearWorld();state='menu';$('hud').hidden=true;menuBest();show('scrMenu')}
+function toMenu(){clearDeathTimer();music.pause();clearWorld();state='menu';runWallet=null;syncAccessUi();$('hud').hidden=true;menuBest();show('scrMenu')}
 $('btnQuit').onclick=toMenu;$('btnMenu').onclick=toMenu;
 
 $('btnShare').onclick=async()=>{

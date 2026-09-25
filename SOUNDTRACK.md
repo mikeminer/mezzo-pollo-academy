@@ -15,3 +15,9 @@ The earlier full-lyrics request returned a text plan rather than audio. The shor
 Codex integrated a single looping player. It starts only after Play, defaults to 25% gain and preserves the position across pauses and new runs. Music settings persist locally. Web Audio gain lowers the song under event cues and throughout an active WHOLE CHICKEN obstacle. The song's lyrics are entertainment, not a source of game timing: the board and actual game events remain authoritative.
 
 Music stops in menus, at game over and in background tabs. Failed or blocked playback never blocks the game. The complete track is available separately on the demo page.
+
+## English subtitles
+
+The game and demo player share an English WebVTT track at `media/mezzo-pollo-en.vtt`. The **CC English** control switches subtitles on or off and remembers the setting. Cues follow the actual media time, including seeks, pauses and looping; no separate lyric timer drifts between runs.
+
+The 43 cues are based on local multilingual Whisper small transcription of the generated MP3, translated and reviewed by Codex. They are not copied from the earlier proposed full lyrics, because the generated first verse differs. Non-lexical chopped vocals are labelled rather than assigned invented words. Transcription and phrase timing are approximate; no professional transcription or human bilingual review is claimed. [Caption decisions and uncertain phrases](CAPTIONS.md).

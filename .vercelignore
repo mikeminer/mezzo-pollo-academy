@@ -1,3 +1,6 @@
 .git/
 *.md
 .gitignore
+.gitnexus/
+.claude/
+tests/
