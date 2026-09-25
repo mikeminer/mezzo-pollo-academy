@@ -37,3 +37,9 @@ Richiesta dell'utente: preparare e inviare la submission a hackathon.devfridge.c
 **Rettifica PMREM:** `index.html` usa ancora `THREE.PMREMGenerator`. La verifica desktop corrente ha mostrato la scena renderizzata; non riproduce né conferma la correzione storica descritta al punto 7. Le verifiche correnti e i limiti sono registrati separatamente in [VERIFICATION.md](VERIFICATION.md).
 
 **Provenienza degli asset:** il sorgente genera geometrie, texture canvas e suoni WebAudio; le dipendenze esterne sono three.js e i font Google indicati con le rispettive fonti di licenza nel [README](README.md#dipendenze). Questa preparazione non assegna una licenza al codice originale né attesta una nuova revisione umana.
+
+## Colonna sonora e integrazione — 25 settembre 2026
+
+L'utente ha successivamente richiesto una canzone brainrot completa con Google Lyria, poi di adattarla al gioco. Codex ha preparato testo e direzione musicale; Gemini Create Music ha generato un MP3 di circa 2:10. Prompt e provenienza sono in [SOUNDTRACK.md](SOUNDTRACK.md).
+
+Codex ha aggiunto un controller musicale separato e adattato gli eventi di gioco: avvio dopo gesto dell'utente, volume iniziale 25%, loop, conservazione della posizione tra partite, pausa su fine partita/menu/background, impostazioni persistenti e riduzione del volume durante gli avvisi. Il menu, la pausa e l'HUD permettono di gestire la musica. Il player completo e il download sono nella demo. Questa fase modifica il codice di gioco, a differenza del packaging iniziale; le prove aggiornate sono in [VERIFICATION.md](VERIFICATION.md).

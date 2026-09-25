@@ -38,6 +38,15 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #combo{font-weight:600;font-size:14px;background:var(--straw);color:#3a2a10;border-radius:999px;padding:2px 9px}
 #combo:empty{display:none}
 #pauseBtn{pointer-events:auto;width:40px;height:40px;border-radius:50%;border:3px solid var(--wood-dark);background:var(--straw);color:#3a2a10;font-size:16px;font-weight:700}
+#musicBtn{pointer-events:auto;min-width:44px;height:44px;border-radius:50%;border:2px solid var(--wood-dark);background:var(--slate);color:var(--chalk);font-size:20px}
+#musicBtn[aria-pressed="false"]{opacity:.7}
+.music-controls{margin-top:18px;border-top:1px solid #6b7868;padding-top:12px}
+.music-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.music-toggle{min-height:44px;padding:8px 12px;border:2px solid var(--chalk-dim);border-radius:10px;background:transparent;color:var(--chalk);font-weight:600}
+.music-volume{display:flex;align-items:center;gap:8px;flex:1;font-size:14px;min-width:150px}
+.music-volume input{min-height:44px;min-width:80px;width:100%;accent-color:var(--straw)}
+.music-status{font-size:13px;color:var(--straw);margin:4px 0}
+.song-link{font-size:13px;color:var(--chalk-dim)}
 #board{justify-self:center;width:min(560px,100%);background:var(--slate);border:8px solid var(--wood);border-radius:6px;box-shadow:inset 0 0 0 2px var(--wood-dark),0 6px 0 rgba(0,0,0,.18);padding:8px 14px 10px;text-align:center;position:relative}
 #qtext{font-family:var(--hand);font-size:clamp(26px,6.5vw,38px);line-height:1.1;color:var(--chalk)}
 #qfig{display:none;margin:2px auto 0;width:150px;height:100px}
@@ -78,12 +87,13 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 </head>
 <body>
 <div id="app">
-  <canvas id="c" aria-label="Pista di gioco"></canvas>
+  <canvas id="c" aria-label="Pista di gioco" tabindex="0"></canvas>
+  <audio id="gameMusic" src="media/mezzo-pollo-lyria.mp3" preload="none" loop></audio>
 
   <div id="hud" hidden>
     <div class="hud-row">
       <div id="legs" aria-label="Cosce rimaste"></div>
-      <div class="score-wrap"><span id="combo"></span><span id="score">0</span><button id="pauseBtn" aria-label="Pausa">II</button></div>
+      <div class="score-wrap"><span id="combo"></span><span id="score">0</span><button id="musicBtn" data-music-toggle aria-label="Musica" aria-pressed="true">♫</button><button id="pauseBtn" aria-label="Pausa">II</button></div>
     </div>
     <div id="board" aria-live="polite">
       <div id="qtext">Pronti…</div>
@@ -106,6 +116,11 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <button class="btn ghost" id="btnAccess">Accesso DevFridge</button>
       </div>
       <p class="note" id="bestLine"></p>
+      <div class="music-controls">
+        <div class="music-row"><button class="music-toggle" data-music-toggle aria-pressed="true">♫ Musica: sì</button><label class="music-volume">Volume<input data-music-volume aria-label="Volume musica" type="range" min="0" max="100" value="25"></label></div>
+        <p class="music-status" data-music-status aria-live="polite"></p>
+        <a class="song-link" href="demo.html#soundtrack" target="_blank" rel="noopener">Ascolta la canzone completa ↗</a>
+      </div>
     </section>
 
     <section class="panel" id="scrHow" hidden>
@@ -140,6 +155,10 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <button class="btn primary" id="btnResume">Riprendi</button>
         <button class="btn ghost" id="btnQuit">Torna al menu</button>
       </div>
+      <div class="music-controls">
+        <div class="music-row"><button class="music-toggle" data-music-toggle aria-pressed="true">♫ Musica: sì</button><label class="music-volume">Volume<input data-music-volume aria-label="Volume musica in pausa" type="range" min="0" max="100" value="25"></label></div>
+        <p class="music-status" data-music-status aria-live="polite"></p>
+      </div>
     </section>
 
     <section class="panel" id="scrOver" hidden>
@@ -161,6 +180,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="game-music.js"></script>
 <script>
 (function(){
 "use strict";
@@ -174,7 +194,18 @@ function saveBest(v){try{localStorage.setItem('mp_best',String(v))}catch(e){}}
 
 /* ---------- audio ---------- */
 let actx=null;
-function audio(){ if(!actx){ try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){} } if(actx&&actx.state==='suspended')actx.resume(); return actx; }
+function audio(){ if(!actx){ try{actx=new (window.AudioContext||window.webkitAudioContext)()}catch(e){} } if(actx&&actx.state==='suspended')actx.resume().catch(()=>{}); return actx; }
+const music=window.createGameMusic($('gameMusic'),audio,({enabled,volume,blocked,unavailable})=>{
+  document.querySelectorAll('[data-music-toggle]').forEach(button=>{
+    const label=unavailable||blocked?'Riprova musica':enabled?'Disattiva musica':'Attiva musica';
+    button.setAttribute('aria-label',label);button.setAttribute('aria-pressed',String(enabled));button.title=label;
+    button.textContent=button.id==='musicBtn'?(blocked||unavailable?'↻':enabled?'♫':'♪'):(blocked||unavailable?'↻ Riprova musica':enabled?'♫ Musica: sì':'♪ Musica: no');
+  });
+  document.querySelectorAll('[data-music-volume]').forEach(input=>{input.value=String(Math.round(volume*100))});
+  document.querySelectorAll('[data-music-status]').forEach(el=>{el.textContent=unavailable?'La musica non si è caricata. Puoi riprovare o continuare a giocare.':blocked?'Tocca Riprova musica per riattivarla.':''});
+});
+document.querySelectorAll('[data-music-toggle]').forEach(button=>button.addEventListener('click',()=>{music.toggle();if(state==='play')canvas.focus({preventScroll:true})}));
+document.querySelectorAll('[data-music-volume]').forEach(input=>input.addEventListener('input',()=>music.setVolume(Number(input.value)/100)));
 function tone(type,f0,f1,dur,vol,delay){
   const a=actx; if(!a) return; const t=a.currentTime+(delay||0);
   const o=a.createOscillator(), g=a.createGain(); o.type=type;
@@ -183,15 +214,16 @@ function tone(type,f0,f1,dur,vol,delay){
   o.connect(g).connect(a.destination); o.start(t); o.stop(t+dur+0.02);
 }
 const sfx={
-  right(){tone('sine',660,990,.16,.18);tone('sine',990,1320,.14,.12,.08)},
-  squawk(){for(let i=0;i<3;i++)tone('sawtooth',950-i*120,380,.11,.09,i*.12)},
+  right(){music.duck(300);tone('sine',660,990,.16,.18);tone('sine',990,1320,.14,.12,.08)},
+  squawk(){music.duck(650);for(let i=0;i<3;i++)tone('sawtooth',950-i*120,380,.11,.09,i*.12)},
   jump(){tone('triangle',280,620,.18,.12)},
   feather(){tone('sine',1400,1800,.07,.07)},
   bump(){tone('square',140,60,.22,.12)},
-  rule(){tone('triangle',520,260,.25,.12);tone('triangle',260,520,.25,.12,.2)}
+  rule(){music.duck(1000);tone('triangle',520,260,.25,.12);tone('triangle',260,520,.25,.12,.2)}
 };
-document.addEventListener('visibilitychange',()=>{ if(document.hidden){ if(state==='play') pause(); } else if(actx&&actx.state==='suspended') actx.resume(); });
-window.addEventListener('pointerdown',()=>{ if(actx&&actx.state==='suspended') actx.resume(); },{passive:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if(state==='play')pause();else music.pause();if(actx&&actx.state==='running')actx.suspend().catch(()=>{});}});
+window.addEventListener('pagehide',()=>{if(state==='play')pause();else music.pause();});
+window.addEventListener('pointerdown',()=>{if(state==='play'&&actx&&actx.state==='suspended')actx.resume().catch(()=>{});},{passive:true});
 
 /* ---------- renderer & scene ---------- */
 const canvas=$('c');
@@ -495,6 +527,7 @@ function qFigura(){
 let state='menu';
 const G={};
 function resetGame(){
+  music.setFocus(false);
   Object.assign(G,{time:0,dist:0,score:0,speed:11,level:1,legs:3,streak:0,wrongStreak:0,levelUps:0,right:0,interoErr:0,modesOk:new Set(),
     lane:1,x:0,y:0,vy:0,rule:'normal',ruleTimer:30,row:null,movers:[],cooldown:1.2,lastIntero:false,shake:0,hitCd:0});
   hero.position.set(0,0,0);
@@ -541,7 +574,7 @@ function spawnRow(){
   const obj=makeGateRow(q.options,z);
   G.row={obj,z,intero,mode,correct:q.correct,rule:G.rule,failed:false,resolved:false,fall:0};
   const b=$('board');
-  if(intero){b.classList.add('intero');setQuestion('POLLO INTERO!',null,'Non cambiare corsia finché la statua non passa');
+  if(intero){music.setFocus(true);sfx.rule();b.classList.add('intero');setQuestion('POLLO INTERO!',null,'Non cambiare corsia finché la statua non passa');
     statue.visible=true;statue.position.set(-14,7,z*.6);statue.userData.t=0;}
   else{b.classList.remove('intero');
     const ruleTxt=G.rule==='reverse'?'Al contrario: scegli una porta SBAGLIATA':'';
@@ -571,6 +604,7 @@ function gainRight(mode,msg){
   updateScore();
 }
 function resolveRow(){
+  music.setFocus(false);
   const r=G.row;r.resolved=true;
   if(r.intero){
     statue.visible=false;
@@ -590,12 +624,13 @@ function changeLane(d){
 }
 function jump(){if(state!=='play')return;if(G.y<=0.001){G.vy=9.2;sfx.jump()}}
 window.addEventListener('keydown',e=>{
+  if(['Escape','p','P'].includes(e.key)){if(state==='play')pause();else if(state==='pause')resume();e.preventDefault();return;}
+  if(e.target.closest&&e.target.closest('button,input,a,textarea,select,[contenteditable]'))return;
   if(state==='play'){
     if(['ArrowLeft','a','A'].includes(e.key)){changeLane(-1);e.preventDefault()}
     else if(['ArrowRight','d','D'].includes(e.key)){changeLane(1);e.preventDefault()}
     else if(['ArrowUp','w','W',' '].includes(e.key)){jump();e.preventDefault()}
-    else if(['Escape','p','P'].includes(e.key))pause();
-  }else if(state==='pause'&&['Escape','p','P'].includes(e.key))resume();
+  }
 });
 let tStart=null;
 canvas.addEventListener('touchstart',e=>{const t=e.changedTouches[0];tStart={x:t.clientX,y:t.clientY,time:performance.now()}},{passive:true});
@@ -610,9 +645,9 @@ canvas.addEventListener('touchmove',e=>{if(state==='play')e.preventDefault()},{p
 const screens=['scrMenu','scrHow','scrAccess','scrPause','scrOver'];
 function show(id){$('overlay').hidden=!id;screens.forEach(s=>$(s).hidden=s!==id);if(id){const f=$(id).querySelector('button');f&&f.focus({preventScroll:true})}}
 function menuBest(){const b=loadBest();$('bestLine').textContent=b?`Record personale su questo dispositivo: ${b}`:''}
-function startGame(){audio();clearWorld();resetGame();state='play';$('hud').hidden=false;show(null)}
-function pause(){if(state!=='play')return;state='pause';show('scrPause')}
-function resume(){state='play';show(null);clock.getDelta()}
+function startGame(){audio();clearWorld();resetGame();state='play';music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true})}
+function pause(){if(state!=='play')return;state='pause';music.pause();show('scrPause')}
+function resume(){if(state!=='pause')return;audio();state='play';music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
 function gradeOf(){
   if(G.right>=60&&['numero','parola','figura','intero'].every(m=>G.modesOk.has(m)))return'👑 Pollo leggendario';
   if(G.right>=40&&G.interoErr===0)return'🐔 Pollo intero';
@@ -621,7 +656,7 @@ function gradeOf(){
   return'🥚 Uovo';
 }
 function gameOver(){
-  if(state!=='play')return;state='over';
+  if(state!=='play')return;state='over';music.pause();
   const s=Math.floor(G.score);let best=loadBest();if(s>best){best=s;saveBest(s)}
   $('gradeTxt').textContent=gradeOf();$('oScore').textContent=s;$('oRight').textContent=G.right;$('oBest').textContent=best;
   $('shareImg').style.display='none';$('shareNote').textContent='';
@@ -631,7 +666,7 @@ $('btnPlay').onclick=startGame;$('btnAgain').onclick=startGame;
 $('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=()=>show('scrAccess');
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>show('scrMenu'));
 $('pauseBtn').onclick=pause;$('btnResume').onclick=resume;
-function toMenu(){clearWorld();state='menu';$('hud').hidden=true;menuBest();show('scrMenu')}
+function toMenu(){music.pause();clearWorld();state='menu';$('hud').hidden=true;menuBest();show('scrMenu')}
 $('btnQuit').onclick=toMenu;$('btnMenu').onclick=toMenu;
 
 $('btnShare').onclick=async()=>{

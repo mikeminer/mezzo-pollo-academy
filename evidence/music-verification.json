@@ -1,0 +1,174 @@
+{
+  "date": "2026-09-25",
+  "browser": "Chromium 153.0.8010.12 headless (reported by browser.version)",
+  "autoplay": "Default browser policy, no autoplay bypass",
+  "checks": [
+    {
+      "name": "desktop no autoplay or MP3 request before Gioca",
+      "passed": true
+    },
+    {
+      "name": "MP3 decodes and progresses after trusted click",
+      "passed": true
+    },
+    {
+      "name": "pause freezes music",
+      "passed": true
+    },
+    {
+      "name": "volume adjusts music gain and persists 37 percent",
+      "passed": true
+    },
+    {
+      "name": "resume keeps track position",
+      "passed": true
+    },
+    {
+      "name": "keyboard Space toggles music without jump",
+      "passed": true
+    },
+    {
+      "name": "muted music retains jump SFX",
+      "passed": true
+    },
+    {
+      "name": "mute and volume persist reload",
+      "passed": true
+    },
+    {
+      "name": "muted game starts silently",
+      "passed": true
+    },
+    {
+      "name": "rapid pause resume has no stale playback or unhandled errors",
+      "passed": true
+    },
+    {
+      "name": "return menu stops music",
+      "passed": true
+    },
+    {
+      "name": "new run continues track position",
+      "passed": true
+    },
+    {
+      "name": "natural game over stops music",
+      "passed": true
+    },
+    {
+      "name": "Riprova restarts game and keeps song position",
+      "passed": true
+    },
+    {
+      "name": "actual gameplay ducks music below selected volume",
+      "passed": true
+    },
+    {
+      "name": "desktop no JavaScript exceptions or rejected promises",
+      "passed": true
+    },
+    {
+      "name": "portrait no initial audio load",
+      "passed": true
+    },
+    {
+      "name": "portrait starts audio on tap",
+      "passed": true
+    },
+    {
+      "name": "portrait mute tap works",
+      "passed": true
+    },
+    {
+      "name": "portrait pause stops audio",
+      "passed": true
+    },
+    {
+      "name": "portrait resume continues",
+      "passed": true
+    },
+    {
+      "name": "portrait controls fit viewport",
+      "passed": true
+    },
+    {
+      "name": "portrait no JavaScript errors",
+      "passed": true
+    },
+    {
+      "name": "landscape no initial audio load",
+      "passed": true
+    },
+    {
+      "name": "landscape starts audio on tap",
+      "passed": true
+    },
+    {
+      "name": "landscape mute tap works",
+      "passed": true
+    },
+    {
+      "name": "landscape pause stops audio",
+      "passed": true
+    },
+    {
+      "name": "landscape resume continues",
+      "passed": true
+    },
+    {
+      "name": "landscape controls fit viewport",
+      "passed": true
+    },
+    {
+      "name": "landscape no JavaScript errors",
+      "passed": true
+    },
+    {
+      "name": "MP3 404 keeps gameplay and SFX working with retry",
+      "passed": true
+    },
+    {
+      "name": "Riprova musica recovers after 404",
+      "passed": true
+    },
+    {
+      "name": "404 recovery no JavaScript exceptions or unhandled promises",
+      "passed": true
+    },
+    {
+      "name": "real MP3 loops across end boundary",
+      "passed": true
+    },
+    {
+      "name": "synthetic hidden lifecycle pauses game music and context",
+      "passed": true
+    },
+    {
+      "name": "synthetic visible lifecycle does not auto resume",
+      "passed": true
+    },
+    {
+      "name": "trusted Riprendi restores playback after lifecycle pause",
+      "passed": true
+    },
+    {
+      "name": "boundary checks no unhandled errors",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "methodology": "Main suite uses the unmodified game and real pointer/keyboard controls; AudioContext instrumentation records nodes and events. Supplemental loop check seeks actual media near its end. Lifecycle checks explicitly override document.hidden and dispatch visibilitychange; these are synthetic handler checks, not physical background-tab proof.",
+  "limitations": [
+    "Device profiles are emulated; no physical Safari/iPhone testing.",
+    "Headless background/foreground did not establish a true document.hidden transition; lifecycle handler tested synthetically.",
+    "MP3 404 recovery is a deliberate injected-failure test.",
+    "Ordinary local-server console 404 messages did not record URLs; their cause was not established. No JavaScript exceptions or unhandled promise rejections were observed."
+  ],
+  "audio": {
+    "file": "media/mezzo-pollo-lyria.mp3",
+    "seconds": 130.612167,
+    "sampleRate": 44100,
+    "channels": 2,
+    "sha256": "e6fb13b9c54b66ff6184e7301542b3d32ec33a4afca3f0ec11ecf363378196d4"
+  }
+}

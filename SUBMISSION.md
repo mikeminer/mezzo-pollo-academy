@@ -14,6 +14,8 @@ Endless runner 3D a tre corsie. In alto appare una domanda-metà, e sulla pista 
 
 Modalità: Mezzo Numero (calcolo, frazioni), Mezza Parola (lessico), Mezza Figura (simmetria), POLLO INTERO (controllo inibitorio: non cambiare corsia), Cambio Regola ogni 30 secondi (flessibilità cognitiva).
 
+Colonna sonora originale generata con Google Lyria in Gemini: avvio con Gioca, volume regolabile, musica disattivabile separatamente dagli effetti, pausa sincronizzata e riduzione del volume durante gli avvisi. Il brano completo è nella [pagina demo](https://mezzo-pollo-academy.vercel.app/demo#soundtrack); provenienza e prompt in [SOUNDTRACK.md](SOUNDTRACK.md).
+
 ## Token e accesso
 
 - **Build presentata:** modalità prova, senza mint, connessione wallet, gate o transazioni. Non verifica lock DevFridge.
@@ -33,15 +35,15 @@ Modalità: Mezzo Numero (calcolo, frazioni), Mezza Parola (lessico), Mezza Figur
 
 ## Setup
 
-File statico: `npx serve .`. Nessuna variabile d'ambiente. three.js r128 fissato da cdnjs. Configurazione di hosting Vercel inclusa.
+Sito statico: `npx serve .`. Nessuna variabile d'ambiente. three.js r128 fissato da cdnjs. Configurazione di hosting Vercel inclusa.
 
 ## AI e contributi
 
-Secondo il log fornito dal team, Claude ha realizzato il gioco con la skill DevFridge Game Builder v1.4; il programma DevFridge e la skill erano preesistenti, mentre concept, gioco e asset procedurali sono stati realizzati per il progetto. Codex ha preparato il pacchetto di submission e aggiornato la documentazione il **25 settembre 2026**. Provenienza e limiti delle dichiarazioni storiche: [BUILD_LOG.md](BUILD_LOG.md).
+Secondo il log fornito dal team, Claude ha realizzato il gioco con la skill DevFridge Game Builder v1.4; il programma DevFridge e la skill erano preesistenti, mentre concept, gioco e asset procedurali sono stati realizzati per il progetto. Codex ha preparato il pacchetto di submission, integrato la colonna sonora generata da Google Lyria e aggiornato la documentazione il **25 settembre 2026**. Provenienza e limiti delle dichiarazioni storiche: [BUILD_LOG.md](BUILD_LOG.md).
 
 ## Asset e licenze
 
-Geometrie, texture su canvas e suoni WebAudio sono generati nel sorgente del gioco. Non sono inclusi modelli, immagini o registrazioni audio di terzi. Libreria three.js r128: MIT; font Caveat Brush e Fredoka: SIL OFL 1.1. Le fonti delle licenze sono nel [README](README.md#dipendenze). Queste licenze riguardano le dipendenze; non viene attribuita una licenza al codice originale del progetto.
+Geometrie, texture su canvas ed effetti WebAudio sono generati nel sorgente del gioco. La colonna sonora è un MP3 generato con Google Lyria per questo progetto, incluso sullo stesso host; dettagli in [SOUNDTRACK.md](SOUNDTRACK.md). Libreria three.js r128: MIT; font Caveat Brush e Fredoka: SIL OFL 1.1. Le fonti delle licenze sono nel [README](README.md#dipendenze). Queste licenze riguardano le dipendenze; non viene attribuita una licenza al codice originale o alla musica generata.
 
 ## Test e limiti
 
