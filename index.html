@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mezzo Pollo Academy</title>
+<base href="/">
 <link rel="stylesheet" href="locale.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +49,8 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 .music-volume input{min-height:44px;min-width:80px;width:100%;accent-color:var(--straw)}
 .music-status{font-size:13px;color:var(--straw);margin:4px 0}
 .song-link{font-size:13px;color:var(--chalk-dim)}
+.review-link{display:block;margin-top:14px;color:var(--straw);font-size:14px;line-height:1.5;min-height:44px;padding:10px 0}
+.panel .review-badge{font-size:12px;font-weight:600;color:var(--straw);border:1px solid var(--straw);border-radius:8px;padding:8px;line-height:1.4}
 .song-captions{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);width:max-content;max-width:min(92%,650px);padding:7px 12px;border-radius:8px;background:rgba(0,0,0,.8);color:#fff;text-align:center;white-space:pre-line;font:500 clamp(14px,3.6vw,17px)/1.35 var(--ui);pointer-events:none}
 .access-note{font-size:14px;line-height:1.45;color:var(--chalk-dim);overflow-wrap:anywhere}
 .access-status{padding:12px;border:2px solid var(--wood);border-radius:8px;line-height:1.45;background:var(--slate-deep)}
@@ -119,6 +122,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
   <div id="overlay">
     <section class="panel" id="scrMenu">
       <h1 class="title">Mezzo Pollo<small>Academy</small></h1>
+      <div class="review-badge" data-review-label hidden></div>
       <p class="chop">A plush chicken has lost half of itself. Help it run through the gate with the matching half.</p>
       <div class="btns">
         <button class="btn primary" id="btnPlay">Check access &amp; play</button>
@@ -133,6 +137,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <p class="music-status" data-music-status aria-live="polite"></p>
         <a class="song-link" href="demo.html#soundtrack" target="_blank" rel="noopener">Listen to the full song ↗</a>
       </div>
+      <a class="review-link" data-review-link href="/practice">Free reviewer demo · 2 lives →</a>
       <button type="button" data-country-open>Change country</button>
     </section>
 
@@ -182,6 +187,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 
     <section class="panel" id="scrPause" hidden>
       <h2>Paused</h2>
+      <p class="review-badge" data-review-label hidden></p>
       <p id="accessNotice" class="access-note" role="status" hidden></p>
       <div class="btns">
         <button class="btn primary" id="btnResume">Resume</button>
@@ -197,6 +203,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 
     <section class="panel" id="scrOver" hidden>
       <h2>The chicken stopped</h2>
+      <p class="review-badge" data-review-label hidden></p>
       <div class="grade" id="gradeTxt"></div>
       <div class="stat"><span>Score</span><b id="oScore"></b></div>
       <div class="stat"><span>Correct answers</span><b id="oRight"></b></div>
@@ -215,23 +222,25 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 
 <script src="locale-content.js"></script>
 <script src="locale.js"></script>
+<script src="game-mode.js"></script>
 <script src="access-translations.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="game-music.js"></script>
 <script src="song-captions.js"></script>
-<script type="module" src="game-access.mjs"></script>
+<script type="module">if(!window.MezzoMode.practice) await import('./game-access.mjs');</script>
 <script>
 (function(){
 "use strict";
 const $=id=>document.getElementById(id);
 const L=window.MezzoLocale;
+const mode=window.MezzoMode;
 const t=(key,params)=>L.t(key,params);
 const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 const HAND='"Caveat Brush", "Comic Sans MS", cursive';
 
 /* ---------- storage ---------- */
-function loadBest(){try{return parseInt(localStorage.getItem('mp_best')||'0',10)||0}catch(e){return 0}}
-function saveBest(v){try{localStorage.setItem('mp_best',String(v))}catch(e){}}
+function loadBest(){try{return parseInt(localStorage.getItem(mode.scoreKey)||'0',10)||0}catch(e){return 0}}
+function saveBest(v){try{localStorage.setItem(mode.scoreKey,String(v))}catch(e){}}
 
 /* ---------- audio ---------- */
 let actx=null;
@@ -457,8 +466,16 @@ function buildChicken(whole,mat){
 const hero=buildChicken(false); scene.add(hero);
 const statue=buildChicken(true,M.bronze); statue.scale.setScalar(2.2); statue.visible=false; scene.add(statue);
 let accessEligible=false, accessWallet=null, accessLives=0, runWallet=null;
-function canResumeRun(){return accessEligible&&runWallet!==null&&accessWallet===runWallet}
+function canResumeRun(){return mode.practice||(accessEligible&&runWallet!==null&&accessWallet===runWallet)}
 function syncAccessUi(){
+  if(mode.practice){
+    $('btnPlay').textContent=mode.text('play');$('memberHint').textContent=mode.text('notice');
+    $('btnAccess').hidden=true;$('btnVerifyAccess').hidden=true;$('resumeRun').hidden=true;
+    $('btnResume').textContent=t('resume');
+    $('scrHow').querySelector('li:nth-child(6)').textContent=mode.text('howLives');
+    $('scrHow').querySelector('li:nth-child(7)').textContent=mode.text('howResume');
+    return;
+  }
   const lives={count:L.number(accessLives),lives:L.lifeWord(accessLives)};
   $('btnPlay').textContent=accessEligible?t('play',lives):t('checkPlay');
   $('memberHint').textContent=accessEligible?t('confirmed',lives):t('minimum');
@@ -466,6 +483,7 @@ function syncAccessUi(){
   $('btnResume').textContent=t(canResumeRun()?'resume':'checkResume');
 }
 document.addEventListener('mezzopollo:access',event=>{
+  if(mode.practice)return;
   accessWallet=event.detail.wallet;
   accessLives=event.detail.livesPerGame;
   accessEligible=event.detail.eligible===true&&typeof accessWallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives>=1;
@@ -596,7 +614,8 @@ function clearDeathTimer(){if(deathTimer!==null){clearTimeout(deathTimer);deathT
 function resetGame(){
   clearDeathTimer();
   music.setFocus(false);
-  Object.assign(G,{time:0,dist:0,score:0,speed:11,level:1,legs:accessLives,initialLegs:accessLives,streak:0,wrongStreak:0,levelUps:0,right:0,interoErr:0,modesOk:new Set(),
+  const startingLives=mode.practice?mode.lives:accessLives;
+  Object.assign(G,{time:0,dist:0,score:0,speed:11,level:1,legs:startingLives,initialLegs:startingLives,streak:0,wrongStreak:0,levelUps:0,right:0,interoErr:0,modesOk:new Set(),
     lane:1,x:0,y:0,vy:0,rule:'normal',ruleTimer:30,row:null,movers:[],cooldown:1.2,lastIntero:false,shake:0,hitCd:0});
   hero.position.set(0,0,0);
   updateLegs();updateScore();
@@ -610,7 +629,7 @@ function clearWorld(){
 }
 
 /* ---------- HUD helpers ---------- */
-function updateLegs(){const remaining=Math.max(0,G.legs);$('legs').textContent=`🍗 ${L.number(remaining)}`;$('legs').setAttribute('aria-label',t('livesRemaining',{remaining:L.number(remaining),total:L.number(G.initialLegs)}));$('practice').textContent=t('runLives',{count:L.number(G.initialLegs),lives:L.lifeWord(G.initialLegs)});}
+function updateLegs(){const remaining=Math.max(0,G.legs);$('legs').textContent=`🍗 ${L.number(remaining)}`;$('legs').setAttribute('aria-label',t('livesRemaining',{remaining:L.number(remaining),total:L.number(G.initialLegs)}));$('practice').textContent=mode.practice?mode.text('hud'):t('runLives',{count:L.number(G.initialLegs),lives:L.lifeWord(G.initialLegs)});}
 function updateScore(){ $('score').textContent=Math.floor(G.score); const m=1+Math.floor(G.streak/3); $('combo').textContent=m>1?`×${m}`:''; }
 let toastT=0;
 function toast(t,bad){const el=$('toast');el.textContent=t;el.classList.toggle('bad',!!bad);el.classList.add('show');toastT=.9}
@@ -715,8 +734,8 @@ canvas.addEventListener('touchmove',e=>{if(state==='play')e.preventDefault()},{p
 const screens=['scrMenu','scrHow','scrAccess','scrPause','scrOver'];
 function show(id){$('overlay').hidden=!id;screens.forEach(s=>$(s).hidden=s!==id);if(id){const f=$(id).querySelector('button');f&&f.focus({preventScroll:true})}}
 function menuBest(){const b=loadBest();$('bestLine').textContent=b?t('personalBest',{score:L.number(b)}):''}
-function refreshAdmission(){document.dispatchEvent(new Event('mezzopollo:revalidate'))}
-function startGame(){if(!L.ready){L.open();return}refreshAdmission();if(!accessEligible){show('scrAccess');return}runWallet=accessWallet;$('accessNotice').hidden=true;audio();clearWorld();resetGame();state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true})}
+function refreshAdmission(){if(!mode.practice)document.dispatchEvent(new Event('mezzopollo:revalidate'))}
+function startGame(){if(!L.ready){L.open();return}refreshAdmission();if(!mode.practice&&!accessEligible){show('scrAccess');return}runWallet=mode.practice?null:accessWallet;$('accessNotice').hidden=true;audio();clearWorld();resetGame();state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true})}
 function pause(){if(state!=='play')return;state='pause';music.pause();syncAccessUi();show('scrPause')}
 function resume(){if(state!=='pause')return;refreshAdmission();if(!canResumeRun()){show('scrAccess');return}state='play';syncAccessUi();if(G.legs<=0){gameOver();return}audio();music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
 function gradeOf(){
@@ -747,6 +766,7 @@ $('btnShare').onclick=async()=>{
   ctx.fillStyle='#8a5a34';ctx.fillRect(0,0,1080,1080);ctx.drawImage(slateC,40,40,1000,1000);
   ctx.textAlign='center';ctx.fillStyle='#e9b949';ctx.font=`120px ${HAND}`;ctx.fillText('Mezzo Pollo',540,230);
   ctx.fillStyle='#f2efe4';ctx.font=`64px ${HAND}`;ctx.fillText('Academy',540,310);
+  if(mode.practice){ctx.font=`32px ${HAND}`;ctx.fillText(mode.text('badge'),540,385,900);}
   ctx.font=`110px ${HAND}`;ctx.fillText($('gradeTxt').textContent,540,540,900);
   ctx.font=`80px ${HAND}`;ctx.fillText(t('shareStats',{score:$('oScore').textContent,right:G.right}),540,690,900);
   ctx.fillStyle='#e9b949';ctx.font=`60px ${HAND}`;ctx.fillText(t('shareQuestion'),540,880,900);

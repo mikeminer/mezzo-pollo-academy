@@ -10,7 +10,7 @@
 
 ## Loop di gioco
 
-Endless runner 3D a tre corsie. In alto appare una domanda-metà, e sulla pista arrivano tre porte-lavagna con tre risposte. Scegli la corsia giusta, salta balle di fieno e secchi, raccogli piume. Una vita totale ("coscia") per ogni milione intero di MEMEZZO attivo all'inizio della partita, combo e difficoltà adattiva. A fine partita ricevi un grado (Uovo → Pollo leggendario), un record locale e un'immagine condivisibile. Una nuova partita richiede una verifica valida dell'accesso.
+Endless runner 3D a tre corsie. In alto appare una domanda-metà, e sulla pista arrivano tre porte-lavagna con tre risposte. Scegli la corsia giusta, salta balle di fieno e secchi, raccogli piume. Una vita totale ("coscia") per ogni milione intero di MEMEZZO attivo all'inizio della partita, combo e difficoltà adattiva. A fine partita ricevi un grado (Uovo → Pollo leggendario), un record locale e un'immagine condivisibile. Nel gioco principale una nuova partita richiede una verifica valida dell'accesso. La demo gratuita per i revisori parte invece sempre con 2 vite, senza wallet o token.
 
 Modalità: Mezzo Numero (calcolo, frazioni), Mezza Parola (lessico), Mezza Figura (simmetria), POLLO INTERO (controllo inibitorio: non cambiare corsia), Cambio Regola ogni 30 secondi (flessibilità cognitiva).
 
@@ -20,7 +20,7 @@ Colonna sonora originale generata con Google Lyria in Gemini: avvio con Gioca, v
 
 ## Token e accesso
 
-- **Regola della build aggiornata:** accesso al gioco riservato ai wallet con la soglia MEMEZZO richiesta, tramite connessione Phantom e lettura dei timelock; nessuna modalità gratuita o sblocco soltanto cosmetico. Il gioco non richiede firme o transazioni. Regola verificata con 43 test della logica e 53 controlli nel browser, usando wallet e lock simulati.
+- **Regola della build aggiornata:** accesso al gioco principale riservato ai wallet con la soglia MEMEZZO richiesta, tramite connessione Phantom e lettura dei timelock. La demo pubblica separata `/practice` è gratuita, senza wallet o token, con esattamente 2 vite a ogni nuova partita. Pausa e ripresa non ripristinano vite; il record demo è locale e separato. Il gioco non richiede firme o transazioni. Regola verificata con 43 test della logica e 53 controlli nel browser, usando wallet e lock simulati.
 - **Rete:** Solana mainnet-beta.
 - **Mint MEMEZZO:** `Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump`.
 - **Token program / estensioni:** Token-2022, sei decimali, estensioni metadataPointer/tokenMetadata; verifica RPC e limiti in [ACCESS.md](ACCESS.md).
@@ -34,7 +34,8 @@ Colonna sonora originale generata con Google Lyria in Gemini: avvio con Gioca, v
 
 - **Play URL:** [mezzopollo.it](https://mezzopollo.it/)
 - **Repository:** [mikeminer/mezzo-pollo-academy](https://github.com/mikeminer/mezzo-pollo-academy), commit indicato nel file di registro
-- **Demo:** [pagina pubblica](https://mezzopollo.it/demo), [copia nel progetto](demo.html). I video silenziosi attuali mostrano l’interfaccia inglese, con wallet e saldo simulati dichiarati in sovrimpressione. Non attestano approvazioni reali di Phantom o transazioni mainnet. I vecchi video restano evidenze storiche nel repository. La canzone italiana dispone di sottotitoli inglesi.
+- **Demo giocabile gratuita:** [2 vite, senza wallet](https://mezzopollo.it/practice).
+- **Video e musica:** [pagina pubblica](https://mezzopollo.it/demo), [copia nel progetto](demo.html). I video silenziosi attuali mostrano l’interfaccia inglese, con wallet e saldo simulati dichiarati in sovrimpressione. Non attestano approvazioni reali di Phantom o transazioni mainnet. I vecchi video restano evidenze storiche nel repository. La canzone italiana dispone di sottotitoli inglesi.
 
 ## Setup
 

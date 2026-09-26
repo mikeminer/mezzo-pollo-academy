@@ -73,3 +73,7 @@ English desktop and portrait recordings replace the historical recordings embedd
 The user requested an opening country choice with the flags of Italy, America and Poland. Codex added an accessible country dialog with bundled SVG flags for Italy, the United States and Poland. It appears on every page load, highlights the last saved choice and selects Italian, English or Polish. The game menu and demo navigation can reopen it. Selecting a language updates static copy, wallet messages, music controls, prompts, ranks and sharing text without reconnecting a wallet or altering its access evidence. Each language has 40 native word-completion targets. Country choice does not change token access or starting lives.
 
 The soundtrack still uses the original Italian audio with English subtitles. Existing demo recordings remain explicitly labelled as English browser captures with simulated wallet evidence. Country preference is stored locally; unavailable storage falls back to an in-memory choice. Keyboard focus stays within the chooser until a country is selected, and game input is disabled during selection.
+
+## 26 settembre 2026 — demo gratuita per i revisori
+
+Su richiesta esplicita del team è stata aggiunta `/practice`, una demo pubblica con esattamente 2 vite per nuova partita, senza Phantom o token. La modalità non carica il controller wallet, non crea prove di timelock e conserva un record locale separato. Il gioco MEMEZZO principale conserva la soglia minima e una vita totale per milione attivo. Interfaccia demo disponibile in italiano, inglese e polacco.

@@ -5,7 +5,9 @@ Choose Italy, the United States or Poland when opening the site. The game and de
 Un runner 3D per browser in cui un pollo di peluche tagliato a metà corre verso la porta con la metà giusta: numeri, parole e figure da completare.
 Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackathon DevFridge.
 
-> **Accesso:** per giocare servono almeno **1.000.000 MEMEZZO** in timelock DevFridge attivi. Ogni milione intero corrisponde a una vita totale all'inizio di ogni nuova partita, senza vite di base. Phantom collega il wallet; il gioco non richiede firme o transazioni.
+> **Demo gratuita:** [prova con 2 vite](https://mezzopollo.it/practice), senza wallet o token. Ogni nuova partita assegna esattamente 2 vite; pausa e ripresa non le ricaricano. Il record è locale e separato.
+
+> **Accesso al gioco principale:** per giocare servono almeno **1.000.000 MEMEZZO** in timelock DevFridge attivi. Ogni milione intero corrisponde a una vita totale all'inizio di ogni nuova partita, senza vite di base. Phantom collega il wallet; il gioco non richiede firme o transazioni.
 
 [Gioca](https://mezzo-pollo-academy.vercel.app) · [Demo](https://mezzo-pollo-academy.vercel.app/demo) · [Repository pubblico](https://github.com/mikeminer/mezzo-pollo-academy)
 
@@ -28,7 +30,7 @@ I sottotitoli inglesi seguono l'audio nel gioco e nel player completo della demo
 
 Mint Solana: `Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump`.
 
-L'accesso al gioco richiede almeno **1.000.000 MEMEZZO** complessivi in timelock DevFridge attivi dello stesso wallet e mint. Nessuna durata minima: anche un lock con meno di un giorno residuo conta, fino alla scadenza. La quantità è verificata in unità esatte, con sei decimali. Non è prevista una modalità gratuita né uno sblocco soltanto cosmetico.
+L'accesso al gioco richiede almeno **1.000.000 MEMEZZO** complessivi in timelock DevFridge attivi dello stesso wallet e mint. Nessuna durata minima: anche un lock con meno di un giorno residuo conta, fino alla scadenza. La quantità è verificata in unità esatte, con sei decimali. La demo pubblica separata `/practice` offre esattamente 2 vite per partita ai revisori, senza wallet o token.
 
 Ogni nuova partita assegna **una vita totale per ogni milione intero attivo**, senza vite di base: 1.000.000 MEMEZZO → 1 vita; 1.999.999 → 1; 2.000.000 → 2. Il numero iniziale viene fissato all'avvio: aggiornare i lock o riprendere la partita non ripristina vite. Una variazione che lascia il totale sopra soglia cambia le vite iniziali soltanto alla partita successiva.
 
@@ -40,7 +42,7 @@ Collega Phantom e ricontrolla dopo la conferma di un nuovo lock. Su telefono, il
 ```sh
 npx serve .        # oppure: python3 -m http.server 8080
 ```
-Apri `http://localhost:3000` (o `:8080`).
+Apri `http://localhost:3000` (o `:8080`). Per provare anche `/practice` usa `npx vercel dev`: la route viene riscritta su `index.html` da `vercel.json`.
 
 ## Deploy
 

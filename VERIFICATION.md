@@ -1,5 +1,14 @@
 # Verification: Mezzo Pollo Academy
 
+## 26 September 2026 — free reviewer demo
+
+The explicit reviewer exception is now available at [mezzopollo.it/practice](https://mezzopollo.it/practice): exactly **2 lives per new game**, no wallet or tokens. This supersedes historical no-free-play statements below; the main MEMEZZO game remains gated.
+
+The unmodified local application passed **32 focused Chromium browser checks**: English desktop, Italian portrait and Polish landscape; natural losses from 2 to 1 to 0, game over, pause/resume without refill, restart at 2, separate local record, soundtrack after Play, no wallet module or DevFridge API request in practice, no horizontal overflow, and links from the main game and media page. The main route and a query-string attempt remain gated without a wallet; a separate synthetic 1-million lock fixture still starts the main game with 1 life. No uncaught browser errors. **43 existing access unit tests also passed.**
+
+Reviewer-demo tests used no wallet/API mocks. Only the separate main-game eligibility check used simulated Phantom/lock evidence; no real wallet, signatures or transactions. Mobile checks emulate viewports rather than physical devices.
+
+
 ## Country chooser and three languages — 25 September 2026
 
 Every page load opens a country dialog with bundled SVG flags for Italy, the United States and Poland. The last choice is highlighted, but selecting a flag remains required on each load. The game stays inert and keyboard gameplay is blocked until selection. Tab and Shift+Tab stay inside the dialog; Escape does not bypass it. Country choice is a local language preference and does not establish geographic location or wallet eligibility.

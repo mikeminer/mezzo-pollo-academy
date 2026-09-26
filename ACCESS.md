@@ -5,7 +5,7 @@
 - Solana mainnet mint: `Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump` (on-chain name POLLO, symbol MEMEZZO).
 - Minimum: **1,000,000 MEMEZZO**, exactly `1000000000000` raw units at six decimals.
 - Add the amounts of all active DevFridge locks belonging to the connected wallet for this exact mint. No minimum original duration or remaining duration. A lock qualifies only while `unlockAt > now`, including its final seconds; expired locks never count.
-- A qualifying lock balance is required to play. There is no free-play route or cosmetic-only unlock.
+- A qualifying lock balance is required for the main MEMEZZO game at `/`. The separate public reviewer demo at `/practice` requires no wallet or tokens and starts every new run with exactly 2 lives. It does not load the wallet controller or query lock evidence. Pause/resume preserves remaining lives; its local unverified record is stored separately.
 - Each new run starts with **one total life for every full 1,000,000 active MEMEZZO**: `floor(activeRaw / 1000000000000)`, using exact raw units. Thus 1,000,000 MEMEZZO gives 1 life, 1,999,999 gives 1, and 2,000,000 gives 2. There are no base lives. Below 1,000,000 cannot start or continue.
 - Starting lives are a snapshot taken when a new run begins. Refreshing lock evidence or resuming never refills lives. Balance changes that remain above the access threshold affect starting lives only on the next run.
 - Losing the required balance, disconnecting, or receiving stale, invalid or failed evidence pauses the run and blocks continuation. Only fresh qualifying evidence for the same wallet can restore continuation, with the run's remaining lives unchanged. Switching wallets requires a new run.
