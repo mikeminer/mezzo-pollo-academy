@@ -4,6 +4,8 @@ Choose among 25 country/region profiles covering 20 languages when opening the s
 
 The profiles follow the requested list: International (English), Italy, Poland, Japan, Mexico, United States, India (Hindi), France, Spain, Greece, Turkey, China (Simplified Chinese), South Korea, Thailand, Vietnam, Brazil, Peru, Morocco (Arabic), United Kingdom, Germany, Nigeria (English), Indonesia, Russia, Ukraine and Philippines (Filipino). Regional English and Spanish profiles share translations while retaining their own flags and number formats. See [locale authoring and validation](locales/README.md).
 
+The main menu includes a translated invitation to the user-provided [MezzoPollo Telegram channel](https://t.me/playmezzopollo). Opening the link is optional and does not subscribe or send messages automatically.
+
 Un runner 3D per browser in cui un pollo di peluche tagliato a metà corre verso la porta con la metà giusta: numeri, parole e figure da completare.
 Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackathon DevFridge.
 

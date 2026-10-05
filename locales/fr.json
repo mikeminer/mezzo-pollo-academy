@@ -129,6 +129,7 @@
     ["CRA", "YON", "Outil d’écriture à mine de graphite"]
   ],
   "mode": {
+    "community": "Rejoins le canal Telegram",
     "hard": "Difficile",
     "easy": "Facile",
     "hardDetail": "Gratuit · 2 vies",
