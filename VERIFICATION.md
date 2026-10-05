@@ -1,3 +1,15 @@
+## 25 regional profiles / 20 languages — 5 October 2026
+
+The localized invitation in the game menu points to the user-provided `https://t.me/playmezzopollo` channel. It uses a normal user-activated link with a separate browsing context and `noopener noreferrer`; it never joins the channel or sends messages. The same translated invitation is included in the Android menu. All 81 web checks passed again after this addition.
+
+Android 1.2.0/code 6 is bundled from source commit `13a0fa90a8d6a324eb90006e67d5e4c182470ffa`. Its four final emulator scenarios passed in 148.357 seconds, including all 25 profiles, translated Telegram invitations, tutorial actions, Hard lives/retry, pause/resume and Arabic/Japanese landscape controls. A separate 8.078-second screenshot scenario captured the Italian and English invitations. Release build/fatal lint, six JVM boundary tests, 49 bundled access checks and 11 disabled-advertising flow checks passed. Signature, alignment, all 44 source assets and the native catalog hash were verified; the signed APK installed as an update. The public download is 11,237,994 bytes, SHA-256 `11e4c44e94d5e05ddf936c8428fc0b87e8660bb1b99b0e39d3c90c6b9e2d4aeb`. This does not establish physical-device testing or store approval.
+
+The exact requested image list is implemented as 24 country profiles plus International English. The image supplies the country list, not MezzoPollo branding. The game, interactive tutorial, optional Shop, demo and share text use complete translated catalogs; English and Spanish regional variants inherit the corresponding language while retaining their own locale and flag. The original Italian audio and English lyrics remain unchanged.
+
+The 81-test suite passes (Node, test isolation disabled for this Windows sandbox). New coverage validates all 25 resolved profiles, 49 static destinations, exact recursive keys, placeholders/HTML, plurals, native word splits, minimum vocabulary and distractors, Arabic RTL metadata, inheritance cycles, deterministic generation and stale assets. Every profile runs all six tutorial scenarios and preserves physical lane directions. Word questions are generated for every bank entry at all three difficulty levels; each has one known correct answer and two distinct incorrect completions. Existing token boundaries, session entitlement, Shop-only verification and Hard/Easy behavior remain covered.
+
+The selector adds searchable flags, a scrolling mobile grid, local preference persistence and accessible language tags. Arabic uses document RTL and canvas direction, while physical arrow controls and English captions remain LTR. Visual website preview was not completed: browser automatic approval failed due to capacity before navigating to localhost. Android emulator results are recorded separately in the Android release documentation. Structural validation does not substitute for an independent fluent-language editorial review. No real wallet approval or transaction was used.
+
 # Verification: Mezzo Pollo Academy
 
 ## 5 October 2026 — interactive tutorial, free Hard and optional Easy Shop

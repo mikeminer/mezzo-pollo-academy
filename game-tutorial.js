@@ -8,47 +8,7 @@
   'use strict';
   const VERSION = 'v1';
   const STEPS = ['left', 'right', 'jump', 'gate', 'reverse', 'whole'];
-  const copy = {
-    en: {
-      label: 'Learn by playing', practice: 'Guided practice', progress: 'Step {n} of {total}',
-      safe: 'No lives lost. No score saved.', skip: 'Skip tutorial', next: 'Next challenge', finish: 'Start playing', retry: 'Try again',
-      good: 'Got it! Ready for the next challenge.', done: 'Ready! Hard mode starts with 2 lives. Visit the optional shop for extra lives and Easy mode.',
-      again: 'No problem! Try the same challenge again.', leftControl: 'Move left', rightControl: 'Move right', jumpControl: 'Jump',
-      half: 'Half of 8?', normalRule: 'Choose the matching half', reverseRule: 'Reverse: choose a WRONG answer', wholeQuestion: 'WHOLE CHICKEN!', wholeRule: 'Keep your lane until the statue passes',
-      left: ['Move left', 'Try it now: swipe left on the track, press ← or A, or tap the left arrow below.'],
-      right: ['Now move right', 'Swipe right on the track, press → or D, or tap the right arrow below.'],
-      jump: ['Give that chicken a jump', 'Swipe up on the track, press ↑, W or Space, or tap Jump. Jump over hay bales during a run.'],
-      gate: ['Find the missing half', 'Read the board: half of 8 is 4. Move into the middle lane and pass through the gate marked 4.'],
-      reverse: ['Watch out: REVERSE!', 'The rule has flipped! Half of 8 is 4, so choose a WRONG answer: move left to 2 or right to 8.'],
-      whole: ['WHOLE CHICKEN: hold your lane', 'Stop changing lanes until the statue passes. Stay in the lane you started in. Try it now!']
-    },
-    it: {
-      label: 'Impara giocando', practice: 'Allenamento guidato', progress: 'Passo {n} di {total}',
-      safe: 'Non perdi vite. Il punteggio non viene salvato.', skip: 'Salta tutorial', next: 'Prossima sfida', finish: 'Inizia a giocare', retry: 'Riprova',
-      good: 'Perfetto! Puoi passare alla prossima sfida.', done: 'Pronto! La modalità difficile parte con 2 vite. Visita il negozio facoltativo per vite extra e modalità facile.',
-      again: 'Nessun problema! Riprova questa sfida.', leftControl: 'Vai a sinistra', rightControl: 'Vai a destra', jumpControl: 'Salta',
-      half: 'La metà di 8?', normalRule: 'Scegli la metà corretta', reverseRule: 'Al contrario: scegli una risposta SBAGLIATA', wholeQuestion: 'POLLO INTERO!', wholeRule: 'Resta nella tua corsia finché passa la statua',
-      left: ['Vai a sinistra', 'Prova subito: scorri a sinistra sulla pista, premi ← o A, oppure tocca la freccia qui sotto.'],
-      right: ['Ora vai a destra', 'Scorri a destra sulla pista, premi → o D, oppure tocca la freccia qui sotto.'],
-      jump: ['Fai saltare il pollo', 'Scorri verso l’alto sulla pista, premi ↑, W o Spazio, oppure tocca Salta. Durante la corsa salta le balle di fieno.'],
-      gate: ['Trova la metà mancante', 'Leggi la lavagna: la metà di 8 è 4. Mettiti nella corsia centrale e attraversa il portale con il 4.'],
-      reverse: ['Attento: AL CONTRARIO!', 'La regola si è capovolta! La metà di 8 è 4, quindi scegli una risposta SBAGLIATA: vai a sinistra sul 2 o a destra sull’8.'],
-      whole: ['POLLO INTERO: resta in corsia', 'Non cambiare corsia finché la statua non passa. Resta nella corsia di partenza. Prova ora!']
-    },
-    pl: {
-      label: 'Ucz się, grając', practice: 'Trening z przewodnikiem', progress: 'Krok {n} z {total}',
-      safe: 'Nie tracisz żyć. Wynik nie jest zapisywany.', skip: 'Pomiń samouczek', next: 'Następne wyzwanie', finish: 'Zacznij grę', retry: 'Spróbuj ponownie',
-      good: 'Świetnie! Możesz przejść do następnego wyzwania.', done: 'Gotowe! Tryb trudny zaczyna się z 2 życiami. W opcjonalnym sklepie uzyskasz dodatkowe życia i tryb łatwy.',
-      again: 'Nic się nie stało! Spróbuj tego wyzwania ponownie.', leftControl: 'Przesuń w lewo', rightControl: 'Przesuń w prawo', jumpControl: 'Skocz',
-      half: 'Połowa z 8?', normalRule: 'Wybierz pasującą połowę', reverseRule: 'Na odwrót: wybierz BŁĘDNĄ odpowiedź', wholeQuestion: 'CAŁY KURCZAK!', wholeRule: 'Zostań na swoim pasie, aż minie posąg',
-      left: ['Przesuń się w lewo', 'Spróbuj teraz: przesuń palcem w lewo po torze, naciśnij ← lub A albo dotknij strzałki poniżej.'],
-      right: ['Teraz w prawo', 'Przesuń palcem w prawo po torze, naciśnij → lub D albo dotknij strzałki poniżej.'],
-      jump: ['Czas na kurzy skok', 'Przesuń palcem w górę po torze, naciśnij ↑, W lub Spację albo dotknij Skocz. Podczas biegu przeskakuj bele siana.'],
-      gate: ['Znajdź brakującą połowę', 'Spójrz na tablicę: połowa z 8 to 4. Przejdź na środkowy pas i przebiegnij przez bramkę z cyfrą 4.'],
-      reverse: ['Uwaga: NA ODWRÓT!', 'Zasada się odwróciła! Połowa z 8 to 4, więc wybierz BŁĘDNĄ odpowiedź: przejdź w lewo do 2 lub w prawo do 8.'],
-      whole: ['CAŁY KURCZAK: zostań na pasie', 'Nie zmieniaj pasa, dopóki posąg nie minie. Zostań na pasie, na którym zaczynasz. Spróbuj teraz!']
-    }
-  };
+  const copy = Object.fromEntries(Object.entries(window.MezzoTranslations).map(([code,pack])=>[code,pack.tutorial]));
   const completedInMemory = new Set();
   let active = false;
   let paused = false;
@@ -111,7 +71,7 @@
     const c = text();
     const id = STEPS[index];
     ui.root.hidden = !active || paused;
-    ui.root.lang = language();
+    ui.root.lang = window.MezzoLocale?.locale || language();
     ui.root.dataset.outcome = outcome || 'practice';
     ui.label.textContent = c.practice;
     ui.skip.textContent = c.skip;

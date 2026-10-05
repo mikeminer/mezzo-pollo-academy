@@ -1,0 +1,10 @@
+{
+  "extends": "es",
+  "meta": {
+    "locale": "es-MX",
+    "country": "México",
+    "language": "Español",
+    "flag": "mx",
+    "dir": "ltr"
+  }
+}

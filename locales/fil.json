@@ -1,0 +1,390 @@
+{
+  "meta": {
+    "locale": "fil-PH",
+    "country": "Pilipinas",
+    "language": "Filipino",
+    "flag": "ph",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "buhay",
+    "other": "buhay"
+  },
+  "core": {
+    "chooseCountry": "Pumili ng bansa",
+    "chooseNote": "Pumili ng watawat para itakda ang wika ng laro.",
+    "changeCountry": "Palitan ang bansa",
+    "resume": "Ituloy",
+    "retryMusic": "Subukang muli ang musika",
+    "musicOff": "Patayin ang musika",
+    "musicOn": "Buksan ang musika",
+    "musicEnabled": "Musika: bukas",
+    "musicDisabled": "Musika: patay",
+    "musicFailed": "Hindi ma-load ang musika. Maaari mong subukang muli o ituloy ang laro.",
+    "musicBlocked": "Pindutin ang Subukang muli ang musika para buksan itong muli.",
+    "noWebgl": "Hindi sinusuportahan ng aparatong ito ang WebGL.",
+    "double": "Doble ng {n}?",
+    "half": "Kalahati ng {n}?",
+    "quarter": "Kalahati ng kalahati ng {n}?",
+    "ready": "Handa…",
+    "livesRemaining": "Natitirang buhay: {remaining} sa {total}",
+    "whole": "BUONG MANOK!",
+    "wholeRule": "Manatili sa iyong linya hanggang makalampas ang rebulto",
+    "reverse": "Baligtad na paraan: pumili ng MALING sagot",
+    "shape": "Hanapin ang kabilang kalahati",
+    "halfChicken": "Kalahating manok! ✂️",
+    "heldStill": "Hindi ka gumalaw!",
+    "right1": "Tama!",
+    "right2": "Ang galing!",
+    "right3": "Tiktilaok!",
+    "right4": "Eksakto!",
+    "reversed": "Baligtad ang tuntunin noon!",
+    "wrongHalf": "Maling kalahati!",
+    "stayStill": "Huwag gumalaw!",
+    "personalBest": "Pinakamahusay mong marka sa aparatong ito: {score}",
+    "legendary": "👑 Maalamat na manok",
+    "wholeRank": "🐔 Buong manok",
+    "halfRank": "🍗 Kalahating manok",
+    "chick": "🐣 Sisiw",
+    "egg": "🥚 Itlog",
+    "shareStats": "{score} puntos, {right} tamang sagot",
+    "shareQuestion": "Ano ang ranggo mong manok?",
+    "shareHint": "Pindutin nang matagal ang larawan o mag-right-click para i-save at ibahagi ito.",
+    "rulesReversed": "Baligtad na ang tuntunin!",
+    "rulesNormal": "Karaniwang tuntunin",
+    "bonk": "Tok!",
+    "searchLanguages": "Maghanap ng wika",
+    "noLanguages": "Walang tumugmang wika"
+  },
+  "static": [
+    "Daan sa laro",
+    "I-pause",
+    "Nawala ang kalahati ng isang manok na laruan. Tulungan itong tumakbo sa tarangkahang may katugmang kalahati.",
+    "Paano maglaro",
+    "Tindahan · Buhay sa Madali",
+    "Lakas ng tunog",
+    "Lakas ng musika",
+    "Lakas ng musika habang naka-pause",
+    "Pakinggan ang buong kanta ↗",
+    "Paano maglaro",
+    "<b>Lumipat ng linya</b> sa pamamagitan ng pag-swipe pakaliwa o pakanan, o pagpindot sa ← → o A D.",
+    "<b>Lumundag</b> sa mga bungkos ng dayami sa pamamagitan ng pag-swipe pataas, o pagpindot sa ↑, W o Space.",
+    "Basahin ang tanong sa itaas. Dumaan sa tarangkahang may <b>katugmang kalahati</b> para mabuo ang mga numero, salita at hugis.",
+    "Kapag lumitaw ang <b>BUONG MANOK</b>, manatili sa iyong linya hanggang makalampas ang rebulto.",
+    "Kung minsan ay nababaligtad ang tuntunin: sa <b>baligtad na paraan</b>, pumili ng maling sagot.",
+    "<b>Libre ang Mahirap:</b> bawat laro ay nagsisimula sa 2 buhay, nang walang pitaka o pagsusuri ng token. Bawat pagkakamali ay bawas ng isang buhay.",
+    "<b>Mas mabagal ang Madali at mas mahaba ang oras.</b> Buksan ito sa Tindahan: bawat buong milyong MEMEZZO sa aktibong takdang-panahong pagkakakandado ay nagbibigay ng kabuuang 1 panimulang buhay, walang batayang buhay. Sinusuri lamang kapag hiniling mo sa Tindahan; walang pagsusuring gagambala sa laro.",
+    "Bumalik",
+    "Tindahan · Paraang Madali",
+    "Ikandado ang MEMEZZO nang may takdang panahon sa <b>DevFridge</b>, saka patunayan dito para sa Madali. <b>Libre ang Mahirap na may 2 buhay.</b>",
+    "<b>Madali: kabuuang 1 buhay sa bawat buong milyong MEMEZZO na aktibong nakakandado.</b> Hindi bababa sa 1 milyon; walang batayang buhay. Hindi kasama ang mga paso nang pagkakakandado sa oras ng pagsusuri.",
+    "Manwal na pagsusuri lamang sa Tindahan; walang awtomatikong pagsusuri na gagambala sa laro. Magagamit ang Madali sa sesyon ng pahinang ito. Muling suriin upang i-update; ang pagpapalit ng pitaka, pagdiskonekta o pag-reload ay nag-aalis ng karapatan para sa susunod na laro. Magpapatuloy ang kasalukuyang laro gamit ang natitirang buhay.",
+    "Mint address ng MEMEZZO · Pangunahing network ng Solana",
+    "Kopyahin ang mint address",
+    "Idiskonekta",
+    "Laruin ang Madali",
+    "Ituloy ang laro",
+    "Buksan sa browser ng Phantom ↗",
+    "Token sa Pump.fun ↗",
+    "Tingnan ang mga pagkakakandado ↗",
+    "Bago magkandado nang may takdang panahon",
+    "Mananatiling nakakandado ang mga token hanggang sa napili mong katapusan. Hindi maaaring mag-withdraw nang maaga.",
+    "May 2% bayad sa pagkuha muli, na ginagamit sa pagbili at pagsunog ng PASTA. Hiwalay ang bayad sa network.",
+    "Kailangan ng magagamit na ruta sa Jupiter upang makuha muli ang MEMEZZO. Maaaring walang ruta ang mga bago o kulang sa liquidity na token kahit tapos na ang pagkakakandado.",
+    "Hindi ginagarantiya ng pagkakakandado ang premyo o pagtaas ng presyo.",
+    "Para sa mga nasa hustong gulang ang mga tampok ng pitaka at pagkakakandado. Binabasa ng laro ang mga pagkakakandado; ang paggawa at pagkuha muli ay ginagawa sa DevFridge, na may pag-apruba sa iyong pitaka.",
+    "Buksan ang MEMEZZO sa DevFridge ↗",
+    "Naka-pause",
+    "Tindahan · Buhay sa Madali",
+    "Bumalik sa menu",
+    "Huminto ang manok",
+    "Puntos",
+    "Tamang sagot",
+    "Pinakamahusay sa paraan (lokal)",
+    "Iyong kard ng puntos",
+    "Subukang muli",
+    "Ibahagi ang ranggo mo",
+    "Menu",
+    "Huminto ang paggana ng graphics. I-reload ang pahina upang magpatuloy."
+  ],
+  "words": [
+    [
+      "ma",
+      "nok",
+      "Ibon na inaalagaan para sa itlog at karne"
+    ],
+    [
+      "si",
+      "siw",
+      "Bagong pisang anak ng manok"
+    ],
+    [
+      "ku",
+      "neho",
+      "Hayop na mahaba ang tainga at palundag"
+    ],
+    [
+      "pa",
+      "gong",
+      "Hayop na may matigas na bahay sa likod"
+    ],
+    [
+      "kala",
+      "baw",
+      "Malaking hayop na tumutulong sa pag-aararo"
+    ],
+    [
+      "ka",
+      "bayo",
+      "Hayop na sinasakyan at tumatakbo nang mabilis"
+    ],
+    [
+      "ba",
+      "boy",
+      "Alagang hayop na may ngusong bilog"
+    ],
+    [
+      "paru",
+      "paro",
+      "Insektong may makukulay na pakpak"
+    ],
+    [
+      "tutu",
+      "bi",
+      "Insektong may mahabang katawan at apat na pakpak"
+    ],
+    [
+      "bahag",
+      "hari",
+      "Makukulay na arko sa langit pagkatapos ng ulan"
+    ],
+    [
+      "a",
+      "raw",
+      "Bituing nagbibigay-liwanag sa umaga"
+    ],
+    [
+      "bu",
+      "wan",
+      "Likas na satelayt ng Daigdig"
+    ],
+    [
+      "bi",
+      "tuin",
+      "Kumikislap na tuldok sa kalangitan sa gabi"
+    ],
+    [
+      "sa",
+      "ging",
+      "Mahabang dilaw na prutas na may balat"
+    ],
+    [
+      "pak",
+      "wan",
+      "Prutas na berde ang balat at pula ang laman"
+    ],
+    [
+      "pa",
+      "paya",
+      "Prutas na kulay kahel ang laman at maraming itim na buto"
+    ],
+    [
+      "man",
+      "gga",
+      "Prutas na maasim kapag hilaw at matamis kapag hinog"
+    ],
+    [
+      "si",
+      "buyas",
+      "Gulay na patung-patong at nakakaiyak hiwain"
+    ],
+    [
+      "ba",
+      "wang",
+      "Mabangong sangkap na may maraming butil sa isang ulo"
+    ],
+    [
+      "ka",
+      "matis",
+      "Pulang bungang karaniwang sangkap sa sarsa"
+    ],
+    [
+      "lap",
+      "is",
+      "Panulat na kailangang tasahan"
+    ],
+    [
+      "ak",
+      "lat",
+      "Mga pinagsamang pahinang binabasa"
+    ],
+    [
+      "paar",
+      "alan",
+      "Lugar na pinapasukan ng mga mag-aaral"
+    ],
+    [
+      "bin",
+      "tana",
+      "Bukasan sa dingding na karaniwang may salamin"
+    ],
+    [
+      "sapa",
+      "tos",
+      "Isinusuot sa paa upang protektahan ito"
+    ],
+    [
+      "pa",
+      "yong",
+      "Ibinubuka upang hindi mabasa sa ulan"
+    ],
+    [
+      "ero",
+      "plano",
+      "Sasakyang may pakpak na lumilipad"
+    ],
+    [
+      "bang",
+      "ka",
+      "Maliit na sasakyang pandagat na sinasagwan"
+    ]
+  ],
+  "mode": {
+    "community": "Sumali sa channel ng Telegram",
+    "hard": "Mahirap",
+    "easy": "Madali",
+    "hardDetail": "Libre · 2 buhay",
+    "easyDetail": "Mas mabagal · buksan sa tindahan",
+    "choose": "Pumili ng paraan",
+    "playHard": "Laruin ang Mahirap · 2 buhay",
+    "playEasy": "Laruin ang Madali · {count} {lives}",
+    "unlock": "Buksan ang Madali sa tindahan",
+    "shop": "Tindahan · Buhay mula sa MEMEZZO",
+    "tutorial": "Laruin ang gabay",
+    "hardHint": "Magsimula agad na may 2 buhay. Walang pitaka o pagsusuri ng token.",
+    "easyHint": "Mas maraming oras sumagot, mas mabagal ang mga hadlang. Buksan sa tindahan: kabuuang 1 buhay sa bawat buong milyong MEMEZZO na nakakandado.",
+    "unlocked": "Bukas na ang Madali para sa sesyong ito: {count} {lives} bawat laro. Walang pagsusuri habang naglalaro.",
+    "hud": "{mode} · panimulang {count} {lives} · lokal na puntos",
+    "badge": "PARAANG {mode}",
+    "shopNote": "Laging libre ang Mahirap. Ikinakandado nang may takdang panahon ang mga token sa DevFridge, hindi ginagastos sa laro.",
+    "link": "Maglaro nang libre · Paraang Mahirap →",
+    "title": "MezzoPollo — Mahirap at Madali",
+    "back": "Bumalik sa laro",
+    "tutorialHud": "GABAY · magsanay nang hindi nawawalan ng buhay",
+    "tutorialQuestion": "Sundin ang gabay sa ibaba",
+    "shopLoading": "Binubuksan ang tindahan…",
+    "shopError": "Hindi ma-load ang tindahan. Maaari ka pa ring maglaro ng Mahirap. Subukang buksan muli ang tindahan."
+  },
+  "tutorial": {
+    "label": "Matuto habang naglalaro",
+    "practice": "Pagsasanay na may gabay",
+    "progress": "Hakbang {n} sa {total}",
+    "safe": "Walang mababawas na buhay. Hindi ise-save ang puntos.",
+    "skip": "Laktawan ang gabay",
+    "next": "Susunod na hamon",
+    "finish": "Magsimulang maglaro",
+    "retry": "Subukang muli",
+    "good": "Nakuha mo! Handa na para sa susunod na hamon.",
+    "done": "Handa na! Nagsisimula ang Mahirap sa 2 buhay. Maaari kang pumunta sa opsyonal na tindahan para sa dagdag na buhay at paraang Madali.",
+    "again": "Ayos lang! Subukan muli ang hamong ito.",
+    "leftControl": "Lumipat pakaliwa",
+    "rightControl": "Lumipat pakanan",
+    "jumpControl": "Lumundag",
+    "half": "Kalahati ng 8?",
+    "normalRule": "Piliin ang katugmang kalahati",
+    "reverseRule": "Baligtad: pumili ng MALING sagot",
+    "wholeQuestion": "BUONG MANOK!",
+    "wholeRule": "Manatili sa linya hanggang makalampas ang rebulto",
+    "left": [
+      "Lumipat pakaliwa",
+      "Subukan ngayon: mag-swipe pakaliwa sa daan, pindutin ang ← o A, o i-tap ang kaliwang palaso sa ibaba."
+    ],
+    "right": [
+      "Ngayon, lumipat pakanan",
+      "Mag-swipe pakanan sa daan, pindutin ang → o D, o i-tap ang kanang palaso sa ibaba."
+    ],
+    "jump": [
+      "Palundagin ang manok",
+      "Mag-swipe pataas sa daan, pindutin ang ↑, W o Space, o i-tap ang Lumundag. Lundagan ang mga bungkos ng dayami habang naglalaro."
+    ],
+    "gate": [
+      "Hanapin ang nawawalang kalahati",
+      "Basahin ang karatula: ang kalahati ng 8 ay 4. Lumipat sa gitnang linya at dumaan sa tarangkahang may 4."
+    ],
+    "reverse": [
+      "Ingat: BALIGTAD!",
+      "Nabaligtad ang tuntunin! Ang kalahati ng 8 ay 4, kaya pumili ng MALING sagot: pakaliwa sa 2 o pakanan sa 8."
+    ],
+    "whole": [
+      "BUONG MANOK: manatili sa linya",
+      "Huwag lumipat ng linya hanggang makalampas ang rebulto. Manatili sa linyang pinagsimulan mo. Subukan ngayon!"
+    ]
+  },
+  "access": {
+    "connect": "Ikonekta at patunayan",
+    "connectingButton": "Kumokonekta…",
+    "check": "Patunayan ang buhay sa Madali",
+    "checkingButton": "Sinusuri…",
+    "wallet": "Pitaka: {wallet}",
+    "copyMint": "Kopyahin ang mint address",
+    "copied": "Nakopya ang mint address",
+    "copyFallback": "Piliin at kopyahin ang mint address sa itaas",
+    "disconnected": "Ikonekta ang Phantom sa Tindahan upang patunayan ang buhay sa Madali. Laging libre ang Mahirap na may 2 buhay. Hindi hihiling ang laro ng anumang transaksyon.",
+    "connected": "Nakakonekta ang pitaka. Piliin ang Patunayan ang buhay sa Madali upang suriin ang aktibong pagkakakandado ng MEMEZZO para sa sesyong ito. Laging magagamit ang Mahirap.",
+    "connecting": "Aprubahan ang koneksyon sa Phantom. Hindi kailangan ng lagda sa transaksyon.",
+    "checking": "Sinusuri ang mga pagkakakandado ng MEMEZZO ng pitakang ito sa Solana…",
+    "eligible": "Bukas na ang Madali para sa sesyon ng pahinang ito: {amount} MEMEZZO ang aktibong nakakandado noong sinuri. Bawat bagong laro ng Madali ay nagsisimula sa {lives} {lifeWord}. Walang pagsusuri habang naglalaro.",
+    "insufficient": "Hindi pa napatunayang may hindi bababa sa {minimum} MEMEZZO sa aktibong pagkakakandado para sa Madali. Pagkatapos magkandado, hintaying makumpirma at muling patunayan. Maaari ka pa ring maglaro ng Mahirap na may 2 buhay.",
+    "unavailable": "Hindi magagamit ang pagpapatunay ng Madali o luma na ang ibinalik na datos. Subukang suriin muli sa Tindahan makalipas ang sandali. Magagamit pa rin ang Mahirap at ang kasalukuyang laro.",
+    "rejected": "Kinansela ang koneksyon sa Phantom. Maaari kang sumubok muli kapag handa ka na.",
+    "missing-wallet": "Walang Phantom sa browser na ito. Sa telepono, buksan ang laro sa browser ng Phantom upang patunayan ang buhay sa Madali sa Tindahan. Hindi kailangan ng pitaka sa Mahirap.",
+    "captionsOn": "Mga subtitle sa Ingles: bukas",
+    "captionsOff": "Mga subtitle sa Ingles: patay"
+  },
+  "demo": {
+    "title": "Mezzo Pollo Academy — pagpapakita ng laro",
+    "description": "MezzoPollo: libreng Mahirap na may 2 buhay, opsyonal na mas mabagal na Madali, interaktibong gabay, laro sa 20 wika at 25 pagpipiliang rehiyon, musikang Italyano at mga subtitle ng kanta sa Ingles.",
+    "tag": "Paligsahan sa pagbuo ng DevFridge · Mahirap at Madali",
+    "intro": "Tumatakbo ang kalahating manok na laruan sa tatlong linya, pinipili ang nawawalang kalahati ng mga numero, salita at hugis. Iwasan ang mga hadlang, mangolekta ng balahibo, at huwag gumalaw kapag lumitaw ang BUONG MANOK.",
+    "play": "Pumili ng paraan at maglaro →",
+    "source": "Source code at ebidensya ng pagsumite",
+    "songTitle": "Kalahating balahibo, dobleng lipad",
+    "songIntro": "Buong temang kantang Italyano na may estilong nakakatawang absurdong meme at mga subtitle sa Ingles, ginawa gamit ang Google Lyria sa Gemini. Sa laro, nagsisimula ito kapag pinindot ang Maglaro, paulit-ulit na tumutugtog nang mas mahina, humihinto kapag naka-pause ang laro at humihina sa mga hudyat ng laro. May kontrol ng musika sa menu, sa naka-pause na screen at habang naglalaro.",
+    "audioLabel": "Mezzo Pollo — buong musika",
+    "captionNote": "Sumasabay sa kanta ang mga subtitle sa Ingles habang tumutugtog.",
+    "downloadCaptions": "I-download ang mga subtitle sa Ingles",
+    "downloadMp3": "I-download ang MP3",
+    "playMusic": "Maglaro na may musika →",
+    "desktopTitle": "Laro sa kompyuter sa Ingles",
+    "desktopNote": "Lumang pagpapakita sa browser, naitala noong 25 Setyembre 2026 bago ang Mahirap/Madali at interaktibong gabay. Ipinapakita ng mga screen sa pagpasok ang lumang tuntunin. Ginaya lamang ang ebidensya ng pitaka at pagkakakandado; walang ipinakitang tunay na pag-apruba ng pitaka o transaksyon. Ipinapakita ng tahimik na bidyo ang aktuwal na pagkontrol sa laro. Pakinggan ang musika sa itaas.",
+    "downloadDesktop": "I-download ang bidyo sa kompyuter sa Ingles",
+    "mobileTitle": "Ayos sa telepono sa Ingles — pagtulad",
+    "mobileNote": "Lumang pagtulad sa browser na 390 × 844 ng interface sa Ingles, bago ang kasalukuyang tuntunin ng Mahirap/Madali at gabay, gamit ang ginayang ebidensya ng pitaka at pagkakakandado. Walang tunog ang bidyo; hindi ito pagsubok sa pisikal na telepono o tunay na pitaka.",
+    "downloadMobile": "I-download ang bidyo sa telepono sa Ingles",
+    "accessTitle": "Pag-access at mga limitasyon",
+    "accessIntro": "Libre ang Mahirap at bawat laro ay nagsisimula sa 2 buhay, walang pitaka o pagpapatunay ng token. Mas mabagal ang Madali at mas mahaba ang oras: buksan ito sa Tindahan sa pamamagitan ng tahasang pagpapatunay na may hindi bababa sa 1,000,000 MEMEZZO sa lahat ng aktibong pagkakakandado sa DevFridge ng nakakonektang pitakang Phantom. Walang pinakamababang tagal; hindi kasama ang paso nang pagkakakandado sa pagsusuri. Mint address:",
+    "accessOutro": ". Binubuksan din ng /practice ang libreng Mahirap. Nagsisimula ang interaktibong gabay bago ang unang laro sa bawat wika at maaaring ulitin mula sa menu. Magkahiwalay at lokal ang mga rekord ng Mahirap at Madali, at hindi pinatutunayan.",
+    "lives": "Nagbibigay ang Madali ng kabuuang isang panimulang buhay sa bawat buong milyong nakumpirma sa Tindahan, walang batayang buhay: ang 1,000,000 MEMEZZO ay 1 buhay, 1,999,999 ay 1, at 2,000,000 ay 2. Laging nagsisimula ang Mahirap sa 2 buhay. Nakatakda ang panimulang buhay para sa bawat laro; hindi ito pinupunan ng pagpapatuloy o pagsusuri sa Tindahan.",
+    "verification": "Walang awtomatikong pagsusuri ng token sa simula, habang naglalaro, sa pagpapatuloy o pagbalik sa pahina. Magagamit ang napatunayang buhay sa Madali para sa mga bagong laro habang bukas ang pahina, hanggang sa manwal na pagsusuri sa Tindahan, pagpapalit ng pitaka, pagdiskonekta o pag-reload. Hindi apektado ang kasalukuyang laro. Binabasa lamang ng laro ang mga pagkakakandado at hindi humihiling ng lagda sa transaksyon; ginagawa ang pagkakakandado sa labas, sa DevFridge. Ang access at buhay ay pinapatakbo sa browser, walang pagpapatunay sa server, talaan ng ranggo o gantimpala.",
+    "fees": "Ginagawa at kinukuha muli ang mga pagkakakandado sa DevFridge, walang maagang pag-withdraw at may 2% bayad sa pagkuha para sa pagbili at pagsunog ng PASTA, bukod sa bayad sa network. Ang pagkuha muli ng MEMEZZO ay nangangailangan ng gumaganang ruta sa Jupiter. Para sa nasa hustong gulang ang mga tampok ng pitaka.",
+    "team": "Pangkat: Pappardelle · Pampublikong pakikipag-ugnayan:",
+    "submission": ". Sasailalim sa pagsusuri ang pagsumite sa galeriya; hindi nito kinukumpirma ang pagiging kuwalipikado sa paligsahan o pagkakaroon ng premyo."
+  },
+  "native": {
+    "menu": "Menu ng app",
+    "hard": "Paraang Mahirap · libre · 2 buhay",
+    "easy": "Paraang Madali · opsyonal na tindahan ng MEMEZZO",
+    "reload": "I-reload",
+    "privacy": "Pagkapribado at impormasyon ng app (Ingles)",
+    "website": "Buksan ang website",
+    "close": "Isara ang app",
+    "webviewTitle": "I-update ang Android System WebView",
+    "webviewBody": "Kailangan ng app na ito ang kasalukuyang Android System WebView.",
+    "restartTitle": "Simulang muli ang laro",
+    "restartBody": "Inihinto ng Android ang proseso ng graphics. Naka-save ang lokal mong rekord.",
+    "restart": "Simulang muli",
+    "loadError": "Hindi mabuksan ang laro. Gamitin ang Menu ng app → I-reload.",
+    "noBrowser": "Walang naka-install na browser",
+    "walletMissing": "Mag-install ng pitakang Solana na katugma ng MWA, saka subukang muli."
+  }
+}

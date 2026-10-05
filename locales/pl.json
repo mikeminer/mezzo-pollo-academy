@@ -1,0 +1,452 @@
+{
+  "meta": {
+    "locale": "pl-PL",
+    "country": "Polska",
+    "language": "Polski",
+    "flag": "pl",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "życie",
+    "few": "życia",
+    "many": "żyć",
+    "other": "życia"
+  },
+  "core": {
+    "chooseCountry": "Wybierz kraj",
+    "chooseNote": "Wybierz flagę, aby ustawić język gry.",
+    "changeCountry": "Zmień kraj",
+    "resume": "Wznów",
+    "retryMusic": "Ponów muzykę",
+    "musicOff": "Wyłącz muzykę",
+    "musicOn": "Włącz muzykę",
+    "musicEnabled": "Muzyka: wł.",
+    "musicDisabled": "Muzyka: wył.",
+    "musicFailed": "Nie udało się wczytać muzyki. Spróbuj ponownie lub graj dalej.",
+    "musicBlocked": "Naciśnij Ponów muzykę, aby ją włączyć.",
+    "noWebgl": "To urządzenie nie obsługuje WebGL.",
+    "double": "Dwa razy {n}?",
+    "half": "Połowa {n}?",
+    "quarter": "Połowa połowy {n}?",
+    "ready": "Gotowi…",
+    "livesRemaining": "Pozostałe życia: {remaining} z {total}",
+    "whole": "CAŁY KURCZAK!",
+    "wholeRule": "Nie zmieniaj pasa, aż posąg cię minie",
+    "reverse": "Na odwrót: wybierz BŁĘDNĄ odpowiedź",
+    "shape": "Znajdź drugą połowę",
+    "halfChicken": "Pół kurczaka! ✂️",
+    "heldStill": "Bez ruchu!",
+    "right1": "Dobrze!",
+    "right2": "Brawo!",
+    "right3": "Ko, ko!",
+    "right4": "Dokładnie!",
+    "reversed": "Było na odwrót!",
+    "wrongHalf": "Zła połowa!",
+    "stayStill": "Stój!",
+    "personalBest": "Rekord na tym urządzeniu: {score}",
+    "legendary": "👑 Legendarny kurczak",
+    "wholeRank": "🐔 Cały kurczak",
+    "halfRank": "🍗 Pół kurczaka",
+    "chick": "🐣 Pisklę",
+    "egg": "🥚 Jajko",
+    "shareStats": "{score} pkt, poprawne odpowiedzi: {right}",
+    "shareQuestion": "Jaką masz kurzą rangę?",
+    "shareHint": "Przytrzymaj obraz (lub kliknij prawym przyciskiem), aby go zapisać i udostępnić.",
+    "rulesReversed": "Zasady na odwrót!",
+    "rulesNormal": "Zwykłe zasady",
+    "bonk": "Bęc!",
+    "searchLanguages": "Szukaj języka",
+    "noLanguages": "Nie znaleziono języków"
+  },
+  "static": [
+    "Tor gry",
+    "Pauza",
+    "Pluszowy kurczak zgubił połowę siebie. Pomóż mu przebiec przez bramkę z pasującą połową.",
+    "Jak grać",
+    "Sklep · Życia w trybie łatwym",
+    "Głośność",
+    "Głośność muzyki",
+    "Głośność muzyki podczas pauzy",
+    "Posłuchaj całej piosenki ↗",
+    "Jak grać",
+    "<b>Zmieniaj pas</b>, przesuwając palcem w lewo lub w prawo albo naciskając ← → lub A D.",
+    "<b>Przeskakuj</b> bele siana, przesuwając palcem w górę albo naciskając ↑, W lub spację.",
+    "Przeczytaj pytanie u góry. Przebiegnij przez bramkę z <b>pasującą połową</b>: uzupełniaj liczby, słowa i figury.",
+    "Gdy pojawi się <b>CAŁY KURCZAK</b>, pozostań na swoim pasie, aż miniesz posąg.",
+    "Czasem zasada się odwraca: w <b>trybie odwrotnym</b> wybierz błędną odpowiedź.",
+    "<b>Tryb trudny jest bezpłatny:</b> każda rozgrywka zaczyna się z 2 życiami, bez portfela i sprawdzania tokenów. Każdy błąd kosztuje jedno życie.",
+    "<b>Tryb łatwy jest wolniejszy i daje więcej czasu.</b> Odblokuj go w Sklepie: każdy pełny milion MEMEZZO w aktywnych blokadach daje 1 życie na start, bez żyć bazowych. Weryfikacja odbywa się tylko na twoje żądanie w Sklepie; żadne sprawdzanie nie przerywa rozgrywki.",
+    "Wstecz",
+    "Sklep · Tryb łatwy",
+    "Zablokuj MEMEZZO na <b>DevFridge</b>, potem zweryfikuj tutaj tryb łatwy. <b>Tryb trudny jest bezpłatny z 2 życiami.</b>",
+    "<b>Tryb łatwy: łącznie 1 życie za każdy pełny milion aktywnie zablokowanych MEMEZZO.</b> Minimum 1 milion; bez żyć bazowych. Wygasłe blokady nie liczą się przy weryfikacji.",
+    "Sprawdzanie tylko ręcznie w Sklepie, bez automatycznych kontroli. Tryb łatwy działa w tej sesji strony. Sprawdź ponownie, aby zaktualizować; zmiana portfela, rozłączenie lub odświeżenie kasują dostęp do kolejnych gier. Trwająca gra toczy się dalej z pozostałymi życiami.",
+    "Adres tokena MEMEZZO · główna sieć Solana",
+    "Kopiuj adres tokena",
+    "Rozłącz",
+    "Graj w trybie łatwym",
+    "Wznów grę",
+    "Otwórz w przeglądarce Phantom ↗",
+    "Token na Pump.fun ↗",
+    "Przeglądaj blokady czasowe ↗",
+    "Przed utworzeniem blokady czasowej",
+    "Tokeny pozostają zablokowane do wybranego terminu, bez możliwości wcześniejszej wypłaty.",
+    "Wypłata obejmuje opłatę 2%, przeznaczoną na zakup i spalanie PASTA. Opłaty sieciowe są naliczane osobno.",
+    "Wypłata MEMEZZO wymaga dostępnej ścieżki wymiany w Jupiter. Nowe tokeny lub tokeny o niskiej płynności mogą jej nie mieć nawet po wygaśnięciu blokady.",
+    "Blokada nie gwarantuje nagród ani wzrostu ceny.",
+    "Funkcje portfela i blokad czasowych są przeznaczone dla dorosłych. Gra odczytuje blokady; ich tworzenie i wypłata odbywają się na DevFridge za twoją zgodą w portfelu.",
+    "Otwórz MEMEZZO na DevFridge ↗",
+    "Pauza",
+    "Sklep · Życia w trybie łatwym",
+    "Wróć do menu",
+    "Kurczak się zatrzymał",
+    "Wynik",
+    "Poprawne odpowiedzi",
+    "Rekord trybu (lokalny)",
+    "Karta twojego wyniku",
+    "Spróbuj ponownie",
+    "Udostępnij swoją rangę",
+    "Menu",
+    "Grafika przestała działać. Odśwież stronę, aby kontynuować."
+  ],
+  "words": [
+    [
+      "KU",
+      "RA",
+      "Ptak znoszący jajka"
+    ],
+    [
+      "KO",
+      "TEK",
+      "Mały kot"
+    ],
+    [
+      "PI",
+      "ES",
+      "Szczeka"
+    ],
+    [
+      "MY",
+      "SZ",
+      "Mały gryzoń"
+    ],
+    [
+      "SŁO",
+      "ŃCE",
+      "Gwiazda dnia"
+    ],
+    [
+      "KSIĘ",
+      "ŻYC",
+      "Satelita Ziemi"
+    ],
+    [
+      "JAB",
+      "ŁKO",
+      "Owoc jabłoni"
+    ],
+    [
+      "GRU",
+      "SZKA",
+      "Owoc gruszy"
+    ],
+    [
+      "CH",
+      "LEB",
+      "Wypiek z piekarni"
+    ],
+    [
+      "MLE",
+      "KO",
+      "Biały napój"
+    ],
+    [
+      "MO",
+      "RZE",
+      "Słona woda"
+    ],
+    [
+      "DO",
+      "MEK",
+      "Mały dom"
+    ],
+    [
+      "KSIĄ",
+      "ŻKA",
+      "Do czytania"
+    ],
+    [
+      "KWI",
+      "AT",
+      "Ma płatki"
+    ],
+    [
+      "DRZE",
+      "WO",
+      "Roślina z pniem"
+    ],
+    [
+      "MARC",
+      "HEW",
+      "Pomarańczowy korzeń"
+    ],
+    [
+      "BA",
+      "NAN",
+      "Żółty, zakrzywiony owoc"
+    ],
+    [
+      "CY",
+      "TRYNA",
+      "Kwaśny cytrus"
+    ],
+    [
+      "SER",
+      "EK",
+      "Produkt z mleka"
+    ],
+    [
+      "KRÓ",
+      "LIK",
+      "Zwierzę z długimi uszami"
+    ],
+    [
+      "ŻÓ",
+      "ŁW",
+      "Gad ze skorupą"
+    ],
+    [
+      "PING",
+      "WIN",
+      "Ptak z Antarktydy"
+    ],
+    [
+      "DEL",
+      "FIN",
+      "Morski ssak"
+    ],
+    [
+      "MO",
+      "TYL",
+      "Owad z barwnymi skrzydłami"
+    ],
+    [
+      "TĘ",
+      "CZA",
+      "Kolory po deszczu"
+    ],
+    [
+      "SZKO",
+      "ŁA",
+      "Miejsce nauki"
+    ],
+    [
+      "OŁÓ",
+      "WEK",
+      "Pisze grafitem"
+    ],
+    [
+      "WIA",
+      "DRO",
+      "Naczynie z uchwytem"
+    ],
+    [
+      "KOS",
+      "ZYK",
+      "Pleciony pojemnik"
+    ],
+    [
+      "KON",
+      "IK",
+      "Mały koń"
+    ],
+    [
+      "OW",
+      "CA",
+      "Daje wełnę"
+    ],
+    [
+      "LWIĄ",
+      "TKO",
+      "Młode lwa"
+    ],
+    [
+      "TY",
+      "GRYS",
+      "Duży kot w pasy"
+    ],
+    [
+      "NIEDŹ",
+      "WIEDŹ",
+      "Duży ssak z lasu"
+    ],
+    [
+      "KA",
+      "CZKA",
+      "Ptak ze stawu"
+    ],
+    [
+      "OR",
+      "ZEŁ",
+      "Duży ptak drapieżny"
+    ],
+    [
+      "CHMU",
+      "RA",
+      "Para wodna na niebie"
+    ],
+    [
+      "OK",
+      "NO",
+      "Szyba w ścianie"
+    ],
+    [
+      "OGR",
+      "ÓD",
+      "Rosną w nim kwiaty"
+    ],
+    [
+      "PIÓ",
+      "RO",
+      "Pokrywa ciało ptaka"
+    ]
+  ],
+  "mode": {
+    "community": "Dołącz do kanału Telegram",
+    "hard": "Trudny",
+    "easy": "Łatwy",
+    "hardDetail": "Bezpłatnie · 2 życia",
+    "easyDetail": "Wolniej · odblokuj w sklepie",
+    "choose": "Wybierz tryb",
+    "playHard": "Graj: trudny · 2 życia",
+    "playEasy": "Graj: łatwy · {count} {lives}",
+    "unlock": "Odblokuj tryb łatwy w sklepie",
+    "shop": "Sklep · życia MEMEZZO",
+    "tutorial": "Zagraj w samouczek",
+    "hardHint": "Zacznij od razu z 2 życiami. Bez portfela i sprawdzania tokenów.",
+    "easyHint": "Więcej czasu na odpowiedź i wolniejsze przeszkody. Odblokuj w sklepie: 1 życie łącznie za każdy pełny milion zablokowanych MEMEZZO.",
+    "unlocked": "Tryb łatwy odblokowany na tę sesję: {count} {lives} w każdej grze. Bez sprawdzania podczas gry.",
+    "hud": "{mode} · na start: {count} {lives} · wynik lokalny",
+    "badge": "TRYB {mode}",
+    "shopNote": "Tryb trudny jest zawsze bezpłatny. Tokeny są blokowane na DevFridge, a nie wydawane w grze.",
+    "link": "Graj bezpłatnie · tryb trudny →",
+    "title": "MezzoPollo — trudny i łatwy",
+    "back": "Wróć do gry",
+    "tutorialHud": "SAMOUCZEK · ćwicz bez utraty żyć",
+    "tutorialQuestion": "Postępuj zgodnie ze wskazówkami",
+    "shopLoading": "Otwieranie sklepu…",
+    "shopError": "Nie udało się otworzyć sklepu. Nadal możesz grać w trybie trudnym. Spróbuj otworzyć sklep ponownie."
+  },
+  "tutorial": {
+    "label": "Ucz się, grając",
+    "practice": "Trening z przewodnikiem",
+    "progress": "Krok {n} z {total}",
+    "safe": "Nie tracisz żyć. Wynik nie jest zapisywany.",
+    "skip": "Pomiń samouczek",
+    "next": "Następne wyzwanie",
+    "finish": "Zacznij grę",
+    "retry": "Spróbuj ponownie",
+    "good": "Świetnie! Możesz przejść do następnego wyzwania.",
+    "done": "Gotowe! Tryb trudny zaczyna się z 2 życiami. W opcjonalnym sklepie uzyskasz dodatkowe życia i tryb łatwy.",
+    "again": "Nic się nie stało! Spróbuj tego wyzwania ponownie.",
+    "leftControl": "Przesuń w lewo",
+    "rightControl": "Przesuń w prawo",
+    "jumpControl": "Skocz",
+    "half": "Połowa z 8?",
+    "normalRule": "Wybierz pasującą połowę",
+    "reverseRule": "Na odwrót: wybierz BŁĘDNĄ odpowiedź",
+    "wholeQuestion": "CAŁY KURCZAK!",
+    "wholeRule": "Zostań na swoim pasie, aż minie posąg",
+    "left": [
+      "Przesuń się w lewo",
+      "Spróbuj teraz: przesuń palcem w lewo po torze, naciśnij ← lub A albo dotknij strzałki poniżej."
+    ],
+    "right": [
+      "Teraz w prawo",
+      "Przesuń palcem w prawo po torze, naciśnij → lub D albo dotknij strzałki poniżej."
+    ],
+    "jump": [
+      "Czas na kurzy skok",
+      "Przesuń palcem w górę po torze, naciśnij ↑, W lub Spację albo dotknij Skocz. Podczas biegu przeskakuj bele siana."
+    ],
+    "gate": [
+      "Znajdź brakującą połowę",
+      "Spójrz na tablicę: połowa z 8 to 4. Przejdź na środkowy pas i przebiegnij przez bramkę z cyfrą 4."
+    ],
+    "reverse": [
+      "Uwaga: NA ODWRÓT!",
+      "Zasada się odwróciła! Połowa z 8 to 4, więc wybierz BŁĘDNĄ odpowiedź: przejdź w lewo do 2 lub w prawo do 8."
+    ],
+    "whole": [
+      "CAŁY KURCZAK: zostań na pasie",
+      "Nie zmieniaj pasa, dopóki posąg nie minie. Zostań na pasie, na którym zaczynasz. Spróbuj teraz!"
+    ]
+  },
+  "access": {
+    "connect": "Połącz i sprawdź",
+    "connectingButton": "Łączenie…",
+    "check": "Sprawdź życia w trybie łatwym",
+    "checkingButton": "Sprawdzanie…",
+    "wallet": "Portfel: {wallet}",
+    "copyMint": "Kopiuj adres tokena",
+    "copied": "Adres tokena skopiowany",
+    "copyFallback": "Zaznacz i skopiuj adres tokena powyżej",
+    "disconnected": "Połącz Phantom w Sklepie, aby sprawdzić życia w trybie łatwym. Tryb trudny jest zawsze bezpłatny z 2 życiami. Gra nie poprosi o żadną transakcję.",
+    "connected": "Portfel połączony. Wybierz Sprawdź życia w trybie łatwym, aby zweryfikować aktywne blokady MEMEZZO na tę sesję. Tryb trudny jest zawsze dostępny.",
+    "connecting": "Zatwierdź połączenie w Phantom. Podpisanie transakcji nie jest wymagane.",
+    "checking": "Sprawdzanie blokad czasowych MEMEZZO tego portfela w sieci Solana…",
+    "eligible": "Tryb łatwy odblokowany na tę sesję strony: {amount} MEMEZZO w aktywnych blokadach w chwili weryfikacji. Każda nowa rozgrywka w trybie łatwym: {lives} {lifeWord}. Bez kontroli podczas gry.",
+    "insufficient": "Nie potwierdzono co najmniej {minimum} MEMEZZO w aktywnych blokadach dla trybu łatwego. Po utworzeniu blokady poczekaj na potwierdzenie i sprawdź ponownie. Nadal możesz grać w trybie trudnym z 2 życiami.",
+    "unavailable": "Weryfikacja trybu łatwego jest niedostępna lub otrzymane dane są nieaktualne. Spróbuj ponownie w Sklepie za chwilę. Tryb trudny i trwająca rozgrywka pozostają dostępne.",
+    "rejected": "Połączenie anulowane w Phantom. Możesz spróbować ponownie w dowolnej chwili.",
+    "missing-wallet": "Phantom nie jest dostępny w tej przeglądarce. Na telefonie otwórz grę w przeglądarce Phantom, aby sprawdzić życia w trybie łatwym w Sklepie. Tryb trudny nie wymaga portfela.",
+    "captionsOn": "Napisy angielskie: włączone",
+    "captionsOff": "Napisy angielskie: wyłączone"
+  },
+  "demo": {
+    "title": "Mezzo Pollo Academy — demonstracja gry",
+    "description": "MezzoPollo: darmowy tryb trudny z 2 życiami, opcjonalny wolniejszy tryb łatwy, interaktywny samouczek i interfejs w 20 językach z 25 opcjami regionalnymi, włoska muzyka i angielskie napisy do piosenki.",
+    "tag": "Hackathon DevFridge · Tryb trudny i łatwy",
+    "intro": "Pluszowy półkurczak biegnie po trzech torach i wybiera brakującą połowę liczb, słów i kształtów. Omijaj przeszkody, zbieraj pióra i nie zmieniaj toru, gdy pojawi się CAŁY KURCZAK.",
+    "play": "Wybierz tryb i zagraj →",
+    "source": "Kod źródłowy i materiały zgłoszenia",
+    "songTitle": "Pół pióra, podwójny lot",
+    "songIntro": "Pełna włoska piosenka brainrot z angielskimi napisami, wygenerowana za pomocą Google Lyria w Gemini. W grze uruchamia się po naciśnięciu Graj, powtarza się ciszej, zatrzymuje wraz z pauzą i ścisza podczas sygnałów w grze. Sterowanie muzyką jest dostępne w menu, na ekranie pauzy i podczas rozgrywki.",
+    "audioLabel": "Mezzo Pollo — pełna ścieżka dźwiękowa",
+    "captionNote": "Angielskie napisy są zsynchronizowane z odtwarzaną piosenką.",
+    "downloadCaptions": "Pobierz angielskie napisy",
+    "downloadMp3": "Pobierz MP3",
+    "playMusic": "Zagraj z muzyką →",
+    "desktopTitle": "Rozgrywka na komputerze w języku angielskim",
+    "desktopNote": "Archiwalne nagranie z 25 września 2026 r., sprzed wprowadzenia trybów trudnego i łatwego oraz interaktywnego samouczka. Ekrany dostępu pokazują dawne zasady. Portfel i dane blokad są symulowane; nagranie nie pokazuje zgody prawdziwego portfela ani transakcji. Film bez dźwięku pokazuje rzeczywiste sterowanie grą. Piosenki można posłuchać powyżej.",
+    "downloadDesktop": "Pobierz angielskie nagranie z komputera",
+    "mobileTitle": "Angielski interfejs mobilny — emulacja",
+    "mobileNote": "Archiwalna emulacja angielskiego interfejsu w przeglądarce, 390 × 844, sprzed obecnych zasad trybów trudnego i łatwego oraz samouczka, z symulowanym portfelem i blokadami. Film bez dźwięku; nie jest to test na fizycznym telefonie ani z prawdziwym portfelem.",
+    "downloadMobile": "Pobierz angielskie nagranie mobilne",
+    "accessTitle": "Dostęp i ograniczenia",
+    "accessIntro": "Tryb trudny jest bezpłatny: każda rozgrywka zaczyna się z 2 życiami, bez portfela i weryfikacji tokenów. Tryb łatwy jest wolniejszy i daje więcej czasu: odblokuj go w Sklepie, żądając sprawdzenia co najmniej 1 000 000 MEMEZZO w aktywnych blokadach DevFridge połączonego portfela Phantom. Nie ma minimalnego czasu blokady; wygasłe blokady nie liczą się przy weryfikacji. Adres tokena:",
+    "accessOutro": ". Ścieżka /practice również otwiera bezpłatny tryb trudny. Interaktywny samouczek uruchamia się przed pierwszą grą w każdym języku i można go powtórzyć z menu. Rekordy trybu trudnego i łatwego są lokalne, osobne i niezweryfikowane.",
+    "lives": "Tryb łatwy daje jedno życie na start za każdy pełny milion potwierdzony w Sklepie, bez żyć bazowych: 1 000 000 MEMEZZO daje 1 życie, 1 999 999 daje 1 życie, a 2 000 000 daje 2 życia. Tryb trudny zawsze zaczyna się z 2 życiami. Początkowa liczba żyć jest stała dla każdej rozgrywki; wznowienie ani sprawdzanie w Sklepie ich nie uzupełnia.",
+    "verification": "Nie ma automatycznego sprawdzania tokenów przy starcie, podczas gry, przy wznowieniu ani po powrocie do strony. Potwierdzone życia w trybie łatwym obowiązują w nowych rozgrywkach, dopóki strona pozostaje otwarta, do ręcznego sprawdzenia w Sklepie, zmiany lub rozłączenia portfela albo odświeżenia strony. Trwająca rozgrywka pozostaje bez zmian. Gra odczytuje blokady i nie prosi o podpisywanie transakcji; blokady tworzy się zewnętrznie na DevFridge. Dostęp i życia są obsługiwane w przeglądarce, bez uwierzytelniania na serwerze, rankingów ani nagród.",
+    "fees": "Blokady tworzy się i odbiera na DevFridge. Nie ma wcześniejszej wypłaty, a opłata za odbiór wynosi 2% i służy zakupowi oraz spalaniu PASTA; dodatkowo obowiązują opłaty sieciowe. Odbiór MEMEZZO wymaga dostępnej trasy wymiany w Jupiter. Funkcje portfela są przeznaczone dla osób dorosłych.",
+    "team": "Zespół: Pappardelle · Kontakt publiczny:",
+    "submission": ". Zgłoszenie do galerii podlega weryfikacji; nie potwierdza dopuszczenia do konkursu ani przyznania nagrody."
+  },
+  "native": {
+    "menu": "Menu aplikacji",
+    "hard": "Trudny · bezpłatnie · 2 życia",
+    "easy": "Łatwy · opcjonalny sklep MEMEZZO",
+    "reload": "Odśwież",
+    "privacy": "Prywatność i informacje o aplikacji (angielski)",
+    "website": "Otwórz stronę",
+    "close": "Zamknij aplikację",
+    "webviewTitle": "Zaktualizuj Android System WebView",
+    "webviewBody": "Ta aplikacja wymaga aktualnej wersji Android System WebView.",
+    "restartTitle": "Uruchom grę ponownie",
+    "restartBody": "Android zatrzymał proces graficzny. Twój lokalny rekord został zapisany.",
+    "restart": "Uruchom ponownie",
+    "loadError": "Nie można otworzyć gry. Użyj Menu aplikacji → Odśwież.",
+    "noBrowser": "Brak zainstalowanej przeglądarki",
+    "walletMissing": "Zainstaluj portfel Solana zgodny z MWA i spróbuj ponownie."
+  }
+}

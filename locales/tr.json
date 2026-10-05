@@ -1,0 +1,390 @@
+{
+  "meta": {
+    "locale": "tr-TR",
+    "country": "Türkiye",
+    "language": "Türkçe",
+    "flag": "tr",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "can",
+    "other": "can"
+  },
+  "core": {
+    "chooseCountry": "Ülkenizi seçin",
+    "chooseNote": "Oyun dilini seçmek için bir bayrağa dokunun.",
+    "changeCountry": "Ülkeyi değiştir",
+    "resume": "Devam et",
+    "retryMusic": "Müziği yeniden dene",
+    "musicOff": "Müziği kapat",
+    "musicOn": "Müziği aç",
+    "musicEnabled": "Müzik: açık",
+    "musicDisabled": "Müzik: kapalı",
+    "musicFailed": "Müzik yüklenemedi. Yeniden deneyebilir veya oynamaya devam edebilirsiniz.",
+    "musicBlocked": "Müziği tekrar açmak için Müziği yeniden dene düğmesine dokunun.",
+    "noWebgl": "Bu cihaz WebGL desteklemiyor.",
+    "double": "{n} sayısının iki katı?",
+    "half": "{n} sayısının yarısı?",
+    "quarter": "{n} sayısının yarısının yarısı?",
+    "ready": "Hazır olun…",
+    "livesRemaining": "Kalan can: {remaining} / {total}",
+    "whole": "BÜTÜN TAVUK!",
+    "wholeRule": "Heykel geçene kadar şeridinizde kalın",
+    "reverse": "Ters mod: YANLIŞ bir yanıt seçin",
+    "shape": "Diğer yarısını bulun",
+    "halfChicken": "Yarım tavuk! ✂️",
+    "heldStill": "Yerinizde kaldınız!",
+    "right1": "Doğru!",
+    "right2": "Aferin!",
+    "right3": "Gıt gıt gıdak!",
+    "right4": "Aynen öyle!",
+    "reversed": "Kural tersti!",
+    "wrongHalf": "Yanlış yarı!",
+    "stayStill": "Kıpırdamayın!",
+    "personalBest": "Bu cihazdaki kişisel rekor: {score}",
+    "legendary": "👑 Efsane tavuk",
+    "wholeRank": "🐔 Bütün tavuk",
+    "halfRank": "🍗 Yarım tavuk",
+    "chick": "🐣 Civciv",
+    "egg": "🥚 Yumurta",
+    "shareStats": "{score} puan, {right} doğru yanıt",
+    "shareQuestion": "Tavuk rütbeniz ne?",
+    "shareHint": "Kaydetmek ve paylaşmak için görsele basılı tutun veya sağ tıklayın.",
+    "rulesReversed": "Kurallar tersine döndü!",
+    "rulesNormal": "Normal kurallar",
+    "bonk": "Pat!",
+    "searchLanguages": "Dil ara",
+    "noLanguages": "Eşleşen dil yok"
+  },
+  "static": [
+    "Oyun parkuru",
+    "Duraklat",
+    "Peluş bir tavuk kendisinin yarısını kaybetmiş. Doğru yarının bulunduğu kapıdan geçmesine yardım edin.",
+    "Nasıl oynanır",
+    "Mağaza · Kolay mod canları",
+    "Ses düzeyi",
+    "Müzik ses düzeyi",
+    "Duraklatıldığında müzik ses düzeyi",
+    "Şarkının tamamını dinle ↗",
+    "Nasıl oynanır",
+    "Sola veya sağa kaydırarak ya da ← → veya A D tuşlarına basarak <b>şerit değiştirin</b>.",
+    "Yukarı kaydırarak ya da ↑, W veya boşluk tuşuna basarak saman balyalarının <b>üzerinden atlayın</b>.",
+    "Üstteki soruyu okuyun. <b>Doğru yarının</b> bulunduğu kapıdan geçerek sayıları, kelimeleri ve şekilleri tamamlayın.",
+    "<b>BÜTÜN TAVUK</b> göründüğünde heykel geçene kadar şeridinizde kalın.",
+    "Bazen kural tersine döner: <b>ters modda</b> yanlış bir yanıt seçin.",
+    "<b>Zor mod ücretsizdir:</b> her koşu, cüzdan veya jeton kontrolü olmadan 2 canla başlar. Her hata bir can götürür.",
+    "<b>Kolay mod daha yavaştır ve daha fazla süre verir.</b> Mağazadan açın: etkin zaman kilitlerindeki her tam bir milyon MEMEZZO, toplam 1 başlangıç canı verir; taban can yoktur. Doğrulama yalnızca mağazadan istediğinizde yapılır; koşu sırasında kontrol yapılmaz.",
+    "Geri",
+    "Mağaza · Kolay mod",
+    "<b>DevFridge</b> üzerinde MEMEZZO için zaman kilidi oluşturun, ardından Kolay mod için burada doğrulayın. <b>Zor mod 2 canla ücretsizdir.</b>",
+    "<b>Kolay mod: etkin olarak kilitli her tam bir milyon MEMEZZO için toplam 1 can.</b> En az 1 milyon gerekir; taban can yoktur. Doğrulama sırasında süresi dolmuş kilitler sayılmaz.",
+    "Yalnızca mağazada elle başlatılan kontroller vardır; otomatik kontroller oyunu bölmez. Kolay mod bu sayfa oturumu boyunca geçerlidir. Güncellemek için yeniden kontrol edin; cüzdan değişikliği, bağlantının kesilmesi veya sayfanın yenilenmesi sonraki koşuların erişimini sıfırlar. Devam eden koşular kalan canlarıyla sürer.",
+    "MEMEZZO jeton adresi · Solana ana ağı",
+    "Jeton adresini kopyala",
+    "Bağlantıyı kes",
+    "Kolay oyna",
+    "Oyuna devam et",
+    "Phantom tarayıcısında aç ↗",
+    "Pump.fun üzerindeki jeton ↗",
+    "Zaman kilitlerini incele ↗",
+    "Zaman kilidi oluşturmadan önce",
+    "Jetonlar seçtiğiniz bitiş tarihine kadar kilitli kalır; erken çekim yapılamaz.",
+    "Geri alımda PASTA alıp yakmak için %2 ücret alınır. Ağ ücretleri ayrıdır.",
+    "MEMEZZO geri alımı için kullanılabilir bir Jupiter rotası gerekir. Yeni veya düşük likiditeli jetonlarda süre dolduktan sonra bile rota bulunmayabilir.",
+    "Kilitlemek ödül veya fiyat artışı garantisi vermez.",
+    "Cüzdan ve zaman kilidi özellikleri yetişkinler içindir. Oyun zaman kilitlerini okur; oluşturma ve geri alım, cüzdan onayınızla DevFridge üzerinde yapılır.",
+    "MEMEZZO jetonını DevFridge üzerinde aç ↗",
+    "Duraklatıldı",
+    "Mağaza · Kolay mod canları",
+    "Menüye dön",
+    "Tavuk durdu",
+    "Puan",
+    "Doğru yanıtlar",
+    "Mod rekoru (yerel)",
+    "Puan kartınız",
+    "Tekrar dene",
+    "Rütbeni paylaş",
+    "Menü",
+    "Grafikler çalışmayı durdurdu. Devam etmek için sayfayı yenileyin."
+  ],
+  "words": [
+    [
+      "TA",
+      "VUK",
+      "Yumurta veren kümes hayvanı"
+    ],
+    [
+      "TAV",
+      "ŞAN",
+      "Uzun kulaklı havuç sever"
+    ],
+    [
+      "KAPLUM",
+      "BAĞA",
+      "Sırtında kabuk taşıyan hayvan"
+    ],
+    [
+      "PEN",
+      "GUEN",
+      "Siyah beyaz uçamayan kuş"
+    ],
+    [
+      "YU",
+      "NUS",
+      "Denizde yaşayan zeki memeli"
+    ],
+    [
+      "KELE",
+      "BEK",
+      "Renkli kanatlı böcek"
+    ],
+    [
+      "GÖK",
+      "KUŞAĞI",
+      "Yağmurdan sonra gökte beliren renkli yay"
+    ],
+    [
+      "GÜ",
+      "NEŞ",
+      "Dünyayı aydınlatan yıldız"
+    ],
+    [
+      "EL",
+      "MA",
+      "Elma ağacının meyvesi"
+    ],
+    [
+      "PİZ",
+      "ZA",
+      "Üstünde peynir olan yuvarlak hamur"
+    ],
+    [
+      "HA",
+      "VUÇ",
+      "Turuncu kök sebze"
+    ],
+    [
+      "Lİ",
+      "MON",
+      "Ekşi sarı turunçgil"
+    ],
+    [
+      "PEY",
+      "NİR",
+      "Sütten yapılan katı yiyecek"
+    ],
+    [
+      "ZEB",
+      "RA",
+      "Çizgili at akrabası"
+    ],
+    [
+      "KAR",
+      "TAL",
+      "Keskin bakışlı büyük yırtıcı kuş"
+    ],
+    [
+      "ÖR",
+      "DEK",
+      "Vak vak diyen su kuşu"
+    ],
+    [
+      "KO",
+      "YUN",
+      "Yün veren çiftlik hayvanı"
+    ],
+    [
+      "AS",
+      "LAN",
+      "Yeleli büyük kedi"
+    ],
+    [
+      "KAP",
+      "LAN",
+      "Çizgili büyük kedi"
+    ],
+    [
+      "PAN",
+      "DA",
+      "Bambu yiyen siyah beyaz ayı"
+    ],
+    [
+      "FA",
+      "RE",
+      "Küçük uzun kuyruklu kemirgen"
+    ],
+    [
+      "BU",
+      "LUT",
+      "Gökteki su damlası kümesi"
+    ],
+    [
+      "PEN",
+      "CERE",
+      "Duvardaki camlı açıklık"
+    ],
+    [
+      "Çİ",
+      "ÇEK",
+      "Bitkinin renkli açan kısmı"
+    ],
+    [
+      "SE",
+      "PET",
+      "Örülmüş taşıma kabı"
+    ],
+    [
+      "KO",
+      "VA",
+      "Su taşımak için kulplu kap"
+    ],
+    [
+      "O",
+      "KUL",
+      "Çocukların eğitim gördüğü yer"
+    ],
+    [
+      "KA",
+      "LEM",
+      "Yazı yazma aracı"
+    ]
+  ],
+  "mode": {
+    "community": "Telegram kanalına katıl",
+    "hard": "Zor",
+    "easy": "Kolay",
+    "hardDetail": "Ücretsiz · 2 can",
+    "easyDetail": "Daha yavaş · mağazadan açılır",
+    "choose": "Modunuzu seçin",
+    "playHard": "Zor oyna · 2 can",
+    "playEasy": "Kolay oyna · {count} {lives}",
+    "unlock": "Kolay modu mağazadan açın",
+    "shop": "Mağaza · MEMEZZO canları",
+    "tutorial": "Eğitimi oyna",
+    "hardHint": "2 canla hemen başlayın. Cüzdan veya jeton kontrolü yok.",
+    "easyHint": "Yanıtlamak için daha fazla süre, daha yavaş engeller. Mağazadan açın: kilitli her tam bir milyon MEMEZZO için toplam 1 can.",
+    "unlocked": "Kolay mod bu oturum için açıldı: her koşuda {count} {lives}. Oynarken kontrol yapılmaz.",
+    "hud": "{mode} · başlangıçta {count} {lives} · yerel puan",
+    "badge": "{mode} MODU",
+    "shopNote": "Zor mod her zaman ücretsizdir. Jetonlar oyunda harcanmaz; DevFridge üzerinde zaman kilidine alınır.",
+    "link": "Ücretsiz oyna · Zor mod →",
+    "title": "MezzoPollo — Zor ve Kolay",
+    "back": "Oyuna dön",
+    "tutorialHud": "EĞİTİM · can kaybetmeden alıştırma",
+    "tutorialQuestion": "Aşağıdaki yönlendirmeleri izleyin",
+    "shopLoading": "Mağaza açılıyor…",
+    "shopError": "Mağaza yüklenemedi. Zor modda oynamaya devam edebilirsiniz. Mağazayı tekrar açmayı deneyin."
+  },
+  "tutorial": {
+    "label": "Oynayarak öğren",
+    "practice": "Rehberli alıştırma",
+    "progress": "Adım {n} / {total}",
+    "safe": "Can kaybedilmez. Puan kaydedilmez.",
+    "skip": "Eğitimi atla",
+    "next": "Sonraki görev",
+    "finish": "Oynamaya başla",
+    "retry": "Tekrar dene",
+    "good": "Oldu! Sonraki göreve hazırsınız.",
+    "done": "Hazırsınız! Zor mod 2 canla başlar. Ek canlar ve Kolay mod için isteğe bağlı mağazaya göz atın.",
+    "again": "Sorun değil! Aynı görevi tekrar deneyin.",
+    "leftControl": "Sola git",
+    "rightControl": "Sağa git",
+    "jumpControl": "Zıpla",
+    "half": "8 sayısının yarısı?",
+    "normalRule": "Doğru yarıyı seçin",
+    "reverseRule": "Ters: YANLIŞ bir yanıt seçin",
+    "wholeQuestion": "BÜTÜN TAVUK!",
+    "wholeRule": "Heykel geçene kadar şeridinizde kalın",
+    "left": [
+      "Sola gidin",
+      "Şimdi deneyin: parkurda sola kaydırın, ← veya A tuşuna basın ya da aşağıdaki sol oka dokunun."
+    ],
+    "right": [
+      "Şimdi sağa gidin",
+      "Parkurda sağa kaydırın, → veya D tuşuna basın ya da aşağıdaki sağ oka dokunun."
+    ],
+    "jump": [
+      "Tavuğu zıplatın",
+      "Parkurda yukarı kaydırın, ↑, W veya boşluk tuşuna basın ya da Zıpla düğmesine dokunun. Koşu sırasında saman balyalarının üzerinden atlayın."
+    ],
+    "gate": [
+      "Eksik yarıyı bulun",
+      "Tabelayı okuyun: 8 sayısının yarısı 4 eder. Orta şeride geçin ve üzerinde 4 yazan kapıdan geçin."
+    ],
+    "reverse": [
+      "Dikkat: TERS!",
+      "Kural tersine döndü! 8 sayısının yarısı 4 olduğuna göre YANLIŞ bir yanıt seçin: soldaki 2'ye veya sağdaki 8'e gidin."
+    ],
+    "whole": [
+      "BÜTÜN TAVUK: şeridinizde kalın",
+      "Heykel geçene kadar şerit değiştirmeyin. Başladığınız şeritte kalın. Şimdi deneyin!"
+    ]
+  },
+  "access": {
+    "connect": "Bağlan ve doğrula",
+    "connectingButton": "Bağlanıyor…",
+    "check": "Kolay mod canlarını doğrula",
+    "checkingButton": "Kontrol ediliyor…",
+    "wallet": "Cüzdan: {wallet}",
+    "copyMint": "Jeton adresini kopyala",
+    "copied": "Jeton adresi kopyalandı",
+    "copyFallback": "Yukarıdaki jeton adresini seçip kopyalayın",
+    "disconnected": "Kolay mod canlarını doğrulamak için mağazada Phantom bağlantısı kurun. Zor mod her zaman 2 canla ücretsizdir. Oyun herhangi bir işlem talep etmez.",
+    "connected": "Cüzdan bağlandı. Bu oturum için etkin MEMEZZO zaman kilitlerini kontrol etmek üzere Kolay mod canlarını doğrula düğmesini seçin. Zor mod her zaman kullanılabilir.",
+    "connecting": "Phantom içinde bağlantıyı onaylayın. İşlem imzası gerekmez.",
+    "checking": "Bu cüzdanın Solana üzerindeki MEMEZZO zaman kilitleri kontrol ediliyor…",
+    "eligible": "Kolay mod bu sayfa oturumu için açıldı: doğrulama anında {amount} MEMEZZO etkin olarak kilitli. Her yeni Kolay koşu {lives} {lifeWord} ile başlar. Oynarken kontrol yapılmaz.",
+    "insufficient": "Kolay mod için etkin zaman kilitlerinde en az {minimum} MEMEZZO doğrulanamadı. Kilit oluşturduktan sonra onayı bekleyin ve yeniden doğrulayın. Zor modu 2 canla oynayabilirsiniz.",
+    "unavailable": "Kolay mod doğrulaması kullanılamıyor veya dönen veriler güncel değil. Biraz sonra mağaza kontrolünü tekrar deneyin. Zor mod ve devam eden koşunuz kullanılabilir durumda kalır.",
+    "rejected": "Bağlantı Phantom içinde iptal edildi. Hazır olduğunuzda tekrar deneyebilirsiniz.",
+    "missing-wallet": "Phantom bu tarayıcıda kullanılamıyor. Telefonda, mağazada Kolay mod canlarını doğrulamak için oyunu Phantom tarayıcısında açın. Zor mod için cüzdan gerekmez.",
+    "captionsOn": "İngilizce altyazılar: açık",
+    "captionsOff": "İngilizce altyazılar: kapalı"
+  },
+  "demo": {
+    "title": "Mezzo Pollo Academy — oyun tanıtımı",
+    "description": "MezzoPollo: 2 canlı ücretsiz Zor mod, isteğe bağlı daha yavaş Kolay mod, etkileşimli eğitim ve 25 bölgesel seçenekle 20 dilde oyun arayüzü, İtalyanca müzik ve İngilizce şarkı altyazıları.",
+    "tag": "DevFridge Hackathon · Zor ve Kolay",
+    "intro": "Peluş bir yarım tavuk üç şeritte koşarak sayıların, kelimelerin ve şekillerin eksik yarısını seçiyor. Engellerden kaçın, tüy toplayın ve BÜTÜN TAVUK göründüğünde yerinizde kalın.",
+    "play": "Bir mod seç ve oyna →",
+    "source": "Kaynak kodu ve başvuru kanıtları",
+    "songTitle": "Yarım tüy, iki kat uçuş",
+    "songIntro": "Google Lyria ile Gemini içinde oluşturulmuş, İngilizce altyazılı tam İtalyanca absürt internet mizahı şarkısı. Oyunda Oyna düğmesiyle başlar, düşük sesle tekrarlanır, koşuyla birlikte duraklar ve oyun ipuçları sırasında sesi kısılır. Müzik denetimleri menüde, duraklatma ekranında ve oyun göstergelerinde bulunur.",
+    "audioLabel": "Mezzo Pollo — tam müzik",
+    "captionNote": "İngilizce altyazılar çalma sırasında şarkıyı takip eder.",
+    "downloadCaptions": "İngilizce altyazıları indir",
+    "downloadMp3": "MP3 indir",
+    "playMusic": "Müzikle oyna →",
+    "desktopTitle": "İngilizce masaüstü oynanışı",
+    "desktopNote": "Zor/Kolay modları ve etkileşimli eğitimden önce, 25 Eylül 2026'da kaydedilmiş arşivlik tarayıcı oynanışı. Erişim ekranları eski kuralları gösterir. Cüzdan ve kilit kanıtları simüle edilmiştir; gerçek cüzdan onayı veya işlem gösterilmez. Sessiz kayıt gerçek oyun girdilerini gösterir. Müziği yukarıdan dinleyebilirsiniz.",
+    "downloadDesktop": "İngilizce masaüstü kaydını indir",
+    "mobileTitle": "İngilizce mobil düzen — benzetim",
+    "mobileNote": "Güncel Zor/Kolay kuralları ve eğitimden önce, simüle edilmiş cüzdan ve kilit kanıtlarıyla oluşturulmuş 390 × 844 boyutunda İngilizce arayüzün arşivlik tarayıcı benzetimi. Sessiz kayıt; gerçek telefon veya gerçek cüzdan testi değildir.",
+    "downloadMobile": "İngilizce mobil kaydı indir",
+    "accessTitle": "Erişim ve sınırlamalar",
+    "accessIntro": "Zor mod ücretsizdir ve her koşu cüzdan veya jeton doğrulaması olmadan 2 canla başlar. Kolay mod daha yavaştır ve daha fazla süre verir: bağlı Phantom cüzdanının etkin DevFridge zaman kilitlerindeki en az 1.000.000 MEMEZZO için mağazada açıkça doğrulama talep ederek açın. Asgari süre yoktur; süresi dolmuş kilitler doğrulamada sayılmaz. Jeton adresi:",
+    "accessOutro": ". /practice yolu da ücretsiz Zor modu açar. Etkileşimli eğitim her dilde ilk oyununuzdan önce başlar ve menüden tekrar oynanabilir. Zor ve Kolay rekorları yerel olarak ayrı tutulur ve doğrulanmaz.",
+    "lives": "Kolay mod, mağazada doğrulanan her tam bir milyon için toplam bir başlangıç canı verir; taban can yoktur: 1.000.000 MEMEZZO 1 can, 1.999.999 MEMEZZO 1 can ve 2.000.000 MEMEZZO 2 can verir. Zor mod her zaman 2 canla başlar. Başlangıç canları her koşu için sabittir; devam etmek veya mağazada kontrol yapmak canları doldurmaz.",
+    "verification": "Koşu başında, oyun sırasında, devam ederken veya sayfaya dönerken otomatik jeton kontrolü yapılmaz. Doğrulanan Kolay mod canları, sayfa açık kaldığı sürece elle mağaza kontrolü yapılana, cüzdan değişene, bağlantı kesilene veya sayfa yenilenene kadar yeni koşularda kullanılabilir. Devam eden koşu etkilenmez. Oyun kilitleri okur ve asla işlem imzası istemez; zaman kilitleri harici olarak DevFridge üzerinde oluşturulur. Erişim ve canlar sunucu kimlik doğrulaması, liderlik tablosu veya ödül olmadan tarayıcıda çalışır.",
+    "fees": "Kilitler DevFridge üzerinde oluşturulur ve geri alınır; erken çekim yoktur. Geri alımda PASTA alım ve yakımı için %2 ücret ile ağ ücretleri alınır. MEMEZZO geri alımı, yürütülebilir bir Jupiter rotası gerektirir. Cüzdan özellikleri yetişkinler içindir.",
+    "team": "Ekip: Pappardelle · Herkese açık iletişim:",
+    "submission": ". Galeri başvurusu incelemeye tabidir; yarışmaya katılma uygunluğunu veya ödül kazanıldığını doğrulamaz."
+  },
+  "native": {
+    "menu": "Uygulama menüsü",
+    "hard": "Zor mod · ücretsiz · 2 can",
+    "easy": "Kolay mod · isteğe bağlı MEMEZZO mağazası",
+    "reload": "Yeniden yükle",
+    "privacy": "Gizlilik ve uygulama bilgileri (İngilizce)",
+    "website": "Web sitesini aç",
+    "close": "Uygulamayı kapat",
+    "webviewTitle": "Android System WebView bileşenini güncelleyin",
+    "webviewBody": "Bu uygulama için güncel bir Android System WebView gerekir.",
+    "restartTitle": "Oyunu yeniden başlat",
+    "restartBody": "Android grafik işlemini durdurdu. Yerel rekorunuz kaydedildi.",
+    "restart": "Yeniden başlat",
+    "loadError": "Oyun açılamadı. Uygulama menüsü → Yeniden yükle seçeneğini kullanın.",
+    "noBrowser": "Yüklü tarayıcı yok",
+    "walletMissing": "MWA uyumlu bir Solana cüzdanı yükleyip yeniden deneyin."
+  }
+}

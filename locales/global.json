@@ -1,0 +1,10 @@
+{
+  "extends": "en",
+  "meta": {
+    "locale": "en-001",
+    "country": "International",
+    "language": "English",
+    "flag": "global",
+    "dir": "ltr"
+  }
+}

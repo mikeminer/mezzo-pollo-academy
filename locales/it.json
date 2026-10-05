@@ -1,0 +1,451 @@
+{
+  "meta": {
+    "locale": "it-IT",
+    "country": "Italia",
+    "language": "Italiano",
+    "flag": "it",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "vita",
+    "other": "vite",
+    "many": "vite"
+  },
+  "core": {
+    "chooseCountry": "Scegli il paese",
+    "chooseNote": "Scegli una bandiera per impostare la lingua del gioco.",
+    "changeCountry": "Cambia paese",
+    "resume": "Riprendi",
+    "retryMusic": "Riprova musica",
+    "musicOff": "Disattiva la musica",
+    "musicOn": "Attiva la musica",
+    "musicEnabled": "Musica: sì",
+    "musicDisabled": "Musica: no",
+    "musicFailed": "La musica non si è caricata. Puoi riprovare o continuare a giocare.",
+    "musicBlocked": "Tocca Riprova musica per riattivarla.",
+    "noWebgl": "Questo dispositivo non supporta WebGL.",
+    "double": "Il doppio di {n}?",
+    "half": "La metà di {n}?",
+    "quarter": "La metà della metà di {n}?",
+    "ready": "Pronti…",
+    "livesRemaining": "Vite rimaste: {remaining} su {total}",
+    "whole": "POLLO INTERO!",
+    "wholeRule": "Non cambiare corsia finché la statua non passa",
+    "reverse": "Al contrario: scegli una risposta SBAGLIATA",
+    "shape": "Trova l’altra metà",
+    "halfChicken": "Mezzo pollo! ✂️",
+    "heldStill": "Hai resistito!",
+    "right1": "Giusto!",
+    "right2": "Bravo!",
+    "right3": "Coccodè!",
+    "right4": "Esatto!",
+    "reversed": "Era al contrario!",
+    "wrongHalf": "Metà sbagliata!",
+    "stayStill": "Stai fermo!",
+    "personalBest": "Record personale su questo dispositivo: {score}",
+    "legendary": "👑 Pollo leggendario",
+    "wholeRank": "🐔 Pollo intero",
+    "halfRank": "🍗 Mezzo pollo",
+    "chick": "🐣 Pulcino",
+    "egg": "🥚 Uovo",
+    "shareStats": "{score} punti, {right} risposte giuste",
+    "shareQuestion": "E tu quanto sei pollo?",
+    "shareHint": "Tieni premuto sull’immagine (o fai clic destro) per salvarla e condividerla.",
+    "rulesReversed": "Regola capovolta!",
+    "rulesNormal": "Regola normale",
+    "bonk": "Bum!",
+    "searchLanguages": "Cerca una lingua",
+    "noLanguages": "Nessuna lingua trovata"
+  },
+  "static": [
+    "Pista di gioco",
+    "Pausa",
+    "Un pollo di peluche ha perso metà di sé. Aiutalo a passare dal portale con la metà giusta.",
+    "Come si gioca",
+    "Negozio · Vite Facile",
+    "Volume",
+    "Volume della musica",
+    "Volume della musica in pausa",
+    "Ascolta il brano completo ↗",
+    "Come si gioca",
+    "<b>Cambia corsia</b> scorrendo a sinistra o a destra, oppure premendo ← → o A D.",
+    "<b>Salta</b> le balle di fieno scorrendo verso l’alto, oppure premendo ↑, W o la barra spaziatrice.",
+    "Leggi la domanda in alto. Passa dal portale con <b>la metà giusta</b>: completa numeri, parole e figure.",
+    "Quando compare il <b>POLLO INTERO</b>, resta nella tua corsia finché la statua non è passata.",
+    "A volte la regola si inverte: in <b>modalità inversa</b>, scegli una risposta sbagliata.",
+    "<b>Difficile è gratis:</b> ogni partita parte con 2 vite, senza wallet o verifiche dei token. Ogni errore costa una vita.",
+    "<b>Facile è più lento e ti dà più tempo.</b> Sbloccalo nel Negozio: ogni milione intero di MEMEZZO in timelock attivi dà 1 vita iniziale totale, senza vite di base. La verifica avviene solo quando la richiedi nel Negozio; nessun controllo interrompe la partita.",
+    "Indietro",
+    "Negozio · Modalità Facile",
+    "Blocca MEMEZZO su <b>DevFridge</b>, poi verifica qui per Facile. <b>Difficile è gratis con 2 vite.</b>",
+    "<b>Facile: 1 vita totale per ogni milione intero di MEMEZZO in timelock attivi.</b> Minimo 1 milione; nessuna vita di base. I lock scaduti non contano alla verifica.",
+    "Verifica manuale nel Negozio: nessun controllo automatico. Facile vale per questa sessione. Ricontrolla per aggiornare; cambio wallet, disconnessione o ricaricamento annullano l’accesso futuro. La partita continua con le vite residue.",
+    "Indirizzo del token MEMEZZO · rete principale Solana",
+    "Copia indirizzo",
+    "Scollega",
+    "Gioca Facile",
+    "Riprendi la partita",
+    "Apri nel browser Phantom ↗",
+    "Token su Pump.fun ↗",
+    "Esplora i blocchi a tempo ↗",
+    "Prima di creare un blocco a tempo",
+    "I token restano bloccati fino alla scadenza scelta, senza possibilità di ritiro anticipato.",
+    "Il riscatto prevede una commissione del 2% che acquista e brucia PASTA. Le commissioni di rete sono separate.",
+    "Per riscattare MEMEZZO serve un percorso di scambio disponibile su Jupiter. I token nuovi o con poca liquidità potrebbero non averne uno anche dopo la scadenza.",
+    "Il blocco non garantisce premi né aumenti di prezzo.",
+    "Le funzioni relative al portafoglio e ai blocchi a tempo sono riservate agli adulti. Il gioco legge i blocchi; creazione e riscatto avvengono su DevFridge, con la tua approvazione nel portafoglio.",
+    "Apri MEMEZZO su DevFridge ↗",
+    "In pausa",
+    "Negozio · Vite Facile",
+    "Torna al menu",
+    "Il pollo si è fermato",
+    "Punteggio",
+    "Risposte giuste",
+    "Record modalità (locale)",
+    "La tua scheda punteggio",
+    "Riprova",
+    "Condividi il tuo grado",
+    "Menu",
+    "La grafica ha smesso di funzionare. Ricarica la pagina per continuare."
+  ],
+  "words": [
+    [
+      "POL",
+      "LO",
+      "Uccello da cortile"
+    ],
+    [
+      "GAT",
+      "TO",
+      "Fa le fusa"
+    ],
+    [
+      "CA",
+      "NE",
+      "Abbaia"
+    ],
+    [
+      "TO",
+      "PO",
+      "Piccolo roditore"
+    ],
+    [
+      "SO",
+      "LE",
+      "Stella del giorno"
+    ],
+    [
+      "LU",
+      "NA",
+      "Satellite terrestre"
+    ],
+    [
+      "ME",
+      "LA",
+      "Frutto del melo"
+    ],
+    [
+      "PE",
+      "RA",
+      "Frutto del pero"
+    ],
+    [
+      "PA",
+      "NE",
+      "Cibo del fornaio"
+    ],
+    [
+      "LAT",
+      "TE",
+      "Bevanda della mucca"
+    ],
+    [
+      "MA",
+      "RE",
+      "Acqua salata"
+    ],
+    [
+      "CA",
+      "SA",
+      "Abitazione"
+    ],
+    [
+      "LI",
+      "BRO",
+      "Pagine da leggere"
+    ],
+    [
+      "FIO",
+      "RE",
+      "Corolla e petali"
+    ],
+    [
+      "ALBE",
+      "RO",
+      "Pianta con tronco"
+    ],
+    [
+      "CAR",
+      "OTA",
+      "Radice arancione"
+    ],
+    [
+      "BAN",
+      "ANA",
+      "Frutto ricurvo"
+    ],
+    [
+      "LIM",
+      "ONE",
+      "Agrume giallo"
+    ],
+    [
+      "FORMA",
+      "GGIO",
+      "Fatto con il latte"
+    ],
+    [
+      "CONI",
+      "GLIO",
+      "Orecchie lunghe"
+    ],
+    [
+      "TARTA",
+      "RUGA",
+      "Rettile col guscio"
+    ],
+    [
+      "PING",
+      "UINO",
+      "Uccello del Polo Sud"
+    ],
+    [
+      "DEL",
+      "FINO",
+      "Mammifero marino"
+    ],
+    [
+      "FAR",
+      "FALLA",
+      "Insetto con ali"
+    ],
+    [
+      "ARCO",
+      "BALENO",
+      "Colori dopo la pioggia"
+    ],
+    [
+      "SCU",
+      "OLA",
+      "Luogo dove si studia"
+    ],
+    [
+      "MAT",
+      "ITA",
+      "Scrive con grafite"
+    ],
+    [
+      "SEC",
+      "CHIO",
+      "Recipiente con manico"
+    ],
+    [
+      "CE",
+      "STINO",
+      "Contenitore intrecciato"
+    ],
+    [
+      "CAVA",
+      "LLO",
+      "Animale da cavalcare"
+    ],
+    [
+      "PEC",
+      "ORA",
+      "Animale da lana"
+    ],
+    [
+      "LE",
+      "ONE",
+      "Re della savana"
+    ],
+    [
+      "TI",
+      "GRE",
+      "Felino a strisce"
+    ],
+    [
+      "OR",
+      "SO",
+      "Grande animale peloso"
+    ],
+    [
+      "ANA",
+      "TRA",
+      "Uccello dello stagno"
+    ],
+    [
+      "AQU",
+      "ILA",
+      "Rapace montano"
+    ],
+    [
+      "NUV",
+      "OLA",
+      "Vapore nel cielo"
+    ],
+    [
+      "FINE",
+      "STRA",
+      "Apertura con vetro"
+    ],
+    [
+      "GIAR",
+      "DINO",
+      "Spazio per le piante"
+    ],
+    [
+      "PIU",
+      "MA",
+      "Riveste gli uccelli"
+    ]
+  ],
+  "mode": {
+    "community": "Unisciti al canale Telegram",
+    "hard": "Difficile",
+    "easy": "Facile",
+    "hardDetail": "Gratis · 2 vite",
+    "easyDetail": "Ritmo lento · sblocca nel negozio",
+    "choose": "Scegli la modalità",
+    "playHard": "Gioca Difficile · 2 vite",
+    "playEasy": "Gioca Facile · {count} {lives}",
+    "unlock": "Sblocca Facile nel negozio",
+    "shop": "Negozio · vite MEMEZZO",
+    "tutorial": "Prova il tutorial",
+    "hardHint": "Inizia subito con 2 vite. Nessun wallet o controllo dei token.",
+    "easyHint": "Più tempo per rispondere, ostacoli più lenti. Sblocca nel negozio: 1 vita totale per milione intero di MEMEZZO bloccato.",
+    "unlocked": "Facile sbloccata per questa sessione: {count} {lives} a partita. Nessun controllo mentre giochi.",
+    "hud": "{mode} · {count} {lives} iniziali · punteggio locale",
+    "badge": "MODALITÀ {mode}",
+    "shopNote": "Difficile è sempre gratis. I token vengono bloccati su DevFridge, non spesi nel gioco.",
+    "link": "Gioca gratis · Difficile →",
+    "title": "MezzoPollo — Difficile e Facile",
+    "back": "Torna al gioco",
+    "tutorialHud": "TUTORIAL · prova senza perdere vite",
+    "tutorialQuestion": "Segui la guida qui sotto",
+    "shopLoading": "Apertura del negozio…",
+    "shopError": "Il negozio non si è caricato. Puoi comunque giocare a Difficile. Riprova ad aprire il negozio."
+  },
+  "tutorial": {
+    "label": "Impara giocando",
+    "practice": "Allenamento guidato",
+    "progress": "Passo {n} di {total}",
+    "safe": "Non perdi vite. Il punteggio non viene salvato.",
+    "skip": "Salta tutorial",
+    "next": "Prossima sfida",
+    "finish": "Inizia a giocare",
+    "retry": "Riprova",
+    "good": "Perfetto! Puoi passare alla prossima sfida.",
+    "done": "Pronto! La modalità difficile parte con 2 vite. Visita il negozio facoltativo per vite extra e modalità facile.",
+    "again": "Nessun problema! Riprova questa sfida.",
+    "leftControl": "Vai a sinistra",
+    "rightControl": "Vai a destra",
+    "jumpControl": "Salta",
+    "half": "La metà di 8?",
+    "normalRule": "Scegli la metà corretta",
+    "reverseRule": "Al contrario: scegli una risposta SBAGLIATA",
+    "wholeQuestion": "POLLO INTERO!",
+    "wholeRule": "Resta nella tua corsia finché passa la statua",
+    "left": [
+      "Vai a sinistra",
+      "Prova subito: scorri a sinistra sulla pista, premi ← o A, oppure tocca la freccia qui sotto."
+    ],
+    "right": [
+      "Ora vai a destra",
+      "Scorri a destra sulla pista, premi → o D, oppure tocca la freccia qui sotto."
+    ],
+    "jump": [
+      "Fai saltare il pollo",
+      "Scorri verso l’alto sulla pista, premi ↑, W o Spazio, oppure tocca Salta. Durante la corsa salta le balle di fieno."
+    ],
+    "gate": [
+      "Trova la metà mancante",
+      "Leggi la lavagna: la metà di 8 è 4. Mettiti nella corsia centrale e attraversa il portale con il 4."
+    ],
+    "reverse": [
+      "Attento: AL CONTRARIO!",
+      "La regola si è capovolta! La metà di 8 è 4, quindi scegli una risposta SBAGLIATA: vai a sinistra sul 2 o a destra sull’8."
+    ],
+    "whole": [
+      "POLLO INTERO: resta in corsia",
+      "Non cambiare corsia finché la statua non passa. Resta nella corsia di partenza. Prova ora!"
+    ]
+  },
+  "access": {
+    "connect": "Collega e verifica",
+    "connectingButton": "Connessione…",
+    "check": "Verifica vite Facile",
+    "checkingButton": "Verifica in corso…",
+    "wallet": "Wallet: {wallet}",
+    "copyMint": "Copia mint",
+    "copied": "Mint copiato",
+    "copyFallback": "Seleziona e copia il mint qui sopra",
+    "disconnected": "Collega Phantom nel Negozio per verificare le vite Facile. Difficile è sempre gratis con 2 vite. Il gioco non richiederà alcuna transazione.",
+    "connected": "Wallet collegato. Scegli Verifica vite Facile per controllare i timelock MEMEZZO attivi per questa sessione. Difficile è sempre disponibile.",
+    "connecting": "Conferma la connessione in Phantom. Non occorre firmare una transazione.",
+    "checking": "Controllo i timelock MEMEZZO del wallet su Solana…",
+    "eligible": "Facile sbloccato per questa sessione della pagina: {amount} MEMEZZO in timelock attivi alla verifica. Ogni nuova partita Facile inizia con {lives} {lifeWord}. Nessun controllo durante il gioco.",
+    "insufficient": "Non sono confermati almeno {minimum} MEMEZZO in timelock attivi per Facile. Dopo aver creato un lock, attendi la conferma e verifica di nuovo. Puoi comunque giocare Difficile con 2 vite.",
+    "unavailable": "La verifica per Facile non è disponibile oppure i dati ricevuti non sono aggiornati. Riprova dal Negozio tra poco. Difficile e la partita in corso restano disponibili.",
+    "rejected": "Connessione annullata in Phantom. Puoi riprovare quando vuoi.",
+    "missing-wallet": "Phantom non è disponibile in questo browser. Su telefono apri il gioco nel browser Phantom per verificare le vite Facile nel Negozio. Difficile non richiede un wallet.",
+    "captionsOn": "Sottotitoli in inglese: attivi",
+    "captionsOff": "Sottotitoli in inglese: disattivati"
+  },
+  "demo": {
+    "title": "Mezzo Pollo Academy — demo di gioco",
+    "description": "MezzoPollo: Difficile gratis con 2 vite, Facile più lento facoltativo, tutorial interattivo e interfaccia in 20 lingue con 25 scelte regionali, musica italiana e sottotitoli della canzone in inglese.",
+    "tag": "Hackathon DevFridge · Difficile e Facile",
+    "intro": "Un mezzo pollo di peluche corre su tre corsie, scegliendo la metà mancante di numeri, parole e forme. Schiva gli ostacoli, raccogli le piume e resta fermo quando appare il POLLO INTERO.",
+    "play": "Scegli una modalità e gioca →",
+    "source": "Codice sorgente e prove della candidatura",
+    "songTitle": "Mezza piuma, doppio volo",
+    "songIntro": "La sigla brainrot italiana completa, con sottotitoli in inglese, generata con Google Lyria in Gemini. Nel gioco parte quando premi Gioca, si ripete a volume ridotto, si ferma quando metti in pausa e si abbassa durante i segnali di gioco. I comandi della musica sono disponibili nel menu, nella pausa e durante la partita.",
+    "audioLabel": "Mezzo Pollo — colonna sonora completa",
+    "captionNote": "I sottotitoli in inglese seguono la canzone durante la riproduzione.",
+    "downloadCaptions": "Scarica i sottotitoli in inglese",
+    "downloadMp3": "Scarica MP3",
+    "playMusic": "Gioca con la musica →",
+    "desktopTitle": "Gioco in inglese su computer",
+    "desktopNote": "Registrazione storica del 25 settembre 2026, precedente alle modalità Difficile/Facile e al tutorial interattivo. Le schermate di accesso mostrano le vecchie regole. Il wallet e i dati dei timelock sono simulati; non sono mostrate autorizzazioni di wallet reali o transazioni. Il video senza audio mostra comandi di gioco effettivi. Ascolta la colonna sonora qui sopra.",
+    "downloadDesktop": "Scarica il video per computer in inglese",
+    "mobileTitle": "Interfaccia mobile in inglese — emulazione",
+    "mobileNote": "Registrazione storica dell’interfaccia inglese, emulata nel browser a 390 × 844 prima delle attuali regole Difficile/Facile e del tutorial, con wallet e timelock simulati. Video senza audio; non è una prova su telefono fisico o con wallet reale.",
+    "downloadMobile": "Scarica il video mobile in inglese",
+    "accessTitle": "Accesso e limiti",
+    "accessIntro": "Difficile è gratis e offre 2 vite a ogni nuova partita, senza wallet o verifiche dei token. Facile è più lento e dà più tempo: si sblocca nel Negozio richiedendo esplicitamente la verifica di almeno 1.000.000 MEMEZZO nei timelock DevFridge attivi del wallet Phantom collegato. Nessuna durata minima; i blocchi scaduti non contano alla verifica. Indirizzo del token:",
+    "accessOutro": ". Anche /practice apre Difficile gratis. Il tutorial interattivo parte prima della prima partita in ogni lingua e si può ripetere dal menu. I record Difficile e Facile sono locali, separati e non verificati.",
+    "lives": "Facile dà una vita iniziale totale per ogni milione intero confermato nel Negozio, senza vite di base: 1.000.000 MEMEZZO dà 1 vita, 1.999.999 dà 1 vita e 2.000.000 dà 2 vite. Difficile parte sempre con 2 vite. Le vite iniziali sono fisse per ogni partita; riprendere o verificare nel Negozio non le ricarica.",
+    "verification": "Non ci sono controlli automatici dei token all’avvio, durante la partita, alla ripresa o tornando sulla pagina. Le vite Facile verificate valgono per nuove partite finché la pagina resta aperta, fino a una verifica manuale nel Negozio, un cambio wallet, una disconnessione o un ricaricamento della pagina. La partita in corso non viene interrotta. Il gioco legge i timelock e non chiede firme di transazioni; i blocchi si creano esternamente su DevFridge. Accesso e vite sono gestiti nel browser, senza autenticazione server, classifiche o premi.",
+    "fees": "I timelock si creano e si riscattano su DevFridge, senza prelievo anticipato e con una commissione di riscatto del 2% destinata all’acquisto e alla distruzione di PASTA, oltre alle commissioni di rete. Per riscattare MEMEZZO serve una rotta Jupiter eseguibile. Le funzioni del wallet sono riservate agli adulti.",
+    "team": "Team: Pappardelle · Contatto pubblico:",
+    "submission": ". La candidatura alla galleria è soggetta a revisione; non conferma l’ammissibilità al concorso né un premio."
+  },
+  "native": {
+    "menu": "Menu app",
+    "hard": "Difficile · gratis · 2 vite",
+    "easy": "Facile · negozio MEMEZZO facoltativo",
+    "reload": "Ricarica",
+    "privacy": "Privacy e informazioni app (inglese)",
+    "website": "Apri il sito",
+    "close": "Chiudi app",
+    "webviewTitle": "Aggiorna Android System WebView",
+    "webviewBody": "Per questa app serve una versione aggiornata di Android System WebView.",
+    "restartTitle": "Riavvia il gioco",
+    "restartBody": "Android ha interrotto il processo grafico. Il tuo record locale è salvato.",
+    "restart": "Riavvia",
+    "loadError": "Impossibile aprire il gioco. Usa Menu app → Ricarica.",
+    "noBrowser": "Nessun browser installato",
+    "walletMissing": "Installa un wallet Solana compatibile MWA e riprova."
+  }
+}

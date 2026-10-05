@@ -1,0 +1,389 @@
+{
+  "meta": {
+    "locale": "vi-VN",
+    "country": "Việt Nam",
+    "language": "Tiếng Việt",
+    "flag": "vn",
+    "dir": "ltr"
+  },
+  "life": {
+    "other": "mạng"
+  },
+  "core": {
+    "chooseCountry": "Chọn quốc gia",
+    "chooseNote": "Chọn lá cờ để đặt ngôn ngữ cho trò chơi.",
+    "changeCountry": "Đổi quốc gia",
+    "resume": "Tiếp tục",
+    "retryMusic": "Tải lại nhạc",
+    "musicOff": "Tắt nhạc",
+    "musicOn": "Bật nhạc",
+    "musicEnabled": "Nhạc: bật",
+    "musicDisabled": "Nhạc: tắt",
+    "musicFailed": "Không tải được nhạc. Bạn có thể thử lại hoặc chơi tiếp.",
+    "musicBlocked": "Nhấn Tải lại nhạc để bật nhạc trở lại.",
+    "noWebgl": "Thiết bị này không hỗ trợ WebGL.",
+    "double": "Gấp đôi {n} là bao nhiêu?",
+    "half": "Một nửa của {n} là bao nhiêu?",
+    "quarter": "Một nửa của một nửa {n} là bao nhiêu?",
+    "ready": "Sẵn sàng…",
+    "livesRemaining": "Mạng còn lại: {remaining} trên {total}",
+    "whole": "GÀ NGUYÊN CON!",
+    "wholeRule": "Giữ nguyên làn cho đến khi bức tượng đi qua",
+    "reverse": "Chế độ đảo ngược: chọn đáp án SAI",
+    "shape": "Tìm nửa còn lại",
+    "halfChicken": "Nửa con gà! ✂️",
+    "heldStill": "Bạn đã giữ nguyên vị trí!",
+    "right1": "Đúng rồi!",
+    "right2": "Giỏi lắm!",
+    "right3": "Cục tác!",
+    "right4": "Chính xác!",
+    "reversed": "Vừa rồi là luật đảo ngược!",
+    "wrongHalf": "Sai nửa rồi!",
+    "stayStill": "Đứng yên!",
+    "personalBest": "Kỷ lục cá nhân trên thiết bị này: {score}",
+    "legendary": "👑 Gà huyền thoại",
+    "wholeRank": "🐔 Gà nguyên con",
+    "halfRank": "🍗 Nửa con gà",
+    "chick": "🐣 Gà con",
+    "egg": "🥚 Trứng",
+    "shareStats": "{score} điểm, {right} câu đúng",
+    "shareQuestion": "Bạn đạt hạng gà nào?",
+    "shareHint": "Nhấn giữ ảnh hoặc nhấp chuột phải để lưu và chia sẻ.",
+    "rulesReversed": "Luật đã đảo ngược!",
+    "rulesNormal": "Luật bình thường",
+    "bonk": "Cộp!",
+    "searchLanguages": "Tìm ngôn ngữ",
+    "noLanguages": "Không có ngôn ngữ phù hợp"
+  },
+  "static": [
+    "Đường chạy",
+    "Tạm dừng",
+    "Một chú gà bông đã mất nửa thân mình. Hãy giúp chú chạy qua cổng có nửa còn lại phù hợp.",
+    "Cách chơi",
+    "Cửa hàng · Mạng chế độ Dễ",
+    "Âm lượng",
+    "Âm lượng nhạc",
+    "Âm lượng nhạc khi tạm dừng",
+    "Nghe toàn bộ bài hát ↗",
+    "Cách chơi",
+    "<b>Đổi làn</b> bằng cách vuốt sang trái hoặc phải, hoặc nhấn ← → hay A D.",
+    "<b>Nhảy</b> qua kiện rơm bằng cách vuốt lên, hoặc nhấn ↑, W hay phím cách.",
+    "Đọc câu hỏi phía trên. Chạy qua cổng có <b>nửa còn lại phù hợp</b> để hoàn thành số, từ và hình dạng.",
+    "Khi <b>GÀ NGUYÊN CON</b> xuất hiện, giữ nguyên làn cho đến khi bức tượng đi qua.",
+    "Đôi khi luật bị đảo: trong <b>chế độ đảo ngược</b>, hãy chọn đáp án sai.",
+    "<b>Chế độ Khó miễn phí:</b> mỗi lượt bắt đầu với 2 mạng, không cần ví hay kiểm tra token. Mỗi lần sai mất một mạng.",
+    "<b>Chế độ Dễ chậm hơn và cho thêm thời gian.</b> Mở khóa tại Cửa hàng: mỗi triệu MEMEZZO tròn đang được khóa có thời hạn còn hiệu lực cho tổng cộng 1 mạng ban đầu, không có mạng cơ bản. Chỉ xác minh khi bạn yêu cầu trong Cửa hàng; không có kiểm tra làm gián đoạn lượt chơi.",
+    "Quay lại",
+    "Cửa hàng · Chế độ Dễ",
+    "Khóa MEMEZZO có thời hạn trên <b>DevFridge</b>, rồi xác minh tại đây để mở chế độ Dễ. <b>Chế độ Khó miễn phí với 2 mạng.</b>",
+    "<b>Chế độ Dễ: tổng cộng 1 mạng cho mỗi triệu MEMEZZO tròn đang được khóa.</b> Tối thiểu 1 triệu; không có mạng cơ bản. Khóa đã hết hạn không được tính khi xác minh.",
+    "Chỉ kiểm tra thủ công trong Cửa hàng; không có kiểm tra tự động gián đoạn trò chơi. Chế độ Dễ có hiệu lực trong phiên trang này. Kiểm tra lại để cập nhật; đổi ví, ngắt kết nối hoặc tải lại trang sẽ xóa quyền cho các lượt sau. Lượt đang chơi vẫn tiếp tục với số mạng còn lại.",
+    "Địa chỉ mint MEMEZZO · Mạng chính Solana",
+    "Sao chép địa chỉ mint",
+    "Ngắt kết nối",
+    "Chơi chế độ Dễ",
+    "Tiếp tục trò chơi",
+    "Mở trong trình duyệt Phantom ↗",
+    "Token trên Pump.fun ↗",
+    "Xem các khóa có thời hạn ↗",
+    "Trước khi tạo khóa có thời hạn",
+    "Token bị khóa đến thời điểm hết hạn bạn chọn, không thể rút trước hạn.",
+    "Khi rút có phí 2% dùng để mua và đốt PASTA. Phí mạng được tính riêng.",
+    "Rút MEMEZZO cần tuyến giao dịch Jupiter khả dụng. Token mới hoặc thanh khoản thấp có thể không có tuyến ngay cả sau khi khóa hết hạn.",
+    "Khóa token không bảo đảm có giải thưởng hay tăng giá.",
+    "Chức năng ví và khóa có thời hạn dành cho người lớn. Trò chơi đọc dữ liệu khóa; việc tạo và rút được thực hiện trên DevFridge với sự chấp thuận qua ví của bạn.",
+    "Mở MEMEZZO trên DevFridge ↗",
+    "Đã tạm dừng",
+    "Cửa hàng · Mạng chế độ Dễ",
+    "Về menu",
+    "Gà đã dừng lại",
+    "Điểm",
+    "Câu trả lời đúng",
+    "Kỷ lục chế độ (trên máy)",
+    "Thẻ điểm của bạn",
+    "Thử lại",
+    "Chia sẻ thứ hạng",
+    "Menu",
+    "Đồ họa đã ngừng hoạt động. Tải lại trang để tiếp tục."
+  ],
+  "words": [
+    [
+      "gà ",
+      "con",
+      "Gà mới nở"
+    ],
+    [
+      "cá ",
+      "heo",
+      "Động vật có vú thông minh sống ở biển"
+    ],
+    [
+      "chim ",
+      "cánh cụt",
+      "Loài chim không bay sống ở Nam Cực"
+    ],
+    [
+      "rùa ",
+      "biển",
+      "Loài bò sát có mai bơi ở đại dương"
+    ],
+    [
+      "cá ",
+      "mập",
+      "Cá săn mồi có nhiều răng sắc"
+    ],
+    [
+      "cá ",
+      "vàng",
+      "Cá cảnh nhỏ thường có màu cam"
+    ],
+    [
+      "chuồn ",
+      "chuồn",
+      "Côn trùng mắt to có bốn cánh dài"
+    ],
+    [
+      "cầu ",
+      "vồng",
+      "Dải bảy màu trên trời sau mưa"
+    ],
+    [
+      "mặt ",
+      "trăng",
+      "Vệ tinh tự nhiên của Trái Đất"
+    ],
+    [
+      "mặt ",
+      "trời",
+      "Ngôi sao chiếu sáng ban ngày"
+    ],
+    [
+      "ngôi ",
+      "sao",
+      "Điểm sáng lấp lánh xa xôi trên trời đêm"
+    ],
+    [
+      "dưa ",
+      "hấu",
+      "Quả vỏ xanh ruột đỏ nhiều nước"
+    ],
+    [
+      "cà ",
+      "rốt",
+      "Củ màu cam thường dùng nấu canh"
+    ],
+    [
+      "khoai ",
+      "tây",
+      "Loại củ dùng làm món khoai chiên"
+    ],
+    [
+      "hành ",
+      "tây",
+      "Củ có nhiều lớp khiến cay mắt khi cắt"
+    ],
+    [
+      "dâu ",
+      "tây",
+      "Quả đỏ có hạt li ti bên ngoài"
+    ],
+    [
+      "bút ",
+      "chì",
+      "Dụng cụ viết có ruột than cần gọt"
+    ],
+    [
+      "thước ",
+      "kẻ",
+      "Dụng cụ đo độ dài và vẽ đường thẳng"
+    ],
+    [
+      "quyển ",
+      "sách",
+      "Vật gồm nhiều trang để đọc"
+    ],
+    [
+      "trường ",
+      "học",
+      "Nơi học sinh đến học"
+    ],
+    [
+      "máy ",
+      "bay",
+      "Phương tiện có cánh bay trên trời"
+    ],
+    [
+      "xe ",
+      "đạp",
+      "Phương tiện hai bánh chạy bằng bàn đạp"
+    ],
+    [
+      "tàu ",
+      "hỏa",
+      "Phương tiện chạy trên đường ray"
+    ],
+    [
+      "người ",
+      "tuyết",
+      "Hình người làm bằng tuyết"
+    ],
+    [
+      "găng ",
+      "tay",
+      "Đồ mặc bao quanh bàn tay"
+    ],
+    [
+      "đồng ",
+      "hồ",
+      "Dụng cụ chỉ giờ"
+    ],
+    [
+      "ngựa ",
+      "vằn",
+      "Động vật giống ngựa có sọc đen trắng"
+    ],
+    [
+      "sư ",
+      "tử",
+      "Mèo lớn có bờm ở con đực"
+    ]
+  ],
+  "mode": {
+    "community": "Tham gia kênh Telegram",
+    "hard": "Khó",
+    "easy": "Dễ",
+    "hardDetail": "Miễn phí · 2 mạng",
+    "easyDetail": "Chậm hơn · mở khóa tại cửa hàng",
+    "choose": "Chọn chế độ",
+    "playHard": "Chơi Khó · 2 mạng",
+    "playEasy": "Chơi Dễ · {count} {lives}",
+    "unlock": "Mở khóa Dễ tại cửa hàng",
+    "shop": "Cửa hàng · Mạng MEMEZZO",
+    "tutorial": "Chơi hướng dẫn",
+    "hardHint": "Vào chơi ngay với 2 mạng. Không cần ví hay kiểm tra token.",
+    "easyHint": "Thêm thời gian trả lời, chướng ngại chậm hơn. Mở khóa tại cửa hàng: tổng cộng 1 mạng cho mỗi triệu MEMEZZO tròn được khóa.",
+    "unlocked": "Đã mở khóa Dễ trong phiên này: {count} {lives} mỗi lượt. Không kiểm tra khi đang chơi.",
+    "hud": "{mode} · ban đầu {count} {lives} · điểm trên máy",
+    "badge": "CHẾ ĐỘ {mode}",
+    "shopNote": "Chế độ Khó luôn miễn phí. Token được khóa có thời hạn trên DevFridge, không tiêu trong trò chơi.",
+    "link": "Chơi miễn phí · Chế độ Khó →",
+    "title": "MezzoPollo — Khó & Dễ",
+    "back": "Trở lại trò chơi",
+    "tutorialHud": "HƯỚNG DẪN · luyện tập không mất mạng",
+    "tutorialQuestion": "Làm theo hướng dẫn bên dưới",
+    "shopLoading": "Đang mở cửa hàng…",
+    "shopError": "Không tải được cửa hàng. Bạn vẫn chơi Khó được. Hãy thử mở lại cửa hàng."
+  },
+  "tutorial": {
+    "label": "Vừa chơi vừa học",
+    "practice": "Luyện tập có hướng dẫn",
+    "progress": "Bước {n} trên {total}",
+    "safe": "Không mất mạng. Không lưu điểm.",
+    "skip": "Bỏ qua hướng dẫn",
+    "next": "Thử thách tiếp theo",
+    "finish": "Bắt đầu chơi",
+    "retry": "Thử lại",
+    "good": "Hiểu rồi! Sẵn sàng cho thử thách tiếp theo.",
+    "done": "Sẵn sàng! Chế độ Khó bắt đầu với 2 mạng. Bạn có thể ghé cửa hàng nếu muốn thêm mạng và chế độ Dễ.",
+    "again": "Không sao! Thử lại thử thách này nhé.",
+    "leftControl": "Sang trái",
+    "rightControl": "Sang phải",
+    "jumpControl": "Nhảy",
+    "half": "Một nửa của 8 là bao nhiêu?",
+    "normalRule": "Chọn nửa còn lại phù hợp",
+    "reverseRule": "Đảo ngược: chọn đáp án SAI",
+    "wholeQuestion": "GÀ NGUYÊN CON!",
+    "wholeRule": "Giữ nguyên làn đến khi bức tượng đi qua",
+    "left": [
+      "Sang trái",
+      "Thử ngay: vuốt trái trên đường chạy, nhấn ← hoặc A, hay chạm mũi tên trái bên dưới."
+    ],
+    "right": [
+      "Giờ sang phải",
+      "Vuốt phải trên đường chạy, nhấn → hoặc D, hay chạm mũi tên phải bên dưới."
+    ],
+    "jump": [
+      "Cho gà nhảy nào",
+      "Vuốt lên trên đường chạy, nhấn ↑, W hoặc phím cách, hay chạm Nhảy. Nhảy qua các kiện rơm trong lượt chơi."
+    ],
+    "gate": [
+      "Tìm nửa còn thiếu",
+      "Đọc bảng: một nửa của 8 là 4. Sang làn giữa và đi qua cổng có số 4."
+    ],
+    "reverse": [
+      "Chú ý: ĐẢO NGƯỢC!",
+      "Luật đã đảo! Một nửa của 8 là 4, nên hãy chọn đáp án SAI: sang trái chọn 2 hoặc sang phải chọn 8."
+    ],
+    "whole": [
+      "GÀ NGUYÊN CON: giữ nguyên làn",
+      "Ngừng đổi làn cho đến khi bức tượng đi qua. Ở đúng làn bạn bắt đầu. Thử ngay!"
+    ]
+  },
+  "access": {
+    "connect": "Kết nối và xác minh",
+    "connectingButton": "Đang kết nối…",
+    "check": "Xác minh mạng chế độ Dễ",
+    "checkingButton": "Đang kiểm tra…",
+    "wallet": "Ví: {wallet}",
+    "copyMint": "Sao chép địa chỉ mint",
+    "copied": "Đã sao chép địa chỉ mint",
+    "copyFallback": "Chọn và sao chép địa chỉ mint phía trên",
+    "disconnected": "Kết nối Phantom trong Cửa hàng để xác minh mạng chế độ Dễ. Khó luôn miễn phí với 2 mạng. Trò chơi sẽ không yêu cầu giao dịch nào.",
+    "connected": "Đã kết nối ví. Chọn Xác minh mạng chế độ Dễ để kiểm tra khóa MEMEZZO còn hiệu lực cho phiên này. Khó luôn có sẵn.",
+    "connecting": "Chấp thuận kết nối trong Phantom. Không cần ký giao dịch.",
+    "checking": "Đang kiểm tra khóa MEMEZZO của ví này trên Solana…",
+    "eligible": "Đã mở khóa Dễ cho phiên trang này: {amount} MEMEZZO đang được khóa khi xác minh. Mỗi lượt Dễ mới bắt đầu với {lives} {lifeWord}. Không kiểm tra trong lúc chơi.",
+    "insufficient": "Chưa xác nhận được ít nhất {minimum} MEMEZZO trong khóa còn hiệu lực cho chế độ Dễ. Sau khi tạo khóa, chờ xác nhận rồi xác minh lại. Bạn vẫn chơi Khó với 2 mạng được.",
+    "unavailable": "Không thể xác minh Dễ hoặc dữ liệu trả về đã cũ. Hãy thử kiểm tra lại tại Cửa hàng sau ít phút. Chế độ Khó và lượt đang chơi vẫn tiếp tục được.",
+    "rejected": "Đã hủy kết nối trong Phantom. Bạn có thể thử lại khi sẵn sàng.",
+    "missing-wallet": "Không có Phantom trong trình duyệt này. Trên điện thoại, mở trò chơi bằng trình duyệt Phantom để xác minh mạng Dễ tại Cửa hàng. Khó không cần ví.",
+    "captionsOn": "Phụ đề tiếng Anh: bật",
+    "captionsOff": "Phụ đề tiếng Anh: tắt"
+  },
+  "demo": {
+    "title": "Mezzo Pollo Academy — bản trình diễn trò chơi",
+    "description": "MezzoPollo: chế độ Khó miễn phí với 2 mạng, chế độ Dễ chậm hơn tùy chọn, hướng dẫn tương tác, giao diện 20 ngôn ngữ với 25 lựa chọn khu vực, nhạc tiếng Ý và phụ đề bài hát tiếng Anh.",
+    "tag": "Cuộc thi lập trình DevFridge · Khó & Dễ",
+    "intro": "Nửa chú gà bông chạy qua ba làn, chọn nửa còn thiếu của số, từ và hình dạng. Né chướng ngại, nhặt lông và đứng yên khi GÀ NGUYÊN CON xuất hiện.",
+    "play": "Chọn chế độ và chơi →",
+    "source": "Mã nguồn và bằng chứng nộp bài",
+    "songTitle": "Nửa chiếc lông, bay xa gấp đôi",
+    "songIntro": "Bản đầy đủ của bài nhạc chủ đề tiếng Ý theo phong cách meme phi lý, có phụ đề tiếng Anh, tạo bằng Google Lyria trong Gemini. Trong trò chơi, nhạc bắt đầu khi nhấn chơi, lặp lại ở âm lượng thấp hơn, tạm dừng cùng lượt chơi và nhỏ đi khi có tín hiệu trò chơi. Có nút điều khiển nhạc trong menu, màn hình tạm dừng và giao diện khi chơi.",
+    "audioLabel": "Mezzo Pollo — nhạc nền đầy đủ",
+    "captionNote": "Phụ đề tiếng Anh chạy theo bài hát khi phát.",
+    "downloadCaptions": "Tải phụ đề tiếng Anh",
+    "downloadMp3": "Tải MP3",
+    "playMusic": "Chơi cùng âm nhạc →",
+    "desktopTitle": "Chơi trên máy tính bằng tiếng Anh",
+    "desktopNote": "Video trình diễn trình duyệt cũ, ghi ngày 25 tháng 9 năm 2026, trước khi có chế độ Khó/Dễ và hướng dẫn tương tác. Màn hình truy cập hiển thị luật cũ. Dữ liệu ví và khóa là mô phỏng; không có chấp thuận ví hay giao dịch thật. Video không tiếng ghi lại thao tác chơi thực tế. Nghe nhạc nền ở trên.",
+    "downloadDesktop": "Tải video máy tính tiếng Anh",
+    "mobileTitle": "Giao diện di động tiếng Anh — mô phỏng",
+    "mobileNote": "Video cũ mô phỏng giao diện tiếng Anh trong trình duyệt 390 × 844, trước luật Khó/Dễ và hướng dẫn hiện tại, dùng dữ liệu ví và khóa mô phỏng. Video không tiếng; không phải kiểm thử trên điện thoại thật hay ví thật.",
+    "downloadMobile": "Tải video di động tiếng Anh",
+    "accessTitle": "Quyền truy cập và giới hạn",
+    "accessIntro": "Khó miễn phí và bắt đầu mỗi lượt với 2 mạng, không cần ví hay xác minh token. Dễ chậm hơn, cho thêm thời gian: mở khóa trong Cửa hàng bằng cách chủ động xác minh có ít nhất 1.000.000 MEMEZZO trong các khóa DevFridge còn hiệu lực của ví Phantom đang kết nối. Không có thời hạn khóa tối thiểu; khóa hết hạn không tính khi xác minh. Địa chỉ mint:",
+    "accessOutro": ". Đường dẫn /practice cũng mở chế độ Khó miễn phí. Hướng dẫn tương tác bắt đầu trước lượt chơi đầu tiên trong mỗi ngôn ngữ và có thể chơi lại từ menu. Kỷ lục Khó và Dễ lưu riêng trên máy, không được xác minh.",
+    "lives": "Dễ cho tổng cộng một mạng ban đầu trên mỗi triệu MEMEZZO tròn được xác nhận tại Cửa hàng, không có mạng cơ bản: 1.000.000 MEMEZZO cho 1 mạng, 1.999.999 cho 1, và 2.000.000 cho 2. Khó luôn bắt đầu với 2 mạng. Mạng ban đầu cố định trong từng lượt; tiếp tục chơi hay kiểm tra Cửa hàng không bao giờ hồi mạng.",
+    "verification": "Không tự kiểm tra token khi bắt đầu lượt, trong lúc chơi, khi tiếp tục hoặc khi quay lại trang. Mạng Dễ đã xác minh vẫn dùng cho lượt mới khi trang còn mở, đến khi kiểm tra Cửa hàng thủ công, đổi ví, ngắt kết nối hay tải lại trang. Lượt đang chơi không bị ảnh hưởng. Trò chơi chỉ đọc khóa, không bao giờ yêu cầu ký giao dịch; việc tạo khóa thực hiện bên ngoài trên DevFridge. Quyền truy cập và mạng được xử lý trong trình duyệt, không có xác thực máy chủ, bảng xếp hạng hay phần thưởng.",
+    "fees": "Tạo và rút khóa trên DevFridge, không được rút trước hạn, có phí rút 2% để mua và đốt PASTA, cộng phí mạng. Rút MEMEZZO cần tuyến Jupiter có thể thực hiện được. Chức năng ví dành cho người lớn.",
+    "team": "Nhóm: Pappardelle · Liên hệ công khai:",
+    "submission": ". Việc nộp vào thư viện tác phẩm cần được xem xét; không xác nhận tư cách dự thi hay giải thưởng."
+  },
+  "native": {
+    "menu": "Menu ứng dụng",
+    "hard": "Chế độ Khó · miễn phí · 2 mạng",
+    "easy": "Chế độ Dễ · cửa hàng MEMEZZO tùy chọn",
+    "reload": "Tải lại",
+    "privacy": "Quyền riêng tư và thông tin ứng dụng (tiếng Anh)",
+    "website": "Mở trang web",
+    "close": "Đóng ứng dụng",
+    "webviewTitle": "Cập nhật Android System WebView",
+    "webviewBody": "Ứng dụng này cần phiên bản Android System WebView hiện hành.",
+    "restartTitle": "Khởi động lại trò chơi",
+    "restartBody": "Android đã dừng tiến trình đồ họa. Kỷ lục trên máy của bạn đã được lưu.",
+    "restart": "Khởi động lại",
+    "loadError": "Không mở được trò chơi. Chọn Menu ứng dụng → Tải lại.",
+    "noBrowser": "Chưa cài trình duyệt",
+    "walletMissing": "Cài ví Solana tương thích MWA rồi thử lại."
+  }
+}

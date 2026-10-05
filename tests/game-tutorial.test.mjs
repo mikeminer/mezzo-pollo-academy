@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFile } from 'node:fs/promises';
 
-const source = await readFile(new URL('../game-tutorial.js', import.meta.url), 'utf8');
+const packs = await readFile(new URL('../language-packs.js', import.meta.url), 'utf8');
+const source = packs + '\n' + await readFile(new URL('../game-tutorial.js', import.meta.url), 'utf8');
 class Element extends EventTarget {
   constructor() {
     super(); this.dataset = {}; this.children = []; this.attributes = new Map(); this.queries = new Map();
@@ -55,6 +56,27 @@ const successes = [
   { type: 'gate', rule: 'normal', correct: true }, { type: 'gate', rule: 'reverse', correct: true },
   { type: 'whole', correct: true },
 ];
+
+test('every profile renders its six lessons and preserves physical control meanings', () => {
+  const h = setup();
+  for (const [code, pack] of Object.entries(h.window.MezzoTranslations)) {
+    h.window.MezzoLocale.code = code;
+    h.window.MezzoLocale.locale = pack.meta.locale;
+    h.start();
+    assert.equal(h.ui().lang, pack.meta.locale, code);
+    for (const evidence of successes) {
+      const step = h.tutorial.step;
+      assert.equal(h.ui().querySelector('.tutorial-title').textContent, pack.tutorial[step.id][0], code);
+      assert.equal(h.ui().querySelector('.tutorial-body').textContent, pack.tutorial[step.id][1], code);
+      if (step.id === 'left') assert.equal(step.targetDirection, -1, code);
+      if (step.id === 'right') assert.equal(step.targetDirection, 1, code);
+      assert.equal(h.tutorial.observe(evidence), true, code);
+      assert.equal(h.tutorial.next(), true, code);
+    }
+    assert.equal(h.tutorial.active, false, code);
+    assert.equal(h.tutorial.shouldStart(), false, code);
+  }
+});
 function reachGate(h) {
   for (const event of successes.slice(0, 3)) { h.tutorial.observe(event); h.tutorial.next(); }
 }
