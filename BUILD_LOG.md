@@ -81,3 +81,5 @@ Su richiesta esplicita del team è stata aggiunta `/practice`, una demo pubblica
 ## 25 regional language profiles — 5 October 2026
 
 Codex expanded the chooser according to the user's attached country list: 24 countries and an international English profile, covering 20 languages. PIKKO is interpreted as the international base choice; the game's branding remains MezzoPollo. Translations are editable UTF-8 catalogs with a checked deterministic offline bundle, regional inheritance and local SVG flags. Tutorial, Shop, demo, accessible controls, prompts, feedback and native word banks share the catalogs. Arabic direction and Unicode grapheme-safe word splitting are supported. The soundtrack remains Italian with English lyrics. All 81 automated checks passed. No gameplay entitlement rule was changed.
+
+The user subsequently requested an invitation to `https://t.me/playmezzopollo`. A translated link was added to the game menu and Android's existing external-navigation menu. The channel is opened only by player action; there is no automatic subscription or message. Tutorial action buttons stay visible in short landscape viewports while the instruction text scrolls.
