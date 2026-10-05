@@ -69,7 +69,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #board.intero{background:#5a2a22}
 #board.intero #qtext{color:#ffd9a6}
 #practice{justify-self:start;align-self:end;pointer-events:auto;font-size:13px;font-weight:600;background:rgba(31,42,35,.82);color:var(--chalk);border-radius:999px;padding:6px 12px;border:2px solid var(--straw)}
-#toast{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(.9);font-family:var(--hand);font-size:clamp(34px,9vw,58px);color:#fff;text-shadow:0 3px 0 var(--wood-dark),0 0 18px rgba(0,0,0,.35);opacity:0;transition:opacity .18s,transform .18s;white-space:nowrap;pointer-events:none}
+#toast{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) scale(.9);font-family:var(--hand);font-size:clamp(34px,9vw,58px);color:#fff;text-shadow:0 3px 0 var(--wood-dark),0 0 18px rgba(0,0,0,.35);opacity:0;transition:opacity .18s,transform .18s;white-space:normal;pointer-events:none}
 #toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
 #toast.bad{color:#ffb3a8}
 #flash{position:absolute;inset:0;background:var(--comb);opacity:0;pointer-events:none;transition:opacity .25s}
@@ -219,9 +219,9 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <h2>The chicken stopped</h2>
       <p class="review-badge" data-review-label hidden></p>
       <div class="grade" id="gradeTxt"></div>
-      <div class="stat"><span>Score</span><b id="oScore"></b></div>
-      <div class="stat"><span>Correct answers</span><b id="oRight"></b></div>
-      <div class="stat"><span>Personal best (local)</span><b id="oBest"></b></div>
+      <div class="stat"><span id="scoreLabel">Score</span><b id="oScore"></b></div>
+      <div class="stat"><span id="correctLabel">Correct answers</span><b id="oRight"></b></div>
+      <div class="stat"><span id="recordLabel">Personal best (local)</span><b id="oBest"></b></div>
       <img id="shareImg" alt="Your score card">
       <p class="note" id="shareNote"></p>
       <div class="btns">
@@ -234,6 +234,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
   <div id="glLost">The graphics stopped working. Reload the page to continue.</div>
 </div>
 
+<script src="language-packs.js"></script>
 <script src="locale-content.js"></script>
 <script src="locale.js"></script>
 <script src="game-mode.js"></script>
@@ -251,7 +252,7 @@ const mode=window.MezzoMode;
 const tutorial=window.MezzoTutorial;
 const t=(key,params)=>L.t(key,params);
 const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-const HAND='"Caveat Brush", "Comic Sans MS", cursive';
+const HAND='"Caveat Brush", "Comic Sans MS", system-ui, sans-serif';
 
 /* ---------- storage ---------- */
 function loadBest(name=mode.selected){try{return parseInt(localStorage.getItem(`mp_${name}_best`)||'0',10)||0}catch(e){return 0}}
@@ -508,7 +509,7 @@ function burst(x,y,z,n){
 
 /* ---------- boards ---------- */
 function chalkText(ctx,txt,x,y,size){
-  ctx.font=`${size}px ${HAND}`;ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.font=`${size}px ${HAND}`;ctx.direction=L.direction;ctx.textAlign='center';ctx.textBaseline='middle';
   let s=size; while(ctx.measureText(txt).width>ctx.canvas.width-50&&s>30){s-=4;ctx.font=`${s}px ${HAND}`}
   ctx.fillStyle='rgba(242,239,228,.35)';ctx.fillText(txt,x+1.5,y+1);
   ctx.fillStyle='#f2efe4';ctx.fillText(txt,x,y);
@@ -589,7 +590,8 @@ function qNumero(level){
 function qParola(level){
   const WORDS=L.words();
   const WORDSET=new Set(WORDS.map(w=>w[0]+w[1]));
-  const pool=WORDS.filter(w=>level===1?(w[0]+w[1]).length<=5:level===2?(w[0]+w[1]).length<=7:true);
+  const short=WORDS.filter(w=>L.graphemes(w[0]+w[1]).length<=(level===1?5:level===2?7:Infinity));
+  const pool=short.length?short:WORDS;
   const w=pick(pool);const ends=shuffle([...new Set(WORDS.map(x=>x[1]))]);
   const wrong=[];for(const e of ends){if(e===w[1])continue;if(WORDSET.has(w[0]+e))continue;wrong.push(e);if(wrong.length===2)break}
   return{text:`${w[2]}: ${w[0]}___`,ans:w[1],wrong,prefix:w[0]};

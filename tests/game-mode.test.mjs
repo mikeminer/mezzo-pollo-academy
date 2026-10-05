@@ -5,7 +5,8 @@ import { readFile } from 'node:fs/promises';
 import { ACCESS_POLICY } from '../access-policy.mjs';
 import { livesForRawAmount } from '../lock-access.mjs';
 
-const source = await readFile(new URL('../game-mode.js', import.meta.url), 'utf8');
+const packs = await readFile(new URL('../language-packs.js', import.meta.url), 'utf8');
+const source = packs + '\n' + await readFile(new URL('../game-mode.js', import.meta.url), 'utf8');
 class Element extends EventTarget {
   constructor(dataset = {}) { super(); this.dataset = dataset; this.attributes = new Map(); }
   setAttribute(key, value) { this.attributes.set(key, value); }
@@ -114,4 +115,18 @@ test('mode buttons update accessible selection and language changes keep it sele
   }
   assert.equal(labels.size, 3);
   assert.equal(events, 1);
+});
+
+test('all registered profiles retain Easy selection and render their mode labels', () => {
+  const h = setup();
+  h.mode.select('easy');
+  for (const [code, pack] of Object.entries(h.window.MezzoTranslations)) {
+    h.window.MezzoLocale.code = code;
+    h.document.dispatchEvent(new Event('mezzopollo:language'));
+    assert.equal(h.easyLabel.textContent, pack.mode.easy, code);
+    assert.equal(h.hardLabel.textContent, pack.mode.hard, code);
+    assert.equal(h.mode.selected, 'easy', code);
+    assert.equal(h.mode.config('hard').lives, 2, code);
+    assert.equal(h.mode.config('easy', 1).lives, 1, code);
+  }
 });

@@ -77,3 +77,7 @@ The soundtrack still uses the original Italian audio with English subtitles. Exi
 ## 26 settembre 2026 — demo gratuita per i revisori
 
 Su richiesta esplicita del team è stata aggiunta `/practice`, una demo pubblica con esattamente 2 vite per nuova partita, senza Phantom o token. La modalità non carica il controller wallet, non crea prove di timelock e conserva un record locale separato. Il gioco MEMEZZO principale conserva la soglia minima e una vita totale per milione attivo. Interfaccia demo disponibile in italiano, inglese e polacco.
+
+## 25 regional language profiles — 5 October 2026
+
+Codex expanded the chooser according to the user's attached country list: 24 countries and an international English profile, covering 20 languages. PIKKO is interpreted as the international base choice; the game's branding remains MezzoPollo. Translations are editable UTF-8 catalogs with a checked deterministic offline bundle, regional inheritance and local SVG flags. Tutorial, Shop, demo, accessible controls, prompts, feedback and native word banks share the catalogs. Arabic direction and Unicode grapheme-safe word splitting are supported. The soundtrack remains Italian with English lyrics. All 81 automated checks passed. No gameplay entitlement rule was changed.

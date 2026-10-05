@@ -1,0 +1,198 @@
+[
+  {
+    "selector": "#c",
+    "kind": "aria-label"
+  },
+  {
+    "selector": "#pauseBtn",
+    "kind": "aria-label"
+  },
+  {
+    "selector": "#scrMenu .chop",
+    "kind": "text"
+  },
+  {
+    "selector": "#btnHow",
+    "kind": "text"
+  },
+  {
+    "selector": "#btnAccess",
+    "kind": "text"
+  },
+  {
+    "selector": "[data-volume-label]",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrMenu [data-music-volume]",
+    "kind": "aria-label"
+  },
+  {
+    "selector": "#scrPause [data-music-volume]",
+    "kind": "aria-label"
+  },
+  {
+    "selector": "#scrMenu .song-link",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrHow h2",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrHow li:nth-child(1)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrHow li:nth-child(2)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrHow li:nth-child(3)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrHow li:nth-child(4)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrHow li:nth-child(5)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrHow li:nth-child(6)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrHow li:nth-child(7)",
+    "kind": "html"
+  },
+  {
+    "selector": "[data-back]",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess h2",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess > p:nth-of-type(1)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrAccess > p:nth-of-type(2)",
+    "kind": "html"
+  },
+  {
+    "selector": "#scrAccess > p:nth-of-type(3)",
+    "kind": "text"
+  },
+  {
+    "selector": "#shopMintLabel",
+    "kind": "text"
+  },
+  {
+    "selector": "#copyMint",
+    "kind": "text"
+  },
+  {
+    "selector": "#disconnectWallet",
+    "kind": "text"
+  },
+  {
+    "selector": "#playMember",
+    "kind": "text"
+  },
+  {
+    "selector": "#resumeRun",
+    "kind": "text"
+  },
+  {
+    "selector": "#phantomBrowse",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess a[href^=\"https://pump.fun/\"]",
+    "kind": "text"
+  },
+  {
+    "selector": "#scanToken",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess h3",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess li:nth-child(1)",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess li:nth-child(2)",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess li:nth-child(3)",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess li:nth-child(4)",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess > p.note",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrAccess a[href^=\"https://devfridge.cool/\"]",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrPause h2",
+    "kind": "text"
+  },
+  {
+    "selector": "#btnVerifyAccess",
+    "kind": "text"
+  },
+  {
+    "selector": "#btnQuit",
+    "kind": "text"
+  },
+  {
+    "selector": "#scrOver h2",
+    "kind": "text"
+  },
+  {
+    "selector": "#scoreLabel",
+    "kind": "text"
+  },
+  {
+    "selector": "#correctLabel",
+    "kind": "text"
+  },
+  {
+    "selector": "#recordLabel",
+    "kind": "text"
+  },
+  {
+    "selector": "#shareImg",
+    "kind": "alt"
+  },
+  {
+    "selector": "#btnAgain",
+    "kind": "text"
+  },
+  {
+    "selector": "#btnShare",
+    "kind": "text"
+  },
+  {
+    "selector": "#btnMenu",
+    "kind": "text"
+  },
+  {
+    "selector": "#glLost",
+    "kind": "text"
+  }
+]

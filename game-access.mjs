@@ -9,7 +9,7 @@ let amountFormat = new Intl.NumberFormat('en-US');
 let lastState = null, copyMessage = 'copyMint';
 function languageCode() {
   const code = window.MezzoLocale?.code || document.documentElement.lang;
-  return ['it', 'en', 'pl'].includes(code) ? code : 'en';
+  return Object.hasOwn(window.MezzoAccessTranslations || {}, code) ? code : 'en';
 }
 function translated(key, params = {}) {
   const dictionaries = window.MezzoAccessTranslations;

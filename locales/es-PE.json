@@ -1,0 +1,10 @@
+{
+  "extends": "es",
+  "meta": {
+    "locale": "es-PE",
+    "country": "Perú",
+    "language": "Español",
+    "flag": "pe",
+    "dir": "ltr"
+  }
+}

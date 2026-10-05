@@ -1,0 +1,449 @@
+{
+  "meta": {
+    "locale": "en-US",
+    "country": "United States",
+    "language": "English",
+    "flag": "us",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "life",
+    "other": "lives"
+  },
+  "core": {
+    "chooseCountry": "Choose your country",
+    "chooseNote": "Pick a flag to choose your game language.",
+    "changeCountry": "Change country",
+    "resume": "Resume",
+    "retryMusic": "Retry music",
+    "musicOff": "Turn music off",
+    "musicOn": "Turn music on",
+    "musicEnabled": "Music: on",
+    "musicDisabled": "Music: off",
+    "musicFailed": "Music could not load. You can retry or keep playing.",
+    "musicBlocked": "Tap Retry music to turn it back on.",
+    "noWebgl": "This device does not support WebGL.",
+    "double": "Double {n}?",
+    "half": "Half of {n}?",
+    "quarter": "Half of half of {n}?",
+    "ready": "Ready…",
+    "livesRemaining": "Lives remaining: {remaining} of {total}",
+    "whole": "WHOLE CHICKEN!",
+    "wholeRule": "Stay in your lane until the statue passes",
+    "reverse": "Reverse mode: choose a WRONG answer",
+    "shape": "Find the other half",
+    "halfChicken": "Half chicken! ✂️",
+    "heldStill": "You held still!",
+    "right1": "Correct!",
+    "right2": "Well done!",
+    "right3": "Cluck cluck!",
+    "right4": "Exactly!",
+    "reversed": "It was reversed!",
+    "wrongHalf": "Wrong half!",
+    "stayStill": "Stay still!",
+    "personalBest": "Personal best on this device: {score}",
+    "legendary": "👑 Legendary chicken",
+    "wholeRank": "🐔 Whole chicken",
+    "halfRank": "🍗 Half chicken",
+    "chick": "🐣 Chick",
+    "egg": "🥚 Egg",
+    "shareStats": "{score} points, {right} correct answers",
+    "shareQuestion": "What is your chicken rank?",
+    "shareHint": "Press and hold the image (or right-click) to save and share it.",
+    "rulesReversed": "Rules reversed!",
+    "rulesNormal": "Normal rules",
+    "bonk": "Bonk!",
+    "searchLanguages": "Search languages",
+    "noLanguages": "No matching languages"
+  },
+  "static": [
+    "Game track",
+    "Pause",
+    "A plush chicken has lost half of itself. Help it run through the gate with the matching half.",
+    "How to play",
+    "Shop · Easy lives",
+    "Volume",
+    "Music volume",
+    "Music volume while paused",
+    "Listen to the full song ↗",
+    "How to play",
+    "<b>Change lanes</b> by swiping left or right, or pressing ← → or A D.",
+    "<b>Jump</b> over hay bales by swiping up, or pressing ↑, W or Space.",
+    "Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.",
+    "When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.",
+    "Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.",
+    "<b>Hard is free:</b> every run starts with 2 lives, without a wallet or token checks. Each mistake costs one life.",
+    "<b>Easy is slower and gives you more time.</b> Unlock it in the Shop: each full million of active timelocked MEMEZZO gives 1 total starting life, with no base lives. Verification happens only when you request it in the Shop; no checks interrupt a run.",
+    "Back",
+    "Shop · Easy mode",
+    "Timelock MEMEZZO on <b>DevFridge</b>, then verify here for Easy. <b>Hard is free with 2 lives.</b>",
+    "<b>Easy: 1 total life per full million actively locked MEMEZZO.</b> Minimum 1 million; no base lives. Expired locks do not count when verified.",
+    "Only manual Shop checks; no automatic checks interrupt play. Easy lasts for this page session. Recheck to update; wallet changes, disconnection or reload clear future access. Ongoing runs continue with their remaining lives.",
+    "MEMEZZO mint · Solana mainnet",
+    "Copy mint",
+    "Disconnect",
+    "Play Easy",
+    "Resume game",
+    "Open in Phantom browser ↗",
+    "Token on Pump.fun ↗",
+    "Explore timelocks ↗",
+    "Before creating a timelock",
+    "Tokens stay locked until your chosen expiry, with no early withdrawal.",
+    "Redemption includes a 2% fee that buys and burns PASTA. Network fees are separate.",
+    "Redeeming MEMEZZO requires an available Jupiter route. New or low-liquidity tokens may lack a route even after expiry.",
+    "Locking does not guarantee prizes or price increases.",
+    "Wallet and timelock features are for adults. The game reads timelocks; creation and redemption take place on DevFridge, with your wallet approval.",
+    "Open MEMEZZO on DevFridge ↗",
+    "Paused",
+    "Shop · Easy lives",
+    "Back to menu",
+    "The chicken stopped",
+    "Score",
+    "Correct answers",
+    "Mode best (local)",
+    "Your score card",
+    "Try again",
+    "Share your rank",
+    "Menu",
+    "The graphics stopped working. Reload the page to continue."
+  ],
+  "words": [
+    [
+      "CHIC",
+      "KEN",
+      "Farm bird"
+    ],
+    [
+      "RAB",
+      "BIT",
+      "Long ears"
+    ],
+    [
+      "TUR",
+      "TLE",
+      "Shell animal"
+    ],
+    [
+      "PEN",
+      "GUIN",
+      "Polar bird"
+    ],
+    [
+      "DOL",
+      "PHIN",
+      "Sea mammal"
+    ],
+    [
+      "BUTTER",
+      "FLY",
+      "Winged insect"
+    ],
+    [
+      "RAIN",
+      "BOW",
+      "Sky colors"
+    ],
+    [
+      "SUN",
+      "SHINE",
+      "Solar light"
+    ],
+    [
+      "AP",
+      "PLE",
+      "Orchard fruit"
+    ],
+    [
+      "PI",
+      "ZZA",
+      "Cheesy slice"
+    ],
+    [
+      "PAS",
+      "TA",
+      "Italian noodles"
+    ],
+    [
+      "CAR",
+      "ROT",
+      "Orange root"
+    ],
+    [
+      "COO",
+      "KIE",
+      "Sweet snack"
+    ],
+    [
+      "BA",
+      "NANA",
+      "Yellow fruit"
+    ],
+    [
+      "WA",
+      "TER",
+      "Drink"
+    ],
+    [
+      "LEM",
+      "ON",
+      "Sour citrus"
+    ],
+    [
+      "CHE",
+      "ESE",
+      "Dairy food"
+    ],
+    [
+      "HOR",
+      "SE",
+      "Riding animal"
+    ],
+    [
+      "ZEB",
+      "RA",
+      "Striped animal"
+    ],
+    [
+      "EAG",
+      "LE",
+      "Bird of prey"
+    ],
+    [
+      "DU",
+      "CK",
+      "Pond bird"
+    ],
+    [
+      "BE",
+      "AR",
+      "Big furry animal"
+    ],
+    [
+      "SHE",
+      "EP",
+      "Woolly animal"
+    ],
+    [
+      "LI",
+      "ON",
+      "Pride leader"
+    ],
+    [
+      "TI",
+      "GER",
+      "Striped cat"
+    ],
+    [
+      "PAN",
+      "DA",
+      "Bamboo eater"
+    ],
+    [
+      "MOU",
+      "SE",
+      "Small rodent"
+    ],
+    [
+      "CLO",
+      "UD",
+      "Sky vapor"
+    ],
+    [
+      "WIN",
+      "DOW",
+      "Glass opening"
+    ],
+    [
+      "FLO",
+      "WER",
+      "Garden bloom"
+    ],
+    [
+      "GAR",
+      "DEN",
+      "Plant patch"
+    ],
+    [
+      "BAS",
+      "KET",
+      "Woven carrier"
+    ],
+    [
+      "BU",
+      "CKET",
+      "Water container"
+    ],
+    [
+      "SC",
+      "HOOL",
+      "Learning place"
+    ],
+    [
+      "PEN",
+      "CIL",
+      "Writing tool"
+    ],
+    [
+      "MA",
+      "RKER",
+      "Coloring pen"
+    ],
+    [
+      "BOOK",
+      "SHELF",
+      "Book storage"
+    ],
+    [
+      "FEA",
+      "THER",
+      "Bird covering"
+    ],
+    [
+      "MO",
+      "ON",
+      "Night light"
+    ],
+    [
+      "ST",
+      "AR",
+      "Twinkling light"
+    ]
+  ],
+  "mode": {
+    "hard": "Hard",
+    "easy": "Easy",
+    "hardDetail": "Free · 2 lives",
+    "easyDetail": "Slower pace · shop unlock",
+    "choose": "Choose your mode",
+    "playHard": "Play Hard · 2 lives",
+    "playEasy": "Play Easy · {count} {lives}",
+    "unlock": "Unlock Easy in the shop",
+    "shop": "Shop · MEMEZZO lives",
+    "tutorial": "Play the tutorial",
+    "hardHint": "Jump straight in with 2 lives. No wallet or token checks.",
+    "easyHint": "More time to answer, slower obstacles. Unlock in the shop: 1 total life per full million locked MEMEZZO.",
+    "unlocked": "Easy unlocked for this session: {count} {lives} each run. No checks while you play.",
+    "hud": "{mode} · {count} starting {lives} · local score",
+    "badge": "{mode} MODE",
+    "shopNote": "Hard mode is always free. Tokens are timelocked on DevFridge, not spent in the game.",
+    "link": "Play free · Hard mode →",
+    "title": "MezzoPollo — Hard & Easy",
+    "back": "Back to game",
+    "tutorialHud": "TUTORIAL · practice without losing lives",
+    "tutorialQuestion": "Follow the guide below",
+    "shopLoading": "Opening the shop…",
+    "shopError": "The shop could not load. You can still play Hard. Try opening the shop again."
+  },
+  "tutorial": {
+    "label": "Learn by playing",
+    "practice": "Guided practice",
+    "progress": "Step {n} of {total}",
+    "safe": "No lives lost. No score saved.",
+    "skip": "Skip tutorial",
+    "next": "Next challenge",
+    "finish": "Start playing",
+    "retry": "Try again",
+    "good": "Got it! Ready for the next challenge.",
+    "done": "Ready! Hard mode starts with 2 lives. Visit the optional shop for extra lives and Easy mode.",
+    "again": "No problem! Try the same challenge again.",
+    "leftControl": "Move left",
+    "rightControl": "Move right",
+    "jumpControl": "Jump",
+    "half": "Half of 8?",
+    "normalRule": "Choose the matching half",
+    "reverseRule": "Reverse: choose a WRONG answer",
+    "wholeQuestion": "WHOLE CHICKEN!",
+    "wholeRule": "Keep your lane until the statue passes",
+    "left": [
+      "Move left",
+      "Try it now: swipe left on the track, press ← or A, or tap the left arrow below."
+    ],
+    "right": [
+      "Now move right",
+      "Swipe right on the track, press → or D, or tap the right arrow below."
+    ],
+    "jump": [
+      "Give that chicken a jump",
+      "Swipe up on the track, press ↑, W or Space, or tap Jump. Jump over hay bales during a run."
+    ],
+    "gate": [
+      "Find the missing half",
+      "Read the board: half of 8 is 4. Move into the middle lane and pass through the gate marked 4."
+    ],
+    "reverse": [
+      "Watch out: REVERSE!",
+      "The rule has flipped! Half of 8 is 4, so choose a WRONG answer: move left to 2 or right to 8."
+    ],
+    "whole": [
+      "WHOLE CHICKEN: hold your lane",
+      "Stop changing lanes until the statue passes. Stay in the lane you started in. Try it now!"
+    ]
+  },
+  "access": {
+    "connect": "Connect & verify",
+    "connectingButton": "Connecting…",
+    "check": "Verify Easy lives",
+    "checkingButton": "Checking…",
+    "wallet": "Wallet: {wallet}",
+    "copyMint": "Copy mint",
+    "copied": "Mint copied",
+    "copyFallback": "Select and copy the mint above",
+    "disconnected": "Connect Phantom in the Shop to verify Easy lives. Hard is always free with 2 lives. The game will not request any transactions.",
+    "connected": "Wallet connected. Choose Verify Easy lives to check active MEMEZZO timelocks for this session. Hard is always available.",
+    "connecting": "Approve the connection in Phantom. No transaction signature is needed.",
+    "checking": "Checking this wallet’s MEMEZZO timelocks on Solana…",
+    "eligible": "Easy unlocked for this page session: {amount} MEMEZZO actively locked at verification. Each new Easy run starts with {lives} {lifeWord}. No checks during play.",
+    "insufficient": "At least {minimum} MEMEZZO in active timelocks has not been confirmed for Easy. After creating a lock, wait for confirmation and verify again. You can still play Hard with 2 lives.",
+    "unavailable": "Easy verification is unavailable or the returned data is out of date. Try the Shop check again shortly. Hard and your ongoing run remain available.",
+    "rejected": "Connection cancelled in Phantom. You can try again whenever you are ready.",
+    "missing-wallet": "Phantom is not available in this browser. On a phone, open the game in the Phantom browser to verify Easy lives in the Shop. Hard needs no wallet.",
+    "captionsOn": "English subtitles: on",
+    "captionsOff": "English subtitles: off"
+  },
+  "demo": {
+    "title": "Mezzo Pollo Academy — gameplay demo",
+    "description": "MezzoPollo: free Hard mode with 2 lives, optional slower Easy mode, interactive tutorial and game interface in 20 languages with 25 regional choices, Italian soundtrack and English song subtitles.",
+    "tag": "DevFridge Hackathon · Hard & Easy",
+    "intro": "A plush half-chicken runs through three lanes, choosing the missing half of numbers, words and shapes. Dodge obstacles, collect feathers, and stay still when the WHOLE CHICKEN appears.",
+    "play": "Choose a mode and play →",
+    "source": "Source & submission evidence",
+    "songTitle": "Half a feather, double the flight",
+    "songIntro": "The complete Italian brainrot theme with English subtitles, generated with Google Lyria in Gemini. In the game it starts with Play, loops at a lower volume, pauses with the run and softens during gameplay cues. Music controls are available in the menu, pause screen and HUD.",
+    "audioLabel": "Mezzo Pollo — complete soundtrack",
+    "captionNote": "English subtitles follow the song during playback.",
+    "downloadCaptions": "Download English subtitles",
+    "downloadMp3": "Download MP3",
+    "playMusic": "Play with music →",
+    "desktopTitle": "English desktop gameplay",
+    "desktopNote": "Historical browser walkthrough, recorded on 25 September 2026 before Hard/Easy modes and the interactive tutorial. Its access screens show the old rules. The wallet and lock evidence are simulated; no real wallet approval or transaction is shown. The silent capture shows actual gameplay inputs. Listen to the soundtrack above.",
+    "downloadDesktop": "Download English desktop recording",
+    "mobileTitle": "English mobile layout — emulation",
+    "mobileNote": "Historical 390 × 844 browser emulation of the English interface, before the current Hard/Easy rules and tutorial, using simulated wallet and lock evidence. Silent capture; not a physical-phone or real-wallet test.",
+    "downloadMobile": "Download English mobile recording",
+    "accessTitle": "Access and limitations",
+    "accessIntro": "Hard is free and starts every run with 2 lives, without a wallet or token verification. Easy is slower and gives more time: unlock it in the Shop by explicitly verifying at least 1,000,000 MEMEZZO across active DevFridge timelocks of the connected Phantom wallet. No minimum duration applies; expired locks do not count at verification. Mint:",
+    "accessOutro": ". The /practice route also opens free Hard mode. The interactive tutorial starts before your first play in each language and can be replayed from the menu. Hard and Easy records are local, separate and unverified.",
+    "lives": "Easy gives one total starting life per full million confirmed in the Shop, with no base lives: 1,000,000 MEMEZZO gives 1 life, 1,999,999 gives 1, and 2,000,000 gives 2. Hard always starts with 2 lives. Starting lives are fixed for each run; resuming or checking the Shop never refills them.",
+    "verification": "There are no automatic token checks at the start of a run, during play, on resume or when returning to the page. Verified Easy lives remain available for new runs while the page stays open, until a manual Shop check, wallet change, disconnection or page reload. An ongoing run is unaffected. The game reads locks and never asks for transaction signatures; timelock creation takes place externally on DevFridge. Access and lives run in the browser, without server authentication, leaderboards or rewards.",
+    "fees": "Locks are created and redeemed on DevFridge, with no early withdrawal and a 2% redemption fee for PASTA buy-and-burn, plus network fees. Redemption of MEMEZZO needs an executable Jupiter route. Wallet features are for adults.",
+    "team": "Team: Pappardelle · Public contact:",
+    "submission": ". Gallery submission is subject to review; it does not confirm competition eligibility or a prize."
+  },
+  "native": {
+    "menu": "App menu",
+    "hard": "Hard mode · free · 2 lives",
+    "easy": "Easy mode · optional MEMEZZO shop",
+    "reload": "Reload",
+    "privacy": "Privacy & app information (English)",
+    "website": "Open website",
+    "close": "Close app",
+    "webviewTitle": "Update Android System WebView",
+    "webviewBody": "A current Android System WebView is required for this app.",
+    "restartTitle": "Restart game",
+    "restartBody": "Android stopped the graphics process. Your local record is saved.",
+    "restart": "Restart",
+    "loadError": "Unable to open game. Use App menu → Reload.",
+    "noBrowser": "No browser installed",
+    "walletMissing": "Install an MWA-compatible Solana wallet, then try again."
+  }
+}

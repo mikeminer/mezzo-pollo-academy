@@ -1,6 +1,8 @@
 # Mezzo Pollo Academy 🐔✂️
 
-Choose Italy, the United States or Poland when opening the site. The game and demo use Italian, English or Polish, including native word challenges, Shop messages and share cards. The chooser appears on each page load and remembers the last selection; the menu lets you change country. An interactive tutorial starts before your first play in each language and can be replayed from the menu. The Italian soundtrack keeps its English subtitles. Recorded walkthroughs are historical and show the English interface before the Hard/Easy update. [Play on mezzopollo.it](https://mezzopollo.it/) · [Demo](https://mezzopollo.it/demo).
+Choose among 25 country/region profiles covering 20 languages when opening the site. The game and demo include translated instructions, native word challenges, Shop messages and share cards. The searchable chooser appears on each page load and remembers the last selection; the menu lets you change country. An interactive tutorial starts before your first play in each profile and can be replayed from the menu. Arabic uses a right-to-left interface; lane controls always keep their physical left/right meaning. The Italian soundtrack keeps its English subtitles. Recorded walkthroughs are historical and show the English interface before the Hard/Easy update. [Play on mezzopollo.it](https://mezzopollo.it/) · [Demo](https://mezzopollo.it/demo).
+
+The profiles follow the requested list: International (English), Italy, Poland, Japan, Mexico, United States, India (Hindi), France, Spain, Greece, Turkey, China (Simplified Chinese), South Korea, Thailand, Vietnam, Brazil, Peru, Morocco (Arabic), United Kingdom, Germany, Nigeria (English), Indonesia, Russia, Ukraine and Philippines (Filipino). Regional English and Spanish profiles share translations while retaining their own flags and number formats. See [locale authoring and validation](locales/README.md).
 
 Un runner 3D per browser in cui un pollo di peluche tagliato a metà corre verso la porta con la metà giusta: numeri, parole e figure da completare.
 Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackathon DevFridge.
@@ -40,7 +42,7 @@ Ogni nuova partita **Facile** assegna **una vita totale per ogni milione intero 
 
 ## Avvio locale
 
-È un sito statico e non richiede build.
+È un sito statico. Il bundle delle traduzioni è incluso; dopo modifiche ai cataloghi eseguire `node scripts/build-locales.mjs`, poi `node scripts/build-locales.mjs --check`. I controlli si eseguono con `node --test --experimental-test-isolation=none tests/*.test.mjs`.
 ```sh
 npx serve .        # oppure: python3 -m http.server 8080
 ```
@@ -54,6 +56,7 @@ Deploy pubblico su Vercel: [mezzo-pollo-academy.vercel.app](https://mezzo-pollo-
 
 - three.js **r128**, caricato da cdnjs con versione fissata: [licenza MIT](https://github.com/mrdoob/three.js/blob/r128/LICENSE)
 - Google Fonts: [Caveat Brush](https://github.com/google/fonts/blob/main/ofl/caveatbrush/OFL.txt) e [Fredoka](https://github.com/google/fonts/blob/main/ofl/fredoka/OFL.txt), entrambi SIL Open Font License 1.1
+- Bandiere SVG locali: flag-icons 7.3.2, licenza MIT inclusa in `flags/LICENSE`; fonti e hash in `flags/provenance.json`. Le scritture non latine usano anche i font di sistema.
 - Nessuna variabile d'ambiente, nessun segreto
 
 ## Asset e diritti

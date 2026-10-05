@@ -1,0 +1,10 @@
+{
+  "extends": "en",
+  "meta": {
+    "locale": "en-NG",
+    "country": "Nigeria",
+    "language": "English",
+    "flag": "ng",
+    "dir": "ltr"
+  }
+}

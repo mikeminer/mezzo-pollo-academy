@@ -1,3 +1,11 @@
+## 25 regional profiles / 20 languages — 5 October 2026
+
+The exact requested image list is implemented as 24 country profiles plus International English. The image supplies the country list, not MezzoPollo branding. The game, interactive tutorial, optional Shop, demo and share text use complete translated catalogs; English and Spanish regional variants inherit the corresponding language while retaining their own locale and flag. The original Italian audio and English lyrics remain unchanged.
+
+The 81-test suite passes (Node, test isolation disabled for this Windows sandbox). New coverage validates all 25 resolved profiles, 49 static destinations, exact recursive keys, placeholders/HTML, plurals, native word splits, minimum vocabulary and distractors, Arabic RTL metadata, inheritance cycles, deterministic generation and stale assets. Every profile runs all six tutorial scenarios and preserves physical lane directions. Word questions are generated for every bank entry at all three difficulty levels; each has one known correct answer and two distinct incorrect completions. Existing token boundaries, session entitlement, Shop-only verification and Hard/Easy behavior remain covered.
+
+The selector adds searchable flags, a scrolling mobile grid, local preference persistence and accessible language tags. Arabic uses document RTL and canvas direction, while physical arrow controls and English captions remain LTR. Visual website preview was not completed: browser automatic approval failed due to capacity before navigating to localhost. Android emulator results are recorded separately in the Android release documentation. Structural validation does not substitute for an independent fluent-language editorial review. No real wallet approval or transaction was used.
+
 # Verification: Mezzo Pollo Academy
 
 ## 5 October 2026 — interactive tutorial, free Hard and optional Easy Shop

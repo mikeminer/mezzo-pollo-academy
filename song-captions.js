@@ -22,7 +22,7 @@
   }).filter(Boolean);
   function renderLabels() {
     const requested = window.MezzoLocale?.code || document.documentElement.lang;
-    const code = ['it', 'en', 'pl'].includes(requested) ? requested : 'en';
+    const code = Object.hasOwn(window.MezzoAccessTranslations || {}, requested) ? requested : 'en';
     const key = enabled ? 'captionsOn' : 'captionsOff';
     const text = window.MezzoAccessTranslations?.[code]?.[key]
       ?? window.MezzoAccessTranslations?.en?.[key] ?? `English subtitles: ${enabled ? 'on' : 'off'}`;

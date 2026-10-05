@@ -1,0 +1,388 @@
+{
+  "meta": {
+    "locale": "id-ID",
+    "country": "Indonesia",
+    "language": "Bahasa Indonesia",
+    "flag": "id",
+    "dir": "ltr"
+  },
+  "life": {
+    "other": "nyawa"
+  },
+  "core": {
+    "chooseCountry": "Pilih negara",
+    "chooseNote": "Pilih bendera untuk menentukan bahasa permainan.",
+    "changeCountry": "Ganti negara",
+    "resume": "Lanjutkan",
+    "retryMusic": "Muat ulang musik",
+    "musicOff": "Matikan musik",
+    "musicOn": "Nyalakan musik",
+    "musicEnabled": "Musik: aktif",
+    "musicDisabled": "Musik: nonaktif",
+    "musicFailed": "Musik tidak dapat dimuat. Coba lagi atau lanjut bermain.",
+    "musicBlocked": "Ketuk Muat ulang musik untuk menyalakannya kembali.",
+    "noWebgl": "Perangkat ini tidak mendukung WebGL.",
+    "double": "Dua kali {n}?",
+    "half": "Setengah dari {n}?",
+    "quarter": "Setengah dari setengah {n}?",
+    "ready": "Bersiap…",
+    "livesRemaining": "Nyawa tersisa: {remaining} dari {total}",
+    "whole": "AYAM UTUH!",
+    "wholeRule": "Tetap di jalurmu sampai patung lewat",
+    "reverse": "Mode terbalik: pilih jawaban yang SALAH",
+    "shape": "Cari separuh lainnya",
+    "halfChicken": "Setengah ayam! ✂️",
+    "heldStill": "Kamu tetap diam!",
+    "right1": "Benar!",
+    "right2": "Bagus sekali!",
+    "right3": "Petok-petok!",
+    "right4": "Tepat sekali!",
+    "reversed": "Tadi aturannya terbalik!",
+    "wrongHalf": "Salah separuh!",
+    "stayStill": "Jangan bergerak!",
+    "personalBest": "Rekor pribadi di perangkat ini: {score}",
+    "legendary": "👑 Ayam legendaris",
+    "wholeRank": "🐔 Ayam utuh",
+    "halfRank": "🍗 Setengah ayam",
+    "chick": "🐣 Anak ayam",
+    "egg": "🥚 Telur",
+    "shareStats": "{score} poin, {right} jawaban benar",
+    "shareQuestion": "Apa peringkat ayammu?",
+    "shareHint": "Tekan lama gambar atau klik kanan untuk menyimpan dan membagikannya.",
+    "rulesReversed": "Aturan dibalik!",
+    "rulesNormal": "Aturan normal",
+    "bonk": "Duk!",
+    "searchLanguages": "Cari bahasa",
+    "noLanguages": "Tidak ada bahasa yang cocok"
+  },
+  "static": [
+    "Lintasan permainan",
+    "Jeda",
+    "Seekor ayam boneka kehilangan separuh tubuhnya. Bantu ia berlari melewati gerbang dengan separuh yang cocok.",
+    "Cara bermain",
+    "Toko · Nyawa Mudah",
+    "Volume",
+    "Volume musik",
+    "Volume musik saat dijeda",
+    "Dengarkan lagu lengkap ↗",
+    "Cara bermain",
+    "<b>Pindah jalur</b> dengan mengusap ke kiri atau kanan, atau menekan ← → atau A D.",
+    "<b>Lompati</b> bal jerami dengan mengusap ke atas, atau menekan ↑, W, atau Spasi.",
+    "Baca pertanyaan di atas. Lewati gerbang dengan <b>separuh yang cocok</b> untuk melengkapi angka, kata, dan bentuk.",
+    "Saat <b>AYAM UTUH</b> muncul, tetap di jalurmu sampai patung lewat.",
+    "Kadang aturan dibalik: dalam <b>mode terbalik</b>, pilih jawaban yang salah.",
+    "<b>Sulit gratis:</b> setiap permainan dimulai dengan 2 nyawa, tanpa dompet atau pemeriksaan token. Setiap kesalahan menghabiskan satu nyawa.",
+    "<b>Mudah lebih lambat dan memberi lebih banyak waktu.</b> Buka di Toko: setiap satu juta penuh MEMEZZO dalam penguncian berjangka aktif memberi total 1 nyawa awal, tanpa nyawa dasar. Verifikasi hanya dilakukan saat kamu memintanya di Toko; tidak ada pemeriksaan yang mengganggu permainan.",
+    "Kembali",
+    "Toko · Mode Mudah",
+    "Kunci MEMEZZO secara berjangka di <b>DevFridge</b>, lalu verifikasi di sini untuk membuka Mudah. <b>Sulit gratis dengan 2 nyawa.</b>",
+    "<b>Mudah: total 1 nyawa per satu juta penuh MEMEZZO yang masih terkunci.</b> Minimal 1 juta; tanpa nyawa dasar. Penguncian yang kedaluwarsa tidak dihitung saat verifikasi.",
+    "Hanya pemeriksaan manual di Toko; tidak ada pemeriksaan otomatis yang mengganggu permainan. Mudah berlaku selama sesi halaman ini. Periksa ulang untuk memperbarui; mengganti dompet, memutus koneksi, atau memuat ulang menghapus akses untuk permainan berikutnya. Permainan yang sedang berjalan tetap berlanjut dengan sisa nyawanya.",
+    "Alamat mint MEMEZZO · Jaringan utama Solana",
+    "Salin alamat mint",
+    "Putuskan koneksi",
+    "Main Mudah",
+    "Lanjutkan permainan",
+    "Buka di peramban Phantom ↗",
+    "Token di Pump.fun ↗",
+    "Lihat penguncian berjangka ↗",
+    "Sebelum membuat penguncian berjangka",
+    "Token tetap terkunci hingga waktu berakhir yang kamu pilih dan tidak dapat ditarik lebih awal.",
+    "Penebusan dikenai biaya 2% untuk membeli dan membakar PASTA. Biaya jaringan terpisah.",
+    "Penebusan MEMEZZO memerlukan rute Jupiter yang tersedia. Token baru atau berlikuiditas rendah mungkin tidak memiliki rute meskipun penguncian sudah berakhir.",
+    "Mengunci token tidak menjamin hadiah atau kenaikan harga.",
+    "Fitur dompet dan penguncian berjangka hanya untuk orang dewasa. Permainan membaca penguncian; pembuatan dan penebusan dilakukan di DevFridge dengan persetujuan dompetmu.",
+    "Buka MEMEZZO di DevFridge ↗",
+    "Dijeda",
+    "Toko · Nyawa Mudah",
+    "Kembali ke menu",
+    "Ayam berhenti",
+    "Skor",
+    "Jawaban benar",
+    "Rekor mode (lokal)",
+    "Kartu skormu",
+    "Coba lagi",
+    "Bagikan peringkatmu",
+    "Menu",
+    "Grafis berhenti bekerja. Muat ulang halaman untuk melanjutkan."
+  ],
+  "words": [
+    [
+      "a",
+      "yam",
+      "Unggas yang berkokok atau berkotek"
+    ],
+    [
+      "kelin",
+      "ci",
+      "Hewan pelompat bertelinga panjang"
+    ],
+    [
+      "pen",
+      "yu",
+      "Reptil bercangkang yang hidup di laut"
+    ],
+    [
+      "peng",
+      "uin",
+      "Burung kutub selatan yang tidak terbang"
+    ],
+    [
+      "ca",
+      "pung",
+      "Serangga bermata besar dengan empat sayap panjang"
+    ],
+    [
+      "pelan",
+      "gi",
+      "Lengkungan warna di langit setelah hujan"
+    ],
+    [
+      "mata",
+      "hari",
+      "Bintang yang menerangi siang hari"
+    ],
+    [
+      "bu",
+      "lan",
+      "Satelit alami Bumi"
+    ],
+    [
+      "bin",
+      "tang",
+      "Titik cahaya yang berkelip di langit malam"
+    ],
+    [
+      "seman",
+      "gka",
+      "Buah berkulit hijau dan berdaging merah"
+    ],
+    [
+      "pi",
+      "sang",
+      "Buah kuning yang melengkung"
+    ],
+    [
+      "wor",
+      "tel",
+      "Sayuran akar berwarna jingga"
+    ],
+    [
+      "ken",
+      "tang",
+      "Umbi bahan kentang goreng"
+    ],
+    [
+      "ke",
+      "lapa",
+      "Buah bercangkang keras dengan daging putih"
+    ],
+    [
+      "ja",
+      "gung",
+      "Tanaman berbiji kuning pada tongkol"
+    ],
+    [
+      "ha",
+      "rimau",
+      "Kucing besar bergaris hitam"
+    ],
+    [
+      "si",
+      "nga",
+      "Kucing besar yang jantannya bersurai"
+    ],
+    [
+      "ze",
+      "bra",
+      "Hewan mirip kuda bergaris hitam putih"
+    ],
+    [
+      "dom",
+      "ba",
+      "Hewan penghasil wol"
+    ],
+    [
+      "kel",
+      "edai",
+      "Hewan mirip kuda bertelinga panjang"
+    ],
+    [
+      "pen",
+      "sil",
+      "Alat tulis yang diraut"
+    ],
+    [
+      "peng",
+      "hapus",
+      "Alat untuk menghilangkan tulisan pensil"
+    ],
+    [
+      "seko",
+      "lah",
+      "Tempat murid belajar"
+    ],
+    [
+      "jen",
+      "dela",
+      "Bukaan berkaca pada dinding"
+    ],
+    [
+      "pe",
+      "sawat",
+      "Kendaraan bersayap yang terbang"
+    ],
+    [
+      "sepe",
+      "da",
+      "Kendaraan dua roda dengan pedal"
+    ],
+    [
+      "pa",
+      "yung",
+      "Benda yang dibuka untuk menahan hujan"
+    ],
+    [
+      "ja",
+      "rum",
+      "Alat kecil runcing untuk menjahit"
+    ]
+  ],
+  "mode": {
+    "hard": "Sulit",
+    "easy": "Mudah",
+    "hardDetail": "Gratis · 2 nyawa",
+    "easyDetail": "Lebih lambat · buka di toko",
+    "choose": "Pilih mode",
+    "playHard": "Main Sulit · 2 nyawa",
+    "playEasy": "Main Mudah · {count} {lives}",
+    "unlock": "Buka Mudah di toko",
+    "shop": "Toko · Nyawa MEMEZZO",
+    "tutorial": "Mainkan tutorial",
+    "hardHint": "Langsung mulai dengan 2 nyawa. Tanpa dompet atau pemeriksaan token.",
+    "easyHint": "Lebih banyak waktu menjawab, rintangan lebih lambat. Buka di toko: total 1 nyawa per satu juta penuh MEMEZZO terkunci.",
+    "unlocked": "Mudah terbuka untuk sesi ini: {count} {lives} setiap permainan. Tidak ada pemeriksaan saat bermain.",
+    "hud": "{mode} · awal {count} {lives} · skor lokal",
+    "badge": "MODE {mode}",
+    "shopNote": "Mode Sulit selalu gratis. Token dikunci secara berjangka di DevFridge, tidak dibelanjakan dalam permainan.",
+    "link": "Main gratis · Mode Sulit →",
+    "title": "MezzoPollo — Sulit & Mudah",
+    "back": "Kembali ke permainan",
+    "tutorialHud": "TUTORIAL · latihan tanpa kehilangan nyawa",
+    "tutorialQuestion": "Ikuti panduan di bawah",
+    "shopLoading": "Membuka toko…",
+    "shopError": "Toko tidak dapat dimuat. Kamu masih dapat bermain Sulit. Coba buka toko lagi."
+  },
+  "tutorial": {
+    "label": "Belajar sambil bermain",
+    "practice": "Latihan terpandu",
+    "progress": "Langkah {n} dari {total}",
+    "safe": "Tidak kehilangan nyawa. Skor tidak disimpan.",
+    "skip": "Lewati tutorial",
+    "next": "Tantangan berikutnya",
+    "finish": "Mulai bermain",
+    "retry": "Coba lagi",
+    "good": "Berhasil! Siap untuk tantangan berikutnya.",
+    "done": "Siap! Mode Sulit dimulai dengan 2 nyawa. Jika ingin nyawa tambahan dan mode Mudah, kunjungi toko opsional.",
+    "again": "Tidak apa-apa! Coba tantangan yang sama lagi.",
+    "leftControl": "Ke kiri",
+    "rightControl": "Ke kanan",
+    "jumpControl": "Lompat",
+    "half": "Setengah dari 8?",
+    "normalRule": "Pilih separuh yang cocok",
+    "reverseRule": "Terbalik: pilih jawaban yang SALAH",
+    "wholeQuestion": "AYAM UTUH!",
+    "wholeRule": "Tetap di jalur sampai patung lewat",
+    "left": [
+      "Ke kiri",
+      "Coba sekarang: usap ke kiri pada lintasan, tekan ← atau A, atau ketuk panah kiri di bawah."
+    ],
+    "right": [
+      "Sekarang ke kanan",
+      "Usap ke kanan pada lintasan, tekan → atau D, atau ketuk panah kanan di bawah."
+    ],
+    "jump": [
+      "Buat ayam melompat",
+      "Usap ke atas pada lintasan, tekan ↑, W, atau Spasi, atau ketuk Lompat. Lompati bal jerami saat bermain."
+    ],
+    "gate": [
+      "Cari separuh yang hilang",
+      "Baca papan: setengah dari 8 adalah 4. Pindah ke jalur tengah dan lewati gerbang bertanda 4."
+    ],
+    "reverse": [
+      "Awas: TERBALIK!",
+      "Aturan dibalik! Setengah dari 8 adalah 4, jadi pilih jawaban yang SALAH: ke kiri untuk 2 atau ke kanan untuk 8."
+    ],
+    "whole": [
+      "AYAM UTUH: pertahankan jalur",
+      "Jangan berpindah jalur sampai patung lewat. Tetap di jalur awalmu. Coba sekarang!"
+    ]
+  },
+  "access": {
+    "connect": "Hubungkan & verifikasi",
+    "connectingButton": "Menghubungkan…",
+    "check": "Verifikasi nyawa Mudah",
+    "checkingButton": "Memeriksa…",
+    "wallet": "Dompet: {wallet}",
+    "copyMint": "Salin alamat mint",
+    "copied": "Alamat mint disalin",
+    "copyFallback": "Pilih dan salin alamat mint di atas",
+    "disconnected": "Hubungkan Phantom di Toko untuk memverifikasi nyawa Mudah. Sulit selalu gratis dengan 2 nyawa. Permainan tidak akan meminta transaksi apa pun.",
+    "connected": "Dompet terhubung. Pilih Verifikasi nyawa Mudah untuk memeriksa penguncian MEMEZZO aktif bagi sesi ini. Sulit selalu tersedia.",
+    "connecting": "Setujui koneksi di Phantom. Tidak perlu menandatangani transaksi.",
+    "checking": "Memeriksa penguncian MEMEZZO dompet ini di Solana…",
+    "eligible": "Mudah terbuka untuk sesi halaman ini: {amount} MEMEZZO masih terkunci saat verifikasi. Setiap permainan Mudah baru dimulai dengan {lives} {lifeWord}. Tidak ada pemeriksaan saat bermain.",
+    "insufficient": "Belum terkonfirmasi minimal {minimum} MEMEZZO dalam penguncian aktif untuk Mudah. Setelah membuat penguncian, tunggu konfirmasi lalu verifikasi lagi. Kamu tetap dapat bermain Sulit dengan 2 nyawa.",
+    "unavailable": "Verifikasi Mudah tidak tersedia atau data yang diterima sudah kedaluwarsa. Coba periksa lagi di Toko sebentar lagi. Sulit dan permainan yang sedang berjalan tetap tersedia.",
+    "rejected": "Koneksi dibatalkan di Phantom. Kamu dapat mencoba lagi kapan pun siap.",
+    "missing-wallet": "Phantom tidak tersedia di peramban ini. Di ponsel, buka permainan lewat peramban Phantom untuk memverifikasi nyawa Mudah di Toko. Sulit tidak perlu dompet.",
+    "captionsOn": "Takarir bahasa Inggris: aktif",
+    "captionsOff": "Takarir bahasa Inggris: nonaktif"
+  },
+  "demo": {
+    "title": "Mezzo Pollo Academy — demo permainan",
+    "description": "MezzoPollo: mode Sulit gratis dengan 2 nyawa, mode Mudah opsional yang lebih lambat, tutorial interaktif, antarmuka dalam 20 bahasa dengan 25 pilihan wilayah, musik berbahasa Italia dan takarir lagu berbahasa Inggris.",
+    "tag": "Hakaton DevFridge · Sulit & Mudah",
+    "intro": "Setengah ayam boneka berlari di tiga jalur, memilih separuh angka, kata, dan bentuk yang hilang. Hindari rintangan, kumpulkan bulu, dan diam saat AYAM UTUH muncul.",
+    "play": "Pilih mode dan main →",
+    "source": "Kode sumber & bukti pengajuan",
+    "songTitle": "Setengah bulu, dua kali terbang",
+    "songIntro": "Lagu tema lengkap bergaya meme absurd dalam bahasa Italia dengan takarir Inggris, dibuat menggunakan Google Lyria di Gemini. Dalam permainan, lagu dimulai saat menekan Main, berulang dengan volume lebih rendah, dijeda bersama permainan, dan mengecil saat isyarat permainan muncul. Kontrol musik tersedia di menu, layar jeda, dan tampilan saat bermain.",
+    "audioLabel": "Mezzo Pollo — musik lengkap",
+    "captionNote": "Takarir bahasa Inggris mengikuti lagu saat diputar.",
+    "downloadCaptions": "Unduh takarir bahasa Inggris",
+    "downloadMp3": "Unduh MP3",
+    "playMusic": "Main dengan musik →",
+    "desktopTitle": "Permainan desktop bahasa Inggris",
+    "desktopNote": "Rekaman peramban lama, dibuat pada 25 September 2026 sebelum mode Sulit/Mudah dan tutorial interaktif. Layar aksesnya menampilkan aturan lama. Bukti dompet dan penguncian disimulasikan; tidak ada persetujuan dompet atau transaksi nyata. Rekaman tanpa suara ini menampilkan input permainan yang sebenarnya. Dengarkan musik di atas.",
+    "downloadDesktop": "Unduh rekaman desktop bahasa Inggris",
+    "mobileTitle": "Tata letak ponsel bahasa Inggris — emulasi",
+    "mobileNote": "Rekaman lama emulasi peramban 390 × 844 dengan antarmuka Inggris, sebelum aturan Sulit/Mudah dan tutorial saat ini, memakai bukti dompet dan penguncian simulasi. Rekaman tanpa suara; bukan pengujian ponsel fisik atau dompet nyata.",
+    "downloadMobile": "Unduh rekaman ponsel bahasa Inggris",
+    "accessTitle": "Akses dan batasan",
+    "accessIntro": "Sulit gratis dan memulai setiap permainan dengan 2 nyawa, tanpa dompet atau verifikasi token. Mudah lebih lambat dan memberi lebih banyak waktu: buka di Toko dengan meminta verifikasi minimal 1.000.000 MEMEZZO dalam seluruh penguncian DevFridge aktif milik dompet Phantom yang terhubung. Tidak ada durasi minimum; penguncian yang kedaluwarsa tidak dihitung saat verifikasi. Alamat mint:",
+    "accessOutro": ". Jalur /practice juga membuka mode Sulit gratis. Tutorial interaktif dimulai sebelum permainan pertama dalam setiap bahasa dan dapat diulang dari menu. Rekor Sulit dan Mudah tersimpan lokal, terpisah, dan tidak diverifikasi.",
+    "lives": "Mudah memberi total satu nyawa awal per satu juta penuh yang dikonfirmasi di Toko, tanpa nyawa dasar: 1.000.000 MEMEZZO memberi 1 nyawa, 1.999.999 memberi 1, dan 2.000.000 memberi 2. Sulit selalu dimulai dengan 2 nyawa. Nyawa awal tetap untuk setiap permainan; melanjutkan atau memeriksa Toko tidak pernah mengisi ulang nyawa.",
+    "verification": "Tidak ada pemeriksaan token otomatis saat memulai, selama bermain, saat melanjutkan, atau ketika kembali ke halaman. Nyawa Mudah yang telah diverifikasi tetap tersedia untuk permainan baru selama halaman terbuka, hingga pemeriksaan manual Toko, perubahan dompet, pemutusan koneksi, atau pemuatan ulang halaman. Permainan yang sedang berjalan tidak terpengaruh. Permainan hanya membaca penguncian dan tidak pernah meminta tanda tangan transaksi; penguncian dibuat di luar permainan pada DevFridge. Akses dan nyawa berjalan di peramban, tanpa autentikasi server, papan peringkat, atau hadiah.",
+    "fees": "Penguncian dibuat dan ditebus di DevFridge, tanpa penarikan awal dan dengan biaya penebusan 2% untuk pembelian serta pembakaran PASTA, ditambah biaya jaringan. Penebusan MEMEZZO memerlukan rute Jupiter yang dapat dijalankan. Fitur dompet hanya untuk orang dewasa.",
+    "team": "Tim: Pappardelle · Kontak publik:",
+    "submission": ". Pengajuan galeri tunduk pada peninjauan; tidak memastikan kelayakan kompetisi atau hadiah."
+  },
+  "native": {
+    "menu": "Menu aplikasi",
+    "hard": "Mode Sulit · gratis · 2 nyawa",
+    "easy": "Mode Mudah · toko MEMEZZO opsional",
+    "reload": "Muat ulang",
+    "privacy": "Privasi & informasi aplikasi (bahasa Inggris)",
+    "website": "Buka situs web",
+    "close": "Tutup aplikasi",
+    "webviewTitle": "Perbarui Android System WebView",
+    "webviewBody": "Aplikasi ini memerlukan Android System WebView versi terkini.",
+    "restartTitle": "Mulai ulang permainan",
+    "restartBody": "Android menghentikan proses grafis. Rekor lokalmu tersimpan.",
+    "restart": "Mulai ulang",
+    "loadError": "Tidak dapat membuka permainan. Gunakan Menu aplikasi → Muat ulang.",
+    "noBrowser": "Tidak ada peramban yang terpasang",
+    "walletMissing": "Pasang dompet Solana yang kompatibel dengan MWA, lalu coba lagi."
+  }
+}
