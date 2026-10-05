@@ -3,9 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mezzo Pollo Academy</title>
+<title>MezzoPollo — Hard &amp; Easy</title>
+<meta name="description" content="Play MezzoPollo: free Hard mode with 2 lives, a guided tutorial, and optional MEMEZZO timelocks for Easy mode. Italian, English and Polish.">
 <base href="/">
 <link rel="stylesheet" href="locale.css">
+<link rel="stylesheet" href="game-tutorial.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -89,6 +91,14 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 .btn.primary{background:var(--comb);color:#fff;box-shadow:0 4px 0 #8f231b;font-size:22px}
 .btn.primary:active{box-shadow:0 1px 0 #8f231b}
 .btn.ghost{background:transparent;color:var(--chalk);box-shadow:none;border:2px solid var(--chalk-dim)}
+.mode-choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}
+.mode-choice{min-height:76px;padding:10px 8px;background:var(--slate-deep);color:var(--chalk);border:2px solid #697463;border-radius:12px;text-align:left}
+.mode-choice strong{display:block;font-size:21px}.mode-choice small{display:block;font-size:12px;line-height:1.35;margin-top:4px}
+.mode-choice[aria-pressed="true"]{border-color:var(--straw);box-shadow:0 0 0 1px var(--straw)}
+#scrMenu .btns{display:grid;grid-template-columns:1fr 1fr}#btnPlay,#btnAccess{grid-column:1/-1}
+#btnTutorial,#btnHow{font-size:15px;padding:10px 6px;min-height:48px}
+.shop-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.shop-heading .music-toggle{flex:none}
+#scrAccess{position:relative}#scrAccess .shop-heading{position:sticky;top:-20px;background:var(--slate);z-index:2;padding:10px 0;align-items:center}#scrAccess .shop-heading h2{font-size:clamp(24px,5vw,36px);line-height:1.1;margin:0}
 .stat{display:flex;justify-content:space-between;font-size:17px;padding:6px 0;border-bottom:2px dashed rgba(242,239,228,.18)}
 .grade{font-family:var(--hand);font-size:48px;color:var(--straw);margin:2px 0 8px;line-height:1}
 .note{font-size:13px;color:var(--chalk-dim);margin-top:12px;line-height:1.45}
@@ -124,12 +134,17 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <h1 class="title">Mezzo Pollo<small>Academy</small></h1>
       <div class="review-badge" data-review-label hidden></div>
       <p class="chop">A plush chicken has lost half of itself. Help it run through the gate with the matching half.</p>
-      <div class="btns">
-        <button class="btn primary" id="btnPlay">Check access &amp; play</button>
-        <button class="btn" id="btnHow">How to play</button>
-        <button class="btn ghost" id="btnAccess">DevFridge access</button>
+      <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
+        <button class="mode-choice" data-mode-select="hard" aria-pressed="true"><strong data-mode-text="hard">Hard</strong><small data-mode-text="hardDetail">Free · 2 lives</small></button>
+        <button class="mode-choice" data-mode-select="easy" aria-pressed="false"><strong data-mode-text="easy">Easy</strong><small data-mode-text="easyDetail">Slower pace · shop unlock</small></button>
       </div>
-      <p class="access-note" id="memberHint">Playing requires at least 1,000,000 MEMEZZO in active timelocks. Each full million gives you 1 life per game.</p>
+      <div class="btns">
+        <button class="btn primary" id="btnPlay">Play Hard · 2 lives</button>
+        <button class="btn" id="btnTutorial" data-mode-text="tutorial">Play the tutorial</button>
+        <button class="btn" id="btnHow">How to play</button>
+        <button class="btn ghost" id="btnAccess" data-mode-text="shop">Shop · MEMEZZO lives</button>
+      </div>
+      <p class="access-note" id="memberHint">Jump straight in with 2 lives. No wallet or token checks.</p>
       <p class="note" id="bestLine"></p>
       <div class="music-controls">
         <div class="music-row"><button class="music-toggle" data-music-toggle aria-pressed="true">♫ Music: on</button><label class="music-volume"><span data-volume-label>Volume</span><input data-music-volume aria-label="Music volume" type="range" min="0" max="100" value="25"></label></div>
@@ -137,7 +152,6 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <p class="music-status" data-music-status aria-live="polite"></p>
         <a class="song-link" href="demo.html#soundtrack" target="_blank" rel="noopener">Listen to the full song ↗</a>
       </div>
-      <a class="review-link" data-review-link href="/practice">Free reviewer demo · 2 lives →</a>
       <button type="button" data-country-open>Change country</button>
     </section>
 
@@ -149,29 +163,29 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <li>Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.</li>
         <li>When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.</li>
         <li>Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.</li>
-        <li>You get <b>1 life per full million MEMEZZO in active timelocks</b>. Start with 1 life for 1 million, or 2 lives for 2 million. Each mistake costs one life.</li>
-        <li>Starting or continuing requires at least <b>1,000,000 MEMEZZO</b> in active timelocks. Lives are calculated for each new game; pausing or checking locks does not refill them.</li>
+        <li>Hard mode is free and starts each run with 2 lives. Easy mode gives you more time and one total life per full million locked MEMEZZO, unlocked in the shop.</li>
+        <li>Only the shop checks tokens, when you ask. Playing, restarting and resuming never trigger verification. Pausing preserves remaining lives.</li>
       </ul>
       <div class="btns"><button class="btn" data-back>Back</button></div>
     </section>
 
     <section class="panel" id="scrAccess" hidden>
-      <h2>Timelocks &amp; lives</h2>
-      <p>To play, connect Phantom with at least <b>1,000,000 MEMEZZO</b> in active DevFridge timelocks on Solana. We add up your wallet's locks for this token, with no minimum duration. Expired locks stop counting.</p>
-      <p><b>Each full million = 1 life per game.</b> 1 million → 1 life, 2 million → 2 lives. There are no base lives; amounts below a full million do not add lives.</p>
-      <p class="access-note">You cannot play below the minimum. Lives are assigned at the start of each game; pausing and checking locks do not refill them. If access can no longer be confirmed, the game stays paused. To resume, reconnect the same wallet with enough active locked tokens.</p>
-      <p class="access-note">MEMEZZO mint · Solana mainnet</p>
-      <code class="mint" id="tokenMint">Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump</code>
-      <button class="music-toggle" id="copyMint">Copy mint</button>
+      <div class="shop-heading"><h2 data-shop-title>Shop · Easy mode</h2><button class="music-toggle" data-shop-back data-mode-text="back">Back to game</button></div>
+      <p>Timelock MEMEZZO on <b>DevFridge</b>, then verify here for Easy. <b>Hard is free with 2 lives.</b></p>
+      <p><b>Easy: 1 total life per full million actively locked MEMEZZO.</b> Minimum 1 million; no base lives. Expired locks do not count when verified.</p>
+      <p class="access-note">Only manual Shop checks; no automatic checks interrupt play. Easy lasts for this page session. Recheck to update; wallet changes, disconnection or reload clear future access. Ongoing runs continue with their remaining lives.</p>
       <p class="access-status" id="accessStatus" role="status" aria-live="polite">Connect Phantom to check your timelocks. The game will not request any transactions.</p>
       <p class="access-note" id="accessWallet" hidden></p>
       <div class="btns">
         <button class="btn primary" id="connectWallet" disabled>Connect Phantom</button>
         <button class="btn" id="checkLocks" hidden>Check locks again</button>
         <button class="btn ghost" id="disconnectWallet" hidden>Disconnect</button>
-        <button class="btn primary" id="playMember" hidden>New game</button>
+        <button class="btn primary" id="playMember" hidden>Play Easy</button>
         <button class="btn" id="resumeRun" hidden>Resume game</button>
       </div>
+      <p class="access-note" id="shopMintLabel">MEMEZZO mint · Solana mainnet</p>
+      <code class="mint" id="tokenMint">Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump</code>
+      <button class="music-toggle" id="copyMint">Copy mint</button>
       <div class="access-links"><a id="phantomBrowse" href="https://phantom.app/" hidden>Open in Phantom browser ↗</a><a href="https://pump.fun/coin/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Token on Pump.fun ↗</a><a href="https://scan.devfridge.cool/t/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" id="scanToken" target="_blank" rel="noopener noreferrer">Explore timelocks ↗</a></div>
       <h3>Before creating a timelock</h3>
       <ul>
@@ -182,7 +196,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       </ul>
       <p class="note">Wallet and timelock features are for adults. The game reads timelocks; creation and redemption take place on DevFridge, with your wallet approval.</p>
       <div class="access-links"><a href="https://devfridge.cool/?mint=Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Open MEMEZZO on DevFridge ↗</a></div>
-      <div class="btns"><button class="btn" data-back>Back</button></div>
+      <div class="btns"><button class="btn" data-shop-back data-mode-text="back">Back to game</button></div>
     </section>
 
     <section class="panel" id="scrPause" hidden>
@@ -191,7 +205,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <p id="accessNotice" class="access-note" role="status" hidden></p>
       <div class="btns">
         <button class="btn primary" id="btnResume">Resume</button>
-        <button class="btn" id="btnVerifyAccess">Check access</button>
+        <button class="btn" id="btnVerifyAccess" data-mode-text="shop">Shop · MEMEZZO lives</button>
         <button class="btn ghost" id="btnQuit">Back to menu</button>
       </div>
       <div class="music-controls">
@@ -227,20 +241,21 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="game-music.js"></script>
 <script src="song-captions.js"></script>
-<script type="module">if(!window.MezzoMode.practice) await import('./game-access.mjs');</script>
+<script src="game-tutorial.js"></script>
 <script>
 (function(){
 "use strict";
 const $=id=>document.getElementById(id);
 const L=window.MezzoLocale;
 const mode=window.MezzoMode;
+const tutorial=window.MezzoTutorial;
 const t=(key,params)=>L.t(key,params);
 const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 const HAND='"Caveat Brush", "Comic Sans MS", cursive';
 
 /* ---------- storage ---------- */
-function loadBest(){try{return parseInt(localStorage.getItem(mode.scoreKey)||'0',10)||0}catch(e){return 0}}
-function saveBest(v){try{localStorage.setItem(mode.scoreKey,String(v))}catch(e){}}
+function loadBest(name=mode.selected){try{return parseInt(localStorage.getItem(`mp_${name}_best`)||'0',10)||0}catch(e){return 0}}
+function saveBest(v,name){try{localStorage.setItem(`mp_${name}_best`,String(v))}catch(e){}}
 
 /* ---------- audio ---------- */
 let actx=null;
@@ -465,34 +480,21 @@ function buildChicken(whole,mat){
 }
 const hero=buildChicken(false); scene.add(hero);
 const statue=buildChicken(true,M.bronze); statue.scale.setScalar(2.2); statue.visible=false; scene.add(statue);
-let accessEligible=false, accessWallet=null, accessLives=0, runWallet=null;
-function canResumeRun(){return mode.practice||(accessEligible&&runWallet!==null&&accessWallet===runWallet)}
+let accessEligible=false, accessLives=0;
 function syncAccessUi(){
-  if(mode.practice){
-    $('btnPlay').textContent=mode.text('play');$('memberHint').textContent=mode.text('notice');
-    $('btnAccess').hidden=true;$('btnVerifyAccess').hidden=true;$('resumeRun').hidden=true;
-    $('btnResume').textContent=t('resume');
-    $('scrHow').querySelector('li:nth-child(6)').textContent=mode.text('howLives');
-    $('scrHow').querySelector('li:nth-child(7)').textContent=mode.text('howResume');
-    return;
-  }
   const lives={count:L.number(accessLives),lives:L.lifeWord(accessLives)};
-  $('btnPlay').textContent=accessEligible?t('play',lives):t('checkPlay');
-  $('memberHint').textContent=accessEligible?t('confirmed',lives):t('minimum');
-  $('resumeRun').hidden=state!=='pause'||!canResumeRun();
-  $('btnResume').textContent=t(canResumeRun()?'resume':'checkResume');
+  $('btnPlay').textContent=mode.selected==='hard'?mode.text('playHard'):mode.text(accessEligible?'playEasy':'unlock',lives);
+  $('memberHint').textContent=mode.selected==='hard'?mode.text('hardHint'):mode.text(accessEligible?'unlocked':'easyHint',lives);
+  $('resumeRun').hidden=state!=='pause';
+  $('btnResume').textContent=t('resume');
+  $('playMember').textContent=mode.text('playEasy',lives);
+  $('btnVerifyAccess').hidden=tutorial.active;
+  $('accessNotice').hidden=true;
 }
 document.addEventListener('mezzopollo:access',event=>{
-  if(mode.practice)return;
-  accessWallet=event.detail.wallet;
   accessLives=event.detail.livesPerGame;
-  accessEligible=event.detail.eligible===true&&typeof accessWallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives>=1;
-  if(!canResumeRun()&&runWallet!==null){
-    if(state==='play')pause();
-    $('accessNotice').hidden=false;$('accessNotice').textContent=t(accessWallet&&accessWallet!==runWallet?'walletChanged':'accessPaused');
-  }else if(canResumeRun()){
-    $('accessNotice').hidden=true;
-  }
+  accessEligible=event.detail.eligible===true&&typeof event.detail.wallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives>=1;
+  // Shop updates affect future runs only; an active run owns its life snapshot.
   syncAccessUi();
 });
 
@@ -611,12 +613,12 @@ let state='menu';
 const G={};
 let deathTimer=null;
 function clearDeathTimer(){if(deathTimer!==null){clearTimeout(deathTimer);deathTimer=null}}
-function resetGame(){
+function resetGame(config=mode.config('hard')){
   clearDeathTimer();
   music.setFocus(false);
-  const startingLives=mode.practice?mode.lives:accessLives;
-  Object.assign(G,{time:0,dist:0,score:0,speed:11,level:1,legs:startingLives,initialLegs:startingLives,streak:0,wrongStreak:0,levelUps:0,right:0,interoErr:0,modesOk:new Set(),
-    lane:1,x:0,y:0,vy:0,rule:'normal',ruleTimer:30,row:null,movers:[],cooldown:1.2,lastIntero:false,shake:0,hitCd:0});
+  const startingLives=config.lives;
+  Object.assign(G,{config,time:0,dist:0,score:0,speed:config.speed,level:1,legs:startingLives,initialLegs:startingLives,streak:0,wrongStreak:0,levelUps:0,right:0,interoErr:0,modesOk:new Set(),
+    lane:1,x:0,y:0,vy:0,rule:'normal',ruleTimer:config.ruleSeconds,row:null,movers:[],cooldown:1.2,lastIntero:false,shake:0,hitCd:0});
   hero.position.set(0,0,0);
   updateLegs();updateScore();
   setQuestion(t('ready'),null,'');
@@ -629,7 +631,7 @@ function clearWorld(){
 }
 
 /* ---------- HUD helpers ---------- */
-function updateLegs(){const remaining=Math.max(0,G.legs);$('legs').textContent=`🍗 ${L.number(remaining)}`;$('legs').setAttribute('aria-label',t('livesRemaining',{remaining:L.number(remaining),total:L.number(G.initialLegs)}));$('practice').textContent=mode.practice?mode.text('hud'):t('runLives',{count:L.number(G.initialLegs),lives:L.lifeWord(G.initialLegs)});}
+function updateLegs(){const remaining=Math.max(0,G.legs||0);$('legs').textContent=tutorial.active?'🍗 ∞':`🍗 ${L.number(remaining)}`;$('legs').setAttribute('aria-label',tutorial.active?mode.text('tutorialHud'):t('livesRemaining',{remaining:L.number(remaining),total:L.number(G.initialLegs||0)}));$('practice').textContent=tutorial.active?mode.text('tutorialHud'):mode.text('hud',{mode:mode.text(G.config?.name||'hard'),count:L.number(G.initialLegs||2),lives:L.lifeWord(G.initialLegs||2)});}
 function updateScore(){ $('score').textContent=Math.floor(G.score); const m=1+Math.floor(G.streak/3); $('combo').textContent=m>1?`×${m}`:''; }
 let toastT=0;
 function toast(t,bad){const el=$('toast');el.textContent=t;el.classList.toggle('bad',!!bad);el.classList.add('show');toastT=.9}
@@ -642,7 +644,7 @@ function setQuestion(text,shape,rule){
 
 /* ---------- spawning ---------- */
 function spawnRow(){
-  const reactT=Math.max(3.1,5.2-G.level*.55);
+  const reactT=Math.max(G.config.minReaction,G.config.reaction-G.level*.55);
   const z=-Math.min(140,G.speed*reactT);
   const intero=G.time>18&&!G.lastIntero&&Math.random()<.2;
   G.lastIntero=intero;
@@ -667,7 +669,7 @@ function spawnRow(){
     const ruleTxt=G.rule==='reverse'?t('reverse'):'';
     setQuestion(mode==='figura'?t('shape'):q.text,q.shape,ruleTxt);}
   // obstacles and feathers between player and row
-  const nOb=G.level===1?1:ri(1,2);const used=new Set();
+  const nOb=G.config.name==='easy'||G.level===1?1:ri(1,2);const used=new Set();
   for(let i=0;i<nOb;i++){let lane=ri(0,2);if(used.size===2)break;while(used.has(lane))lane=ri(0,2);used.add(lane);
     const oz=z*rnd(.3,.7);G.movers.push({obj:makeBale(lane,oz),type:'bale',lane,hit:false})}
   const fl=ri(0,2);for(let i=0;i<4;i++){const fz=z*(.2+i*.12);G.movers.push({obj:makeFeather(fl,fz),type:'feather',lane:fl})}
@@ -675,18 +677,20 @@ function spawnRow(){
 
 /* ---------- resolution ---------- */
 function loseLeg(msg){
+  if(tutorial.active)return;
   if(G.legs<=0)return;
   G.legs--;updateLegs();G.streak=0;G.wrongStreak++;
-  if(G.wrongStreak>=2){G.speed=Math.max(10,G.speed-2);G.level=Math.max(1,G.level-1);G.wrongStreak=0}
+  if(G.wrongStreak>=2){G.speed=Math.max(G.config.minSpeed,G.speed-2);G.level=Math.max(1,G.level-1);G.wrongStreak=0}
   sfx.squawk();flash();toast(msg,true);G.shake=.45;burst(G.x,1.2,0,10);
   updateScore();
   if(G.legs<=0)deathTimer=setTimeout(()=>{deathTimer=null;if(G.legs<=0)gameOver()},450);
 }
 function gainRight(mode,msg){
+  if(tutorial.active)return;
   G.right++;G.streak++;G.wrongStreak=0;if(mode)G.modesOk.add(mode);
   const mult=1+Math.floor(G.streak/3);G.score+=50*mult;
-  if(G.streak%3===0)G.speed=Math.min(24,G.speed+1.2);
-  if(G.streak%4===0)G.level=Math.min(3,G.level+1);
+  if(G.streak%3===0)G.speed=Math.min(G.config.maxSpeed,G.speed+G.config.acceleration);
+  if(G.streak%4===0)G.level=Math.min(G.config.maxLevel,G.level+1);
   sfx.right();burst(G.x,2.6,-.5,12);
   toast(G.streak>0&&G.streak%5===0?t('halfChicken'):msg);
   updateScore();
@@ -694,6 +698,13 @@ function gainRight(mode,msg){
 function resolveRow(){
   music.setFocus(false);
   const r=G.row;r.resolved=true;
+  if(tutorial.active){
+    statue.visible=false;
+    const correct=r.intero?!r.failed:r.rule==='reverse'?G.lane!==r.correct:G.lane===r.correct;
+    tutorial.observe({type:r.intero?'whole':'gate',correct,rule:r.rule});
+    if(correct)sfx.right();else sfx.squawk();
+    return;
+  }
   if(r.intero){
     statue.visible=false;
     if(!r.failed)gainRight('intero',t('heldStill'));
@@ -707,10 +718,11 @@ function resolveRow(){
 
 /* ---------- input ---------- */
 function changeLane(d){
-  if(state!=='play')return;const nl=Math.max(0,Math.min(2,G.lane+d));if(nl===G.lane)return;G.lane=nl;
+  if(state!=='play'||(tutorial.active&&tutorial.waiting))return;const nl=Math.max(0,Math.min(2,G.lane+d));if(nl===G.lane)return;G.lane=nl;
+  if(tutorial.active)tutorial.observe({type:'lane',direction:d});
   if(G.row&&G.row.intero&&!G.row.resolved&&!G.row.failed){G.row.failed=true;G.interoErr++;loseLeg(t('stayStill'))}
 }
-function jump(){if(state!=='play')return;if(G.y<=0.001){G.vy=9.2;sfx.jump()}}
+function jump(){if(state!=='play'||(tutorial.active&&tutorial.waiting))return;if(G.y<=0.001){G.vy=9.2;sfx.jump();if(tutorial.active)tutorial.observe({type:'jump'})}}
 window.addEventListener('keydown',e=>{
   if(!L.ready)return;
   if(['Escape','p','P'].includes(e.key)){if(state==='play')pause();else if(state==='pause')resume();e.preventDefault();return;}
@@ -732,12 +744,57 @@ canvas.addEventListener('touchmove',e=>{if(state==='play')e.preventDefault()},{p
 
 /* ---------- screens ---------- */
 const screens=['scrMenu','scrHow','scrAccess','scrPause','scrOver'];
-function show(id){$('overlay').hidden=!id;screens.forEach(s=>$(s).hidden=s!==id);if(id){const f=$(id).querySelector('button');f&&f.focus({preventScroll:true})}}
+function show(id){
+  const closingShop=!$('scrAccess').hidden&&id!=='scrAccess';
+  if(closingShop)document.dispatchEvent(new Event('mezzopollo:shopclose'));
+  $('overlay').hidden=!id;screens.forEach(s=>$(s).hidden=s!==id);
+  if(id){const f=$(id).querySelector('button');f&&f.focus({preventScroll:true})}
+}
 function menuBest(){const b=loadBest();$('bestLine').textContent=b?t('personalBest',{score:L.number(b)}):''}
-function refreshAdmission(){if(!mode.practice)document.dispatchEvent(new Event('mezzopollo:revalidate'))}
-function startGame(){if(!L.ready){L.open();return}refreshAdmission();if(!mode.practice&&!accessEligible){show('scrAccess');return}runWallet=mode.practice?null:accessWallet;$('accessNotice').hidden=true;audio();clearWorld();resetGame();state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true})}
-function pause(){if(state!=='play')return;state='pause';music.pause();syncAccessUi();show('scrPause')}
-function resume(){if(state!=='pause')return;refreshAdmission();if(!canResumeRun()){show('scrAccess');return}state='play';syncAccessUi();if(G.legs<=0){gameOver();return}audio();music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
+let shopModule=null;
+async function openShop(){
+  if(state==='play')pause();
+  show('scrAccess');
+  if(!shopModule){
+    $('accessStatus').textContent=mode.text('shopLoading');
+    shopModule=import('./game-access.mjs').catch(()=>{shopModule=null;$('accessStatus').textContent=mode.text('shopError');});
+  }
+  await shopModule;
+  if(!$('scrAccess').hidden)document.dispatchEvent(new Event('mezzopollo:shopopen'));
+  syncAccessUi();
+}
+function beginRun(config){
+  audio();clearWorld();resetGame(config);state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true});clock.getDelta();
+}
+function tutorialScenario(spec){
+  clearWorld();clearDeathTimer();G.lane=1;G.x=0;G.y=0;G.vy=0;G.speed=7;G.rule=spec.rule;G.hitCd=0;
+  $('board').classList.remove('intero');
+  setQuestion(mode.text('tutorialQuestion'),null,'');
+  if(['gate','reverse','whole'].includes(spec.id)){
+    const intero=spec.id==='whole', z=-42;
+    const obj=makeGateRow(spec.answerOptions.map(text=>({text:intero?'?':text})),z);
+    G.row={obj,z,intero,mode:'numero',correct:spec.correctLane,rule:spec.rule,failed:false,resolved:false,fall:0};
+    // Start outside the correct lane so the normal gate lesson needs a real choice.
+    if(spec.id==='gate'){G.lane=0;G.x=LANES[0];}
+    if(intero){$('board').classList.add('intero');setQuestion(t('whole'),null,t('wholeRule'));statue.visible=true;statue.position.set(-14,7,z*.6);statue.userData.t=0;}
+    else setQuestion(spec.question,null,spec.rule==='reverse'?t('reverse'):'');
+  }
+  updateLegs();updateScore();
+}
+function startTutorial(config=mode.config('hard')){
+  if(!L.ready){L.open();return;}
+  audio();clearWorld();resetGame(config);state='play';show(null);$('hud').hidden=false;music.start();
+  tutorial.start({onStep:tutorialScenario,onAction:action=>{if(action==='jump')jump();else changeLane(action==='left'?-1:1);},onFinish:()=>beginRun(config)});
+  updateLegs();syncAccessUi();canvas.focus({preventScroll:true});clock.getDelta();
+}
+function startGame(){
+  if(!L.ready){L.open();return;}
+  const config=mode.config(mode.selected,accessEligible?accessLives:0);
+  if(!config){void openShop();return;}
+  if(tutorial.shouldStart())startTutorial(config);else beginRun(config);
+}
+function pause(){if(state!=='play')return;state='pause';tutorial.setPaused(true);music.pause();syncAccessUi();show('scrPause')}
+function resume(){if(state!=='pause')return;state='play';tutorial.setPaused(false);syncAccessUi();if(G.legs<=0&&!tutorial.active){gameOver();return}audio();music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
 function gradeOf(){
   if(G.right>=60&&['numero','parola','figura','intero'].every(m=>G.modesOk.has(m)))return t('legendary');
   if(G.right>=40&&G.interoErr===0)return t('wholeRank');
@@ -746,19 +803,22 @@ function gradeOf(){
   return t('egg');
 }
 function gameOver(){
+  if(tutorial.active)return;
   if(state!=='play')return;state='over';music.pause();
-  const s=Math.floor(G.score);let best=loadBest();if(s>best){best=s;saveBest(s)}
+  const s=Math.floor(G.score);let best=loadBest(G.config.name);if(s>best){best=s;saveBest(s,G.config.name)}
   $('gradeTxt').textContent=gradeOf();$('oScore').textContent=s;$('oRight').textContent=G.right;$('oBest').textContent=best;
   $('shareImg').style.display='none';$('shareNote').textContent='';
   $('hud').hidden=true;show('scrOver');
 }
 $('btnPlay').onclick=startGame;$('btnAgain').onclick=startGame;
-$('playMember').onclick=startGame;$('resumeRun').onclick=resume;
-$('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=()=>show('scrAccess');
-$('btnVerifyAccess').onclick=()=>{refreshAdmission();show('scrAccess')};
+$('playMember').onclick=()=>{mode.select('easy');startGame()};$('resumeRun').onclick=resume;
+$('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=openShop;
+$('btnVerifyAccess').onclick=openShop;
+$('btnTutorial').onclick=()=>startTutorial(mode.config(mode.selected,accessEligible?accessLives:0)||mode.config('hard'));
+document.querySelectorAll('[data-shop-back]').forEach(b=>b.onclick=()=>{if(state==='pause')show('scrPause');else toMenu()});
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=toMenu);
 $('pauseBtn').onclick=pause;$('btnResume').onclick=resume;
-function toMenu(){clearDeathTimer();music.pause();clearWorld();state='menu';runWallet=null;syncAccessUi();$('hud').hidden=true;menuBest();show('scrMenu')}
+function toMenu(){clearDeathTimer();tutorial.cancel();music.pause();clearWorld();state='menu';syncAccessUi();$('hud').hidden=true;menuBest();show('scrMenu')}
 $('btnQuit').onclick=toMenu;$('btnMenu').onclick=toMenu;
 
 $('btnShare').onclick=async()=>{
@@ -766,7 +826,7 @@ $('btnShare').onclick=async()=>{
   ctx.fillStyle='#8a5a34';ctx.fillRect(0,0,1080,1080);ctx.drawImage(slateC,40,40,1000,1000);
   ctx.textAlign='center';ctx.fillStyle='#e9b949';ctx.font=`120px ${HAND}`;ctx.fillText('Mezzo Pollo',540,230);
   ctx.fillStyle='#f2efe4';ctx.font=`64px ${HAND}`;ctx.fillText('Academy',540,310);
-  if(mode.practice){ctx.font=`32px ${HAND}`;ctx.fillText(mode.text('badge'),540,385,900);}
+  ctx.font=`32px ${HAND}`;ctx.fillText(mode.text('badge',{mode:mode.text(G.config.name)}),540,385,900);
   ctx.font=`110px ${HAND}`;ctx.fillText($('gradeTxt').textContent,540,540,900);
   ctx.font=`80px ${HAND}`;ctx.fillText(t('shareStats',{score:$('oScore').textContent,right:G.right}),540,690,900);
   ctx.fillStyle='#e9b949';ctx.font=`60px ${HAND}`;ctx.fillText(t('shareQuestion'),540,880,900);
@@ -795,7 +855,8 @@ function step(){
   if(!L.ready)return;
   anim+=dt;
   const running=state==='play';
-  const spd=running?G.speed:(state==='menu'?6:0);
+  const learning=tutorial.active, encounterRunning=running&&(!learning||!tutorial.waiting);
+  const spd=encounterRunning?G.speed:(state==='menu'?6:0);
 
   // scroll world visuals
   if(spd>0){
@@ -808,15 +869,15 @@ function step(){
   }
 
   if(running){
-    G.time+=dt;G.dist+=G.speed*dt;G.score+=G.speed*dt*.5;
+    if(!learning){G.time+=dt;G.dist+=G.speed*dt;G.score+=G.speed*dt*.5;}
     // rule toggle
-    G.ruleTimer-=dt;if(G.ruleTimer<=0){G.ruleTimer=30;G.rule=G.rule==='normal'?'reverse':'normal';sfx.rule();toast(t(G.rule==='reverse'?'rulesReversed':'rulesNormal'));}
+    if(!learning){G.ruleTimer-=dt;if(G.ruleTimer<=0){G.ruleTimer=G.config.ruleSeconds;G.rule=G.rule==='normal'?'reverse':'normal';sfx.rule();toast(t(G.rule==='reverse'?'rulesReversed':'rulesNormal'));}}
     // player
     const tx=LANES[G.lane];G.x+=(tx-G.x)*Math.min(1,dt*14);
     G.vy-=26*dt;G.y=Math.max(0,G.y+G.vy*dt);if(G.y===0)G.vy=Math.max(0,G.vy);
     // row
-    if(!G.row){G.cooldown-=dt;if(G.cooldown<=0)spawnRow()}
-    else{
+    if(!G.row){if(!learning){G.cooldown-=dt;if(G.cooldown<=0)spawnRow()}}
+    else if(encounterRunning){
       G.row.z+=G.speed*dt;G.row.obj.position.z=G.row.z;
       if(!G.row.resolved&&G.row.z>=0)resolveRow();
       if(G.row.fall>0){for(const b of G.row.obj.userData.boards)b.rotation.x=Math.min(1.4,b.rotation.x+dt*5)}
@@ -825,7 +886,7 @@ function step(){
     }
     // movers
     G.hitCd=Math.max(0,G.hitCd-dt);
-    for(let i=G.movers.length-1;i>=0;i--){
+    for(let i=G.movers.length-1;encounterRunning&&i>=0;i--){
       const m=G.movers[i];m.obj.position.z+=G.speed*dt;const z=m.obj.position.z;
       if(m.type==='feather'){m.obj.rotation.y+=dt*3;if(!m.got&&Math.abs(z)<.8&&m.lane===G.lane&&G.y<1.8){m.got=true;m.obj.visible=false;G.score+=10;sfx.feather();burst(G.x,1.3,0,3);updateScore()}}
       if(m.type==='bale'&&!m.hit&&Math.abs(z)<.7&&m.lane===G.lane&&G.y<.95&&G.hitCd<=0){m.hit=true;G.hitCd=.6;sfx.bump();loseLeg(t('bonk'))}
@@ -863,9 +924,10 @@ document.addEventListener('mezzopollo:language',()=>{
   syncAccessUi();menuBest();updateLegs();
   if(lastMusicState)renderMusicState(lastMusicState);
   if(state==='menu')setQuestion(t('ready'),null,'');
-  if(!$('accessNotice').hidden)$('accessNotice').textContent=t(accessWallet&&accessWallet!==runWallet?'walletChanged':'accessPaused');
 });
+document.addEventListener('mezzopollo:mode',()=>{syncAccessUi();menuBest()});
 document.addEventListener('mezzopollo:countryopen',()=>{if(state==='play')pause()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='play')pause()});
 resetGame();menuBest();show('scrMenu');
 syncAccessUi();
 const ready=document.fonts&&document.fonts.load?Promise.all([document.fonts.load(`100px "Caveat Brush"`),document.fonts.ready]).catch(()=>{}):Promise.resolve();

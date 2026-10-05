@@ -14,8 +14,9 @@ export function livesForRawAmount(totalRaw) {
   return Number(lives);
 }
 
-// This is a browser admission control, not wallet authentication or score proof.
-// now() is Unix seconds; injectable timers make expiry/race tests deterministic.
+// The shop evaluates fresh evidence only after an explicit connect/check gesture.
+// A successful result is a session entitlement, not a continuously checked lease.
+// This browser state is not wallet authentication or score proof.
 export function createLockAccess({
   getProvider, onChange = () => {}, fetchImpl = globalThis.fetch,
   now, timers = globalThis,
@@ -31,32 +32,25 @@ export function createLockAccess({
   const setTimer = (fn, ms) => timers.setTimeout(fn, ms);
   const clearTimer = id => { if (id !== null) timers.clearTimeout(id); };
 
-  let state = BASE_STATE, provider = null, evidence = null, destroyed = false;
+  let state = BASE_STATE, settledState = BASE_STATE, provider = null, destroyed = false;
   let generation = 0, connectionAttempt = 0, connectionRequest = null;
-  let pending = null, boundaryTimer = null, refreshTimer = null, backoffUntil = 0;
-  let handlers = null;
+  let pending = null, backoffUntil = 0, handlers = null;
 
   function publish(next) {
     if (destroyed) return state;
     state = Object.freeze({ ...next });
+    if (!['connecting', 'checking'].includes(state.status)) settledState = state;
     onChange(state);
     return state;
-  }
-
-  function clearSchedules() {
-    clearTimer(boundaryTimer); boundaryTimer = null;
-    clearTimer(refreshTimer); refreshTimer = null;
   }
 
   function invalidate() {
     generation += 1;
     connectionAttempt += 1;
+    const prompt = connectionRequest, request = pending;
     connectionRequest = null;
-    evidence = null;
-    backoffUntil = 0;
-    clearSchedules();
-    const request = pending;
     pending = null;
+    prompt?.cancel();
     request?.cancel();
   }
 
@@ -66,41 +60,17 @@ export function createLockAccess({
     return typeof address === 'string' && /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(address) ? address : null;
   }
 
-  function scheduleRefresh(seconds = ACCESS_POLICY.refreshSeconds) {
-    clearTimer(refreshTimer); refreshTimer = null;
-    if (destroyed || !state.wallet) return;
-    refreshTimer = setTimer(() => { refreshTimer = null; void refresh(); }, seconds * 1000);
-  }
-
-  function scheduleBoundary(at) {
-    clearTimer(boundaryTimer); boundaryTimer = null;
-    if (destroyed || !state.wallet || !evidence) return;
-    boundaryTimer = setTimer(() => {
-      boundaryTimer = null;
-      revalidate();
-    }, Math.max(1, Math.ceil((at - currentTime()) * 1000)));
-  }
-
-  function evaluate() {
-    const result = evaluateTimelocks(evidence, { ...ACCESS_POLICY, wallet: state.wallet }, unixTime());
+  function evaluate(evidence, wallet) {
+    const result = evaluateTimelocks(evidence, { ...ACCESS_POLICY, wallet }, unixTime());
     const livesPerGame = result.eligible ? livesForRawAmount(result.totalRaw) : 0;
-    publish({ status: result.eligible ? 'eligible' : 'insufficient', wallet: state.wallet,
+    return publish({ status: result.eligible ? 'eligible' : 'insufficient', wallet,
       eligible: result.eligible, totalRaw: result.totalRaw.toString(), livesPerGame,
-      checkedAt: evidence.ts, nextCheckAt: result.nextCheckAt });
-    scheduleBoundary(result.nextCheckAt);
-    return state;
+      checkedAt: evidence.ts, nextCheckAt: null });
   }
 
   function unavailable(retryAfterSeconds) {
-    evidence = null;
-    clearTimer(boundaryTimer); boundaryTimer = null;
     return publish({ ...BASE_STATE, wallet: state.wallet, status: 'unavailable',
       ...(retryAfterSeconds ? { retryAfterSeconds } : {}) });
-  }
-
-  function revalidate() {
-    if (destroyed || !state.wallet || !evidence) return state;
-    try { return evaluate(); } catch { return unavailable(); }
   }
 
   function retryDelay(response) {
@@ -109,16 +79,19 @@ export function createLockAccess({
     return Math.min(60, Math.max(30, Number.isFinite(seconds) ? Math.ceil(seconds) : 30));
   }
 
+  // This function is called only by a shop gesture. It never schedules a retry.
   async function refresh() {
     if (destroyed || !state.wallet) return state;
-    revalidate();
+    if (provider?.isConnected === false) return selectWallet(null);
+    const currentWallet = publicKey(provider?.publicKey);
+    if (currentWallet !== state.wallet) selectWallet(currentWallet);
+    if (!state.wallet) return state;
     if (pending) return pending.promise;
     if (currentTime() < backoffUntil) {
       return publish({ ...state, retryAfterSeconds: Math.max(1, Math.ceil(backoffUntil - currentTime())) });
     }
     const wallet = state.wallet, requestGeneration = generation;
-    clearTimer(refreshTimer); refreshTimer = null;
-    if (!state.eligible) publish({ ...BASE_STATE, wallet, status: 'checking' });
+    publish({ ...state, status: 'checking' });
     const abort = new AbortController();
     let timeoutId = null, rejectCancelled;
     const cancellation = new Promise((_, reject) => { rejectCancelled = reject; });
@@ -147,16 +120,17 @@ export function createLockAccess({
       try {
         const result = await Promise.race([fetchEvidence(), timeout, cancellation]);
         if (destroyed || generation !== requestGeneration || state.wallet !== wallet) return state;
-        evidence = result;
+        // Also catch providers that changed account without emitting accountChanged.
+        if (provider?.isConnected === false || publicKey(provider?.publicKey) !== wallet) {
+          return selectWallet(provider?.isConnected === false ? null : provider?.publicKey);
+        }
         backoffUntil = 0;
-        evaluate();
-        scheduleRefresh();
+        evaluate(result, wallet);
       } catch (error) {
         if (destroyed || generation !== requestGeneration || state.wallet !== wallet) return state;
         const retry = error.retryAfterSeconds;
         if (retry) backoffUntil = currentTime() + retry;
         unavailable(retry);
-        scheduleRefresh(retry ?? ACCESS_POLICY.refreshSeconds);
       } finally {
         clearTimer(timeoutId);
         if (pending === request) pending = null;
@@ -166,18 +140,14 @@ export function createLockAccess({
     return request.promise;
   }
 
+  // Wallet events revoke future entitlement but never initiate a lookup.
   function selectWallet(value) {
-    if (destroyed) return Promise.resolve(state);
+    if (destroyed) return state;
     const wallet = publicKey(value);
-    if (!wallet) {
-      invalidate();
-      publish(BASE_STATE);
-      return Promise.resolve(state);
-    }
-    if (wallet === state.wallet) return refresh();
+    if (wallet && wallet === state.wallet) return state;
     invalidate();
-    publish({ ...BASE_STATE, wallet, status: 'checking' });
-    return refresh();
+    backoffUntil = 0;
+    return publish(wallet ? { ...BASE_STATE, wallet, status: 'connected' } : BASE_STATE);
   }
 
   function detachProvider() {
@@ -193,9 +163,11 @@ export function createLockAccess({
     detachProvider();
     provider = nextProvider;
     handlers = {
-      connect: key => { void selectWallet(key ?? provider?.publicKey); },
-      accountChanged: key => { void selectWallet(key); },
-      disconnect: () => { invalidate(); publish(BASE_STATE); },
+      // The explicit connect promise below owns its lookup. A late event after
+      // closing the shop may select a wallet, but can never grant entitlement.
+      connect: key => { if (!connectionRequest) selectWallet(key ?? provider?.publicKey); },
+      accountChanged: key => { selectWallet(key); },
+      disconnect: () => { invalidate(); backoffUntil = 0; publish(BASE_STATE); },
     };
     for (const [event, handler] of Object.entries(handlers)) provider.on?.(event, handler);
   }
@@ -206,22 +178,35 @@ export function createLockAccess({
     let candidate;
     try { candidate = getProvider(); } catch { candidate = null; }
     if (!candidate || candidate.isPhantom !== true || typeof candidate.connect !== 'function') {
-      invalidate(); detachProvider();
+      invalidate(); detachProvider(); backoffUntil = 0;
       return publish({ ...BASE_STATE, status: 'missing-wallet' });
     }
-    if (candidate !== provider) { invalidate(); attachProvider(candidate); }
-    if (state.wallet && candidate.isConnected !== false) return refresh();
-    publish({ ...BASE_STATE, status: 'connecting' });
+    if (candidate !== provider) {
+      invalidate(); attachProvider(candidate); backoffUntil = 0; publish(BASE_STATE);
+    }
+    if (candidate.isConnected === true && publicKey(candidate.publicKey)) {
+      selectWallet(candidate.publicKey);
+      return refresh();
+    }
+    publish({ ...state, status: 'connecting' });
     const attempt = ++connectionAttempt;
-    const request = { promise: null };
+    let rejectCancelled;
+    const cancellation = new Promise((_, reject) => { rejectCancelled = reject; });
+    const request = { promise: null, cancel() { rejectCancelled(new Error('Wallet connection cancelled')); } };
     connectionRequest = request;
     request.promise = (async () => {
       try {
-        const result = await candidate.connect();
-        if (destroyed || candidate !== provider || attempt !== connectionAttempt) return pending?.promise ?? state;
+        const connectProvider = Promise.resolve().then(() => {
+          if (destroyed || attempt !== connectionAttempt) throw new Error('Wallet connection cancelled');
+          return candidate.connect();
+        });
+        const result = await Promise.race([connectProvider, cancellation]);
+        if (destroyed || candidate !== provider || attempt !== connectionAttempt) return state;
         const wallet = publicKey(candidate.publicKey ?? result);
         if (!wallet) throw new Error('Phantom did not provide a Solana public key');
-        return await selectWallet(wallet);
+        connectionRequest = null;
+        selectWallet(wallet);
+        return await refresh();
       } catch (error) {
         if (destroyed || candidate !== provider || attempt !== connectionAttempt) return state;
         invalidate();
@@ -231,21 +216,28 @@ export function createLockAccess({
     return request.promise;
   }
 
+  function cancelPending() {
+    if (destroyed || (!pending && !connectionRequest)) return state;
+    const previous = settledState;
+    invalidate();
+    return publish(previous);
+  }
+
   async function disconnect() {
     if (destroyed) return state;
     const previousProvider = provider;
-    invalidate(); detachProvider();
+    invalidate(); detachProvider(); backoffUntil = 0;
     publish(BASE_STATE);
-    try { await previousProvider?.disconnect?.(); } catch { /* Local access is already revoked. */ }
+    try { await previousProvider?.disconnect?.(); } catch { /* Future entitlement is already revoked. */ }
     return state;
   }
 
   function destroy() {
     if (destroyed) return;
     invalidate(); detachProvider();
-    state = BASE_STATE;
+    state = BASE_STATE; settledState = BASE_STATE;
     destroyed = true;
   }
 
-  return Object.freeze({ connect, disconnect, refresh, revalidate, destroy, getState: () => state });
+  return Object.freeze({ connect, disconnect, refresh, cancelPending, destroy, getState: () => state });
 }

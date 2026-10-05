@@ -54,22 +54,25 @@ function render(state, notify = true) {
   if (notify) document.dispatchEvent(new CustomEvent('mezzopollo:access', { detail: { eligible: state.eligible, wallet: state.wallet, status: state.status, livesPerGame: state.livesPerGame } }));
 }
 const access = createLockAccess({ getProvider: () => window.phantom?.solana, onChange: render });
+let shopOpen = false;
+window.MezzoShopAccess = Object.freeze({
+  getState: access.getState,
+  cancelPending: access.cancelPending,
+});
 lastState = access.getState();
 render(lastState, false);
 byId('connectWallet').disabled = false;
-byId('connectWallet').addEventListener('click', () => { void access.connect(); });
+byId('connectWallet').addEventListener('click', () => { if (shopOpen) void access.connect(); });
 byId('disconnectWallet').addEventListener('click', () => { void access.disconnect(); });
-byId('checkLocks').addEventListener('click', () => { void access.refresh(); });
+byId('checkLocks').addEventListener('click', () => { if (shopOpen) void access.refresh(); });
 byId('copyMint').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(ACCESS_POLICY.mint); copyMessage = 'copied'; }
   catch { copyMessage = 'copyFallback'; }
   byId('copyMint').textContent = translated(copyMessage);
 });
 document.addEventListener('mezzopollo:language', () => render(lastState, false));
-document.addEventListener('visibilitychange', () => {
-  access.revalidate();
-  if (!document.hidden) void access.refresh();
+document.addEventListener('mezzopollo:shopopen', () => { shopOpen = true; });
+document.addEventListener('mezzopollo:shopclose', () => {
+  shopOpen = false;
+  access.cancelPending();
 });
-window.addEventListener('pageshow', () => { access.revalidate(); void access.refresh(); });
-// Synchronous admission check for every start/resume path, including keyboard.
-document.addEventListener('mezzopollo:revalidate', () => access.revalidate());

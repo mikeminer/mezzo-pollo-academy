@@ -1,13 +1,13 @@
 # Mezzo Pollo Academy 🐔✂️
 
-Choose Italy, the United States or Poland when opening the site. The game and demo use Italian, English or Polish, including native word challenges, wallet messages and share cards. The chooser appears on each page load and remembers the last selection; the menu lets you change country. The Italian soundtrack keeps its English subtitles, and the recorded walkthroughs show the English interface. [Play on mezzopollo.it](https://mezzopollo.it/) · [Demo](https://mezzopollo.it/demo).
+Choose Italy, the United States or Poland when opening the site. The game and demo use Italian, English or Polish, including native word challenges, Shop messages and share cards. The chooser appears on each page load and remembers the last selection; the menu lets you change country. An interactive tutorial starts before your first play in each language and can be replayed from the menu. The Italian soundtrack keeps its English subtitles. Recorded walkthroughs are historical and show the English interface before the Hard/Easy update. [Play on mezzopollo.it](https://mezzopollo.it/) · [Demo](https://mezzopollo.it/demo).
 
 Un runner 3D per browser in cui un pollo di peluche tagliato a metà corre verso la porta con la metà giusta: numeri, parole e figure da completare.
 Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackathon DevFridge.
 
-> **Demo gratuita:** [prova con 2 vite](https://mezzopollo.it/practice), senza wallet o token. Ogni nuova partita assegna esattamente 2 vite; pausa e ripresa non le ricaricano. Il record è locale e separato.
+> **Difficile gratis:** [gioca con 2 vite](https://mezzopollo.it/practice), senza wallet, token o verifiche. Ogni nuova partita assegna esattamente 2 vite; pausa e ripresa non le ricaricano. La route `/practice` apre questa modalità.
 
-> **Accesso al gioco principale:** per giocare servono almeno **1.000.000 MEMEZZO** in timelock DevFridge attivi. Ogni milione intero corrisponde a una vita totale all'inizio di ogni nuova partita, senza vite di base. Phantom collega il wallet; il gioco non richiede firme o transazioni.
+> **Facile dal Negozio:** velocità ridotta e più tempo per rispondere. Una verifica manuale di almeno **1.000.000 MEMEZZO** in timelock DevFridge attivi sblocca Facile per la sessione della pagina. Ogni milione intero dà **una vita totale**, senza 2 vite di base. Il gioco non richiede firme o transazioni e non ricontrolla i token durante le partite.
 
 [Gioca](https://mezzo-pollo-academy.vercel.app) · [Demo](https://mezzo-pollo-academy.vercel.app/demo) · [Repository pubblico](https://github.com/mikeminer/mezzo-pollo-academy)
 
@@ -16,7 +16,9 @@ Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackath
 - **Corsie:** swipe sinistra/destra, oppure ← → o A D
 - **Salto:** swipe su, oppure ↑, W o spazio
 - **Pausa:** pulsante II, oppure Esc o P
-- Passa sotto la porta con la metà giusta. Con il **POLLO INTERO** non cambiare corsia. Quando la regola è **al contrario**, scegli una porta sbagliata. Le vite ("cosce") iniziali sono una per ogni milione intero di MEMEZZO attivo.
+- Passa sotto la porta con la metà giusta. Con il **POLLO INTERO** non cambiare corsia. Quando la regola è **al contrario**, scegli una porta sbagliata.
+- **Difficile:** 2 vite a ogni partita, gratis. **Facile:** una vita iniziale totale per ogni milione intero di MEMEZZO verificato nel Negozio; velocità ridotta e più tempo per rispondere.
+- Il **tutorial interattivo** parte prima della prima partita in ogni lingua. Si può ripetere dal menu. I record Difficile e Facile sono separati, locali e non verificati.
 
 ## Musica
 
@@ -26,15 +28,15 @@ La musica si abbassa durante i segnali importanti e il POLLO INTERO, si ferma in
 
 I sottotitoli inglesi seguono l'audio nel gioco e nel player completo della demo. Si gestiscono con **CC English**; la scelta resta salvata sul dispositivo. La traduzione deriva dalla trascrizione automatica del brano generato, con tempi approssimati per frase. [File WebVTT](media/mezzo-pollo-en.vtt).
 
-## Accesso MEMEZZO
+## Negozio MEMEZZO e modalità Facile
 
 Mint Solana: `Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump`.
 
-L'accesso al gioco richiede almeno **1.000.000 MEMEZZO** complessivi in timelock DevFridge attivi dello stesso wallet e mint. Nessuna durata minima: anche un lock con meno di un giorno residuo conta, fino alla scadenza. La quantità è verificata in unità esatte, con sei decimali. La demo pubblica separata `/practice` offre esattamente 2 vite per partita ai revisori, senza wallet o token.
+Per Facile, apri il Negozio: il link a DevFridge permette di creare un timelock esternamente. Dopo la conferma, premi **Collega e verifica** per collegare Phantom ed eseguire il primo controllo. I controlli successivi si richiedono con **Verifica vite Facile**. Servono almeno **1.000.000 MEMEZZO** complessivi in timelock DevFridge attivi dello stesso wallet e mint. Nessuna durata minima: anche un lock con meno di un giorno residuo conta al momento della verifica, fino alla scadenza. La quantità è verificata in unità esatte, con sei decimali. Difficile è sempre gratuito, con 2 vite per partita e senza wallet.
 
-Ogni nuova partita assegna **una vita totale per ogni milione intero attivo**, senza vite di base: 1.000.000 MEMEZZO → 1 vita; 1.999.999 → 1; 2.000.000 → 2. Il numero iniziale viene fissato all'avvio: aggiornare i lock o riprendere la partita non ripristina vite. Una variazione che lascia il totale sopra soglia cambia le vite iniziali soltanto alla partita successiva.
+Ogni nuova partita **Facile** assegna **una vita totale per ogni milione intero confermato nel Negozio**, senza vite di base: 1.000.000 MEMEZZO → 1 vita; 1.999.999 → 1; 2.000.000 → 2. Il numero iniziale viene fissato all'avvio: aggiornare i lock o riprendere la partita non ripristina vite. L’esito della verifica resta in memoria finché la pagina è aperta, fino a una nuova verifica manuale, un cambio o una disconnessione del wallet oppure un ricaricamento della pagina.
 
-Collega Phantom e ricontrolla dopo la conferma di un nuovo lock. Su telefono, il pannello offre il collegamento al browser Phantom. Sotto soglia, disconnessione, dati scaduti o errori di verifica mettono in pausa e impediscono di continuare finché lo stesso wallet non riceve una verifica fresca sopra soglia; le vite residue restano quelle della partita. Cambiare wallet richiede una nuova partita. Creazione e riscatto avvengono su DevFridge, con no-early-withdrawal e fee del 2% al riscatto. Accesso e punteggi sono gestiti nel browser: i record sono locali e non verificati, senza autenticazione server, classifiche o premi. [Regola, evidenze e limiti](ACCESS.md).
+**Nessuna verifica automatica** all’avvio, alla ripresa, durante la partita o al ritorno sulla pagina. Solo i comandi del Negozio **Collega e verifica** e **Verifica vite Facile** controllano i token. Una verifica manuale non valida, un cambio wallet o una disconnessione annullano lo sblocco per le nuove partite Facile, ma non interrompono una partita già avviata e non bloccano Difficile. Su telefono il Negozio offre un link al browser Phantom. Creazione e riscatto dei timelock avvengono su DevFridge, senza ritiro anticipato e con una commissione del 2% al riscatto per acquistare e bruciare PASTA, oltre ai costi di rete; il riscatto di MEMEZZO richiede una rotta Jupiter eseguibile. Accesso e vite sono gestiti nel browser: i record sono locali e non verificati, senza autenticazione server, classifiche o premi. [Regola, evidenze e limiti](ACCESS.md).
 
 ## Avvio locale
 
@@ -58,7 +60,7 @@ Deploy pubblico su Vercel: [mezzo-pollo-academy.vercel.app](https://mezzo-pollo-
 
 La documentazione fornita attribuisce il concept Mezzo Pollo al team Pappardelle. Il sorgente `index.html` costruisce pollo, pista, staccionate, alberi, balle di fieno e lavagne con geometrie e texture procedurali su canvas; sintetizza gli effetti sonori con WebAudio. La colonna sonora generata con Google Lyria è inclusa come MP3 sullo stesso host, con la provenienza in [SOUNDTRACK.md](SOUNDTRACK.md). Le dipendenze esterne sono la libreria e i font elencati sopra, con le rispettive licenze. Non viene assegnata qui una licenza al codice originale o alla musica generata.
 
-Pacchetto di submission aggiornato con Codex il **25 settembre 2026**. Il contributo originario di Claude e quello di packaging di Codex sono descritti nel build log.
+Pacchetto di submission preparato con Codex il **25 settembre 2026**; regole web Difficile/Facile, Negozio e tutorial aggiornati il **5 ottobre 2026**. Le registrazioni storiche e i relativi test descrivono la versione dell’epoca. Il contributo originario di Claude e quello di packaging di Codex sono descritti nel build log.
 
 ## Documenti
 

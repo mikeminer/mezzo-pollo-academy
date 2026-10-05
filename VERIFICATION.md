@@ -1,5 +1,17 @@
 # Verification: Mezzo Pollo Academy
 
+## 5 October 2026 — interactive tutorial, free Hard and optional Easy Shop
+
+This revision replaces the historical whole-game gate below. Hard is free with 2 starting lives. Easy is slower and requires an explicit Shop verification, with one total starting life per full million active MEMEZZO and no base lives. No verification is triggered by starting, restarting, resuming, foregrounding or playing. Successful verification is an in-memory page-session snapshot; even later lock expiry does not schedule checks or interrupt play. Wallet changes and disconnection clear future Easy access, while an ongoing run retains its own lives.
+
+**65 automated tests passed** with `node --test --experimental-test-isolation=none tests/*.test.mjs`. Coverage includes exact raw-token thresholds, fractional aggregation, malformed/stale/foreign evidence, request cancellation and races, no polling or foreground lookup, manual-only Shop actions, mode settings and immutable run configuration, plus tutorial progression, errors/retries, pause, touch forwarding, language changes and completion storage.
+
+Manual browser verification used the actual local HTML and game scripts. Completed all six English tutorial steps through real movement/jump/gate inputs, intentionally failed and retried the reverse gate, then started Hard with 2 lives. Confirmed automatic first tutorial for Italian and Polish, tutorial skip, pause/resume and replay availability. Checked Italian portrait at 390 × 844 and Polish landscape at 844 × 390. Tutorial attempts use no lives and do not write scores. Browser console showed no errors in the checked flow.
+
+A separate clearly marked local fixture supplied synthetic Phantom events and timelock evidence, without signing or sending transactions. Opening the Shop made zero checks/prompts; explicit connection made one of each. Three million produced 3 Easy lives; after the synthetic lock expired, resume and a new Easy run produced no further requests. Switching wallets left the current run intact and required a deliberate check for future Easy access. Verifying one million produced exactly 1 life. Hard still started with 2 lives without a further check. The fixture is outside the shipped repository and is not included in production or Android assets.
+
+Limits: mobile browser viewports are emulated; wallet/evidence tests are synthetic, not proof of a real Phantom approval or mainnet transaction. Historical test counts, recordings and mandatory-gate statements below describe earlier versions.
+
 ## 26 September 2026 — free reviewer demo
 
 The explicit reviewer exception is now available at [mezzopollo.it/practice](https://mezzopollo.it/practice): exactly **2 lives per new game**, no wallet or tokens. This supersedes historical no-free-play statements below; the main MEMEZZO game remains gated.
