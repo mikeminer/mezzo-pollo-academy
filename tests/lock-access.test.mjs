@@ -91,12 +91,14 @@ test('lives conversion remains exact and rejects unsafe integer counts', () => {
   assert.throws(() => livesForRawAmount(1000000000000), TypeError);
 });
 
-test('fractional same-wallet locks aggregate before life calculation and expiry reduces the next game', async () => {
+test('fractional locks aggregate and a session snapshot survives lock expiry', async () => {
   const h = setup(async () => ok(evidence([lock('a', '999999999999', START + 1), lock('b', '1000000000001')])));
   assert.equal((await h.access.connect()).livesPerGame, 2);
-  await h.clock.advance(1);
+  await h.clock.advance(1000);
   assert.equal(h.access.getState().eligible, true);
-  assert.equal(h.access.getState().livesPerGame, 1);
+  assert.equal(h.access.getState().livesPerGame, 2);
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.clock.pending(), 0);
   await h.access.disconnect();
   assert.equal(h.access.getState().livesPerGame, 0);
 });
@@ -144,16 +146,19 @@ test('same-wallet locks sum exactly and one raw unit below minimum denies', asyn
   h.access.destroy();
 });
 
-test('any active duration counts and partial expiry revokes at the exact second', async () => {
-  const h = setup(async () => ok(evidence([lock('long', '600000000000'), lock('short', '400000000000', START + 1)])));
+test('active locks are evaluated only at manual check time, including exact expiry', async () => {
+  let data = evidence([lock('long', '600000000000'), lock('short', '400000000000', START + 1)]);
+  const h = setup(async () => ok(data));
   await h.access.connect();
-  assert.equal(h.access.getState().nextCheckAt, START + 1);
-  await h.clock.advance(0.999);
+  assert.equal(h.access.getState().nextCheckAt, null);
+  await h.clock.advance(1);
   assert.equal(h.access.getState().eligible, true);
-  await h.clock.advance(0.001);
-  assert.equal(h.access.getState().status, 'insufficient');
-  assert.equal(h.access.getState().totalRaw, '600000000000');
   assert.equal(h.requests.length, 1);
+  data = evidence(data.activeLocks, A, START + 1);
+  assert.equal((await h.access.refresh()).status, 'insufficient');
+  assert.equal(h.access.getState().totalRaw, '600000000000');
+  assert.equal(h.requests.length, 2);
+  assert.equal(h.clock.pending(), 0);
   h.access.destroy();
 });
 
@@ -175,19 +180,21 @@ test('foreign, duplicate, stale and malformed evidence always fails closed', asy
   });
 });
 
-test('freshness deadline is enforced while a refresh hangs, even if fetch ignores abort', async () => {
+test('session entitlement has no freshness timer; a deliberate failed check revokes it', async () => {
   let calls = 0;
   const h = setup(() => ++calls === 1 ? Promise.resolve(ok(evidence(undefined, A, START - 80))) : new Promise(() => {}));
   await h.access.connect();
-  const refresh = h.access.refresh();
-  await h.clock.advance(10);
+  await h.clock.advance(86400);
   assert.equal(h.access.getState().eligible, true);
-  await h.clock.advance(1);
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.clock.pending(), 0);
+  const refresh = h.access.refresh();
+  await h.clock.advance(15);
+  await refresh;
   assert.equal(h.access.getState().status, 'unavailable');
   assert.equal(h.access.getState().livesPerGame, 0);
-  await h.clock.advance(4);
-  await refresh;
-  assert.equal(h.access.getState().eligible, false);
+  await h.clock.advance(600);
+  assert.equal(h.requests.length, 2);
   h.access.destroy();
 });
 
@@ -215,46 +222,55 @@ test('transient errors revoke previously eligible access and recover on a later 
   h.access.destroy();
 });
 
-test('429 backoff is bounded, applies to manual refreshes, and stops on disconnect', async () => {
+test('429 backoff is bounded and never schedules an automatic retry', async () => {
   const h = setup(async () => ({ ok: false, status: 429, headers: { get: () => '120' } }));
   assert.equal((await h.access.connect()).retryAfterSeconds, 60);
   await h.access.refresh(); await h.clock.advance(59); await h.access.refresh();
   assert.equal(h.requests.length, 1);
   assert.equal(h.access.getState().retryAfterSeconds, 1);
   await h.clock.advance(1);
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.clock.pending(), 0);
+  await h.access.refresh();
   assert.equal(h.requests.length, 2);
   await h.access.disconnect(); await h.clock.advance(600);
   assert.equal(h.requests.length, 2);
-  assert.equal(h.clock.pending(), 0);
 });
 
-test('checks coalesce and use one periodic refresh every 60 seconds', async () => {
-  const gate = deferred(); let first = true;
-  const h = setup(() => first ? (first = false, gate.promise) : Promise.resolve(ok(evidence(undefined, A, Math.floor(h.clock.now())))));
+test('simultaneous manual checks coalesce and do not start periodic refreshes', async () => {
+  const gate = deferred();
+  const h = setup(() => gate.promise);
   const connecting = h.access.connect(); await settle();
   const a = h.access.refresh(), b = h.access.refresh();
   assert.equal(h.requests.length, 1);
   gate.resolve(ok(evidence())); await Promise.all([connecting, a, b]);
-  await h.clock.advance(59.999); assert.equal(h.requests.length, 1);
-  await h.clock.advance(0.001); assert.equal(h.requests.length, 2);
+  await h.clock.advance(86400);
+  assert.equal(h.requests.length, 1);
   assert.equal(h.access.getState().eligible, true);
+  assert.equal(h.clock.pending(), 0);
   h.access.destroy();
 });
 
-test('account switch immediately revokes old access and ignores the old response', async () => {
+test('account switch revokes old entitlement without lookup and ignores the old response', async () => {
   const old = deferred(), next = deferred();
   const h = setup(url => new URL(url).searchParams.get('wallet') === A ? old.promise : next.promise);
   const connecting = h.access.connect(); await settle();
   h.wallet.emit('accountChanged', B); await settle();
   assert.equal(h.access.getState().wallet, B);
+  assert.equal(h.access.getState().status, 'connected');
   assert.equal(h.access.getState().eligible, false);
+  assert.equal(h.requests.length, 1);
   old.resolve(ok(evidence())); await connecting; await settle();
   assert.equal(h.access.getState().wallet, B);
   assert.equal(h.access.getState().eligible, false);
-  next.resolve(ok(evidence([lock('b', '1000000000000', START + 600, B)], B))); await settle();
+  const manual = h.access.refresh();
+  assert.equal(h.requests.length, 2);
+  next.resolve(ok(evidence([lock('b', '1000000000000', START + 600, B)], B)));
+  await manual;
   assert.equal(h.access.getState().eligible, true);
   h.wallet.emit('accountChanged', null); await settle();
   assert.equal(h.access.getState().status, 'disconnected');
+  assert.equal(h.requests.length, 2);
   assert.equal(h.clock.pending(), 0);
   h.access.destroy();
 });
@@ -292,12 +308,15 @@ test('disconnect during a pending wallet prompt invalidates its eventual success
   assert.equal(h.requests.length, 0);
 });
 
-test('foreground revalidation and monotonic time never revive expired evidence', async () => {
-  const h = setup(async () => ok(evidence([lock('short', '1000000000000', START + 2)])));
-  await h.access.connect(); h.clock.set(START + 2);
-  assert.equal(h.access.revalidate().eligible, false);
-  h.clock.set(START);
-  assert.equal(h.access.revalidate().eligible, false);
+test('returning to a session cannot expire or enlarge its entitlement', async () => {
+  const h = setup(async () => ok(evidence([lock('short', '2000000000000', START + 2)])));
+  const snapshot = await h.access.connect();
+  h.clock.set(START + 1000000);
+  assert.equal(h.access.getState(), snapshot);
+  assert.equal(h.access.getState().livesPerGame, 2);
+  h.wallet.emit('connect', A); h.wallet.emit('accountChanged', A);
+  assert.equal(h.access.getState(), snapshot);
+  assert.equal(h.requests.length, 1);
   h.access.destroy();
 });
 
@@ -309,4 +328,83 @@ test('destroy revokes access, removes listeners and leaves no polling', async ()
   assert.equal(h.clock.pending(), 0);
   await h.clock.advance(600); await h.access.refresh(); await h.access.connect();
   assert.equal(h.requests.length, 1);
+});
+
+
+test('closing the shop cancels a pending lookup even when fetch ignores abort', async () => {
+  const remote = deferred(), h = setup(() => remote.promise);
+  const connecting = h.access.connect(); await settle();
+  h.access.cancelPending(); await connecting;
+  assert.equal(h.access.getState().status, 'connected');
+  assert.equal(h.access.getState().eligible, false);
+  assert.equal(h.requests[0][1].signal.aborted, true);
+  remote.resolve(ok(evidence())); await settle();
+  assert.equal(h.access.getState().eligible, false);
+  await h.clock.advance(1000);
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.clock.pending(), 0);
+  h.access.destroy();
+});
+
+test('closing the shop restores the previously established session snapshot', async () => {
+  const remote = deferred(); let calls = 0;
+  const h = setup(() => ++calls === 1 ? Promise.resolve(ok(evidence())) : remote.promise);
+  const snapshot = await h.access.connect();
+  const checking = h.access.refresh(); await settle();
+  h.access.cancelPending(); await checking;
+  assert.deepEqual(h.access.getState(), snapshot);
+  remote.resolve(ok(evidence([lock('larger', '3000000000000')]))); await settle();
+  assert.deepEqual(h.access.getState(), snapshot);
+  assert.equal(h.clock.pending(), 0);
+  h.access.destroy();
+});
+
+test('closing the shop cancels a wallet prompt and late connect events do not check', async () => {
+  const prompt = deferred(), wallet = provider();
+  wallet.connect = () => prompt.promise;
+  const h = setup(undefined, wallet);
+  const connecting = h.access.connect(); await settle();
+  h.access.cancelPending(); await connecting;
+  assert.equal(h.access.getState().status, 'disconnected');
+  wallet.isConnected = true; wallet.emit('connect', A);
+  prompt.resolve({ publicKey: A }); await settle();
+  assert.equal(h.access.getState().eligible, false);
+  assert.equal(h.requests.length, 0);
+  assert.equal((await h.access.refresh()).eligible, true);
+  assert.equal(h.requests.length, 1);
+  h.access.destroy();
+});
+
+test('an account change during a wallet prompt cancels its eventual lookup', async () => {
+  const prompt = deferred(), wallet = provider();
+  wallet.connect = () => prompt.promise;
+  const h = setup(undefined, wallet);
+  const connecting = h.access.connect(); await settle();
+  wallet.emit('accountChanged', B); await connecting;
+  prompt.resolve({ publicKey: A }); await settle();
+  assert.equal(h.access.getState().wallet, B);
+  assert.equal(h.access.getState().eligible, false);
+  assert.equal(h.requests.length, 0);
+  h.access.destroy();
+});
+
+test('an account silently changed during lookup cannot inherit another wallet entitlement', async () => {
+  const remote = deferred(), h = setup(() => remote.promise);
+  const connecting = h.access.connect(); await settle();
+  h.wallet.publicKey = B;
+  remote.resolve(ok(evidence())); await connecting;
+  assert.equal(h.access.getState().wallet, B);
+  assert.equal(h.access.getState().eligible, false);
+  assert.equal(h.requests.length, 1);
+  h.access.destroy();
+});
+
+test('disconnect event revokes a session snapshot without a network request', async () => {
+  const h = setup(); await h.access.connect();
+  h.wallet.isConnected = false; h.wallet.emit('disconnect');
+  assert.equal(h.access.getState().eligible, false);
+  assert.equal(h.access.getState().wallet, null);
+  await h.clock.advance(1000);
+  assert.equal(h.requests.length, 1);
+  h.access.destroy();
 });
