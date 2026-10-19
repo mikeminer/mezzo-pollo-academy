@@ -3,6 +3,13 @@
   'use strict';
   const byId = id => document.getElementById(id);
   const tiers = Object.freeze({ hard: { lives: 1, price: '0.001' }, medium: { lives: 3, price: '0.002' }, easy: { lives: 9, price: '0.003' }, god: { lives: 32, price: '0.01' } });
+  const diagnosticCodes = new Set(['USER_REJECTED', 'already_started', 'arcade_unavailable', 'chain_unavailable',
+    'intent_not_found', 'invalid_action', 'invalid_address', 'invalid_intent', 'invalid_json', 'invalid_request', 'invalid_tier',
+    'invalid_wallet_response', 'json_required', 'method_not_allowed', 'missing_wallet', 'origin_not_allowed',
+    'payer_mismatch', 'payment_already_used', 'payment_busy', 'payment_conflict', 'payment_mismatch', 'payment_needs_review',
+    'payment_pending', 'payment_required', 'pending_tier', 'rate_limited', 'recipient_unavailable', 'request_too_large',
+    'storage_unavailable', 'tier_mismatch', 'unavailable', 'wallet_disconnected', 'wrong_network']);
+  const diagnosticNames = new Set(['Error', 'TypeError', 'SyntaxError', 'RangeError', 'DOMException', 'AbortError', 'TimeoutError']);
   let tier = 'hard', client, loading, visible = false, callback, admission = false, status = 'connecting', ready = false, working = false, timer, generation = 0;
   let walletConnecting = false, walletError = null;
   const provider = () => window.MezzoWallet?.getProvider() || window.MezzoAndroid?.provider || window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
@@ -75,6 +82,17 @@
   function notify(next) { status = next; render(); }
   function failure(error) {
     const code = error?.code || error?.message;
+    // Log only bounded protocol identifiers, never the wallet's free-form
+    // message, request objects, wallet addresses or saved payment credentials.
+    const diagnosticCode = typeof code === 'number' && Number.isSafeInteger(code) ? code
+      : typeof code === 'string' && diagnosticCodes.has(code) ? code : 'unknown';
+    const diagnosticName = diagnosticNames.has(error?.name) ? error.name : 'Error';
+    console.warn('[MezzoPollo Arcade]', { code: diagnosticCode, name: diagnosticName });
+    const diagnosticTarget = byId('arcadeStatus');
+    if (diagnosticTarget) {
+      diagnosticTarget.dataset.lastErrorCode = String(diagnosticCode);
+      diagnosticTarget.dataset.lastErrorName = diagnosticName;
+    }
     status = code === 4001 || code === 'USER_REJECTED' ? 'rejected'
       : code === 'missing_wallet' ? 'missingWallet'
       : code === 'already_started' ? 'consumed'
