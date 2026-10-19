@@ -1,6 +1,18 @@
 import { ARCADE_TIERS, isUuid, validateIntent, decode58, sendArcadePayment } from './arcade-transaction.mjs';
 
-export function createArcadeClient({ request, storage, getProvider, notify = () => {}, uuid = () => crypto.randomUUID(), send = sendArcadePayment, withLock = operation => operation() }) {
+export function arcadePaymentState(record) {
+  if (record?.status === 'paid') return 'ready';
+  if (record?.status === 'started') return 'consumed';
+  if (record?.signature || record?.confirming) return 'pending';
+  return record?.attempted || record?.recoveryRequired ? 'recovery' : 'connecting';
+}
+
+function hasPaymentEvidence(record) {
+  return Boolean(record?.recoveryRequired || record?.attempted || record?.signature || record?.runId
+    || record?.prepared || record?.confirming || record?.status === 'paid' || record?.status === 'started');
+}
+
+export function createArcadeClient({ request, storage, getProvider, notify = () => {}, uuid = () => crypto.randomUUID(), send = sendArcadePayment, withLock = operation => operation(), canReleaseDraft = false }) {
   const key = 'mp_arcade_pending_v1';
   let busy = false, record = null;
   function read() {
@@ -27,13 +39,15 @@ export function createArcadeClient({ request, storage, getProvider, notify = () 
   function accept(result) {
     validateIntent(result, record);
     if (!['pending', 'paid', 'started'].includes(result.status)) throw Error('payment_mismatch');
-    save({ ...record, ...result });
-    notify(result.status === 'paid' ? 'ready' : result.status === 'started' ? 'consumed' : 'pending');
+    // Keep evidence across retries even if a later response omits or regresses it.
+    save({ ...record, ...result, recoveryRequired: hasPaymentEvidence(record) || hasPaymentEvidence(result) });
+    notify(arcadePaymentState(record));
     return result;
   }
-  async function restore() {
+  async function restore(releaseDraft = false) {
     record = read();
     if (!record) return null;
+    const hadPaymentEvidence = hasPaymentEvidence(record);
     if (!record.intentId) {
       const result = await request({ action: 'create', requestId: record.requestId, payer: record.payer, tier: record.tier });
       if (typeof result.secret !== 'string' || !/^[A-Za-z0-9_-]{43}$/.test(result.secret)) throw Error('payment_mismatch');
@@ -41,13 +55,22 @@ export function createArcadeClient({ request, storage, getProvider, notify = () 
     }
     const result = accept(await request({ action: 'status', ...credentials() }));
     if (result.status === 'started') clear();
+    // Only a fresh, unprepared server draft is safe to forget. Hold the same
+    // cross-tab lock as pay(), and never discard an ambiguous wallet handoff.
+    if (releaseDraft && canReleaseDraft && !hadPaymentEvidence && !hasPaymentEvidence(record) && result.status === 'pending'
+      && result.prepared === false && result.confirming === false && !result.signature && !result.runId) {
+      clear();
+      notify('connecting');
+      return null;
+    }
     return result;
   }
   return Object.freeze({
     get busy() { return busy; },
     get pending() { return record && { ...record }; },
-    recover: () => single(restore),
-    check: () => single(restore),
+    get state() { return arcadePaymentState(record); },
+    recover: () => single(() => restore(true)),
+    check: () => single(() => restore(true)),
     pay: tier => single(async () => {
       if (!Object.hasOwn(ARCADE_TIERS,tier)) throw Error('invalid_tier');
       const recovered = await restore();

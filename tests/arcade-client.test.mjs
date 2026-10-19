@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createArcadeClient } from '../arcade-client.mjs';
+import { createArcadeClient, arcadePaymentState } from '../arcade-client.mjs';
 import {
   ARCADE_RECIPIENT, ARCADE_TIERS, arcadeMessage, decode58, encode58,
   sendArcadePayment, validateIntent,
@@ -25,7 +25,7 @@ function intent(tier = 'hard') {
     intentId: INTENT, payer: PAYER, reference: REFERENCE, tier,
     recipient: ARCADE_RECIPIENT, network: 'mainnet-beta',
     lamports: ARCADE_TIERS[tier].lamports, lives: ARCADE_TIERS[tier].lives,
-    status: 'pending', signature: null, runId: null,
+    status: 'pending', signature: null, runId: null, prepared: false,
     blockhash: BLOCKHASH, lastValidBlockHeight: 1234,
   };
 }
@@ -62,7 +62,7 @@ function harness(options = {}) {
       assert.equal(input.intentId, state.intentId);
       assert.equal(input.secret, SECRET);
       if (input.action === 'prepare') result = { ...state, canPay: options.canPay !== false };
-      else if (input.action === 'status') result = { ...state };
+      else if (input.action === 'status') result = { ...state, confirming: false };
       else if (input.action === 'start') {
         const admitted = state.status === 'paid';
         if (admitted) state = { ...state, status: 'started', runId: input.runId };
@@ -83,7 +83,7 @@ function harness(options = {}) {
   function paid() { state = { ...state, status: 'paid', signature: SIGNATURE }; }
   function makeClient() {
     return createArcadeClient({ request: api, storage, getProvider: () => provider,
-      notify: value => notifications.push(value), send, withLock: options.withLock,
+      notify: value => notifications.push(value), send, withLock: options.withLock, canReleaseDraft: options.canReleaseDraft !== false,
       uuid: () => `00000000-0000-4000-8000-${String(++sequence).padStart(12, '0')}` });
   }
   return { client: makeClient(), makeClient, storage, calls, sends, connects, notifications, provider,
@@ -203,7 +203,7 @@ test('unknown wallet failure after broadcast recovers payment without another tr
   assert.equal(h.sends.length, 1);
 });
 
-test('lost create response recovers by the persisted request ID without creating another purchase', async () => {
+test('lost create response resolves the original request and releases the unprepared draft', async () => {
   let loseResponse = true;
   const h = harness({ transform(action, result) {
     if (action === 'create' && loseResponse) { loseResponse = false; throw Error('response lost'); }
@@ -214,7 +214,8 @@ test('lost create response recovers by the persisted request ID without creating
   assert.ok(stored.requestId);
   assert.equal(stored.intentId, undefined);
   const reloaded = h.makeClient();
-  assert.equal((await reloaded.recover()).intentId, INTENT);
+  assert.equal(await reloaded.recover(), null);
+  assert.equal(h.storage.getItem(KEY), null);
   const creates = h.calls.filter(call => call.action === 'create');
   assert.equal(creates.length, 2);
   assert.equal(creates[0].requestId, creates[1].requestId);
@@ -321,4 +322,98 @@ test('only the four own tier names are accepted before wallet connection', async
 
 test('an inherited property cannot masquerade as a valid payment policy', () => {
   assert.throws(() => validateIntent({ ...intent(), tier: 'toString', lamports: undefined, lives: undefined }), /payment_mismatch/);
+});
+
+test('a failure before preparation releases the unused draft on reopening without contacting the wallet', async () => {
+  const h = harness({ failAction: 'prepare' });
+  await assert.rejects(h.client.pay('easy'), /arcade_unavailable/);
+  assert.equal(h.client.pending.attempted, undefined);
+  const connects = h.connects.length;
+  const reopened = h.makeClient();
+  assert.equal(await reopened.recover(), null);
+  assert.equal(reopened.pending, null);
+  assert.equal(reopened.state, 'connecting');
+  assert.equal(h.connects.length, connects);
+  assert.equal(h.sends.length, 0);
+  assert.equal(h.notifications.includes('pending'), false);
+  assert.equal(h.notifications.includes('recovery'), false);
+});
+
+test('recovery preserves every ambiguous, prepared or already paid record', async t => {
+  const cases = {
+    attempted: { local: { attempted: true } },
+    signature: { local: { signature: SIGNATURE } },
+    preparedLocally: { local: { prepared: true } },
+    confirmingLocally: { local: { confirming: true } },
+    preparedRemotely: { remote: { prepared: true } },
+    confirming: { remote: { confirming: true } },
+    missingPrepared: { remote: { prepared: undefined } },
+    missingConfirming: { remote: { confirming: undefined } },
+    previouslyPaid: { local: { status: 'paid' } },
+    runId: { local: { runId: '00000000-0000-4000-8000-000000000099' } },
+    paidRemotely: { remote: { status: 'paid', signature: SIGNATURE } },
+    noCrossTabLock: { canReleaseDraft: false },
+  };
+  for (const [name, scenario] of Object.entries(cases)) await t.test(name, async () => {
+    const h = harness({ failAction: 'prepare', canReleaseDraft: scenario.canReleaseDraft,
+      transform: (action, result) => action === 'status' ? { ...result, ...scenario.remote } : result });
+    await assert.rejects(h.client.pay('hard'), /arcade_unavailable/);
+    const stored = JSON.parse(h.storage.getItem(KEY));
+    h.storage.setItem(KEY, JSON.stringify({ ...stored, ...scenario.local }));
+    const reopened = h.makeClient();
+    assert.ok(await reopened.recover());
+    assert.ok(await reopened.recover(), 'Repeated recovery must not erase earlier payment evidence');
+    assert.equal(reopened.pending.intentId, INTENT);
+    assert.notEqual(h.storage.getItem(KEY), null);
+    assert.equal(h.sends.length, 0);
+    assert.equal(h.connects.length, 1);
+  });
+});
+
+test('failed recovery never deletes a draft without a fresh server result', async () => {
+  let failStatus = false;
+  const h = harness({ failAction: 'prepare', transform(action, result) {
+    if (failStatus && action === 'status') throw Error('offline');
+    return result;
+  } });
+  await assert.rejects(h.client.pay('hard'), /arcade_unavailable/);
+  const saved = h.storage.getItem(KEY);
+  failStatus = true;
+  await assert.rejects(h.makeClient().recover(), /offline/);
+  assert.equal(h.storage.getItem(KEY), saved);
+  assert.equal(h.sends.length, 0);
+});
+
+test('recovery queued behind another tab rereads the paid receipt instead of releasing a stale draft', async () => {
+  let tail = Promise.resolve(), releaseSend, enteredSend;
+  const entered = new Promise(resolve => { enteredSend = resolve; });
+  const blocked = new Promise(resolve => { releaseSend = resolve; });
+  const withLock = operation => {
+    const result = tail.then(operation);
+    tail = result.catch(() => {});
+    return result;
+  };
+  const h = harness({ withLock, send: async ({ paid }) => { enteredSend(); await blocked; paid(); return { signature: SIGNATURE }; } });
+  const secondTab = h.makeClient();
+  const payment = h.client.pay('hard');
+  await entered;
+  const recovery = secondTab.recover();
+  releaseSend();
+  await payment;
+  assert.equal((await recovery).status, 'paid');
+  assert.equal(secondTab.state, 'ready');
+  assert.equal(JSON.parse(h.storage.getItem(KEY)).signature, SIGNATURE);
+  assert.equal(h.sends.length, 1);
+});
+
+test('checkout messages distinguish drafts, wallet handoffs and confirmation', () => {
+  assert.equal(arcadePaymentState(null), 'connecting');
+  assert.equal(arcadePaymentState(intent()), 'connecting');
+  assert.equal(arcadePaymentState({ ...intent(), prepared: true }), 'connecting');
+  assert.equal(arcadePaymentState({ ...intent(), attempted: true }), 'recovery');
+  assert.equal(arcadePaymentState({ ...intent(), recoveryRequired: true }), 'recovery');
+  assert.equal(arcadePaymentState({ ...intent(), signature: SIGNATURE }), 'pending');
+  assert.equal(arcadePaymentState({ ...intent(), confirming: true }), 'pending');
+  assert.equal(arcadePaymentState({ ...intent(), status: 'paid' }), 'ready');
+  assert.equal(arcadePaymentState({ ...intent(), status: 'started' }), 'consumed');
 });

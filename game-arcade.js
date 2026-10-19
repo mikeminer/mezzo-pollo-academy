@@ -71,7 +71,7 @@
   async function ensure() {
     if (client) return client;
     if (!loading) loading = import('./arcade-client.mjs').then(({ createArcadeClient }) => {
-      client = createArcadeClient({ request, getProvider: provider, storage: localStorage, notify,
+      client = createArcadeClient({ request, getProvider: provider, storage: localStorage, notify, canReleaseDraft: Boolean(navigator.locks),
         withLock: operation => navigator.locks ? navigator.locks.request('mezzopollo-arcade-checkout', operation) : operation() }); return client;
     }).catch(error => { loading = null; throw error; });
     return loading;
@@ -79,7 +79,7 @@
   function accept(result) {
     ready = result?.status === 'paid';
     if (result?.tier && result.status !== 'started') tier = result.tier;
-    status = ready ? 'ready' : result?.status === 'started' ? 'consumed' : result ? 'recovery' : 'connecting';
+    status = result?.status === 'started' ? 'consumed' : client.state;
     render();
   }
   async function run(operation) {
