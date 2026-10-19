@@ -4,9 +4,12 @@
 .gitnexus/
 .claude/
 tests/
-scripts/
+scripts/*
+!scripts/build-public.mjs
 locales/
 .env*
 node_modules/
 .agents/
 .vercel/
+.web-output/
+skills-lock.json

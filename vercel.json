@@ -1,11 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
-  "buildCommand": null,
-  "outputDirectory": ".",
+  "buildCommand": "node scripts/build-public.mjs",
+  "outputDirectory": ".web-output",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/practice", "destination": "/" },
-    { "source": "/server/:path*", "destination": "/404.html" }
+    { "source": "/practice", "destination": "/" }
   ]
 }
