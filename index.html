@@ -216,6 +216,8 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <p class="access-note" data-arcade-text="fee">Solana network fees are separate. Each new run requires a new payment. Pausing and resuming do not cost another token.</p>
       <p class="access-note" data-arcade-text="recipient">Payment recipient</p>
       <code class="mint" dir="ltr">AXomB2bpJ7F3EFVPQwrwBV4yVE7bazshZaVa64KhGCfE</code>
+      <p class="access-note" id="arcadeConnection" role="status" aria-live="polite"></p>
+      <div class="btns"><button class="btn" id="arcadeConnect">Connect wallet</button></div>
       <p class="access-status" id="arcadeStatus" role="status" aria-live="polite"></p>
       <div class="btns">
         <button class="btn primary" id="arcadePay" data-arcade-text="pay">Pay 0.001 SOL and play</button>
@@ -266,6 +268,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 <script src="locale-content.js"></script>
 <script src="locale.js"></script>
 <script src="game-mode.js"></script>
+<script type="module" src="game-wallet.mjs"></script>
 <script src="game-arcade.js"></script>
 <script src="access-translations.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>

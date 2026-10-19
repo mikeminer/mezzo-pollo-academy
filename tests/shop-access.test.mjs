@@ -18,7 +18,7 @@ async function settle() { for (let i = 0; i < 20; i++) await Promise.resolve(); 
 class DetailEvent extends Event {
   constructor(type, options) { super(type); this.detail = options?.detail; }
 }
-function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvidence })) {
+function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvidence }), configureWindow = () => {}) {
   const elements = new Map(), requests = [], notices = [];
   let publishSnapshot;
   const doc = Object.assign(new EventTarget(), {
@@ -37,6 +37,7 @@ function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvide
     phantom: { solana: wallet },
     MezzoAccessTranslations: { en: { eligible: '{lives} {lifeWord}', connected: 'Ready', checking: 'Checking' } },
   });
+  configureWindow(win, wallet);
   doc.addEventListener('mezzopollo:access', event => notices.push(event.detail));
   vm.runInNewContext(code, {
     ACCESS_POLICY, createLockAccess: options => {
@@ -48,7 +49,7 @@ function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvide
     navigator: { clipboard: { writeText: async () => {} } }, CustomEvent: DetailEvent,
     Intl, encodeURIComponent,
   });
-  return { doc, win, elements, requests, notices, publishSnapshot, click: id => doc.getElementById(id).dispatchEvent(new Event('click')) };
+  return { doc, win, wallet, elements, requests, notices, publishSnapshot, click: id => doc.getElementById(id).dispatchEvent(new Event('click')) };
 }
 
 test('the shop UI never looks up locks on load, background, resume or open; only its buttons do', async () => {
@@ -110,4 +111,58 @@ test('an old cached entitlement below ten million cannot enable Subscription in 
     assert.equal(h.notices.at(-1).livesPerGame, 0);
   }
   assert.equal(h.requests.length, 0);
+});
+
+test('the shop uses the shared web wallet only after an explicit connect gesture', async () => {
+  let discoveries = 0, connections = 0;
+  const h = setup(undefined, (win, wallet) => {
+    wallet.isPhantom = false;
+    wallet.isMezzoWebWallet = true;
+    wallet.isConnected = false;
+    wallet.connect = async () => { connections++; wallet.isConnected = true; return { publicKey: walletAddress }; };
+    win.MezzoWallet = { getProvider() { discoveries++; return wallet; } };
+    delete win.phantom;
+  });
+  h.doc.dispatchEvent(new Event('mezzopollo:shopopen'));
+  assert.equal(discoveries, 0);
+  assert.equal(connections, 0);
+  assert.equal(h.requests.length, 0);
+  h.click('connectWallet'); await settle();
+  assert.equal(discoveries, 1);
+  assert.equal(connections, 1);
+  assert.equal(h.requests.length, 1);
+  assert.equal(h.win.MezzoShopAccess.getState().eligible, true);
+});
+
+test('legacy Phantom injection and native bridges remain available without the web adapter', async t => {
+  for (const kind of ['legacy-phantom', 'native']) await t.test(kind, async () => {
+    const h = setup(undefined, (win, wallet) => {
+      delete win.phantom;
+      if (kind === 'native') {
+        wallet.isPhantom = false;
+        wallet.isMezzoMobile = true;
+        win.MezzoAndroid = { provider: wallet };
+      } else win.solana = wallet;
+    });
+    h.doc.dispatchEvent(new Event('mezzopollo:shopopen'));
+    h.click('connectWallet'); await settle();
+    assert.equal(h.win.MezzoShopAccess.getState().eligible, true);
+    assert.equal(h.requests.length, 1);
+  });
+});
+
+test('unrelated legacy providers are ignored and Phantom can appear before the next gesture', async () => {
+  const h = setup(undefined, win => {
+    delete win.phantom;
+    win.solana = { isPhantom: false, connect() { assert.fail('An unrelated wallet must not be selected'); } };
+  });
+  h.doc.dispatchEvent(new Event('mezzopollo:shopopen'));
+  h.click('connectWallet'); await settle();
+  assert.equal(h.win.MezzoShopAccess.getState().status, 'missing-wallet');
+  assert.equal(h.requests.length, 0);
+  assert.equal(new URL(h.elements.get('phantomBrowse').href).origin, 'https://phantom.com');
+  h.win.solana = h.wallet;
+  h.click('connectWallet'); await settle();
+  assert.equal(h.win.MezzoShopAccess.getState().eligible, true);
+  assert.equal(h.requests.length, 1);
 });

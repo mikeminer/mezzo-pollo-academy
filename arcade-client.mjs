@@ -71,12 +71,12 @@ export function createArcadeClient({ request, storage, getProvider, notify = () 
     get state() { return arcadePaymentState(record); },
     recover: () => single(() => restore(true)),
     check: () => single(() => restore(true)),
-    pay: tier => single(async () => {
+    pay: (tier, sessionProvider) => single(async () => {
       if (!Object.hasOwn(ARCADE_TIERS,tier)) throw Error('invalid_tier');
       const recovered = await restore();
       if (recovered?.status === 'paid') return recovered;
       if (record && record.tier !== tier) throw Error('pending_tier');
-      const provider = getProvider();
+      const provider = sessionProvider || getProvider();
       if (!provider || typeof provider.connect !== 'function') throw Error('missing_wallet');
       // Readiness is checked before wallet approval. Native uses only its local ledger and Solana RPC.
       await request({ action: 'config' });
@@ -94,6 +94,8 @@ export function createArcadeClient({ request, storage, getProvider, notify = () 
       const prepared = accept(await request({ action: 'prepare', ...credentials() }));
       if (prepared.status === 'paid') return prepared;
       if (prepared.canPay !== true) { notify('pending'); return prepared; }
+      // The account can change while the server prepares the transaction.
+      if (provider.isConnected === false || provider.publicKey?.toString() !== payer) throw Error('payer_mismatch');
       // Save the intent and attempted payment BEFORE entering the wallet. Unknown failures recover this same intent.
       const previouslyAttempted = Boolean(record.attempted);
       save({ ...record, attempted: true });

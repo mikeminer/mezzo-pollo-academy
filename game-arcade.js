@@ -4,7 +4,12 @@
   const byId = id => document.getElementById(id);
   const tiers = Object.freeze({ hard: { lives: 1, price: '0.001' }, medium: { lives: 3, price: '0.002' }, easy: { lives: 9, price: '0.003' }, god: { lives: 32, price: '0.01' } });
   let tier = 'hard', client, loading, visible = false, callback, admission = false, status = 'connecting', ready = false, working = false, timer, generation = 0;
-  const provider = () => window.MezzoAndroid?.provider || window.phantom?.solana;
+  let walletConnecting = false, walletError = null;
+  const provider = () => window.MezzoWallet?.getProvider() || window.MezzoAndroid?.provider || window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
+  const walletAddress = () => {
+    const wallet = provider();
+    return wallet?.isConnected === false ? null : wallet?.publicKey?.toString() || null;
+  };
   function text(key, params = {}) {
     const pack = window.MezzoTranslations[window.MezzoLocale?.code] || window.MezzoTranslations.en;
     return (pack.arcade?.[key] || key).replace(/\{(\w+)\}/g, (match, name) => String(params[name] ?? match));
@@ -43,16 +48,26 @@
     }
     byId('arcadeTiers')?.setAttribute('aria-label', text('choose'));
     if (!byId('arcadeStatus')) return;
-    byId('arcadeStatus').textContent = text(status, params());
+    byId('arcadeStatus').textContent = status === 'connecting'
+      ? (walletAddress() ? '' : text('connectHint')) : text(status, params());
     byId('arcadePay').hidden = ready;
-    byId('arcadePay').disabled = working;
+    byId('arcadePay').disabled = working || walletConnecting || !walletAddress();
+    if (byId('arcadeConnect')) {
+      const address = walletAddress();
+      byId('arcadeConnect').hidden = Boolean(address);
+      // Connection must remain usable even if saved-payment recovery or the backend fails.
+      byId('arcadeConnect').disabled = walletConnecting;
+      byId('arcadeConnect').textContent = text(walletConnecting ? 'connectingWallet' : 'connectWallet');
+      byId('arcadeConnection').textContent = address ? text('connectedWallet', { wallet: address.slice(0, 6) + '…' + address.slice(-4) })
+        : text(walletConnecting ? 'connectingWallet' : walletError || 'connectHint');
+    }
     byId('arcadeStart').hidden = !ready;
     byId('arcadeStart').disabled = working;
     byId('arcadeCheck').hidden = !client?.pending || ready;
     byId('arcadeCheck').disabled = working;
     byId('arcadeBack').disabled = working;
-    byId('arcadeWallet').hidden = status !== 'missingWallet' || Boolean(window.MezzoAndroid);
-    byId('arcadeWallet').href = `https://phantom.app/ul/browse/${encodeURIComponent('https://mezzopollo.it/')}?ref=${encodeURIComponent('https://mezzopollo.it')}`;
+    byId('arcadeWallet').hidden = Boolean(walletAddress()) || Boolean(window.MezzoAndroid);
+    byId('arcadeWallet').href = `https://phantom.com/ul/browse/${encodeURIComponent('https://mezzopollo.it/')}?ref=${encodeURIComponent('https://mezzopollo.it')}`;
     const signature = client?.pending?.signature;
     byId('arcadeReceipt').hidden = !signature;
     if (signature && /^[1-9A-HJ-NP-Za-km-z]{64,88}$/.test(signature)) byId('arcadeReceipt').href = `https://explorer.solana.com/tx/${signature}`;
@@ -64,7 +79,8 @@
       : code === 'missing_wallet' ? 'missingWallet'
       : code === 'already_started' ? 'consumed'
       : code === 'payment_busy' ? 'busy'
-      : code === 'pending_tier' || code === 'payer_mismatch' ? 'recovery'
+      : code === 'payer_mismatch' ? 'walletMismatch'
+      : code === 'pending_tier' ? 'recovery'
       : !client?.pending?.attempted ? 'unavailable' : 'failed';
     render();
   }
@@ -86,6 +102,33 @@
     if (working) return;
     working = true; render();
     try { await ensure(); await operation(); } catch (error) { failure(error); }
+    finally { working = false; render(); }
+  }
+  async function connectWallet() {
+    if (walletConnecting) return;
+    walletConnecting = true; walletError = null; render();
+    try {
+      // Launch before any API call, dynamic import or Web Lock: Android requires a user gesture.
+      const wallet = provider();
+      if (!wallet?.connect) throw Error('missing_wallet');
+      await (window.MezzoWallet ? window.MezzoWallet.connect() : wallet.connect());
+      if (!walletAddress()) throw Error('missing_wallet');
+    } catch (error) {
+      walletError = Number(error?.code) === 4001 || error?.code === 'USER_REJECTED' ? 'rejected'
+        : error?.message === 'missing_wallet' ? 'missingWallet' : 'walletFailed';
+    } finally { walletConnecting = false; render(); }
+  }
+  async function payFromGesture() {
+    if (working || walletConnecting) return;
+    if (!walletAddress()) { await connectWallet(); return; }
+    working = true; render();
+    try {
+      const pay = async sessionProvider => { await ensure(); return client.pay(tier, sessionProvider); };
+      // Open MWA now, then keep authorization, receipt recovery and signing in that session.
+      const result = window.MezzoWallet ? await window.MezzoWallet.withPaymentSession(pay) : await pay(provider());
+      accept(result);
+      if (ready && visible) await startPaid(); else scheduleCheck();
+    } catch (error) { failure(error); }
     finally { working = false; render(); }
   }
   async function startPaid() {
@@ -125,12 +168,11 @@
   for (const button of document.querySelectorAll('[data-arcade-tier]')) button.onclick = () => {
     if (!working && !client?.pending) { tier = button.dataset.arcadeTier; render(); }
   };
-  byId('arcadePay')?.addEventListener('click', () => void run(async () => {
-    accept(await client.pay(tier));
-    if (ready && visible) await startPaid(); else scheduleCheck();
-  }));
+  byId('arcadeConnect')?.addEventListener('click', () => void connectWallet());
+  byId('arcadePay')?.addEventListener('click', () => void payFromGesture());
   byId('arcadeCheck')?.addEventListener('click', () => void run(async () => { accept(await client.check()); scheduleCheck(); }));
   byId('arcadeStart')?.addEventListener('click', () => void run(startPaid));
   document.addEventListener('mezzopollo:language', render);
+  document.addEventListener('mezzopollo:wallet', render);
   render();
 })();

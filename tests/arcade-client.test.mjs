@@ -124,6 +124,35 @@ test('native wallet receives only the bounded intent and tier, never arbitrary t
   assert.deepEqual(calls, [{ payer: PAYER, blockhash: BLOCKHASH, reference: REFERENCE, intentId: INTENT, tier: 'medium' }]);
 });
 
+test('web mobile session receives only a validated canonical Arcade intent', async () => {
+  const record = intent('easy'), calls = [];
+  const wallet = { isMezzoWebWallet: true, async payArcade(input) { calls.push(input); return { signature: SIGNATURE }; } };
+  assert.equal((await sendArcadePayment(wallet, record)).signature, SIGNATURE);
+  assert.equal(calls.length, 1);
+  await assert.rejects(sendArcadePayment(wallet, { ...record, recipient: OTHER_PAYER }), /payment_mismatch/);
+  assert.equal(calls.length, 1, 'Invalid intents never reach the wallet session');
+});
+
+test('an account switch while preparing a payment prevents signing and preserves recovery', async () => {
+  const h = harness({ transform(action, result) {
+    if (action === 'prepare') h.provider.publicKey = OTHER_PAYER;
+    return result;
+  } });
+  await assert.rejects(h.client.pay('hard'), /payer_mismatch/);
+  assert.equal(h.sends.length, 0);
+  assert.equal(h.client.pending.payer, PAYER);
+});
+
+test('checkout uses the provider from the active mobile session rather than rediscovering a wallet', async () => {
+  const h = harness({ failAction: 'create' });
+  let connected = 0;
+  const session = { publicKey: PAYER, connect: async () => { connected++; return { publicKey: PAYER }; } };
+  await assert.rejects(h.client.pay('hard', session), /arcade_unavailable/);
+  assert.equal(connected, 1);
+  assert.equal(h.connects.length, 0);
+  assert.equal(h.sends.length, 0);
+});
+
 test('concurrent payment, recovery and start cannot prompt a second transfer', async () => {
   let releaseSend, enteredSend;
   const entered = new Promise(resolve => { enteredSend = resolve; });

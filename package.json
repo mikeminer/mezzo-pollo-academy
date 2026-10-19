@@ -4,8 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build:wallet": "node scripts/build-wallet.mjs",
     "test": "node --test --experimental-test-isolation=none tests/*.test.mjs",
     "check:locales": "node scripts/build-locales.mjs --check"
   },
-  "dependencies": { "@neondatabase/serverless": "1.0.2" }
+  "dependencies": {
+    "@neondatabase/serverless": "1.0.2",
+    "@solana-mobile/mobile-wallet-adapter-protocol": "3.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
 }

@@ -124,7 +124,7 @@ test('no provider detection or requests before a connect gesture; late Phantom w
   h.access.destroy();
 });
 
-test('non-Phantom providers and invalid returned keys cannot grant access', async () => {
+test('unmarked providers and invalid returned keys cannot grant access', async () => {
   const notPhantom = provider(); notPhantom.isPhantom = false;
   const h = setup(undefined, notPhantom);
   assert.equal((await h.access.connect()).status, 'missing-wallet');
@@ -133,6 +133,49 @@ test('non-Phantom providers and invalid returned keys cannot grant access', asyn
   h.setProvider(invalid);
   assert.equal((await h.access.connect()).eligible, false);
   assert.equal(h.requests.length, 0);
+  h.access.destroy();
+});
+
+test('supported web and native mobile wallets connect only on request and retain account revocation', async t => {
+  for (const marker of ['isMezzoWebWallet', 'isMezzoMobile']) await t.test(marker, async () => {
+    const wallet = provider();
+    wallet.isPhantom = false;
+    wallet[marker] = true;
+    const h = setup(undefined, wallet);
+    assert.equal(wallet.calls, 0);
+    assert.equal(h.requests.length, 0);
+    assert.equal((await h.access.connect()).status, 'eligible');
+    assert.equal(wallet.calls, 1);
+    assert.equal(h.requests.length, 1);
+    wallet.emit('accountChanged', B);
+    assert.equal(h.access.getState().eligible, false);
+    assert.equal(h.access.getState().wallet, B);
+    assert.equal(h.requests.length, 1, 'Changing wallet never starts a lock check');
+    await h.access.disconnect();
+    assert.equal(h.access.getState().status, 'disconnected');
+    assert.equal(wallet.listenerCount(), 0);
+    h.access.destroy();
+  });
+});
+
+test('a mobile wallet authorization can be cancelled before any timelock request', async () => {
+  const prompt = deferred(), wallet = provider();
+  wallet.isPhantom = false;
+  wallet.isMezzoWebWallet = true;
+  wallet.connect = function () { this.calls++; return prompt.promise; };
+  const h = setup(undefined, wallet);
+  const connecting = h.access.connect();
+  await settle();
+  assert.equal(wallet.calls, 1);
+  assert.equal(h.requests.length, 0);
+  h.access.cancelPending();
+  await connecting;
+  wallet.isConnected = true;
+  wallet.emit('connect', A);
+  prompt.resolve({ publicKey: A });
+  await settle();
+  assert.equal(h.access.getState().eligible, false);
+  assert.equal(h.requests.length, 0, 'A late mobile authorization cannot check after closing the shop');
   h.access.destroy();
 });
 
@@ -297,6 +340,23 @@ test('wallet rejection does not retry and a later user gesture can reconnect', a
   await h.clock.advance(600); assert.equal(wallet.calls, 1); assert.equal(h.requests.length, 0);
   wallet.connect = normalConnect;
   assert.equal((await h.access.connect()).eligible, true);
+  h.access.destroy();
+});
+
+test('explicit web MWA cancellation reports rejected and never starts a check or retry', async () => {
+  const wallet = provider(), normalConnect = wallet.connect;
+  wallet.isPhantom = false;
+  wallet.isMezzoWebWallet = true;
+  wallet.connect = function () { this.calls++; throw Object.assign(new Error('Cancelled'), { code: 'USER_REJECTED' }); };
+  const h = setup(undefined, wallet);
+  assert.equal((await h.access.connect()).status, 'rejected');
+  assert.equal(h.access.getState().eligible, false);
+  await h.clock.advance(600);
+  assert.equal(wallet.calls, 1);
+  assert.equal(h.requests.length, 0);
+  wallet.connect = normalConnect;
+  assert.equal((await h.access.connect()).eligible, true);
+  assert.equal(h.requests.length, 1);
   h.access.destroy();
 });
 

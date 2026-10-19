@@ -58,6 +58,8 @@ export async function sendArcadePayment(provider, record) {
   if (provider?.isMezzoMobile && typeof provider.payArcade === 'function') {
     return provider.payArcade({ payer: record.payer, blockhash: record.blockhash, reference: record.reference, intentId: record.intentId, tier: record.tier });
   }
+  // Web MWA owns an already-open wallet session and builds the same canonical wire transaction.
+  if (provider?.isMezzoWebWallet === true && typeof provider.payArcade === 'function') return provider.payArcade(record);
   if (provider?.isPhantom !== true || typeof provider.request !== 'function') throw Error('missing_wallet');
   // Official Phantom legacy request API: sign and send exactly this canonical message.
   return provider.request({ method: 'signAndSendTransaction', params: { message: encode58(message) } });

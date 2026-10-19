@@ -23,7 +23,7 @@ export function createLockAccess({
   getProvider, onChange = () => {}, fetchImpl = globalThis.fetch,
   now, timers = globalThis,
 } = {}) {
-  if (typeof getProvider !== 'function') throw new TypeError('A Phantom provider getter is required');
+  if (typeof getProvider !== 'function') throw new TypeError('A supported Solana wallet provider getter is required');
   const wallStart = Date.now() / 1000;
   const monotonicStart = globalThis.performance?.now() ?? 0;
   const clock = now ?? (() => Math.max(Date.now() / 1000,
@@ -180,7 +180,8 @@ export function createLockAccess({
     if (connectionRequest) return connectionRequest.promise;
     let candidate;
     try { candidate = getProvider(); } catch { candidate = null; }
-    if (!candidate || candidate.isPhantom !== true || typeof candidate.connect !== 'function') {
+    const supported = candidate?.isPhantom === true || candidate?.isMezzoMobile === true || candidate?.isMezzoWebWallet === true;
+    if (!supported || typeof candidate.connect !== 'function') {
       invalidate(); detachProvider(); backoffUntil = 0;
       return publish({ ...BASE_STATE, status: 'missing-wallet' });
     }
@@ -206,14 +207,14 @@ export function createLockAccess({
         const result = await Promise.race([connectProvider, cancellation]);
         if (destroyed || candidate !== provider || attempt !== connectionAttempt) return state;
         const wallet = publicKey(candidate.publicKey ?? result);
-        if (!wallet) throw new Error('Phantom did not provide a Solana public key');
+        if (!wallet) throw new Error('The wallet did not provide a Solana public key');
         connectionRequest = null;
         selectWallet(wallet);
         return await refresh();
       } catch (error) {
         if (destroyed || candidate !== provider || attempt !== connectionAttempt) return state;
         invalidate();
-        return publish({ ...BASE_STATE, status: Number(error?.code) === 4001 ? 'rejected' : 'unavailable' });
+        return publish({ ...BASE_STATE, status: Number(error?.code) === 4001 || error?.code === 'USER_REJECTED' ? 'rejected' : 'unavailable' });
       } finally { if (connectionRequest === request) connectionRequest = null; }
     })();
     return request.promise;

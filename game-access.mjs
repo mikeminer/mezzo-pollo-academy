@@ -4,7 +4,7 @@ import { createLockAccess } from './lock-access.mjs';
 const byId = id => document.getElementById(id);
 const trustedOrigins = ['https://mezzopollo.it', 'https://www.mezzopollo.it', 'https://mezzo-pollo-academy.vercel.app'];
 const origin = trustedOrigins.includes(location.origin) ? location.origin : trustedOrigins[2];
-byId('phantomBrowse').href = `https://phantom.app/ul/browse/${encodeURIComponent(origin + '/')}?ref=${encodeURIComponent(origin)}`;
+byId('phantomBrowse').href = `https://phantom.com/ul/browse/${encodeURIComponent(origin + '/')}?ref=${encodeURIComponent(origin)}`;
 let amountFormat = new Intl.NumberFormat('en-US');
 let lastState = null, copyMessage = 'copyMint';
 function languageCode() {
@@ -58,7 +58,14 @@ function render(state, notify = true) {
   byId('accessStatus').dataset.status = state.status;
   if (notify) document.dispatchEvent(new CustomEvent('mezzopollo:access', { detail: { eligible: state.eligible, wallet: state.wallet, status: state.status, livesPerGame: state.livesPerGame } }));
 }
-const access = createLockAccess({ getProvider: () => window.phantom?.solana, onChange: render });
+const access = createLockAccess({ getProvider: () => {
+  if (typeof window.MezzoWallet?.getProvider === 'function') return window.MezzoWallet.getProvider();
+  // Keep the existing APK and legacy Phantom injection working when the web
+  // adapter is absent. Never select an unrelated window.solana provider.
+  if (window.MezzoAndroid?.provider?.isMezzoMobile === true) return window.MezzoAndroid.provider;
+  if (window.phantom?.solana?.isPhantom === true) return window.phantom.solana;
+  return window.solana?.isPhantom === true ? window.solana : null;
+}, onChange: render });
 let shopOpen = false;
 window.MezzoShopAccess = Object.freeze({
   getState: access.getState,

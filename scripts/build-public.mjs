@@ -9,5 +9,5 @@ const extensions = new Set(['.html', '.js', '.mjs', '.css', '.png', '.svg', '.we
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (entry.isFile() && !entry.name.startsWith('.') && extensions.has(extname(entry.name))) await copyFile(join(root, entry.name), join(output, entry.name));
 }
-for (const directory of ['flags', 'media', 'downloads']) await cp(join(root, directory), join(output, directory), { recursive: true });
+for (const directory of ['flags', 'media', 'downloads', 'vendor']) await cp(join(root, directory), join(output, directory), { recursive: true });
 console.log('Public game assets prepared; server, database schema, tests and credentials excluded.');
