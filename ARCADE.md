@@ -9,7 +9,7 @@ Arcade is a per-run SOL purchase. The recipient is `AXomB2bpJ7F3EFVPQwrwBV4yVE7b
 | Easy | 0.003 SOL | 9 |
 | God | 0.01 SOL | 32 |
 
-These four choices belong to Arcade. The separate free Hard and MEMEZZO Easy modes keep their existing admission rules.
+These four choices belong to Arcade. The only other mode is Subscription: at least 10,000,000 MEMEZZO in active timelocks, verified manually in the Shop, with one total life per full million (at least 10 lives). There is no free scored mode. The tutorial remains free training.
 
 ## Website service
 

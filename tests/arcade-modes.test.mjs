@@ -52,7 +52,7 @@ test('Arcade keeps each paid level immutable and gives it a separate local recor
   const { window } = setup();
   const mode = window.MezzoMode;
   const expected = { hard: 1, medium: 3, easy: 9, god: 32 };
-  const keys = new Set([mode.config('hard').scoreKey, mode.config('easy', 1).scoreKey]);
+  const keys = new Set([mode.config('subscription', 10).scoreKey]);
   for (const [tier, lives] of Object.entries(expected)) {
     const run = mode.config('arcade', 999, tier);
     assert.equal(run.name, 'arcade');
@@ -61,13 +61,13 @@ test('Arcade keeps each paid level immutable and gives it a separate local recor
     assert.equal(Object.isFrozen(run), true);
     assert.throws(() => { run.lives = 999; }, TypeError);
     keys.add(run.scoreKey);
-    mode.select('easy');
+    mode.select('subscription');
     assert.equal(run.lives, lives);
     assert.equal(run.tier, tier);
   }
-  assert.equal(keys.size, 6, 'Free Hard, timelock Easy and all four Arcade tiers keep separate records');
-  assert.equal(mode.config('hard').lives, 2);
-  assert.equal(mode.config('easy', 1).lives, 1);
+  assert.equal(keys.size, 5, 'Subscription and all four Arcade tiers keep separate records');
+  assert.throws(() => mode.config('hard'), { name: 'TypeError' });
+  assert.equal(mode.config('subscription', 10).lives, 10);
   for (const tier of ['', 'unknown', 'constructor', '__proto__']) {
     assert.throws(() => mode.config('arcade', 0, tier), { name: 'TypeError' });
   }

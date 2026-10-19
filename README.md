@@ -9,9 +9,9 @@ The main menu includes a translated invitation to the user-provided [MezzoPollo 
 Un runner 3D per browser in cui un pollo di peluche tagliato a metà corre verso la porta con la metà giusta: numeri, parole e figure da completare.
 Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackathon DevFridge.
 
-> **Difficile gratis:** [gioca con 2 vite](https://mezzopollo.it/practice), senza wallet, token o verifiche. Ogni nuova partita assegna esattamente 2 vite; pausa e ripresa non le ricaricano. La route `/practice` apre questa modalità.
+> **Arcade:** ogni nuova partita richiede un pagamento SOL. Hard: 1 vita / 0,001 SOL; Medium: 3 vite / 0,002 SOL; Easy: 9 vite / 0,003 SOL; God: 32 vite / 0,01 SOL. Destinatario fisso e recupero delle ricevute descritti in [ARCADE.md](ARCADE.md).
 
-> **Facile dal Negozio:** velocità ridotta e più tempo per rispondere. Una verifica manuale di almeno **1.000.000 MEMEZZO** in timelock DevFridge attivi sblocca Facile per la sessione della pagina. Ogni milione intero dà **una vita totale**, senza 2 vite di base. Il gioco non richiede firme o transazioni e non ricontrolla i token durante le partite.
+> **Abbonamento:** almeno **10.000.000 MEMEZZO** in timelock attivi, verificati manualmente nel Negozio. Una vita totale per ogni milione intero, quindi almeno 10 vite; ritmo più lento e più tempo per rispondere. Non ci sono controlli automatici durante le partite.
 
 [Gioca](https://mezzo-pollo-academy.vercel.app) · [Demo](https://mezzo-pollo-academy.vercel.app/demo) · [Repository pubblico](https://github.com/mikeminer/mezzo-pollo-academy)
 
@@ -21,8 +21,8 @@ Il gioco è costruito con la skill **DevFridge Game Builder v1.4** per l'hackath
 - **Salto:** swipe su, oppure ↑, W o spazio
 - **Pausa:** pulsante II, oppure Esc o P
 - Passa sotto la porta con la metà giusta. Con il **POLLO INTERO** non cambiare corsia. Quando la regola è **al contrario**, scegli una porta sbagliata.
-- **Difficile:** 2 vite a ogni partita, gratis. **Facile:** una vita iniziale totale per ogni milione intero di MEMEZZO verificato nel Negozio; velocità ridotta e più tempo per rispondere.
-- Il **tutorial interattivo** parte prima della prima partita in ogni lingua. Si può ripetere dal menu. I record Difficile e Facile sono separati, locali e non verificati.
+- **Arcade** e **Abbonamento** sono le sole modalità. Il tutorial è un allenamento gratuito, senza punteggi né accesso gratuito alle partite.
+- Il **tutorial interattivo** parte prima della prima partita in ogni lingua. Si può ripetere dal menu. I record dei quattro livelli Arcade e dell’Abbonamento sono separati, locali e non verificati.
 
 ## Musica
 
@@ -32,34 +32,34 @@ La musica si abbassa durante i segnali importanti e il POLLO INTERO, si ferma in
 
 I sottotitoli inglesi seguono l'audio nel gioco e nel player completo della demo. Si gestiscono con **CC English**; la scelta resta salvata sul dispositivo. La traduzione deriva dalla trascrizione automatica del brano generato, con tempi approssimati per frase. [File WebVTT](media/mezzo-pollo-en.vtt).
 
-## Negozio MEMEZZO e modalità Facile
+## Negozio MEMEZZO e Abbonamento
 
 Mint Solana: `Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump`.
 
-Per Facile, apri il Negozio: il link a DevFridge permette di creare un timelock esternamente. Dopo la conferma, premi **Collega e verifica** per collegare Phantom ed eseguire il primo controllo. I controlli successivi si richiedono con **Verifica vite Facile**. Servono almeno **1.000.000 MEMEZZO** complessivi in timelock DevFridge attivi dello stesso wallet e mint. Nessuna durata minima: anche un lock con meno di un giorno residuo conta al momento della verifica, fino alla scadenza. La quantità è verificata in unità esatte, con sei decimali. Difficile è sempre gratuito, con 2 vite per partita e senza wallet.
+Servono almeno **10.000.000 MEMEZZO** complessivi in timelock DevFridge attivi dello stesso wallet e mint. Non c’è una durata minima: contano i lock non scaduti al momento della verifica manuale. Dieci milioni danno 10 vite, 10.999.999 danno 10, undici milioni danno 11. Non vengono aggiunte vite di base.
 
-Ogni nuova partita **Facile** assegna **una vita totale per ogni milione intero confermato nel Negozio**, senza vite di base: 1.000.000 MEMEZZO → 1 vita; 1.999.999 → 1; 2.000.000 → 2. Il numero iniziale viene fissato all'avvio: aggiornare i lock o riprendere la partita non ripristina vite. L’esito della verifica resta in memoria finché la pagina è aperta, fino a una nuova verifica manuale, un cambio o una disconnessione del wallet oppure un ricaricamento della pagina.
+Solo **Collega e verifica** e la verifica manuale del Negozio controllano i token. L’accesso vale per la sessione della pagina, fino a un nuovo controllo, cambio wallet, disconnessione o ricaricamento. Non ci sono verifiche automatiche all’avvio, alla ripresa o durante la partita. Un controllo non valido revoca le partite future; una partita già avviata conserva le proprie vite rimanenti.
 
-**Nessuna verifica automatica** all’avvio, alla ripresa, durante la partita o al ritorno sulla pagina. Solo i comandi del Negozio **Collega e verifica** e **Verifica vite Facile** controllano i token. Una verifica manuale non valida, un cambio wallet o una disconnessione annullano lo sblocco per le nuove partite Facile, ma non interrompono una partita già avviata e non bloccano Difficile. Su telefono il Negozio offre un link al browser Phantom. Creazione e riscatto dei timelock avvengono su DevFridge, senza ritiro anticipato e con una commissione del 2% al riscatto per acquistare e bruciare PASTA, oltre ai costi di rete; il riscatto di MEMEZZO richiede una rotta Jupiter eseguibile. Accesso e vite sono gestiti nel browser: i record sono locali e non verificati, senza autenticazione server, classifiche o premi. [Regola, evidenze e limiti](ACCESS.md).
+I timelock si creano e riscattano su DevFridge con approvazione del wallet; non prevedono ritiro anticipato. Il riscatto applica una commissione del 2% per acquistare e bruciare PASTA, oltre ai costi di rete, e richiede una rotta Jupiter disponibile. [Regola, evidenze e limiti](ACCESS.md).
 
 ## Avvio locale
 
-È un sito statico. Il bundle delle traduzioni è incluso; dopo modifiche ai cataloghi eseguire `node scripts/build-locales.mjs`, poi `node scripts/build-locales.mjs --check`. I controlli si eseguono con `node --test --experimental-test-isolation=none tests/*.test.mjs`.
+Il frontend è statico; il checkout Arcade web usa API e un registro Postgres. L’APK include gioco, musica, font e traduzioni, usa un registro locale e Solana RPC senza dipendere da Vercel. Il bundle delle traduzioni è incluso; dopo modifiche ai cataloghi eseguire `node scripts/build-locales.mjs`, poi `node scripts/build-locales.mjs --check`. I controlli si eseguono con `node --test --experimental-test-isolation=none tests/*.test.mjs`.
 ```sh
-npx serve .        # oppure: python3 -m http.server 8080
+node scripts/serve-local.mjs
 ```
-Apri `http://localhost:3000` (o `:8080`). Per provare anche `/practice` usa `npx vercel dev`: la route viene riscritta su `index.html` da `vercel.json`.
+Apri `http://127.0.0.1:8790`. Questo server mostra l’interfaccia e non esegue pagamenti. Per le API usa Vercel con un database di prova isolato. `/practice` è un alias del menu, senza accesso gratuito alle partite.
 
 ## Deploy
 
-Deploy pubblico su Vercel: [mezzo-pollo-academy.vercel.app](https://mezzo-pollo-academy.vercel.app). Il pacchetto include `vercel.json` per l'hosting statico, senza build. La [pagina demo](demo.html) accompagna la submission.
+Deploy pubblico su Vercel: [mezzo-pollo-academy.vercel.app](https://mezzo-pollo-academy.vercel.app). Il build `node scripts/build-public.mjs` pubblica soltanto gli asset approvati; API e database restano separati dai file statici. La [pagina demo](demo.html) accompagna la submission.
 
 ## Dipendenze
 
 - three.js **r128**, caricato da cdnjs con versione fissata: [licenza MIT](https://github.com/mrdoob/three.js/blob/r128/LICENSE)
 - Google Fonts: [Caveat Brush](https://github.com/google/fonts/blob/main/ofl/caveatbrush/OFL.txt) e [Fredoka](https://github.com/google/fonts/blob/main/ofl/fredoka/OFL.txt), entrambi SIL Open Font License 1.1
 - Bandiere SVG locali: flag-icons 7.3.2, licenza MIT inclusa in `flags/LICENSE`; fonti e hash in `flags/provenance.json`. Le scritture non latine usano anche i font di sistema.
-- Nessuna variabile d'ambiente, nessun segreto
+- Configurazione del backend Arcade tramite variabili server: vedere [ARCADE.md](ARCADE.md). Nessun segreto nel client o nell’APK.
 
 ## Asset e diritti
 

@@ -28,6 +28,11 @@ function wholeTokens(raw) {
   return amountFormat.format(BigInt(raw) / (10n ** BigInt(ACCESS_POLICY.decimals)));
 }
 function render(state, notify = true) {
+  // Never present an older/sub-threshold snapshot as a Subscription grant.
+  if (state.eligible && (!Number.isSafeInteger(state.livesPerGame) || state.livesPerGame < ACCESS_POLICY.minimumLives ||
+    !/^\d+$/.test(state.totalRaw) || BigInt(state.totalRaw) < ACCESS_POLICY.minimumRaw)) {
+    state = { ...state, eligible: false, livesPerGame: 0, status: 'insufficient' };
+  }
   lastState = state;
   const locale = window.MezzoLocale?.locale || { it: 'it-IT', en: 'en-US', pl: 'pl-PL' }[languageCode()];
   amountFormat = new Intl.NumberFormat(locale);

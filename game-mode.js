@@ -1,21 +1,21 @@
 /* Mode selection is independent from the optional shop's wallet session. */
 (() => {
   'use strict';
-  let selected = 'hard';
+  let selected = 'arcade';
   const copy = Object.fromEntries(Object.entries(window.MezzoTranslations).map(([code,pack])=>[code,pack.mode]));
   const text = (key, params = {}) => (key === 'arcade' ? (window.MezzoTranslations[window.MezzoLocale?.code] || window.MezzoTranslations.en).arcade.name : (copy[window.MezzoLocale?.code] || copy.en)[key] || key)
     .replace(/\{(\w+)\}/g, (match, name) => String(params[name] ?? match));
   function config(name = selected, unlockedLives = 0, arcadeTier = 'hard') {
-    if (!['hard', 'easy', 'arcade'].includes(name)) throw new TypeError('Unknown game mode');
-    if (name === 'easy' && (!Number.isSafeInteger(unlockedLives) || unlockedLives < 1)) return null;
+    if (!['arcade', 'subscription'].includes(name)) throw new TypeError('Unknown game mode');
+    if (name === 'subscription' && (!Number.isSafeInteger(unlockedLives) || unlockedLives < 10)) return null;
     const arcadeLives = {hard:1,medium:3,easy:9,god:32};
     if (name === 'arcade' && !Object.hasOwn(arcadeLives, arcadeTier)) throw new TypeError('Unknown Arcade level');
-    return Object.freeze(name !== 'easy'
-      ? {name, ...(name === 'arcade' ? {tier:arcadeTier} : {}), lives:name === 'arcade' ? arcadeLives[arcadeTier] : 2, speed:11, minSpeed:10, maxSpeed:24, acceleration:1.2, maxLevel:3, reaction:5.2, minReaction:3.1, ruleSeconds:30, scoreKey:`mp_${name}${name === 'arcade' ? '_'+arcadeTier : ''}_best`}
+    return Object.freeze(name === 'arcade'
+      ? {name, tier:arcadeTier, lives:arcadeLives[arcadeTier], speed:11, minSpeed:10, maxSpeed:24, acceleration:1.2, maxLevel:3, reaction:5.2, minReaction:3.1, ruleSeconds:30, scoreKey:`mp_arcade_${arcadeTier}_best`}
       : {name, lives:unlockedLives, speed:8, minSpeed:7, maxSpeed:14, acceleration:.7, maxLevel:2, reaction:7.8, minReaction:5.2, ruleSeconds:45, scoreKey:'mp_easy_best'});
   }
   function select(name) {
-    if (!['hard', 'easy', 'arcade'].includes(name)) return;
+    if (!['arcade', 'subscription'].includes(name)) return;
     selected = name;
     render();
     document.dispatchEvent(new Event('mezzopollo:mode'));

@@ -3,9 +3,10 @@
 export const ACCESS_POLICY = Object.freeze({
   mint: 'Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump',
   symbol: 'MEMEZZO',
-  minimumTokens: '1000000',
+  minimumTokens: '10000000',
   decimals: 6,
-  minimumRaw: 1000000000000n,
+  minimumRaw: 10000000000000n,
+  minimumLives: 10,
   rawPerLife: 1000000000000n,
   aggregation: 'sum',
   minOriginalSeconds: 0,

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MezzoPollo — Hard &amp; Easy</title>
-<meta name="description" content="Play MezzoPollo in 20 languages with 25 regional choices: free Hard mode with 2 lives, a guided tutorial, and optional MEMEZZO timelocks for Easy mode.">
+<title>MezzoPollo — Arcade &amp; Subscription</title>
+<meta name="description" content="Play MezzoPollo in 20 languages with 25 regional choices: four paid Arcade levels or Subscription with at least 10,000,000 actively timelocked MEMEZZO. Learn with an interactive tutorial.">
 <base href="/">
 <link rel="stylesheet" href="locale.css">
 <link rel="stylesheet" href="game-tutorial.css">
@@ -95,8 +95,10 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 .mode-choice{min-height:76px;padding:10px 8px;background:var(--slate-deep);color:var(--chalk);border:2px solid #697463;border-radius:12px;text-align:left}
 .mode-choice strong{display:block;font-size:21px}.mode-choice small{display:block;font-size:12px;line-height:1.35;margin-top:4px}
 .mode-choice[aria-pressed="true"]{border-color:var(--straw);box-shadow:0 0 0 1px var(--straw)}
-.mode-choice[data-mode-select="arcade"]{grid-column:1/-1;border-color:#9d7ce0;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.mode-choice[data-mode-select="arcade"] small{text-align:end}
+#modeChoices{grid-template-columns:1fr}
+.mode-choice[data-mode-select]{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mode-choice[data-mode-select="arcade"]{border-color:#9d7ce0}
+.mode-choice[data-mode-select] small{text-align:end}
 #scrMenu .btns{display:grid;grid-template-columns:1fr 1fr}#btnPlay,#btnAccess{grid-column:1/-1}
 #btnTutorial,#btnHow{font-size:15px;padding:10px 6px;min-height:48px}
 .shop-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.shop-heading .music-toggle{flex:none}
@@ -137,17 +139,16 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="review-badge" data-review-label hidden></div>
       <p class="chop">A plush chicken has lost half of itself. Help it run through the gate with the matching half.</p>
       <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
-        <button class="mode-choice" data-mode-select="hard" aria-pressed="true"><strong data-mode-text="hard">Hard</strong><small data-mode-text="hardDetail">Free · 2 lives</small></button>
-        <button class="mode-choice" data-mode-select="easy" aria-pressed="false"><strong data-mode-text="easy">Easy</strong><small data-mode-text="easyDetail">Slower pace · shop unlock</small></button>
-        <button class="mode-choice" data-mode-select="arcade" aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">4 levels · from 0.001 SOL</small></button>
+        <button class="mode-choice" data-mode-select="arcade" aria-pressed="true"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">4 levels · from 0.001 SOL</small></button>
+        <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">10,000,000 MEMEZZO timelock · from 10 lives</small></button>
       </div>
       <div class="btns">
-        <button class="btn primary" id="btnPlay">Play Hard · 2 lives</button>
+        <button class="btn primary" id="btnPlay">Play Arcade</button>
         <button class="btn" id="btnTutorial" data-mode-text="tutorial">Play the tutorial</button>
         <button class="btn" id="btnHow">How to play</button>
         <button class="btn ghost" id="btnAccess" data-mode-text="shop">Shop · MEMEZZO lives</button>
       </div>
-      <p class="access-note" id="memberHint">Jump straight in with 2 lives. No wallet or token checks.</p>
+      <p class="access-note" id="memberHint">Choose an Arcade level and pay for each new run.</p>
       <a class="community-link" id="telegramCommunity" href="https://t.me/playmezzopollo" target="_blank" rel="noopener noreferrer" data-mode-text="community">Join the Telegram channel</a>
       <p class="note" id="bestLine"></p>
       <div class="music-controls">
@@ -167,24 +168,24 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <li>Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.</li>
         <li>When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.</li>
         <li>Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.</li>
-        <li>Hard mode is free and starts each run with 2 lives. Easy mode gives you more time and one total life per full million locked MEMEZZO, unlocked in the shop.</li>
+        <li>Arcade offers four paid levels. Subscription gives you more time and one life per full million actively timelocked MEMEZZO, with a minimum of 10 million verified in the Shop.</li>
         <li>Only the shop checks tokens, when you ask. Playing, restarting and resuming never trigger verification. Pausing preserves remaining lives.</li>
       </ul>
       <div class="btns"><button class="btn" data-back>Back</button></div>
     </section>
 
     <section class="panel" id="scrAccess" hidden>
-      <div class="shop-heading"><h2 data-shop-title>Shop · Easy mode</h2><button class="music-toggle" data-shop-back data-mode-text="back">Back to game</button></div>
-      <p>Timelock MEMEZZO on <b>DevFridge</b>, then verify here for Easy. <b>Hard is free with 2 lives.</b></p>
-      <p><b>Easy: 1 total life per full million actively locked MEMEZZO.</b> Minimum 1 million; no base lives. Expired locks do not count when verified.</p>
-      <p class="access-note">Only manual Shop checks; no automatic checks interrupt play. Easy lasts for this page session. Recheck to update; wallet changes, disconnection or reload clear future access. Ongoing runs continue with their remaining lives.</p>
+      <div class="shop-heading"><h2 data-shop-title>Shop · Subscription</h2><button class="music-toggle" data-shop-back data-mode-text="back">Back to game</button></div>
+      <p>Timelock MEMEZZO on <b>DevFridge</b>, then verify here for Subscription. <b>Minimum 10,000,000 actively locked MEMEZZO.</b></p>
+      <p><b>Subscription: 1 total life per full million actively locked MEMEZZO.</b> At least 10 lives; no base lives. Expired locks do not count when verified.</p>
+      <p class="access-note">Only manual Shop checks; no automatic checks interrupt play. Subscription access lasts for this page session. Recheck to update; wallet changes, disconnection or reload clear future access. Ongoing runs continue with their remaining lives.</p>
       <p class="access-status" id="accessStatus" role="status" aria-live="polite">Connect Phantom to check your timelocks. The game will not request any transactions.</p>
       <p class="access-note" id="accessWallet" hidden></p>
       <div class="btns">
         <button class="btn primary" id="connectWallet" disabled>Connect Phantom</button>
         <button class="btn" id="checkLocks" hidden>Check locks again</button>
         <button class="btn ghost" id="disconnectWallet" hidden>Disconnect</button>
-        <button class="btn primary" id="playMember" hidden>Play Easy</button>
+        <button class="btn primary" id="playMember" hidden>Play Subscription</button>
         <button class="btn" id="resumeRun" hidden>Resume game</button>
       </div>
       <p class="access-note" id="shopMintLabel">MEMEZZO mint · Solana mainnet</p>
@@ -283,7 +284,7 @@ const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduc
 const HAND='"Caveat Brush", "Comic Sans MS", system-ui, sans-serif';
 
 /* ---------- storage ---------- */
-function scoreStorageKey(name,tier){return `mp_${name}${name==='arcade'?'_'+(tier||window.MezzoArcade.tier):''}_best`}
+function scoreStorageKey(name,tier){return name==='subscription'?'mp_easy_best':`mp_${name}${name==='arcade'?'_'+(tier||window.MezzoArcade.tier):''}_best`}
 function loadBest(name=mode.selected,tier){try{return parseInt(localStorage.getItem(scoreStorageKey(name,tier))||'0',10)||0}catch(e){return 0}}
 function saveBest(v,name,tier){try{localStorage.setItem(scoreStorageKey(name,tier),String(v))}catch(e){}}
 
@@ -513,17 +514,17 @@ const statue=buildChicken(true,M.bronze); statue.scale.setScalar(2.2); statue.vi
 let accessEligible=false, accessLives=0;
 function syncAccessUi(){
   const lives={count:L.number(accessLives),lives:L.lifeWord(accessLives)};
-  $('btnPlay').textContent=mode.selected==='arcade'?window.MezzoArcade.text('play'):mode.selected==='hard'?mode.text('playHard'):mode.text(accessEligible?'playEasy':'unlock',lives);
-  $('memberHint').textContent=mode.selected==='arcade'?window.MezzoArcade.text('hint'):mode.selected==='hard'?mode.text('hardHint'):mode.text(accessEligible?'unlocked':'easyHint',lives);
+  $('btnPlay').textContent=mode.selected==='arcade'?window.MezzoArcade.text('play'):mode.text(accessEligible?'playSubscription':'unlock',lives);
+  $('memberHint').textContent=mode.selected==='arcade'?window.MezzoArcade.text('hint'):mode.text(accessEligible?'unlocked':'subscriptionHint',lives);
   $('resumeRun').hidden=state!=='pause';
   $('btnResume').textContent=t('resume');
-  $('playMember').textContent=mode.text('playEasy',lives);
+  $('playMember').textContent=mode.text('playSubscription',lives);
   $('btnVerifyAccess').hidden=tutorial.active;
   $('accessNotice').hidden=true;
 }
 document.addEventListener('mezzopollo:access',event=>{
   accessLives=event.detail.livesPerGame;
-  accessEligible=event.detail.eligible===true&&typeof event.detail.wallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives>=1;
+  accessEligible=event.detail.eligible===true&&typeof event.detail.wallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives>=10;
   // Shop updates affect future runs only; an active run owns its life snapshot.
   syncAccessUi();
 });
@@ -644,7 +645,7 @@ let state='menu';
 const G={};
 let deathTimer=null;
 function clearDeathTimer(){if(deathTimer!==null){clearTimeout(deathTimer);deathTimer=null}}
-function resetGame(config=mode.config('hard')){
+function resetGame(config=mode.config('arcade')){
   clearDeathTimer();
   music.setFocus(false);
   const startingLives=config.lives;
@@ -795,6 +796,8 @@ async function openShop(){
   syncAccessUi();
 }
 function beginRun(config){
+  if(!config||!['arcade','subscription'].includes(config.name))return;
+  if(config.name==='subscription'&&(!accessEligible||config.lives<10||config.lives!==accessLives)){void openShop();return;}
   if(config.name==='arcade'&&!window.MezzoArcade.consumeAdmission())return;
   audio();clearWorld();resetGame(config);state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true});clock.getDelta();
 }
@@ -813,7 +816,7 @@ function tutorialScenario(spec){
   }
   updateLegs();updateScore();
 }
-function startTutorial(config=mode.config('hard'),onFinish=()=>requestRun(config)){
+function startTutorial(config=mode.config('arcade'),onFinish=()=>requestRun(config)){
   if(!L.ready){L.open();return;}
   audio();clearWorld();resetGame(config);state='play';show(null);$('hud').hidden=false;music.start();
   tutorial.start({onStep:tutorialScenario,onAction:action=>{if(action==='jump')jump();else changeLane(action==='left'?-1:1);},onFinish});
@@ -850,10 +853,10 @@ function gameOver(){
   $('hud').hidden=true;show('scrOver');
 }
 $('btnPlay').onclick=startGame;$('btnAgain').onclick=startGame;
-$('playMember').onclick=()=>{mode.select('easy');startGame()};$('resumeRun').onclick=resume;
+$('playMember').onclick=()=>{mode.select('subscription');startGame()};$('resumeRun').onclick=resume;
 $('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=openShop;
 $('btnVerifyAccess').onclick=openShop;
-$('btnTutorial').onclick=()=>startTutorial(mode.config(mode.selected,accessEligible?accessLives:0)||mode.config('hard'));
+$('btnTutorial').onclick=()=>startTutorial(mode.config(mode.selected,accessEligible?accessLives:0)||mode.config('arcade'),startGame);
 document.querySelectorAll('[data-shop-back]').forEach(b=>b.onclick=()=>{if(state==='pause')show('scrPause');else toMenu()});
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=toMenu);
 $('pauseBtn').onclick=pause;$('btnResume').onclick=resume;

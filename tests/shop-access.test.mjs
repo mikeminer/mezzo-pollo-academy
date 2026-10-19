@@ -12,7 +12,7 @@ const now = 2_000_000_000;
 const validEvidence = {
   wallet: walletAddress, mint: ACCESS_POLICY.mint, ts: now,
   activeLocks: [{ address: 'one', depositor: walletAddress, mint: ACCESS_POLICY.mint,
-    amount: '1000000000000', createdAt: now - 100, unlockAt: now + 1 }],
+    amount: '10000000000000', createdAt: now - 100, unlockAt: now + 1 }],
 };
 async function settle() { for (let i = 0; i < 20; i++) await Promise.resolve(); }
 class DetailEvent extends Event {
@@ -20,6 +20,7 @@ class DetailEvent extends Event {
 }
 function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvidence })) {
   const elements = new Map(), requests = [], notices = [];
+  let publishSnapshot;
   const doc = Object.assign(new EventTarget(), {
     documentElement: { lang: 'en' }, hidden: false,
     getElementById(id) {
@@ -38,13 +39,16 @@ function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvide
   });
   doc.addEventListener('mezzopollo:access', event => notices.push(event.detail));
   vm.runInNewContext(code, {
-    ACCESS_POLICY, createLockAccess: options => createLockAccess({ ...options, now: () => now,
-      fetchImpl: (...args) => { requests.push(args); return fetchImpl(...args); } }),
+    ACCESS_POLICY, createLockAccess: options => {
+      publishSnapshot = options.onChange;
+      return createLockAccess({ ...options, now: () => now,
+        fetchImpl: (...args) => { requests.push(args); return fetchImpl(...args); } });
+    },
     document: doc, window: win, location: { origin: 'https://mezzopollo.it' },
     navigator: { clipboard: { writeText: async () => {} } }, CustomEvent: DetailEvent,
     Intl, encodeURIComponent,
   });
-  return { doc, win, elements, requests, notices, click: id => doc.getElementById(id).dispatchEvent(new Event('click')) };
+  return { doc, win, elements, requests, notices, publishSnapshot, click: id => doc.getElementById(id).dispatchEvent(new Event('click')) };
 }
 
 test('the shop UI never looks up locks on load, background, resume or open; only its buttons do', async () => {
@@ -62,7 +66,7 @@ test('the shop UI never looks up locks on load, background, resume or open; only
   h.click('connectWallet'); await settle();
   assert.equal(h.requests.length, 1);
   assert.equal(h.win.MezzoShopAccess.getState().eligible, true);
-  assert.equal(h.notices.at(-1).livesPerGame, 1);
+  assert.equal(h.notices.at(-1).livesPerGame, 10);
   h.doc.dispatchEvent(new Event('mezzopollo:shopclose'));
   h.doc.hidden = true; h.doc.dispatchEvent(new Event('visibilitychange'));
   h.doc.hidden = false; h.doc.dispatchEvent(new Event('visibilitychange'));
@@ -78,7 +82,7 @@ test('the shop UI never looks up locks on load, background, resume or open; only
   h.click('disconnectWallet'); await settle();
 });
 
-test('shopclose aborts the manual UI lookup and its late result cannot grant Easy access', async () => {
+test('shopclose aborts the manual UI lookup and its late result cannot grant Subscription access', async () => {
   let release;
   const h = setup(() => new Promise(resolve => { release = resolve; }));
   h.doc.dispatchEvent(new Event('mezzopollo:shopopen'));
@@ -91,4 +95,19 @@ test('shopclose aborts the manual UI lookup and its late result cannot grant Eas
   assert.equal(h.win.MezzoShopAccess.getState().eligible, false);
   assert.equal(h.notices.some(state => state.eligible), false);
   h.click('disconnectWallet'); await settle();
+});
+
+test('an old cached entitlement below ten million cannot enable Subscription in the shop UI', () => {
+  const h = setup();
+  for (const snapshot of [
+    { totalRaw: '1000000000000', livesPerGame: 1 },
+    { totalRaw: '9999999999999', livesPerGame: 10 },
+    { totalRaw: '10000000000000', livesPerGame: 9 },
+  ]) {
+    h.publishSnapshot({ wallet: walletAddress, status: 'eligible', eligible: true, ...snapshot });
+    assert.equal(h.elements.get('playMember').hidden, true);
+    assert.equal(h.notices.at(-1).eligible, false);
+    assert.equal(h.notices.at(-1).livesPerGame, 0);
+  }
+  assert.equal(h.requests.length, 0);
 });

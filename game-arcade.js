@@ -1,4 +1,4 @@
-/* Explicit per-run checkout. Loading the game or playing Hard never contacts a wallet. */
+/* Explicit per-run checkout. Loading the game never contacts a wallet. */
 (() => {
   'use strict';
   const byId = id => document.getElementById(id);
