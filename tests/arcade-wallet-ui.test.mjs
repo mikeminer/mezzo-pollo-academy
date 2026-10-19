@@ -78,7 +78,7 @@ test('missing provider keeps the actionable Phantom fallback visible', async () 
   assert.deepEqual(h.events, []);
 });
 
-test('payment diagnostics expose only protocol codes and approved error names', async t => {
+test('payment diagnostics expose protocol codes, approved names and redacted detail', async t => {
   const secret = 'private-url-or-receipt-secret';
   const cases = [
     { error: Object.assign(Error(secret), { code: -32603, request: { secret } }), code: -32603, name: 'Error' },
@@ -89,12 +89,34 @@ test('payment diagnostics expose only protocol codes and approved error names', 
     const h = setup({ connected: true, requestError: item.error });
     h.click('arcadePay'); await tick(); await tick();
     assert.equal(h.warnings.length, 1);
-    assert.equal(h.warnings[0][0], '[MezzoPollo Arcade]');
-    assert.equal(JSON.stringify(h.warnings[0][1]), JSON.stringify({ code: item.code, name: item.name }));
+    assert.deepEqual(h.warnings[0], [`[MezzoPollo Arcade] phase=checking code=${item.code} name=${item.name} detail=[redacted]`]);
     assert.equal(h.elements.get('arcadeStatus').dataset.lastErrorCode, String(item.code));
     assert.equal(h.elements.get('arcadeStatus').dataset.lastErrorName, item.name);
+    assert.equal(h.elements.get('arcadeStatus').dataset.lastErrorPhase, 'checking');
+    assert.equal(h.elements.get('arcadeStatus').dataset.lastErrorDetail, '[redacted]');
     assert.equal(JSON.stringify(h.warnings).includes(secret), false);
     assert.equal(JSON.stringify(h.elements.get('arcadeStatus').dataset).includes(secret), false);
     assert.equal(h.elements.get('arcadePay').disabled, false);
   });
+});
+
+test('diagnostic details redact identifiers, URLs and credential tokens and remain bounded to one line', async () => {
+  const privateParts = [
+    'https://rpc.example/v2/super-secret-api-key',
+    '00000000-0000-4000-8000-000000000001',
+    address,
+    'AbCdEf0123456789-AbCdEf0123456789',
+    'api_key=short-secret',
+  ];
+  const message = `Wallet request failed\n${privateParts.join(' ')}\r\n${'Additional context. '.repeat(20)}`;
+  const h = setup({ connected: true, requestError: Error(message) });
+  h.click('arcadePay'); await tick(); await tick();
+  const detail = h.elements.get('arcadeStatus').dataset.lastErrorDetail;
+  assert.match(detail, /^Wallet request failed /);
+  assert.ok(detail.length <= 160);
+  assert.doesNotMatch(detail, /[\r\n]/);
+  for (const part of privateParts) assert.equal(JSON.stringify(h.warnings).includes(part), false);
+  assert.equal(JSON.stringify(h.warnings).includes('short-secret'), false);
+  assert.equal(h.warnings[0].length, 1, 'Console receives only one formatted string, never an error object');
+  assert.equal(h.elements.get('arcadePay').disabled, false);
 });

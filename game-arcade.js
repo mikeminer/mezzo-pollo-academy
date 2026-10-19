@@ -82,16 +82,28 @@
   function notify(next) { status = next; render(); }
   function failure(error) {
     const code = error?.code || error?.message;
-    // Log only bounded protocol identifiers, never the wallet's free-form
-    // message, request objects, wallet addresses or saved payment credentials.
+    // Retain a short cause while redacting identifiers and credentials. Never
+    // log error/request objects, stack traces or the saved payment record.
     const diagnosticCode = typeof code === 'number' && Number.isSafeInteger(code) ? code
       : typeof code === 'string' && diagnosticCodes.has(code) ? code : 'unknown';
     const diagnosticName = diagnosticNames.has(error?.name) ? error.name : 'Error';
-    console.warn('[MezzoPollo Arcade]', { code: diagnosticCode, name: diagnosticName });
+    const diagnosticPhase = ['checking', 'connecting', 'signing', 'pending', 'ready', 'recovery', 'consumed', 'unavailable', 'failed', 'rejected'].includes(status) ? status : 'unknown';
+    const diagnosticDetail = (typeof error?.message === 'string' ? error.message.slice(0, 2048) : '')
+      .replace(/\b(?:[a-z][a-z0-9+.-]*:\/\/|www\.)[^\s<>"']+/gi, '[redacted]')
+      .replace(/\b[A-Za-z]:[\\/][^\r\n<>"']+/g, '[redacted]')
+      .replace(/\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\b/gi, '[redacted]')
+      .replace(/[1-9A-HJ-NP-Za-km-z]{32,}/g, '[redacted]')
+      .replace(/\b(?:bearer\s+|(?:authorization|api[-_ ]?key|secret|auth[-_ ]?token|token|signature|wallet|payer|reference|intent[-_ ]?id)\s*[:=]\s*["']?)[^\s,<>"']+/gi, '[redacted]')
+      .replace(/[A-Za-z0-9_+/=-]{20,}/g, '[redacted]')
+      .replace(/[\u0000-\u001f\u007f-\u009f\u2028-\u202e\u2066-\u2069]/g, ' ')
+      .replace(/\s+/g, ' ').trim().slice(0, 160);
+    console.warn(`[MezzoPollo Arcade] phase=${diagnosticPhase} code=${diagnosticCode} name=${diagnosticName} detail=${diagnosticDetail}`);
     const diagnosticTarget = byId('arcadeStatus');
     if (diagnosticTarget) {
       diagnosticTarget.dataset.lastErrorCode = String(diagnosticCode);
       diagnosticTarget.dataset.lastErrorName = diagnosticName;
+      diagnosticTarget.dataset.lastErrorPhase = diagnosticPhase;
+      diagnosticTarget.dataset.lastErrorDetail = diagnosticDetail;
     }
     status = code === 4001 || code === 'USER_REJECTED' ? 'rejected'
       : code === 'missing_wallet' ? 'missingWallet'
