@@ -1,6 +1,48 @@
-import { ArcadeError, POLICY, SYSTEM_PROGRAM, MEMO_PROGRAM, decode58, UUID, tierPolicy } from './arcade-config.mjs';
+import { ArcadeError, POLICY, SYSTEM_PROGRAM, MEMO_PROGRAM, decode58, encode58, UUID, tierPolicy } from './arcade-config.mjs';
 
 export const memoFor = id => `mezzopollo:arcade:${id}`;
+export const COMPUTE_BUDGET_PROGRAM = 'ComputeBudget111111111111111111111111111111';
+export const LIGHTHOUSE_PROGRAM = 'L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95';
+
+function instructionBytes(value) {
+  const alphabet = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+  if (typeof value !== 'string' || !value.length || value.length > 420) throw new Error('invalid instruction');
+  let number = 0n;
+  for (const character of value) {
+    const digit = alphabet.indexOf(character);
+    if (digit < 0) throw new Error('invalid instruction');
+    number = number * 58n + BigInt(digit);
+  }
+  let hex = number.toString(16);
+  if (hex.length % 2) hex = '0' + hex;
+  const bytes = Buffer.concat([Buffer.alloc(value.match(/^1*/)[0].length), number ? Buffer.from(hex, 'hex') : Buffer.alloc(0)]);
+  if (bytes.length > 300 || encode58(bytes) !== value) throw new Error('invalid instruction');
+  return bytes;
+}
+
+/** Lighthouse has state-writing instructions too: allow only bounded account-info assertions.
+ * Audited source: github.com/Jac0xb/lighthouse, instruction.rs and processor/assert_target_account.rs.
+ * The Borsh log-level enum is serialized by variant ordinal (0..6), not its Rust repr value.
+ */
+function validLighthouseAssertion(data) {
+  let offset = 0;
+  const byte = () => { if (offset >= data.length) throw new Error('truncated assertion'); return data[offset++]; };
+  const skip = length => { offset += length; if (offset > data.length) throw new Error('truncated assertion'); };
+  const opcode = byte();
+  if (![5, 6].includes(opcode) || byte() > 6) return false;
+  // Bound the LEB128 array to eight assertions, so a canonical count fits in one byte.
+  const count = opcode === 6 ? byte() : 1;
+  if (count < 1 || count > 8) return false;
+  for (let index = 0; index < count; index++) {
+    const kind = byte();
+    if ([0, 1, 4].includes(kind)) { skip(8); if (byte() > 7) return false; }
+    else if (kind === 2) { skip(32); if (byte() > 1) return false; }
+    else if (kind === 3) { if (byte() > 8 || byte() > 1) return false; }
+    else if ([5, 6, 7].includes(kind)) { if (byte() > 1 || byte() > 1) return false; }
+    else return false;
+  }
+  return offset === data.length;
+}
 
 /** A legacy transaction with one exact transfer and a signed, intent-bound memo. */
 export function buildTransaction(intent, blockhash) {
@@ -33,28 +75,56 @@ export function verifyTransaction(result, intent, signature) {
   const message = transaction?.message;
   if (!message || transaction.signatures?.length !== 1 || transaction.signatures[0] !== signature) reject();
   const expectedKeys = [intent.payer, POLICY.recipient, intent.reference, SYSTEM_PROGRAM, MEMO_PROGRAM];
+  const allowedKeys = new Set([...expectedKeys, COMPUTE_BUDGET_PROGRAM, LIGHTHOUSE_PROGRAM]);
+  const keys = message.accountKeys;
   const header = message.header;
-  if (!header || header.numRequiredSignatures !== 1 || header.numReadonlySignedAccounts !== 0 || header.numReadonlyUnsignedAccounts !== 3) reject();
-  if (message.accountKeys?.length !== 5 || message.accountKeys.some((key, index) => key !== expectedKeys[index])) reject();
+  if (!Array.isArray(keys) || keys.length < 5 || keys.length > 7 || new Set(keys).size !== keys.length ||
+      keys.some(key => !allowedKeys.has(key)) || expectedKeys.some(key => !keys.includes(key))) reject();
+  // Solana places signers first, then writable unsigned accounts. These flags guarantee
+  // that only the payer and recipient can be modified, regardless of read-only key order.
+  if (!header || header.numRequiredSignatures !== 1 || header.numReadonlySignedAccounts !== 0 ||
+      header.numReadonlyUnsignedAccounts !== keys.length - 2 || keys[0] !== intent.payer || keys[1] !== POLICY.recipient) reject();
   if (message.addressTableLookups?.length || result.meta.innerInstructions?.some(item => item.instructions?.length)) reject();
+  if (result.meta.loadedAddresses?.writable?.length || result.meta.loadedAddresses?.readonly?.length) reject();
   const instructions = message.instructions;
-  if (instructions?.length !== 2) reject();
-  const [transfer, memo] = instructions;
-  if (transfer.programIdIndex !== 3 || JSON.stringify(transfer.accounts) !== '[0,1,2]') reject();
-  if (memo.programIdIndex !== 4 || JSON.stringify(memo.accounts) !== '[0]') reject();
+  if (!Array.isArray(instructions) || instructions.length < 2 || instructions.length > 7) reject();
   try {
-    const data = decode58(transfer.data, 12);
-    if (data.readUInt32LE() !== 2 || data.readBigUInt64LE(4) !== BigInt(intent.lamports)) reject();
-    const memoBytes = decode58(memo.data, Buffer.byteLength(memoFor(intent.intentId)));
-    if (memoBytes.toString('utf8') !== memoFor(intent.intentId)) reject();
+    let transfers = 0, memos = 0, lighthouse = 0;
+    const computeKinds = new Set();
+    for (const instruction of instructions) {
+      if (!Number.isInteger(instruction.programIdIndex) || instruction.programIdIndex < 0 || instruction.programIdIndex >= keys.length ||
+          !Array.isArray(instruction.accounts) || instruction.accounts.some(index => !Number.isInteger(index) || index < 0 || index >= keys.length)) reject();
+      const program = keys[instruction.programIdIndex], accounts = instruction.accounts;
+      if (program === SYSTEM_PROGRAM) {
+        if (++transfers !== 1 || accounts.length !== 3 || accounts[0] !== 0 || accounts[1] !== 1 || keys[accounts[2]] !== intent.reference) reject();
+        const data = decode58(instruction.data, 12);
+        if (data.readUInt32LE() !== 2 || data.readBigUInt64LE(4) !== BigInt(intent.lamports)) reject();
+      } else if (program === MEMO_PROGRAM) {
+        if (++memos !== 1 || accounts.length !== 1 || accounts[0] !== 0) reject();
+        const data = decode58(instruction.data, Buffer.byteLength(memoFor(intent.intentId)));
+        if (!data.equals(Buffer.from(memoFor(intent.intentId)))) reject();
+      } else if (program === COMPUTE_BUDGET_PROGRAM) {
+        const data = instructionBytes(instruction.data), kind = data[0];
+        if (accounts.length || computeKinds.has(kind)) reject();
+        if (kind === 2) { if (data.length !== 5 || data.readUInt32LE(1) < 1 || data.readUInt32LE(1) > 1_400_000) reject(); }
+        else if (kind === 3) { if (data.length !== 9) reject(); }
+        else reject();
+        computeKinds.add(kind);
+      } else if (program === LIGHTHOUSE_PROGRAM) {
+        if (++lighthouse > 3 || accounts.length !== 1 || ![0, 1].includes(accounts[0]) || !validLighthouseAssertion(instructionBytes(instruction.data))) reject();
+      } else reject();
+    }
+    if (transfers !== 1 || memos !== 1) reject();
     decode58(signature, 64);
     decode58(message.recentBlockhash, 32);
+    for (const key of keys) decode58(key, 32);
   } catch { reject(); }
   // Exact net receipt also rejects a transfer that did not credit the requested wallet.
   const pre = result.meta.preBalances, post = result.meta.postBalances;
-  if (pre?.length !== 5 || post?.length !== 5 || !pre.every(Number.isSafeInteger) || !post.every(Number.isSafeInteger)) reject();
+  if (!Array.isArray(pre) || !Array.isArray(post) || pre.length !== keys.length || post.length !== keys.length ||
+      !pre.every(value => Number.isSafeInteger(value) && value >= 0) || !post.every(value => Number.isSafeInteger(value) && value >= 0)) reject();
   if (post[1] - pre[1] !== intent.lamports || !Number.isSafeInteger(result.meta.fee) || result.meta.fee < 0 || pre[0] - post[0] !== intent.lamports + result.meta.fee) reject();
-  for (const index of [2, 3, 4]) if (pre[index] !== post[index]) reject();
+  for (let index = 2; index < keys.length; index++) if (pre[index] !== post[index]) reject();
   return { signature, slot: result.slot };
 }
 

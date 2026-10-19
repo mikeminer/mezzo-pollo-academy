@@ -224,7 +224,7 @@
     "desktopNote": "Ancienne démonstration dans le navigateur, enregistrée le 25 septembre 2026 avant les modes Difficile/Facile et le tutoriel interactif. Ses écrans d’accès présentent les anciennes règles. Les preuves de portefeuille et de verrouillage sont simulées ; aucune approbation de portefeuille ni transaction réelle n’est montrée. La capture muette présente de véritables commandes de jeu. Écoute la bande-son ci-dessus.",
     "downloadDesktop": "Télécharger la capture ordinateur en anglais",
     "mobileTitle": "Interface mobile en anglais — Émulation",
-    "mobileNote": "Ancienne émulation dans le navigateur en 390 × 844 de l’interface anglaise, antérieure aux règles actuelles Difficile/Facile et au tutoriel, avec des preuves simulées de portefeuille et de verrouillage. Capture muette ; il ne s’agit pas d’un test sur téléphone physique ou avec un vrai portefeuille.",
+    "mobileNote": "Ancienne émulation dans le navigateur en 390 × 844 de l’interface anglaise, antérieure aux règles actuelles Arcade/Abonnement et au tutoriel, avec des preuves simulées de portefeuille et de verrouillage. Capture muette ; il ne s’agit pas d’un test sur téléphone physique ou avec un vrai portefeuille.",
     "downloadMobile": "Télécharger la capture mobile en anglais",
     "accessTitle": "Accès et limites",
     "accessIntro": "Abonnement nécessite au moins 10 000 000 MEMEZZO dans les verrouillages DevFridge actifs du portefeuille connecté. Aucune durée minimale ; les verrouillages expirés ne comptent pas à la vérification. Adresse du jeton :",

@@ -48,6 +48,6 @@ The validator checks structure, Unicode boundaries and duplicates. A fluent revi
 
 ## Content rules
 
-Keep MEMEZZO, DevFridge, Phantom and PASTA brand names intact. Hard is always free and starts every run with 2 lives. Easy gives 1 total starting life per full million of active locked MEMEZZO, with no base lives. Verification is explicitly requested in the Shop, persists for the page session, and never interrupts an ongoing run. Preserve those facts in every translation.
+Keep MEMEZZO, DevFridge, Phantom and PASTA brand names intact. The only game modes are Arcade and Subscription. Arcade charges for each new run: Hard gives 1 life for 0.001 SOL; Medium gives 3 for 0.002 SOL; Easy gives 9 for 0.003 SOL; God gives 32 for 0.01 SOL. Network fees are separate; pausing and resuming do not require another payment. Subscription requires at least 10,000,000 MEMEZZO in active timelocks and gives 1 total starting life per full million, with no base lives and a minimum of 10 starting lives. Subscription verification is explicitly requested in the Shop, persists for the page session, and never interrupts an ongoing run. The interactive tutorial is free practice. Preserve those facts in every translation.
 
 Translate controls describing English subtitles while keeping the song audio and English subtitle content unchanged. The native privacy-link label must clearly indicate that its destination is in English. Historical demo descriptions must retain their simulation and older-rule limitations.

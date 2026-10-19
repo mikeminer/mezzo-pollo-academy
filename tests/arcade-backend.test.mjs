@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { ArcadeError, POLICY, TIERS, SYSTEM_PROGRAM, MEMO_PROGRAM, encode58, decode58, digest, requestSecret, loadConfig } from '../server/arcade-config.mjs';
 import { buildTransaction, verifyTransaction, SolanaRpc, memoFor } from '../server/arcade-chain.mjs';
 import { ArcadeService } from '../server/arcade-service.mjs';
@@ -11,6 +12,7 @@ const PAYER = 'Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump';
 const HASH = encode58(Buffer.alloc(32, 2));
 const SIGNATURE = encode58(Buffer.alloc(64, 7));
 const clone = structuredClone;
+const walletFixture = JSON.parse(readFileSync(new URL('./fixtures/arcade-wallet-finalized.json', import.meta.url), 'utf8'));
 function intent(tier = 'god') {
   return { intentId: randomUUID(), payer: PAYER, tier, ...TIERS[tier], reference: encode58(Buffer.alloc(32, 3)),
     secretHash: digest('a'.repeat(43)), status: 'pending', revision: 0, prepared: null, createdAt: 1 };
@@ -110,6 +112,78 @@ const mutations = {
 for (const [name, mutate] of Object.entries(mutations)) test(`rejects ${name}`, () => {
   const record = intent(); const tx = paidTransaction(record); mutate(tx);
   assert.throws(() => verifyTransaction(tx, record, SIGNATURE), error => error.code === 'payment_mismatch');
+});
+
+test('wallet receipt shape accepts reordered keys, compute fees and read-only Lighthouse guards', () => {
+  assert.equal(walletFixture.synthetic, true);
+  assert.deepEqual(verifyTransaction(walletFixture.json, walletFixture.intent, walletFixture.signature),
+    { signature: walletFixture.signature, slot: walletFixture.json.slot });
+  assert.deepEqual(walletFixture.base64.meta, walletFixture.json.meta);
+  assert.equal(walletFixture.base64.transaction[1], 'base64');
+});
+
+for (const [tier, policy] of Object.entries(TIERS)) test(`wallet-added protection preserves the exact ${tier} price and lives`, () => {
+  const record = { ...walletFixture.intent, tier, ...policy }, tx = clone(walletFixture.json);
+  const data = decode58(tx.transaction.message.instructions[0].data, 12);
+  data.writeBigUInt64LE(BigInt(policy.lamports), 4);
+  tx.transaction.message.instructions[0].data = encode58(data);
+  tx.meta.postBalances[0] = tx.meta.preBalances[0] - policy.lamports - tx.meta.fee;
+  tx.meta.postBalances[1] = tx.meta.preBalances[1] + policy.lamports;
+  assert.equal(verifyTransaction(tx, record, walletFixture.signature).slot, tx.slot);
+  assert.throws(() => verifyTransaction(tx, { ...record, lives: policy.lives + 1 }, walletFixture.signature), { code: 'payment_mismatch' });
+});
+
+function replaceGuard(tx, bytes) { tx.transaction.message.instructions[4].data = encode58(Buffer.from(bytes)); }
+const walletMutations = {
+  'unknown wallet program': tx => { tx.transaction.message.accountKeys[5] = HASH; },
+  'extra signer': tx => { tx.transaction.message.header.numRequiredSignatures = 2; },
+  'extra writable account': tx => { tx.transaction.message.header.numReadonlyUnsignedAccounts--; },
+  'changed reference': tx => { tx.transaction.message.accountKeys[4] = HASH; },
+  'memo without payer signer': tx => { tx.transaction.message.instructions[1].accounts = []; },
+  'another transfer': tx => { tx.transaction.message.instructions.push(clone(tx.transaction.message.instructions[0])); },
+  'additional fee/debit': tx => { tx.meta.postBalances[0]--; },
+  'readonly balance change': tx => { tx.meta.postBalances[4]++; },
+  'inner side effect': tx => { tx.meta.innerInstructions = [{ index: 4, instructions: [{}] }]; },
+  'loaded account': tx => { tx.meta.loadedAddresses = { readonly: [HASH], writable: [] }; },
+  'duplicate compute budget': tx => { tx.transaction.message.instructions.push(clone(tx.transaction.message.instructions[2])); },
+  'compute accounts': tx => { tx.transaction.message.instructions[2].accounts = [0]; },
+  'unknown compute opcode': tx => { tx.transaction.message.instructions[2].data = encode58(Buffer.from([1, 0, 128, 0, 0])); },
+  'zero compute limit': tx => { tx.transaction.message.instructions[2].data = encode58(Buffer.from([2, 0, 0, 0, 0])); },
+  'excess compute limit': tx => { const data = Buffer.alloc(5); data[0] = 2; data.writeUInt32LE(1_400_001, 1); tx.transaction.message.instructions[2].data = encode58(data); },
+  'truncated compute price': tx => { tx.transaction.message.instructions[3].data = encode58(Buffer.from([3, 1])); },
+  'memory write': tx => replaceGuard(tx, [0, 0, 0]),
+  'memory close': tx => replaceGuard(tx, [1, 0, 0]),
+  'unknown assertion': tx => replaceGuard(tx, [5, 0, 8]),
+  'invalid log ordinal': tx => replaceGuard(tx, [5, 7, 5, 1, 0]),
+  'truncated assertion': tx => replaceGuard(tx, [5, 0, 0, 1]),
+  'trailing assertion data': tx => replaceGuard(tx, [5, 0, 5, 1, 0, 0]),
+  'nonboolean assertion': tx => replaceGuard(tx, [5, 0, 5, 2, 0]),
+  'unknown known owner': tx => replaceGuard(tx, [5, 0, 3, 9, 0]),
+  'invalid integer operator': tx => replaceGuard(tx, [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8]),
+  'invalid equality operator': tx => replaceGuard(tx, [5, 0, 5, 1, 2]),
+  'noncanonical assertion count': tx => replaceGuard(tx, [6, 0, 129, 0, 5, 1, 0]),
+  'too many assertions': tx => replaceGuard(tx, [6, 0, 9, ...Array(9).fill([5, 1, 0]).flat()]),
+  'wrong assertion target': tx => { tx.transaction.message.instructions[4].accounts = [4]; },
+  'extra assertion target': tx => { tx.transaction.message.instructions[4].accounts = [0, 1]; },
+  'too many guard instructions': tx => { tx.transaction.message.instructions.push(...Array(3).fill(tx.transaction.message.instructions[4]).map(value => clone(value))); },
+};
+for (const [name, mutate] of Object.entries(walletMutations)) test(`wallet compatibility still rejects ${name}`, () => {
+  const tx = clone(walletFixture.json); mutate(tx);
+  assert.throws(() => verifyTransaction(tx, walletFixture.intent, walletFixture.signature), { code: 'payment_mismatch' });
+});
+
+test('bounded read-only account-info assertions accept their audited serialized variants', () => {
+  const assertions = [
+    [0, ...Buffer.alloc(8), 4], [1, ...Buffer.alloc(8), 0], [4, ...Buffer.alloc(8), 7],
+    [2, ...decode58(SYSTEM_PROGRAM, 32), 0], [3, 8, 1], [5, 1, 0], [6, 0, 1], [7, 0, 0],
+  ];
+  for (const assertion of assertions) {
+    const tx = clone(walletFixture.json); replaceGuard(tx, [5, 0, ...assertion]);
+    assert.equal(verifyTransaction(tx, walletFixture.intent, walletFixture.signature).slot, tx.slot);
+  }
+  const tx = clone(walletFixture.json);
+  replaceGuard(tx, [6, 6, assertions.length, ...assertions.flat()]);
+  assert.equal(verifyTransaction(tx, walletFixture.intent, walletFixture.signature).slot, tx.slot);
 });
 
 test('tier cannot be escalated through client lives or reused request ID', async () => {

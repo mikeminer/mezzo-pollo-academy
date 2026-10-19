@@ -423,7 +423,7 @@
     "desktopNote": "Historical browser walkthrough, recorded on 25 September 2026 before Hard/Easy modes and the interactive tutorial. Its access screens show the old rules. The wallet and lock evidence are simulated; no real wallet approval or transaction is shown. The silent capture shows actual gameplay inputs. Listen to the soundtrack above.",
     "downloadDesktop": "Download English desktop recording",
     "mobileTitle": "English mobile layout — emulation",
-    "mobileNote": "Historical 390 × 844 browser emulation of the English interface, before the current Hard/Easy rules and tutorial, using simulated wallet and lock evidence. Silent capture; not a physical-phone or real-wallet test.",
+    "mobileNote": "Historical 390 × 844 browser emulation of the English interface, before the current Arcade/Subscription rules and tutorial, using simulated wallet and lock evidence. Silent capture; not a physical-phone or real-wallet test.",
     "downloadMobile": "Download English mobile recording",
     "accessTitle": "Access and limitations",
     "accessIntro": "Subscription requires at least 10,000,000 MEMEZZO across active DevFridge timelocks of the connected wallet. No minimum duration applies; expired locks do not count at verification. Mint:",
