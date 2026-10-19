@@ -60,7 +60,19 @@ export async function sendArcadePayment(provider, record) {
   }
   // Web MWA owns an already-open wallet session and builds the same canonical wire transaction.
   if (provider?.isMezzoWebWallet === true && typeof provider.payArcade === 'function') return provider.payArcade(record);
-  if (provider?.isPhantom !== true || typeof provider.request !== 'function') throw Error('missing_wallet');
-  // Official Phantom legacy request API: sign and send exactly this canonical message.
-  return provider.request({ method: 'signAndSendTransaction', params: { message: encode58(message) } });
+  if (provider?.isPhantom !== true || typeof provider.signAndSendTransaction !== 'function') throw Error('missing_wallet');
+  // Load only in the website's Phantom branch; the APK and web MWA keep their
+  // existing native/session transports and never import this browser bundle.
+  const { Transaction } = await import('./vendor/solana-transaction.mjs');
+  const unsignedWire = new Uint8Array(65 + message.length);
+  unsignedWire[0] = 1; unsignedWire.set(message, 65);
+  // Deserialize a complete unsigned wire so the official class preserves the
+  // original account ordering and its required, empty signature slot.
+  const transaction = Transaction.from(unsignedWire);
+  const serialized = transaction.serializeMessage();
+  if (serialized.length !== message.length || serialized.some((byte, index) => byte !== message[index])) throw Error('payment_mismatch');
+  // Current Phantom expects a Transaction object and serializes the complete
+  // wire transaction itself. Never retry through request() after this call:
+  // a rejected/ambiguous result belongs to the existing payment recovery flow.
+  return provider.signAndSendTransaction(transaction);
 }

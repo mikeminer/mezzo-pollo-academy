@@ -14,9 +14,13 @@ The MWA provider is marked `isMezzoWebWallet`, never `isMezzoMobile`: website pa
 
 Authorization tokens remain in JavaScript memory only. Reload and disconnect forget them. The provider emits `connect` for the first authorization, `accountChanged` for an actual account switch, and `disconnect` when disconnected. The browser entry dispatches `mezzopollo:wallet` for UI refresh. These events do not trigger token verification.
 
+Phantom signing uses `provider.signAndSendTransaction` with an official `Transaction` deserialized from the complete, locally constructed unsigned transaction. The previous message-only `request` call was interpreted as a full transaction by the current extension and failed with unsupported message version 57 before showing approval. The new path verifies exact message bytes, preserves the empty signature slot and never retries another signing method after a rejection or ambiguous result. The transaction helper is imported only after the native and MWA branches have returned.
+
 ## Dependencies and verification
 
 The repository pins `@solana-mobile/mobile-wallet-adapter-protocol` at `3.0.1` and `esbuild` at `0.28.2` in the package lock. Regenerate the checked-in bundle with `npm run build:wallet`. `scripts/build-public.mjs` copies `vendor/` without exposing the dependency tree. Wallet transport code is not loaded from a third-party CDN.
+
+The Phantom transaction helper pins `@solana/web3.js` at `1.99.0` as a build dependency. Run `node scripts/build-transaction.mjs` to rebuild `vendor/solana-transaction.mjs` from the original Message/Transaction sources. `vendor/solana-transaction-build.json` records included sources; the unrelated RPC client is excluded. `tests/phantom-transaction.test.mjs` checks all four tiers, repeated serialization, the version-57 regression and absence of automatic signing retries.
 
 Run `node --test --experimental-test-isolation=none tests/web-wallet.test.mjs`. The tests cover synchronous session launch, injected/native provider precedence, independent connection, account switching, canonical payment bytes, cancellation versus ambiguous submission, disconnect races, expired sessions, and overlapping clicks. These mocked tests do not spend SOL or replace a real-device wallet check.
 

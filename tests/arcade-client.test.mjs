@@ -106,14 +106,17 @@ for (const [tier, expected] of Object.entries({
   });
 }
 
-test('Phantom signs only the locally constructed payment message, never server transaction bytes', async () => {
+test('Phantom signs an official transaction from only local canonical bytes and never uses the legacy request parser', async () => {
   const record = { ...intent('god'), transaction: 'untrusted-server-transaction' };
   const calls = [];
-  const result = await sendArcadePayment({ isPhantom: true, async request(input) {
-    calls.push(input); return { signature: SIGNATURE };
-  } }, record);
+  const result = await sendArcadePayment({ isPhantom: true,
+    request() { throw Error('Transaction message version 57 deserialization is not supported'); },
+    async signAndSendTransaction(transaction) { calls.push(transaction); return { signature: SIGNATURE }; },
+  }, record);
   assert.equal(result.signature, SIGNATURE);
-  assert.deepEqual(calls, [{ method: 'signAndSendTransaction', params: { message: encode58(arcadeMessage(record)) } }]);
+  assert.equal(calls.length, 1);
+  assert.deepEqual(Buffer.from(calls[0].serializeMessage()), Buffer.from(arcadeMessage(record)));
+  assert.deepEqual(Buffer.from(calls[0].serialize({ requireAllSignatures: false, verifySignatures: false })), Buffer.from(buildTransaction(record, BLOCKHASH), 'base64'));
 });
 
 test('native wallet receives only the bounded intent and tier, never arbitrary transaction bytes or destination', async () => {

@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build:wallet": "node scripts/build-wallet.mjs",
+    "build:transaction": "node scripts/build-transaction.mjs",
     "test": "node --test --experimental-test-isolation=none tests/*.test.mjs",
     "check:locales": "node scripts/build-locales.mjs --check"
   },
@@ -13,6 +14,7 @@
     "@solana-mobile/mobile-wallet-adapter-protocol": "3.0.1"
   },
   "devDependencies": {
+    "@solana/web3.js": "1.99.0",
     "esbuild": "0.28.2"
   }
 }
