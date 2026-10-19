@@ -4,5 +4,8 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "cleanUrls": true,
-  "rewrites": [{ "source": "/practice", "destination": "/" }]
+  "rewrites": [
+    { "source": "/practice", "destination": "/" },
+    { "source": "/server/:path*", "destination": "/404.html" }
+  ]
 }

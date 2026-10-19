@@ -95,6 +95,8 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 .mode-choice{min-height:76px;padding:10px 8px;background:var(--slate-deep);color:var(--chalk);border:2px solid #697463;border-radius:12px;text-align:left}
 .mode-choice strong{display:block;font-size:21px}.mode-choice small{display:block;font-size:12px;line-height:1.35;margin-top:4px}
 .mode-choice[aria-pressed="true"]{border-color:var(--straw);box-shadow:0 0 0 1px var(--straw)}
+.mode-choice[data-mode-select="arcade"]{grid-column:1/-1;border-color:#9d7ce0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mode-choice[data-mode-select="arcade"] small{text-align:end}
 #scrMenu .btns{display:grid;grid-template-columns:1fr 1fr}#btnPlay,#btnAccess{grid-column:1/-1}
 #btnTutorial,#btnHow{font-size:15px;padding:10px 6px;min-height:48px}
 .shop-heading{display:flex;align-items:center;justify-content:space-between;gap:10px}.shop-heading .music-toggle{flex:none}
@@ -137,6 +139,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
         <button class="mode-choice" data-mode-select="hard" aria-pressed="true"><strong data-mode-text="hard">Hard</strong><small data-mode-text="hardDetail">Free · 2 lives</small></button>
         <button class="mode-choice" data-mode-select="easy" aria-pressed="false"><strong data-mode-text="easy">Easy</strong><small data-mode-text="easyDetail">Slower pace · shop unlock</small></button>
+        <button class="mode-choice" data-mode-select="arcade" aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">4 levels · from 0.001 SOL</small></button>
       </div>
       <div class="btns">
         <button class="btn primary" id="btnPlay">Play Hard · 2 lives</button>
@@ -200,6 +203,28 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="btns"><button class="btn" data-shop-back data-mode-text="back">Back to game</button></div>
     </section>
 
+    <section class="panel" id="scrArcade" hidden>
+      <h2 data-arcade-text="title">Arcade token</h2>
+      <div id="arcadeTiers" class="mode-choices" role="group" aria-label="Choose your Arcade level">
+        <button class="mode-choice" data-arcade-tier="hard" aria-pressed="true"><strong>Hard</strong><small>1 life · 0.001 SOL</small></button>
+        <button class="mode-choice" data-arcade-tier="medium" aria-pressed="false"><strong>Medium</strong><small>3 lives · 0.002 SOL</small></button>
+        <button class="mode-choice" data-arcade-tier="easy" aria-pressed="false"><strong>Easy</strong><small>9 lives · 0.003 SOL</small></button>
+        <button class="mode-choice" data-arcade-tier="god" aria-pressed="false"><strong>God</strong><small>32 lives · 0.01 SOL</small></button>
+      </div>
+      <p data-arcade-text="summary">Hard · 1 life · 0.001 SOL</p>
+      <p class="access-note" data-arcade-text="fee">Solana network fees are separate. Each new run requires a new payment. Pausing and resuming do not cost another token.</p>
+      <p class="access-note" data-arcade-text="recipient">Payment recipient</p>
+      <code class="mint" dir="ltr">AXomB2bpJ7F3EFVPQwrwBV4yVE7bazshZaVa64KhGCfE</code>
+      <p class="access-status" id="arcadeStatus" role="status" aria-live="polite"></p>
+      <div class="btns">
+        <button class="btn primary" id="arcadePay" data-arcade-text="pay">Pay 0.001 SOL and play</button>
+        <button class="btn primary" id="arcadeStart" data-arcade-text="start" hidden>Start Hard · 1 life</button>
+        <button class="btn" id="arcadeCheck" data-arcade-text="retry" hidden>Check payment again</button>
+        <button class="btn ghost" id="arcadeBack" data-arcade-text="cancel">Back to menu</button>
+      </div>
+      <div class="access-links"><a id="arcadeWallet" data-arcade-text="openWallet" hidden>Open in Phantom</a><a id="arcadeReceipt" target="_blank" rel="noopener noreferrer" data-arcade-text="receipt" hidden>View payment</a></div>
+    </section>
+
     <section class="panel" id="scrPause" hidden>
       <h2>Paused</h2>
       <p class="review-badge" data-review-label hidden></p>
@@ -220,6 +245,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <h2>The chicken stopped</h2>
       <p class="review-badge" data-review-label hidden></p>
       <div class="grade" id="gradeTxt"></div>
+      <p id="resultDifficulty" class="note"></p>
       <div class="stat"><span id="scoreLabel">Score</span><b id="oScore"></b></div>
       <div class="stat"><span id="correctLabel">Correct answers</span><b id="oRight"></b></div>
       <div class="stat"><span id="recordLabel">Personal best (local)</span><b id="oBest"></b></div>
@@ -239,6 +265,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 <script src="locale-content.js"></script>
 <script src="locale.js"></script>
 <script src="game-mode.js"></script>
+<script src="game-arcade.js"></script>
 <script src="access-translations.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="game-music.js"></script>
@@ -256,8 +283,9 @@ const reduceMotion=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduc
 const HAND='"Caveat Brush", "Comic Sans MS", system-ui, sans-serif';
 
 /* ---------- storage ---------- */
-function loadBest(name=mode.selected){try{return parseInt(localStorage.getItem(`mp_${name}_best`)||'0',10)||0}catch(e){return 0}}
-function saveBest(v,name){try{localStorage.setItem(`mp_${name}_best`,String(v))}catch(e){}}
+function scoreStorageKey(name,tier){return `mp_${name}${name==='arcade'?'_'+(tier||window.MezzoArcade.tier):''}_best`}
+function loadBest(name=mode.selected,tier){try{return parseInt(localStorage.getItem(scoreStorageKey(name,tier))||'0',10)||0}catch(e){return 0}}
+function saveBest(v,name,tier){try{localStorage.setItem(scoreStorageKey(name,tier),String(v))}catch(e){}}
 
 /* ---------- audio ---------- */
 let actx=null;
@@ -485,8 +513,8 @@ const statue=buildChicken(true,M.bronze); statue.scale.setScalar(2.2); statue.vi
 let accessEligible=false, accessLives=0;
 function syncAccessUi(){
   const lives={count:L.number(accessLives),lives:L.lifeWord(accessLives)};
-  $('btnPlay').textContent=mode.selected==='hard'?mode.text('playHard'):mode.text(accessEligible?'playEasy':'unlock',lives);
-  $('memberHint').textContent=mode.selected==='hard'?mode.text('hardHint'):mode.text(accessEligible?'unlocked':'easyHint',lives);
+  $('btnPlay').textContent=mode.selected==='arcade'?window.MezzoArcade.text('play'):mode.selected==='hard'?mode.text('playHard'):mode.text(accessEligible?'playEasy':'unlock',lives);
+  $('memberHint').textContent=mode.selected==='arcade'?window.MezzoArcade.text('hint'):mode.selected==='hard'?mode.text('hardHint'):mode.text(accessEligible?'unlocked':'easyHint',lives);
   $('resumeRun').hidden=state!=='pause';
   $('btnResume').textContent=t('resume');
   $('playMember').textContent=mode.text('playEasy',lives);
@@ -746,7 +774,7 @@ canvas.addEventListener('touchend',e=>{
 canvas.addEventListener('touchmove',e=>{if(state==='play')e.preventDefault()},{passive:false});
 
 /* ---------- screens ---------- */
-const screens=['scrMenu','scrHow','scrAccess','scrPause','scrOver'];
+const screens=['scrMenu','scrHow','scrAccess','scrArcade','scrPause','scrOver'];
 function show(id){
   const closingShop=!$('scrAccess').hidden&&id!=='scrAccess';
   if(closingShop)document.dispatchEvent(new Event('mezzopollo:shopclose'));
@@ -767,6 +795,7 @@ async function openShop(){
   syncAccessUi();
 }
 function beginRun(config){
+  if(config.name==='arcade'&&!window.MezzoArcade.consumeAdmission())return;
   audio();clearWorld();resetGame(config);state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true});clock.getDelta();
 }
 function tutorialScenario(spec){
@@ -784,17 +813,22 @@ function tutorialScenario(spec){
   }
   updateLegs();updateScore();
 }
-function startTutorial(config=mode.config('hard')){
+function startTutorial(config=mode.config('hard'),onFinish=()=>requestRun(config)){
   if(!L.ready){L.open();return;}
   audio();clearWorld();resetGame(config);state='play';show(null);$('hud').hidden=false;music.start();
-  tutorial.start({onStep:tutorialScenario,onAction:action=>{if(action==='jump')jump();else changeLane(action==='left'?-1:1);},onFinish:()=>beginRun(config)});
+  tutorial.start({onStep:tutorialScenario,onAction:action=>{if(action==='jump')jump();else changeLane(action==='left'?-1:1);},onFinish});
   updateLegs();syncAccessUi();canvas.focus({preventScroll:true});clock.getDelta();
 }
 function startGame(){
   if(!L.ready){L.open();return;}
   const config=mode.config(mode.selected,accessEligible?accessLives:0);
   if(!config){void openShop();return;}
-  if(tutorial.shouldStart())startTutorial(config);else beginRun(config);
+  if(tutorial.shouldStart())startTutorial(config);else requestRun(config);
+}
+function requestRun(config){
+  if(config.name!=='arcade'){beginRun(config);return;}
+  music.pause();clearWorld();state='menu';$('hud').hidden=true;show('scrArcade');
+  window.MezzoArcade.open(receipt=>beginRun(mode.config('arcade',0,receipt.tier)));
 }
 function pause(){if(state!=='play')return;state='pause';tutorial.setPaused(true);music.pause();syncAccessUi();show('scrPause')}
 function resume(){if(state!=='pause')return;state='play';tutorial.setPaused(false);syncAccessUi();if(G.legs<=0&&!tutorial.active){gameOver();return}audio();music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
@@ -808,8 +842,10 @@ function gradeOf(){
 function gameOver(){
   if(tutorial.active)return;
   if(state!=='play')return;state='over';music.pause();
-  const s=Math.floor(G.score);let best=loadBest(G.config.name);if(s>best){best=s;saveBest(s,G.config.name)}
+  const s=Math.floor(G.score);let best=loadBest(G.config.name,G.config.tier);if(s>best){best=s;saveBest(s,G.config.name,G.config.tier)}
   $('gradeTxt').textContent=gradeOf();$('oScore').textContent=s;$('oRight').textContent=G.right;$('oBest').textContent=best;
+  $('resultDifficulty').textContent=resultModeLabel();
+  $('btnShare').textContent=window.MezzoArcade.text('shareAction');
   $('shareImg').style.display='none';$('shareNote').textContent='';
   $('hud').hidden=true;show('scrOver');
 }
@@ -821,25 +857,30 @@ $('btnTutorial').onclick=()=>startTutorial(mode.config(mode.selected,accessEligi
 document.querySelectorAll('[data-shop-back]').forEach(b=>b.onclick=()=>{if(state==='pause')show('scrPause');else toMenu()});
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=toMenu);
 $('pauseBtn').onclick=pause;$('btnResume').onclick=resume;
-function toMenu(){clearDeathTimer();tutorial.cancel();music.pause();clearWorld();state='menu';syncAccessUi();$('hud').hidden=true;menuBest();show('scrMenu')}
+function toMenu(){window.MezzoArcade.close();clearDeathTimer();tutorial.cancel();music.pause();clearWorld();state='menu';syncAccessUi();$('hud').hidden=true;menuBest();show('scrMenu')}
+$('arcadeBack').onclick=toMenu;
 $('btnQuit').onclick=toMenu;$('btnMenu').onclick=toMenu;
 
+function resultModeLabel(){return G.config.name==='arcade'?`${mode.text('arcade')} · ${window.MezzoArcade.text('difficulty',{level:window.MezzoArcade.text(G.config.tier)})}`:mode.text('badge',{mode:mode.text(G.config.name)})}
 $('btnShare').onclick=async()=>{
   const [c,ctx]=cv(1080,1080);
   ctx.fillStyle='#8a5a34';ctx.fillRect(0,0,1080,1080);ctx.drawImage(slateC,40,40,1000,1000);
   ctx.textAlign='center';ctx.fillStyle='#e9b949';ctx.font=`120px ${HAND}`;ctx.fillText('Mezzo Pollo',540,230);
   ctx.fillStyle='#f2efe4';ctx.font=`64px ${HAND}`;ctx.fillText('Academy',540,310);
-  ctx.font=`32px ${HAND}`;ctx.fillText(mode.text('badge',{mode:mode.text(G.config.name)}),540,385,900);
+  ctx.font=`32px ${HAND}`;ctx.fillText(resultModeLabel(),540,385,900);
   ctx.font=`110px ${HAND}`;ctx.fillText($('gradeTxt').textContent,540,540,900);
   ctx.font=`80px ${HAND}`;ctx.fillText(t('shareStats',{score:$('oScore').textContent,right:G.right}),540,690,900);
   ctx.fillStyle='#e9b949';ctx.font=`60px ${HAND}`;ctx.fillText(t('shareQuestion'),540,880,900);
   const url=c.toDataURL('image/png');
+  const shareText=G.config.name==='arcade'?window.MezzoArcade.text('share',{level:window.MezzoArcade.text(G.config.tier),score:L.number(Math.floor(G.score))}):`MezzoPollo · ${resultModeLabel()} · ${L.number(Math.floor(G.score))}`;
   try{
+    if(window.MezzoAndroid?.shareScore){await window.MezzoAndroid.shareScore({text:`${shareText}\nhttps://mezzopollo.it/`,png:url});return}
     const blob=await (await fetch(url)).blob();const file=new File([blob],'mezzo-pollo.png',{type:'image/png'});
-    if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Mezzo Pollo Academy'});return}
+    if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Mezzo Pollo Academy',text:shareText,url:'https://mezzopollo.it/'});return}
+    if(navigator.share){await navigator.share({title:'Mezzo Pollo Academy',text:shareText,url:'https://mezzopollo.it/'});return}
   }catch(e){}
   const img=$('shareImg');img.src=url;img.style.display='block';
-  $('shareNote').textContent=t('shareHint');
+  $('shareNote').textContent=`${shareText}\nhttps://mezzopollo.it/\n${t('shareHint')}`;
 };
 
 /* ---------- resize ---------- */

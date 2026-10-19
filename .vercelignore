@@ -6,3 +6,7 @@
 tests/
 scripts/
 locales/
+.env*
+node_modules/
+.agents/
+.vercel/
