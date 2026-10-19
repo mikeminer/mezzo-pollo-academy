@@ -1,3 +1,9 @@
 .vercel/
 
 .vercel
+.env*
+node_modules/
+.agents/
+!.env.example
+skills-lock.json
+.web-output/

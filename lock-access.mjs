@@ -6,9 +6,11 @@ const BASE_STATE = Object.freeze({
   checkedAt: null, nextCheckAt: null,
 });
 
-// Each complete million contributes one life; fractional millions add no life.
+// Subscription needs ten million active tokens. Above that threshold, each
+// complete million contributes one total life; fractional millions add none.
 export function livesForRawAmount(totalRaw) {
   if (typeof totalRaw !== 'bigint' || totalRaw < 0n) throw new TypeError('Use a nonnegative raw token amount');
+  if (totalRaw < ACCESS_POLICY.minimumRaw) return 0;
   const lives = totalRaw / ACCESS_POLICY.rawPerLife;
   if (lives > BigInt(Number.MAX_SAFE_INTEGER)) throw new RangeError('Life count exceeds exact JavaScript integers');
   return Number(lives);
@@ -62,9 +64,10 @@ export function createLockAccess({
 
   function evaluate(evidence, wallet) {
     const result = evaluateTimelocks(evidence, { ...ACCESS_POLICY, wallet }, unixTime());
-    const livesPerGame = result.eligible ? livesForRawAmount(result.totalRaw) : 0;
-    return publish({ status: result.eligible ? 'eligible' : 'insufficient', wallet,
-      eligible: result.eligible, totalRaw: result.totalRaw.toString(), livesPerGame,
+    const lives = result.eligible ? livesForRawAmount(result.totalRaw) : 0;
+    const eligible = result.eligible && lives >= ACCESS_POLICY.minimumLives;
+    return publish({ status: eligible ? 'eligible' : 'insufficient', wallet,
+      eligible, totalRaw: result.totalRaw.toString(), livesPerGame: eligible ? lives : 0,
       checkedAt: evidence.ts, nextCheckAt: null });
   }
 

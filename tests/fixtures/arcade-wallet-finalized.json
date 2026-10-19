@@ -1,0 +1,136 @@
+{
+  "source": "synthetic wallet compatibility regression fixture",
+  "synthetic": true,
+  "commitment": "finalized",
+  "signature": "99eUso3aSbE9tqGSTXzo3TLfKb9RkMTURrHKQ1K7Zh3BbeqPevr5E1iCbpTjqHuTFLtfxTTD5ekfVuZFzQyEQf8",
+  "intent": {
+    "intentId": "0d638464-cd2e-49b8-b9d5-d19ddc67da97",
+    "payer": "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+    "reference": "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+    "tier": "hard",
+    "lives": 1,
+    "lamports": 1000000
+  },
+  "json": {
+    "slot": 42,
+    "blockTime": 1700000000,
+    "version": "legacy",
+    "meta": {
+      "err": null,
+      "fee": 47000,
+      "innerInstructions": [],
+      "preBalances": [
+        90000000,
+        2000000,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "postBalances": [
+        88953000,
+        3000000,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    "transaction": {
+      "signatures": [
+        "99eUso3aSbE9tqGSTXzo3TLfKb9RkMTURrHKQ1K7Zh3BbeqPevr5E1iCbpTjqHuTFLtfxTTD5ekfVuZFzQyEQf8"
+      ],
+      "message": {
+        "accountKeys": [
+          "p2Yicb86aZig616Eav2VWG9vuXR5mEqhtzshZYBxzsV",
+          "AXomB2bpJ7F3EFVPQwrwBV4yVE7bazshZaVa64KhGCfE",
+          "11111111111111111111111111111111",
+          "ComputeBudget111111111111111111111111111111",
+          "swqrv48gsrwpBFbftEwnP2vB4jckpvfGJfXkwaniLCC",
+          "L2TExMFKdjpN9kozasaurPirfHy9P8sbXoAN1qA3S95",
+          "MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr"
+        ],
+        "header": {
+          "numReadonlySignedAccounts": 0,
+          "numReadonlyUnsignedAccounts": 5,
+          "numRequiredSignatures": 1
+        },
+        "instructions": [
+          {
+            "accounts": [
+              0,
+              1,
+              4
+            ],
+            "data": "3Bxs4Bc3VYuGVB19",
+            "programIdIndex": 2,
+            "stackHeight": 1
+          },
+          {
+            "accounts": [
+              0
+            ],
+            "data": "9pa6ovyhucxoDD49vC5sro6WY89HcT89DvKR78UhheDBiEZBd5d18Dh7GWJBmUPmVHLkJcxzei",
+            "programIdIndex": 6,
+            "stackHeight": 1
+          },
+          {
+            "accounts": [],
+            "data": "JBscv3",
+            "programIdIndex": 3,
+            "stackHeight": 1
+          },
+          {
+            "accounts": [],
+            "data": "3gJqkocMWaMm",
+            "programIdIndex": 3,
+            "stackHeight": 1
+          },
+          {
+            "accounts": [
+              0
+            ],
+            "data": "Bh57P8bGniCJUMTAzLhFhhUUvuB8mbkLhTM",
+            "programIdIndex": 5,
+            "stackHeight": 1
+          }
+        ],
+        "recentBlockhash": "ws91DX9HBAAxGW77BZs5FogRDwpRtcUpiLBpKdPTfWu"
+      }
+    }
+  },
+  "base64": {
+    "slot": 42,
+    "blockTime": 1700000000,
+    "version": "legacy",
+    "meta": {
+      "err": null,
+      "fee": 47000,
+      "innerInstructions": [],
+      "preBalances": [
+        90000000,
+        2000000,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "postBalances": [
+        88953000,
+        3000000,
+        1,
+        1,
+        0,
+        1,
+        1
+      ]
+    },
+    "transaction": [
+      "AQcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcBAAUHDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAyNnXrpMzh/y5qZGknuFm6jiSZ7PMWivX8+U6NGjrmVjQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwZGb+UhFzL/7K26csOb57yM5bvF9xJrLEObOkAAAAANDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQTfrXli/7Hdkl0Kn7Xm0AzmGVuouzqR/QfvmGDF6Xu4BUpTWpkpIQZNJOhxYNo4fHw1td28kruB5B+oQEEFRI0ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODgUCAwABBAwCAAAAQEIPAAAAAAAGAQA2bWV6em9wb2xsbzphcmNhZGU6MGQ2Mzg0NjQtY2QyZS00OWI4LWI5ZDUtZDE5ZGRjNjdkYTk3AwAFAqBoBgADAAkDoIYBAAAAAAAFAQAaBgUDAKhQTQUAAAAABAMAAAEAAAAAAAAAAAA=",
+      "base64"
+    ]
+  }
+}

@@ -49,35 +49,38 @@ function provider() {
     listenerCount: () => [...listeners.values()].reduce((n, set) => n + set.size, 0),
   };
 }
-const lock = (address, amount = '1000000000000', unlockAt = START + 600, wallet = A) => ({
+const lock = (address, amount = '10000000000000', unlockAt = START + 600, wallet = A) => ({
   address, depositor: wallet, mint: ACCESS_POLICY.mint, amount, createdAt: START - 100, unlockAt,
 });
 const evidence = (locks = [lock('one')], wallet = A, ts = START) => ({ wallet, mint: ACCESS_POLICY.mint, ts, activeLocks: locks });
 const ok = data => ({ ok: true, status: 200, json: async () => data });
 function setup(fetchImpl, wallet = provider()) {
   const clock = fakeClock(), changes = [], requests = [];
-  const fetcher = fetchImpl ?? (async () => ok(evidence([lock('one', '1000000000000', Math.floor(clock.now()) + 600)], A, Math.floor(clock.now()))));
+  const fetcher = fetchImpl ?? (async () => ok(evidence([lock('one', '10000000000000', Math.floor(clock.now()) + 600)], A, Math.floor(clock.now()))));
   let currentProvider = wallet;
   const access = createLockAccess({ getProvider: () => currentProvider, onChange: state => changes.push(state),
     fetchImpl: (...args) => { requests.push(args); return fetcher(...args); }, now: clock.now, timers: clock.timers });
   return { access, wallet, clock, changes, requests, setProvider: value => { currentProvider = value; } };
 }
 
-test('policy uses the verified mint and exact million-token threshold', () => {
+test('Subscription uses the verified mint and exact ten-million-token threshold', () => {
   assert.equal(ACCESS_POLICY.mint, 'Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump');
-  assert.equal(ACCESS_POLICY.minimumRaw, 10n ** 12n);
+  assert.equal(ACCESS_POLICY.minimumTokens, '10000000');
+  assert.equal(ACCESS_POLICY.minimumRaw, 10n ** 13n);
+  assert.equal(ACCESS_POLICY.minimumLives, 10);
   assert.equal(ACCESS_POLICY.rawPerLife, 10n ** 12n);
   assert.equal(ACCESS_POLICY.decimals, 6);
   assert.ok(Object.isFrozen(ACCESS_POLICY));
 });
 
-test('lives equal complete millions only, with no base lives or arbitrary cap', async t => {
-  for (const [raw, expected] of [['999999999999', 0], ['1000000000000', 1], ['1999999000000', 1], ['1999999999999', 1], ['2000000000000', 2], ['1000000000000000', 1000]]) {
+test('Subscription denies amounts below ten million and then counts whole millions without base lives', async t => {
+  for (const [raw, expected] of [['999999999999', 0], ['1000000000000', 0], ['9000000000000', 0], ['9999999999999', 0], ['10000000000000', 10], ['10999999999999', 10], ['11000000000000', 11], ['1000000000000000', 1000]]) {
     await t.test(`${raw} raw gives ${expected} lives`, async () => {
       const h = setup(async () => ok(evidence([lock('one', raw)])));
       const state = await h.access.connect();
       assert.equal(state.livesPerGame, expected);
       assert.equal(state.eligible, expected > 0);
+      assert.equal(livesForRawAmount(BigInt(raw)), expected);
       h.access.destroy();
     });
   }
@@ -92,11 +95,11 @@ test('lives conversion remains exact and rejects unsafe integer counts', () => {
 });
 
 test('fractional locks aggregate and a session snapshot survives lock expiry', async () => {
-  const h = setup(async () => ok(evidence([lock('a', '999999999999', START + 1), lock('b', '1000000000001')])));
-  assert.equal((await h.access.connect()).livesPerGame, 2);
+  const h = setup(async () => ok(evidence([lock('a', '9999999999999', START + 1), lock('b', '10000000000001')])));
+  assert.equal((await h.access.connect()).livesPerGame, 20);
   await h.clock.advance(1000);
   assert.equal(h.access.getState().eligible, true);
-  assert.equal(h.access.getState().livesPerGame, 2);
+  assert.equal(h.access.getState().livesPerGame, 20);
   assert.equal(h.requests.length, 1);
   assert.equal(h.clock.pending(), 0);
   await h.access.disconnect();
@@ -134,20 +137,20 @@ test('non-Phantom providers and invalid returned keys cannot grant access', asyn
 });
 
 test('same-wallet locks sum exactly and one raw unit below minimum denies', async () => {
-  let data = evidence([lock('one', '400000000000'), lock('two', '600000000000')]);
+  let data = evidence([lock('one', '4000000000000'), lock('two', '6000000000000')]);
   const h = setup(async () => ok(data));
   assert.equal((await h.access.connect()).eligible, true);
-  assert.equal(h.access.getState().totalRaw, '1000000000000');
-  assert.equal(h.access.getState().livesPerGame, 1);
-  data = evidence([lock('one', '999999999999')]);
+  assert.equal(h.access.getState().totalRaw, '10000000000000');
+  assert.equal(h.access.getState().livesPerGame, 10);
+  data = evidence([lock('one', '9999999999999')]);
   assert.equal((await h.access.refresh()).status, 'insufficient');
-  assert.equal(h.access.getState().totalRaw, '999999999999');
+  assert.equal(h.access.getState().totalRaw, '9999999999999');
   assert.equal(h.access.getState().livesPerGame, 0);
   h.access.destroy();
 });
 
 test('active locks are evaluated only at manual check time, including exact expiry', async () => {
-  let data = evidence([lock('long', '600000000000'), lock('short', '400000000000', START + 1)]);
+  let data = evidence([lock('long', '6000000000000'), lock('short', '4000000000000', START + 1)]);
   const h = setup(async () => ok(data));
   await h.access.connect();
   assert.equal(h.access.getState().nextCheckAt, null);
@@ -156,7 +159,7 @@ test('active locks are evaluated only at manual check time, including exact expi
   assert.equal(h.requests.length, 1);
   data = evidence(data.activeLocks, A, START + 1);
   assert.equal((await h.access.refresh()).status, 'insufficient');
-  assert.equal(h.access.getState().totalRaw, '600000000000');
+  assert.equal(h.access.getState().totalRaw, '6000000000000');
   assert.equal(h.requests.length, 2);
   assert.equal(h.clock.pending(), 0);
   h.access.destroy();
@@ -265,7 +268,7 @@ test('account switch revokes old entitlement without lookup and ignores the old 
   assert.equal(h.access.getState().eligible, false);
   const manual = h.access.refresh();
   assert.equal(h.requests.length, 2);
-  next.resolve(ok(evidence([lock('b', '1000000000000', START + 600, B)], B)));
+  next.resolve(ok(evidence([lock('b', '10000000000000', START + 600, B)], B)));
   await manual;
   assert.equal(h.access.getState().eligible, true);
   h.wallet.emit('accountChanged', null); await settle();
@@ -309,11 +312,11 @@ test('disconnect during a pending wallet prompt invalidates its eventual success
 });
 
 test('returning to a session cannot expire or enlarge its entitlement', async () => {
-  const h = setup(async () => ok(evidence([lock('short', '2000000000000', START + 2)])));
+  const h = setup(async () => ok(evidence([lock('short', '20000000000000', START + 2)])));
   const snapshot = await h.access.connect();
   h.clock.set(START + 1000000);
   assert.equal(h.access.getState(), snapshot);
-  assert.equal(h.access.getState().livesPerGame, 2);
+  assert.equal(h.access.getState().livesPerGame, 20);
   h.wallet.emit('connect', A); h.wallet.emit('accountChanged', A);
   assert.equal(h.access.getState(), snapshot);
   assert.equal(h.requests.length, 1);
@@ -353,7 +356,7 @@ test('closing the shop restores the previously established session snapshot', as
   const checking = h.access.refresh(); await settle();
   h.access.cancelPending(); await checking;
   assert.deepEqual(h.access.getState(), snapshot);
-  remote.resolve(ok(evidence([lock('larger', '3000000000000')]))); await settle();
+  remote.resolve(ok(evidence([lock('larger', '30000000000000')]))); await settle();
   assert.deepEqual(h.access.getState(), snapshot);
   assert.equal(h.clock.pending(), 0);
   h.access.destroy();
