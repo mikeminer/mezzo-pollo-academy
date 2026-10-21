@@ -71,7 +71,7 @@
     "Baca pertanyaan di atas. Lewati gerbang dengan <b>separuh yang cocok</b> untuk melengkapi angka, kata, dan bentuk.",
     "Saat <b>AYAM UTUH</b> muncul, tetap di jalurmu sampai patung lewat.",
     "Kadang aturan dibalik: dalam <b>mode terbalik</b>, pilih jawaban yang salah.",
-    "Arcade: Sulit — 1 nyawa seharga 0,001 SOL; Sedang — 3 nyawa seharga 0,002 SOL; Mudah — 9 nyawa seharga 0,003 SOL; Dewa — 32 nyawa seharga 0,01 SOL. Setiap permainan memerlukan pembayaran baru; biaya jaringan terpisah.",
+    "Gratis: 1 nyawa per permainan, dengan promosi OnlyFridge Club di antara putaran. Tidak perlu dompet atau pembayaran. Arcade: Sedang — 3 nyawa seharga 0,002 SOL; Mudah — 9 nyawa seharga 0,003 SOL; Dewa — 32 nyawa seharga 0,01 SOL. Setiap permainan memerlukan pembayaran baru; biaya jaringan terpisah.",
     "Kunci berjangka setidaknya 10.000.000 MEMEZZO di DevFridge. Setiap satu juta penuh memberi total 1 nyawa awal, dengan minimum 10 nyawa. Verifikasi manual di Toko; pemeriksaan tidak mengganggu permainan.",
     "Kembali",
     "Toko · Langganan",
@@ -252,7 +252,7 @@
     "community": "Gabung ke kanal Telegram",
     "hard": "Arcade",
     "easy": "Langganan",
-    "hardDetail": "4 tingkat · mulai 0,001 SOL",
+    "hardDetail": "3 tingkat · mulai 0,002 SOL",
     "easyDetail": "10 juta+ MEMEZZO terkunci",
     "choose": "Pilih mode",
     "playHard": "Main Arcade",
@@ -267,7 +267,7 @@
     "badge": "MODE {mode}",
     "shopNote": "MEMEZZO tetap terkunci berjangka di DevFridge. Langganan tidak memerlukan pembayaran SOL per permainan. Arcade memerlukan pembayaran setiap permainan.",
     "link": "Coba tutorial gratis →",
-    "title": "MezzoPollo — Arcade · Langganan",
+    "title": "MezzoPollo — Gratis · Arcade · Langganan",
     "back": "Kembali ke permainan",
     "tutorialHud": "TUTORIAL · latihan tanpa kehilangan nyawa",
     "tutorialQuestion": "Ikuti panduan di bawah",
@@ -276,7 +276,13 @@
     "subscription": "Langganan",
     "subscriptionDetail": "10 juta+ MEMEZZO terkunci",
     "playSubscription": "Main Langganan · {count} {lives}",
-    "subscriptionHint": "Kunci berjangka setidaknya 10.000.000 MEMEZZO di DevFridge. Setiap satu juta penuh memberi total 1 nyawa awal, dengan minimum 10 nyawa. Verifikasi manual di Toko; pemeriksaan tidak mengganggu permainan."
+    "subscriptionHint": "Kunci berjangka setidaknya 10.000.000 MEMEZZO di DevFridge. Setiap satu juta penuh memberi total 1 nyawa awal, dengan minimum 10 nyawa. Verifikasi manual di Toko; pemeriksaan tidak mengganggu permainan.",
+    "free": "Gratis",
+    "freeDesc": "1 nyawa · Tanpa dompet atau pembayaran",
+    "freeStart": "Main gratis",
+    "freeHud": "Gratis · 1 nyawa",
+    "freeEnd": "Gratis · 1 nyawa",
+    "freeHint": "1 nyawa per permainan, dengan promosi OnlyFridge Club di antara putaran. Tidak perlu dompet atau pembayaran."
   },
   "tutorial": {
     "label": "Belajar sambil bermain",
@@ -288,7 +294,7 @@
     "finish": "Mulai bermain",
     "retry": "Coba lagi",
     "good": "Berhasil! Siap untuk tantangan berikutnya.",
-    "done": "Siap! Pilih Arcade atau Langganan. Anda dapat mengulang tutorial gratis kapan saja.",
+    "done": "Siap! Pilih Gratis, Arcade atau Langganan. Anda dapat mengulang tutorial gratis kapan saja.",
     "again": "Tidak apa-apa! Coba tantangan yang sama lagi.",
     "leftControl": "Ke kiri",
     "rightControl": "Ke kanan",
@@ -346,8 +352,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — demo permainan",
-    "description": "MezzoPollo: Arcade dan Langganan, tutorial interaktif gratis, 20 bahasa dengan 25 pilihan regional, musik Italia dan takarir lagu berbahasa Inggris.",
-    "tag": "DevFridge Hackathon · Arcade · Langganan",
+    "description": "Gratis: 1 nyawa per permainan, dengan promosi OnlyFridge Club di antara putaran. Tidak perlu dompet atau pembayaran. MezzoPollo: Arcade dan Langganan, tutorial interaktif gratis, 20 bahasa dengan 25 pilihan regional, musik Italia dan takarir lagu berbahasa Inggris.",
+    "tag": "DevFridge Hackathon · Gratis · Arcade · Langganan",
     "intro": "Setengah ayam boneka berlari di tiga jalur, memilih separuh angka, kata, dan bentuk yang hilang. Hindari rintangan, kumpulkan bulu, dan diam saat AYAM UTUH muncul.",
     "play": "Pilih mode dan main →",
     "source": "Kode sumber & bukti pengajuan",
@@ -366,8 +372,8 @@
     "downloadMobile": "Unduh rekaman ponsel bahasa Inggris",
     "accessTitle": "Akses dan batasan",
     "accessIntro": "Langganan memerlukan setidaknya 10.000.000 MEMEZZO dalam penguncian DevFridge aktif milik dompet yang terhubung. Tidak ada durasi minimum; penguncian kedaluwarsa tidak dihitung saat verifikasi. Alamat token:",
-    "accessOutro": ". Tutorial interaktif gratis dapat diulang melalui menu. Rekor Arcade dan Langganan terpisah, lokal, dan belum diverifikasi.",
-    "lives": "Langganan memberi total 1 nyawa awal per satu juta penuh MEMEZZO, tanpa nyawa dasar. Diperlukan minimum 10.000.000 MEMEZZO: 10.000.000 memberi 10 nyawa, 10.999.999 memberi 10, dan 11.000.000 memberi 11. Nyawa awal tetap untuk setiap permainan; melanjutkan atau memverifikasi di Toko tidak mengisinya kembali. Arcade: Sulit — 1 nyawa seharga 0,001 SOL; Sedang — 3 nyawa seharga 0,002 SOL; Mudah — 9 nyawa seharga 0,003 SOL; Dewa — 32 nyawa seharga 0,01 SOL. Setiap permainan memerlukan pembayaran baru; biaya jaringan terpisah.",
+    "accessOutro": ". Tutorial interaktif gratis dapat diulang melalui menu. Rekor setiap mode terpisah, lokal, dan belum diverifikasi.",
+    "lives": "Gratis: 1 nyawa per permainan, dengan promosi OnlyFridge Club di antara putaran. Tidak perlu dompet atau pembayaran. Langganan memberi total 1 nyawa awal per satu juta penuh MEMEZZO, tanpa nyawa dasar. Diperlukan minimum 10.000.000 MEMEZZO: 10.000.000 memberi 10 nyawa, 10.999.999 memberi 10, dan 11.000.000 memberi 11. Nyawa awal tetap untuk setiap permainan; melanjutkan atau memverifikasi di Toko tidak mengisinya kembali. Arcade: Sedang — 3 nyawa seharga 0,002 SOL; Mudah — 9 nyawa seharga 0,003 SOL; Dewa — 32 nyawa seharga 0,01 SOL. Setiap permainan memerlukan pembayaran baru; biaya jaringan terpisah.",
     "verification": "Langganan hanya diperiksa saat Anda meminta di Toko, tidak pernah otomatis saat memulai, bermain, atau melanjutkan. Nyawa terverifikasi berlaku untuk sesi ini hingga pemeriksaan manual baru, perubahan dompet, pemutusan koneksi, atau pemuatan ulang. Permainan berjalan tidak terpengaruh. Verifikasi membaca penguncian tanpa tanda tangan transaksi; pembayaran Arcade memerlukan persetujuan dompet.",
     "fees": "Penguncian dibuat dan ditebus di DevFridge, tanpa penarikan awal dan dengan biaya penebusan 2% untuk pembelian serta pembakaran PASTA, ditambah biaya jaringan. Penebusan MEMEZZO memerlukan rute Jupiter yang dapat dijalankan. Fitur dompet hanya untuk orang dewasa.",
     "team": "Tim: Pappardelle · Kontak publik:",
@@ -375,7 +381,7 @@
   },
   "native": {
     "menu": "Menu aplikasi",
-    "hard": "Arcade · 4 tingkat · mulai 0,001 SOL",
+    "hard": "Arcade · 3 tingkat · mulai 0,002 SOL",
     "easy": "Langganan · 10 juta+ MEMEZZO terkunci",
     "reload": "Muat ulang",
     "privacy": "Privasi & informasi aplikasi (bahasa Inggris)",
@@ -389,12 +395,13 @@
     "loadError": "Tidak dapat membuka permainan. Gunakan Menu aplikasi → Muat ulang.",
     "noBrowser": "Tidak ada peramban yang terpasang",
     "walletMissing": "Pasang dompet Solana yang kompatibel dengan MWA, lalu coba lagi.",
-    "arcade": "Arcade · 4 tingkat · mulai 0,001 SOL",
-    "subscription": "Langganan · 10 juta+ MEMEZZO terkunci"
+    "arcade": "Arcade · 3 tingkat · mulai 0,002 SOL",
+    "subscription": "Langganan · 10 juta+ MEMEZZO terkunci",
+    "free": "Gratis · 1 nyawa"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4 tingkat · mulai 0,001 SOL",
+    "detail": "3 tingkat · mulai 0,002 SOL",
     "play": "Main Arcade",
     "hint": "Pilih tingkat Arcade. Setiap permainan baru memerlukan pembayaran dalam SOL. Tidak memerlukan MEMEZZO.",
     "title": "Arcade",
@@ -419,7 +426,7 @@
     "connecting": "Setujui koneksi di dompet Anda. Menghubungkan dompet tidak melakukan pembayaran.",
     "busy": "Selesaikan pembayaran saat ini sebelum memulai yang lain.",
     "receipt": "Lihat pembayaran",
-    "how": "Arcade: Sulit — 1 nyawa seharga 0,001 SOL; Sedang — 3 nyawa seharga 0,002 SOL; Mudah — 9 nyawa seharga 0,003 SOL; Dewa — 32 nyawa seharga 0,01 SOL. Setiap permainan memerlukan pembayaran baru; biaya jaringan terpisah.",
+    "how": "Arcade: Sedang — 3 nyawa seharga 0,002 SOL; Mudah — 9 nyawa seharga 0,003 SOL; Dewa — 32 nyawa seharga 0,01 SOL. Setiap permainan memerlukan pembayaran baru; biaya jaringan terpisah.",
     "choose": "Pilih tingkat Arcade Anda",
     "hard": "Sulit",
     "medium": "Sedang",
@@ -435,5 +442,12 @@
     "connectHint": "Hubungkan dompet Solana Anda terlebih dahulu. Menghubungkan dompet tidak melakukan pembayaran.",
     "walletFailed": "Tidak dapat terhubung. Buka kunci dompet Anda dan coba lagi.",
     "walletMismatch": "Pembayaran tersimpan ini milik dompet lain. Hubungkan dompet yang digunakan untuk pembayaran ini."
+  },
+  "sponsor": {
+    "label": "Promosi",
+    "title": "OnlyFridge Club",
+    "body": "Temukan OnlyFridge Club di Solana dApp Store. Putaran gratis berikutnya sudah siap.",
+    "open": "Buka di dApp Store",
+    "continue": "Lanjut bermain"
   }
 }

@@ -63,7 +63,7 @@
     "Lies die Frage oben. Laufe durch das Tor mit <b>der passenden Hälfte</b>: Ergänze Zahlen, Wörter und Formen.",
     "Wenn das <b>GANZE HUHN</b> erscheint, bleib auf deiner Spur, bis die Statue vorbei ist.",
     "Manchmal kehrt sich die Regel um: Wähle im <b>Umkehrmodus</b> eine falsche Antwort.",
-    "Arcade: Schwer — 1 Leben für 0,001 SOL; Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
+    "Kostenlos: 1 Leben pro Runde, mit Werbung für OnlyFridge Club zwischen den Runden. Keine Wallet oder Zahlung erforderlich. Arcade: Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
     "Sperre mindestens 10.000.000 MEMEZZO auf DevFridge. Jede volle Million gibt insgesamt 1 Startleben, mindestens also 10 Leben. Prüfe manuell im Shop; keine Prüfung unterbricht einen Lauf.",
     "Zurück",
     "Shop · Abonnement",
@@ -132,7 +132,7 @@
     "community": "Dem Telegram-Kanal beitreten",
     "hard": "Arcade",
     "easy": "Abonnement",
-    "hardDetail": "4 Stufen · ab 0,001 SOL",
+    "hardDetail": "3 Stufen · ab 0,002 SOL",
     "easyDetail": "10 Mio.+ MEMEZZO zeitgesperrt",
     "choose": "Wähle deinen Modus",
     "playHard": "Arcade spielen",
@@ -147,7 +147,7 @@
     "badge": "MODUS {mode}",
     "shopNote": "MEMEZZO bleiben auf DevFridge zeitlich gesperrt. Abonnement verlangt keine SOL-Zahlung pro Lauf. Arcade verlangt eine Zahlung für jeden Lauf.",
     "link": "Kostenloses Tutorial ausprobieren →",
-    "title": "MezzoPollo — Arcade · Abonnement",
+    "title": "MezzoPollo — Kostenlos · Arcade · Abonnement",
     "back": "Zurück zum Spiel",
     "tutorialHud": "EINFÜHRUNG · Üben ohne Lebensverlust",
     "tutorialQuestion": "Folge der Anleitung unten",
@@ -156,7 +156,13 @@
     "subscription": "Abonnement",
     "subscriptionDetail": "10 Mio.+ MEMEZZO zeitgesperrt",
     "playSubscription": "Abonnement spielen · {count} {lives}",
-    "subscriptionHint": "Sperre mindestens 10.000.000 MEMEZZO auf DevFridge. Jede volle Million gibt insgesamt 1 Startleben, mindestens also 10 Leben. Prüfe manuell im Shop; keine Prüfung unterbricht einen Lauf."
+    "subscriptionHint": "Sperre mindestens 10.000.000 MEMEZZO auf DevFridge. Jede volle Million gibt insgesamt 1 Startleben, mindestens also 10 Leben. Prüfe manuell im Shop; keine Prüfung unterbricht einen Lauf.",
+    "free": "Kostenlos",
+    "freeDesc": "1 Leben · Ohne Wallet oder Zahlung",
+    "freeStart": "Kostenlos spielen",
+    "freeHud": "Kostenlos · 1 Leben",
+    "freeEnd": "Kostenlos · 1 Leben",
+    "freeHint": "1 Leben pro Runde, mit Werbung für OnlyFridge Club zwischen den Runden. Keine Wallet oder Zahlung erforderlich."
   },
   "tutorial": {
     "label": "Spielend lernen",
@@ -168,7 +174,7 @@
     "finish": "Spiel starten",
     "retry": "Erneut versuchen",
     "good": "Geschafft! Weiter zur nächsten Aufgabe.",
-    "done": "Bereit! Wähle Arcade oder Abonnement. Du kannst das kostenlose Tutorial jederzeit wiederholen.",
+    "done": "Bereit! Wähle Kostenlos, Arcade oder Abonnement. Du kannst das kostenlose Tutorial jederzeit wiederholen.",
     "again": "Kein Problem! Versuche dieselbe Aufgabe noch einmal.",
     "leftControl": "Nach links",
     "rightControl": "Nach rechts",
@@ -208,8 +214,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — Spieldemo",
-    "description": "MezzoPollo: Arcade und Abonnement, kostenloses interaktives Tutorial, 20 Sprachen mit 25 regionalen Varianten, italienische Musik und englische Lieduntertitel.",
-    "tag": "DevFridge Hackathon · Arcade · Abonnement",
+    "description": "Kostenlos: 1 Leben pro Runde, mit Werbung für OnlyFridge Club zwischen den Runden. Keine Wallet oder Zahlung erforderlich. MezzoPollo: Arcade und Abonnement, kostenloses interaktives Tutorial, 20 Sprachen mit 25 regionalen Varianten, italienische Musik und englische Lieduntertitel.",
+    "tag": "DevFridge Hackathon · Kostenlos · Arcade · Abonnement",
     "intro": "Ein halbes Stoffhuhn läuft auf drei Spuren und wählt die fehlende Hälfte von Zahlen, Wörtern und Formen. Weiche Hindernissen aus, sammle Federn und halte deine Spur, wenn das GANZE HUHN erscheint.",
     "play": "Modus wählen und spielen →",
     "source": "Quellcode und Einreichungsnachweise",
@@ -228,8 +234,8 @@
     "downloadMobile": "Englische Handyaufnahme herunterladen",
     "accessTitle": "Zugang und Einschränkungen",
     "accessIntro": "Abonnement erfordert mindestens 10.000.000 MEMEZZO in aktiven DevFridge-Zeitsperren der verbundenen Wallet. Keine Mindestdauer; abgelaufene Sperren zählen bei der Prüfung nicht. Tokenadresse:",
-    "accessOutro": ". Das kostenlose interaktive Tutorial kann im Menü wiederholt werden. Arcade- und Abonnementrekorde sind getrennt, lokal und ungeprüft.",
-    "lives": "Abonnement gibt insgesamt 1 Startleben pro voller Million MEMEZZO, ohne Basisleben. Mindestens 10.000.000 MEMEZZO sind nötig: 10.000.000 gibt 10 Leben, 10.999.999 gibt 10 und 11.000.000 gibt 11. Die Startleben sind pro Lauf festgelegt; Fortsetzen oder Shopprüfungen füllen sie nicht auf. Arcade: Schwer — 1 Leben für 0,001 SOL; Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
+    "accessOutro": ". Das kostenlose interaktive Tutorial kann im Menü wiederholt werden. Die Rekorde jedes Modus sind getrennt, lokal und ungeprüft.",
+    "lives": "Kostenlos: 1 Leben pro Runde, mit Werbung für OnlyFridge Club zwischen den Runden. Keine Wallet oder Zahlung erforderlich. Abonnement gibt insgesamt 1 Startleben pro voller Million MEMEZZO, ohne Basisleben. Mindestens 10.000.000 MEMEZZO sind nötig: 10.000.000 gibt 10 Leben, 10.999.999 gibt 10 und 11.000.000 gibt 11. Die Startleben sind pro Lauf festgelegt; Fortsetzen oder Shopprüfungen füllen sie nicht auf. Arcade: Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
     "verification": "Abonnementprüfungen erfolgen nur auf deine Anforderung im Shop, niemals automatisch beim Start, während des Spiels oder beim Fortsetzen. Bestätigte Leben gelten für diese Sitzung bis zur nächsten manuellen Prüfung, einem Walletwechsel, einer Trennung oder einem Neuladen. Ein laufendes Spiel bleibt unberührt. Die Prüfung liest Zeitsperren ohne Transaktionssignaturen; Arcade-Zahlungen benötigen die Walletbestätigung.",
     "fees": "Sperren werden auf DevFridge erstellt und zurückgefordert, ohne vorzeitige Auszahlung und mit 2% Rückforderungsgebühr für den Kauf und das Verbrennen von PASTA, zuzüglich Netzwerkgebühren. Die Rückforderung von MEMEZZO benötigt eine ausführbare Jupiter-Route. Walletfunktionen sind für Erwachsene bestimmt.",
     "team": "Team: Pappardelle · Öffentlicher Kontakt:",
@@ -237,7 +243,7 @@
   },
   "native": {
     "menu": "App-Menü",
-    "hard": "Arcade · 4 Stufen · ab 0,001 SOL",
+    "hard": "Arcade · 3 Stufen · ab 0,002 SOL",
     "easy": "Abonnement · 10 Mio.+ MEMEZZO zeitgesperrt",
     "reload": "Neu laden",
     "privacy": "Datenschutz und App-Informationen (auf Englisch)",
@@ -251,12 +257,13 @@
     "loadError": "Das Spiel konnte nicht geöffnet werden. Wähle App-Menü → Neu laden.",
     "noBrowser": "Kein Browser installiert",
     "walletMissing": "Installiere eine MWA-kompatible Solana-Wallet und versuche es erneut.",
-    "arcade": "Arcade · 4 Stufen · ab 0,001 SOL",
-    "subscription": "Abonnement · 10 Mio.+ MEMEZZO zeitgesperrt"
+    "arcade": "Arcade · 3 Stufen · ab 0,002 SOL",
+    "subscription": "Abonnement · 10 Mio.+ MEMEZZO zeitgesperrt",
+    "free": "Kostenlos · 1 Leben"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4 Stufen · ab 0,001 SOL",
+    "detail": "3 Stufen · ab 0,002 SOL",
     "play": "Arcade spielen",
     "hint": "Wähle eine Arcade-Stufe. Jeder neue Lauf erfordert eine Zahlung in SOL. MEMEZZO wird nicht benötigt.",
     "title": "Arcade",
@@ -281,7 +288,7 @@
     "connecting": "Bestätige die Verbindung in deiner Wallet. Beim Verbinden erfolgt keine Zahlung.",
     "busy": "Schließe die aktuelle Zahlung ab, bevor du eine weitere beginnst.",
     "receipt": "Zahlung ansehen",
-    "how": "Arcade: Schwer — 1 Leben für 0,001 SOL; Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
+    "how": "Arcade: Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
     "choose": "Wähle deine Arcade-Stufe",
     "hard": "Schwer",
     "medium": "Mittel",
@@ -297,5 +304,12 @@
     "connectHint": "Verbinde zuerst deine Solana-Wallet. Beim Verbinden erfolgt keine Zahlung.",
     "walletFailed": "Verbindung fehlgeschlagen. Entsperre deine Wallet und versuche es erneut.",
     "walletMismatch": "Diese gespeicherte Zahlung gehört zu einer anderen Wallet. Verbinde die für diese Zahlung verwendete Wallet."
+  },
+  "sponsor": {
+    "label": "Werbung",
+    "title": "OnlyFridge Club",
+    "body": "Entdecke OnlyFridge Club im Solana dApp Store. Deine nächste kostenlose Runde ist bereit.",
+    "open": "Im dApp Store öffnen",
+    "continue": "Weiterspielen"
   }
 }

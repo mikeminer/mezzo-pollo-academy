@@ -1,4 +1,4 @@
-import { ArcadeError, POLICY, TIERS, loadConfig } from '../server/arcade-config.mjs';
+import { ArcadeError, POLICY, AVAILABLE_TIERS, loadConfig } from '../server/arcade-config.mjs';
 import { SolanaRpc } from '../server/arcade-chain.mjs';
 import { PostgresStore } from '../server/arcade-store.mjs';
 import { ArcadeService } from '../server/arcade-service.mjs';
@@ -33,7 +33,7 @@ export function createHandler({ env = process.env, makeService = config => new A
       const service = makeService(config);
       if (request.method === 'GET') {
         await service.ready();
-        send(200, { available: true, ...POLICY, tiers: TIERS }); return;
+        send(200, { available: true, ...POLICY, tiers: AVAILABLE_TIERS }); return;
       }
       if (!String(request.headers['content-type'] || '').toLowerCase().startsWith('application/json')) throw new ArcadeError('json_required', 415);
       if (Number(request.headers['content-length'] || 0) > 4096) throw new ArcadeError('request_too_large', 413);

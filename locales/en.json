@@ -72,7 +72,7 @@
     "Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.",
     "When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.",
     "Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.",
-    "Arcade: Hard — 1 life for 0.001 SOL; Medium — 3 lives for 0.002 SOL; Easy — 9 lives for 0.003 SOL; God — 32 lives for 0.01 SOL. A new payment is required for every run; network fees are separate.",
+    "Free: 1 life per run, with an OnlyFridge Club promotion between rounds. No wallet or payment required. Arcade: Medium — 3 lives for 0.002 SOL; Easy — 9 lives for 0.003 SOL; God — 32 lives for 0.01 SOL. A new payment is required for every run; network fees are separate.",
     "Timelock at least 10,000,000 MEMEZZO on DevFridge. Each full million gives 1 total starting life, with a minimum of 10 lives. Verify manually in the Shop; no checks interrupt a run.",
     "Back",
     "Shop · Subscription",
@@ -313,7 +313,7 @@
     "community": "Join the Telegram channel",
     "hard": "Arcade",
     "easy": "Subscription",
-    "hardDetail": "4 levels · from 0.001 SOL",
+    "hardDetail": "3 levels · from 0.002 SOL",
     "easyDetail": "10M+ MEMEZZO timelocked",
     "choose": "Choose your mode",
     "playHard": "Play Arcade",
@@ -328,7 +328,7 @@
     "badge": "{mode} MODE",
     "shopNote": "MEMEZZO stays timelocked on DevFridge. Subscription has no SOL payment per run. Arcade requires a payment for each run.",
     "link": "Try the free tutorial →",
-    "title": "MezzoPollo — Arcade · Subscription",
+    "title": "MezzoPollo — Free · Arcade · Subscription",
     "back": "Back to game",
     "tutorialHud": "TUTORIAL · practice without losing lives",
     "tutorialQuestion": "Follow the guide below",
@@ -337,7 +337,13 @@
     "subscription": "Subscription",
     "subscriptionDetail": "10M+ MEMEZZO timelocked",
     "playSubscription": "Play Subscription · {count} {lives}",
-    "subscriptionHint": "Timelock at least 10,000,000 MEMEZZO on DevFridge. Each full million gives 1 total starting life, with a minimum of 10 lives. Verify manually in the Shop; no checks interrupt a run."
+    "subscriptionHint": "Timelock at least 10,000,000 MEMEZZO on DevFridge. Each full million gives 1 total starting life, with a minimum of 10 lives. Verify manually in the Shop; no checks interrupt a run.",
+    "free": "Free",
+    "freeDesc": "1 life · No wallet or payment",
+    "freeStart": "Play free",
+    "freeHud": "Free · 1 life",
+    "freeEnd": "Free · 1 life",
+    "freeHint": "1 life per run, with an OnlyFridge Club promotion between rounds. No wallet or payment required."
   },
   "tutorial": {
     "label": "Learn by playing",
@@ -349,7 +355,7 @@
     "finish": "Start playing",
     "retry": "Try again",
     "good": "Got it! Ready for the next challenge.",
-    "done": "Ready! Choose Arcade or Subscription. You can replay the free tutorial at any time.",
+    "done": "Ready! Choose Free, Arcade or Subscription. You can replay the free tutorial at any time.",
     "again": "No problem! Try the same challenge again.",
     "leftControl": "Move left",
     "rightControl": "Move right",
@@ -407,8 +413,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — gameplay demo",
-    "description": "MezzoPollo: Arcade and Subscription, a free interactive tutorial, 20 languages with 25 regional choices, Italian soundtrack and English song subtitles.",
-    "tag": "DevFridge Hackathon · Arcade · Subscription",
+    "description": "Free: 1 life per run, with an OnlyFridge Club promotion between rounds. No wallet or payment required. MezzoPollo: Arcade and Subscription, a free interactive tutorial, 20 languages with 25 regional choices, Italian soundtrack and English song subtitles.",
+    "tag": "DevFridge Hackathon · Free · Arcade · Subscription",
     "intro": "A plush half-chicken runs through three lanes, choosing the missing half of numbers, words and shapes. Dodge obstacles, collect feathers, and stay still when the WHOLE CHICKEN appears.",
     "play": "Choose a mode and play →",
     "source": "Source & submission evidence",
@@ -427,8 +433,8 @@
     "downloadMobile": "Download English mobile recording",
     "accessTitle": "Access and limitations",
     "accessIntro": "Subscription requires at least 10,000,000 MEMEZZO across active DevFridge timelocks of the connected wallet. No minimum duration applies; expired locks do not count at verification. Mint:",
-    "accessOutro": ". The free interactive tutorial can be replayed from the menu. Arcade and Subscription records are separate, local and unverified.",
-    "lives": "Subscription gives 1 total starting life per full million MEMEZZO, with no base lives. A minimum of 10,000,000 MEMEZZO is required: 10,000,000 gives 10 lives, 10,999,999 gives 10, and 11,000,000 gives 11. Starting lives are fixed for each run; resuming or checking the Shop never refills them. Arcade: Hard — 1 life for 0.001 SOL; Medium — 3 lives for 0.002 SOL; Easy — 9 lives for 0.003 SOL; God — 32 lives for 0.01 SOL. A new payment is required for every run; network fees are separate.",
+    "accessOutro": ". The free interactive tutorial can be replayed from the menu. Records for each mode are separate, local and unverified.",
+    "lives": "Free: 1 life per run, with an OnlyFridge Club promotion between rounds. No wallet or payment required. Subscription gives 1 total starting life per full million MEMEZZO, with no base lives. A minimum of 10,000,000 MEMEZZO is required: 10,000,000 gives 10 lives, 10,999,999 gives 10, and 11,000,000 gives 11. Starting lives are fixed for each run; resuming or checking the Shop never refills them. Arcade: Medium — 3 lives for 0.002 SOL; Easy — 9 lives for 0.003 SOL; God — 32 lives for 0.01 SOL. A new payment is required for every run; network fees are separate.",
     "verification": "Subscription checks happen only when you request them in the Shop, never automatically at the start, during play or on resume. Verified lives last for this page session until a new manual check, wallet change, disconnection or reload. An ongoing run is unaffected. Shop verification reads timelocks without transaction signatures; Arcade payments require wallet approval.",
     "fees": "Locks are created and redeemed on DevFridge, with no early withdrawal and a 2% redemption fee for PASTA buy-and-burn, plus network fees. Redemption of MEMEZZO needs an executable Jupiter route. Wallet features are for adults.",
     "team": "Team: Pappardelle · Public contact:",
@@ -436,7 +442,7 @@
   },
   "native": {
     "menu": "App menu",
-    "hard": "Arcade · 4 levels · from 0.001 SOL",
+    "hard": "Arcade · 3 levels · from 0.002 SOL",
     "easy": "Subscription · 10M+ MEMEZZO timelocked",
     "reload": "Reload",
     "privacy": "Privacy & app information (English)",
@@ -450,12 +456,13 @@
     "loadError": "Unable to open game. Use App menu → Reload.",
     "noBrowser": "No browser installed",
     "walletMissing": "Install an MWA-compatible Solana wallet, then try again.",
-    "arcade": "Arcade · 4 levels · from 0.001 SOL",
-    "subscription": "Subscription · 10M+ MEMEZZO timelocked"
+    "arcade": "Arcade · 3 levels · from 0.002 SOL",
+    "subscription": "Subscription · 10M+ MEMEZZO timelocked",
+    "free": "Free · 1 life"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4 levels · from 0.001 SOL",
+    "detail": "3 levels · from 0.002 SOL",
     "play": "Play Arcade",
     "hint": "Choose an Arcade level. Each new run requires a payment in SOL. No MEMEZZO required.",
     "title": "Arcade",
@@ -480,7 +487,7 @@
     "connecting": "Approve the connection in your wallet. Connecting does not make a payment.",
     "busy": "Finish the current payment before starting another.",
     "receipt": "View payment",
-    "how": "Arcade: Hard — 1 life for 0.001 SOL; Medium — 3 lives for 0.002 SOL; Easy — 9 lives for 0.003 SOL; God — 32 lives for 0.01 SOL. A new payment is required for every run; network fees are separate.",
+    "how": "Arcade: Medium — 3 lives for 0.002 SOL; Easy — 9 lives for 0.003 SOL; God — 32 lives for 0.01 SOL. A new payment is required for every run; network fees are separate.",
     "choose": "Choose your Arcade level",
     "hard": "Hard",
     "medium": "Medium",
@@ -496,5 +503,12 @@
     "connectHint": "Connect your Solana wallet first. Connecting does not make a payment.",
     "walletFailed": "Could not connect. Unlock your wallet and try again.",
     "walletMismatch": "This saved payment belongs to another wallet. Connect the wallet used for this payment."
+  },
+  "sponsor": {
+    "label": "Promotion",
+    "title": "OnlyFridge Club",
+    "body": "Discover OnlyFridge Club on the Solana dApp Store. Your next free round is ready.",
+    "open": "Open in dApp Store",
+    "continue": "Continue playing"
   }
 }

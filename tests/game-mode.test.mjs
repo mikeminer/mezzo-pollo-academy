@@ -13,11 +13,12 @@ class Element extends EventTarget {
   getAttribute(key) { return this.attributes.get(key); }
 }
 function setup() {
+  const free = new Element({ modeSelect: 'free' }), freeLabel = new Element({modeText:'free'});
   const hard = new Element({ modeSelect: 'arcade' }), easy = new Element({ modeSelect: 'subscription' });
   const hardLabel = new Element({ modeText: 'arcade' }), easyLabel = new Element({ modeText: 'subscription' });
   const choices = new Element(), reviewLink = new Element(), reviewLabel = new Element();
   const selectors = new Map([
-    ['[data-mode-select]', [hard, easy]], ['[data-mode-text]', [hardLabel, easyLabel]],
+    ['[data-mode-select]', [free, hard, easy]], ['[data-mode-text]', [freeLabel, hardLabel, easyLabel]],
     ['[data-review-link]', [reviewLink]], ['[data-review-label]', [reviewLabel]],
   ]);
   const document = Object.assign(new EventTarget(), {
@@ -26,17 +27,17 @@ function setup() {
   });
   const window = { MezzoLocale: { code: 'en' } };
   vm.runInNewContext(source, { window, document, Event });
-  return { mode: window.MezzoMode, window, document, hard, easy, hardLabel, easyLabel, choices };
+  return { mode: window.MezzoMode, window, document, free, freeLabel, hard, easy, hardLabel, easyLabel, choices };
 }
 
-test('Arcade is the default; removed free modes cannot be selected or configured', () => {
+test('Free is the default with exactly one life and unknown modes remain unavailable', () => {
   const { mode, document } = setup();
-  assert.equal(mode.selected, 'arcade');
+  assert.equal(mode.selected, 'free');
   assert.equal(mode.config().lives, 1);
   let events = 0;
   document.addEventListener('mezzopollo:mode', () => events++);
   for (const name of ['hard', 'easy', 'practice', '', null, undefined, 'ARCADE']) mode.select(name);
-  assert.equal(mode.selected, 'arcade');
+  assert.equal(mode.selected, 'free');
   assert.equal(events, 0);
   for (const name of ['hard', 'easy', 'practice', '', null, 'ARCADE']) assert.throws(() => mode.config(name, 100), { name: 'TypeError' });
 });
@@ -64,7 +65,7 @@ test('Subscription retains the slower pace and existing Easy local record', () =
   for (const key of ['speed', 'minSpeed', 'maxSpeed', 'acceleration', 'maxLevel']) assert.ok(subscription[key] < arcade[key], key);
   for (const key of ['reaction', 'minReaction', 'ruleSeconds']) assert.ok(subscription[key] > arcade[key], key);
   assert.notEqual(arcade.scoreKey, subscription.scoreKey);
-  assert.equal(arcade.scoreKey, 'mp_arcade_hard_best');
+  assert.equal(arcade.scoreKey, 'mp_arcade_medium_best');
   assert.equal(subscription.scoreKey, 'mp_easy_best');
 });
 
@@ -79,7 +80,7 @@ test('an ongoing run keeps its immutable life snapshot after entitlement or sele
   const nextSubscription = mode.config('subscription', 17);
   assert.equal(startedRun.name, 'subscription');
   assert.equal(startedRun.lives, 10);
-  assert.equal(nextArcade.lives, 1);
+  assert.equal(nextArcade.lives, 3);
   assert.equal(nextSubscription.lives, 17);
   assert.notEqual(startedRun, nextSubscription);
   assert.equal(mode.config('subscription', 9), null);
@@ -117,7 +118,19 @@ test('all registered profiles retain Subscription selection and render their mod
     assert.equal(h.easyLabel.textContent, pack.mode.subscription, code);
     assert.equal(h.hardLabel.textContent, pack.arcade.name, code);
     assert.equal(h.mode.selected, 'subscription', code);
-    assert.equal(h.mode.config('arcade').lives, 1, code);
+    assert.equal(h.freeLabel.textContent, pack.mode.free, code);
+    assert.equal(h.mode.config('free', 100).lives, 1, code);
+    assert.equal(h.mode.config('arcade').lives, 3, code);
     assert.equal(h.mode.config('subscription', 10).lives, 10, code);
   }
+});
+
+test('Free uses a separate local record and immutable life count; older paid Hard receipts still have a configuration', () => {
+  const { mode } = setup();
+  const free = mode.config('free', 100);
+  assert.equal(free.lives, 1);
+  assert.equal(free.scoreKey, 'mp_free_best');
+  assert.ok(Object.isFrozen(free));
+  assert.notEqual(free.scoreKey, mode.config('arcade').scoreKey);
+  assert.equal(mode.config('arcade', 0, 'hard').lives, 1);
 });

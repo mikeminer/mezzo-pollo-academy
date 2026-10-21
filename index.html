@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MezzoPollo — Arcade &amp; Subscription</title>
-<meta name="description" content="Play MezzoPollo in 20 languages with 25 regional choices: four paid Arcade levels or Subscription with at least 10,000,000 actively timelocked MEMEZZO. Learn with an interactive tutorial.">
+<title>MezzoPollo — Free, Arcade &amp; Subscription</title>
+<meta name="description" content="Play MezzoPollo free with 1 life, choose from three paid Arcade levels, or unlock Subscription with 10,000,000 actively timelocked MEMEZZO. Available in 20 languages with 25 regional choices.">
 <base href="/">
 <link rel="stylesheet" href="locale.css">
 <link rel="stylesheet" href="game-tutorial.css">
@@ -98,6 +98,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #modeChoices{grid-template-columns:1fr}
 .mode-choice[data-mode-select]{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .mode-choice[data-mode-select="arcade"]{border-color:#9d7ce0}
+.mode-choice[data-mode-select="free"]{border-color:#8eb969}
 .mode-choice[data-mode-select] small{text-align:end}
 #scrMenu .btns{display:grid;grid-template-columns:1fr 1fr}#btnPlay,#btnAccess{grid-column:1/-1}
 #btnTutorial,#btnHow{font-size:15px;padding:10px 6px;min-height:48px}
@@ -109,6 +110,8 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #shareImg{width:100%;border-radius:6px;margin:10px 0 4px;display:none}
 .keys{font-size:14px;color:var(--chalk-dim)}
 #glLost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(--slate-deep);color:var(--chalk);font-size:18px;padding:24px;text-align:center}
+.sponsor-card{margin:16px 0;padding:24px 18px;border:1px solid #8dbdaa;border-radius:18px;background:linear-gradient(145deg,#253f40,#152b29);text-align:center}
+.sponsor-symbol{font-size:54px;line-height:1.2;color:#9af1d3}.sponsor-card h2{font-family:var(--ui);font-size:32px;line-height:1.15;margin:12px 0;color:#d9fff0}.sponsor-label{letter-spacing:.12em;text-transform:uppercase;color:var(--chalk-dim);font-size:12px}.sponsor-store{display:block;margin-top:12px;font-size:13px;color:#9af1d3}
 </style>
 </head>
 <body>
@@ -139,16 +142,17 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="review-badge" data-review-label hidden></div>
       <p class="chop">A plush chicken has lost half of itself. Help it run through the gate with the matching half.</p>
       <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
-        <button class="mode-choice" data-mode-select="arcade" aria-pressed="true"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">4 levels · from 0.001 SOL</small></button>
+        <button class="mode-choice" data-mode-select="free" aria-pressed="true"><strong data-mode-text="free">Free</strong><small data-mode-text="freeDesc">1 life · No wallet or payment · Sponsor between rounds</small></button>
+        <button class="mode-choice" data-mode-select="arcade" aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">3 levels · from 0.002 SOL</small></button>
         <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">10,000,000 MEMEZZO timelock · from 10 lives</small></button>
       </div>
       <div class="btns">
-        <button class="btn primary" id="btnPlay">Play Arcade</button>
+        <button class="btn primary" id="btnPlay">Play free</button>
         <button class="btn" id="btnTutorial" data-mode-text="tutorial">Play the tutorial</button>
         <button class="btn" id="btnHow">How to play</button>
         <button class="btn ghost" id="btnAccess" data-mode-text="shop">Shop · MEMEZZO lives</button>
       </div>
-      <p class="access-note" id="memberHint">Choose an Arcade level and pay for each new run.</p>
+      <p class="access-note" id="memberHint">1 life · No wallet or payment · Sponsor between rounds</p>
       <a class="community-link" id="telegramCommunity" href="https://t.me/playmezzopollo" target="_blank" rel="noopener noreferrer" data-mode-text="community">Join the Telegram channel</a>
       <p class="note" id="bestLine"></p>
       <div class="music-controls">
@@ -168,7 +172,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <li>Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.</li>
         <li>When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.</li>
         <li>Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.</li>
-        <li>Arcade offers four paid levels. Subscription gives you more time and one life per full million actively timelocked MEMEZZO, with a minimum of 10 million verified in the Shop.</li>
+        <li>Free gives you 1 life with a sponsor between rounds. Arcade offers three paid levels. Subscription gives you more time and one life per full million actively timelocked MEMEZZO, with a minimum of 10 million verified in the Shop.</li>
         <li>Only the shop checks tokens, when you ask. Playing, restarting and resuming never trigger verification. Pausing preserves remaining lives.</li>
       </ul>
       <div class="btns"><button class="btn" data-back>Back</button></div>
@@ -207,12 +211,11 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
     <section class="panel" id="scrArcade" hidden>
       <h2 data-arcade-text="title">Arcade token</h2>
       <div id="arcadeTiers" class="mode-choices" role="group" aria-label="Choose your Arcade level">
-        <button class="mode-choice" data-arcade-tier="hard" aria-pressed="true"><strong>Hard</strong><small>1 life · 0.001 SOL</small></button>
-        <button class="mode-choice" data-arcade-tier="medium" aria-pressed="false"><strong>Medium</strong><small>3 lives · 0.002 SOL</small></button>
+        <button class="mode-choice" data-arcade-tier="medium" aria-pressed="true"><strong>Medium</strong><small>3 lives · 0.002 SOL</small></button>
         <button class="mode-choice" data-arcade-tier="easy" aria-pressed="false"><strong>Easy</strong><small>9 lives · 0.003 SOL</small></button>
         <button class="mode-choice" data-arcade-tier="god" aria-pressed="false"><strong>God</strong><small>32 lives · 0.01 SOL</small></button>
       </div>
-      <p data-arcade-text="summary">Hard · 1 life · 0.001 SOL</p>
+      <p data-arcade-text="summary">Medium · 3 lives · 0.002 SOL</p>
       <p class="access-note" data-arcade-text="fee">Solana network fees are separate. Each new run requires a new payment. Pausing and resuming do not cost another token.</p>
       <p class="access-note" data-arcade-text="recipient">Payment recipient</p>
       <code class="mint" dir="ltr">AXomB2bpJ7F3EFVPQwrwBV4yVE7bazshZaVa64KhGCfE</code>
@@ -220,12 +223,27 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="btns"><button class="btn" id="arcadeConnect">Connect wallet</button></div>
       <p class="access-status" id="arcadeStatus" role="status" aria-live="polite"></p>
       <div class="btns">
-        <button class="btn primary" id="arcadePay" data-arcade-text="pay">Pay 0.001 SOL and play</button>
-        <button class="btn primary" id="arcadeStart" data-arcade-text="start" hidden>Start Hard · 1 life</button>
+        <button class="btn primary" id="arcadePay" data-arcade-text="pay">Pay 0.002 SOL and play</button>
+        <button class="btn primary" id="arcadeStart" data-arcade-text="start" hidden>Start Medium · 3 lives</button>
         <button class="btn" id="arcadeCheck" data-arcade-text="retry" hidden>Check payment again</button>
         <button class="btn ghost" id="arcadeBack" data-arcade-text="cancel">Back to menu</button>
       </div>
       <div class="access-links"><a id="arcadeWallet" data-arcade-text="openWallet" hidden>Open in Phantom</a><a id="arcadeReceipt" target="_blank" rel="noopener noreferrer" data-arcade-text="receipt" hidden>View payment</a></div>
+    </section>
+
+    <section class="panel" id="scrSponsor" role="dialog" aria-modal="true" aria-labelledby="sponsorTitle" hidden>
+      <span class="sponsor-label" data-sponsor-text="label">Sponsor</span>
+      <div class="sponsor-card">
+        <div class="sponsor-symbol" aria-hidden="true">❄</div>
+        <h2 id="sponsorTitle" data-sponsor-text="title">OnlyFridge Club</h2>
+        <p data-sponsor-text="body">Discover OnlyFridge Club on the Solana dApp Store. Your next free round is ready.</p>
+        <span class="sponsor-store">Solana dApp Store</span>
+      </div>
+      <div class="btns">
+        <button class="btn primary" id="sponsorContinue" data-sponsor-text="continue">Continue playing</button>
+        <button class="btn" id="sponsorOpen" data-sponsor-text="open">Discover OnlyFridge Club</button>
+        <button class="btn ghost" id="sponsorBack" data-mode-text="back">Back to game</button>
+      </div>
     </section>
 
     <section class="panel" id="scrPause" hidden>
@@ -517,8 +535,8 @@ const statue=buildChicken(true,M.bronze); statue.scale.setScalar(2.2); statue.vi
 let accessEligible=false, accessLives=0;
 function syncAccessUi(){
   const lives={count:L.number(accessLives),lives:L.lifeWord(accessLives)};
-  $('btnPlay').textContent=mode.selected==='arcade'?window.MezzoArcade.text('play'):mode.text(accessEligible?'playSubscription':'unlock',lives);
-  $('memberHint').textContent=mode.selected==='arcade'?window.MezzoArcade.text('hint'):mode.text(accessEligible?'unlocked':'subscriptionHint',lives);
+  $('btnPlay').textContent=mode.selected==='free'?mode.text('freeStart'):mode.selected==='arcade'?window.MezzoArcade.text('play'):mode.text(accessEligible?'playSubscription':'unlock',lives);
+  $('memberHint').textContent=mode.selected==='free'?mode.text('freeHint'):mode.selected==='arcade'?window.MezzoArcade.text('hint'):mode.text(accessEligible?'unlocked':'subscriptionHint',lives);
   $('resumeRun').hidden=state!=='pause';
   $('btnResume').textContent=t('resume');
   $('playMember').textContent=mode.text('playSubscription',lives);
@@ -648,7 +666,7 @@ let state='menu';
 const G={};
 let deathTimer=null;
 function clearDeathTimer(){if(deathTimer!==null){clearTimeout(deathTimer);deathTimer=null}}
-function resetGame(config=mode.config('arcade')){
+function resetGame(config=mode.config('free')){
   clearDeathTimer();
   music.setFocus(false);
   const startingLives=config.lives;
@@ -666,7 +684,7 @@ function clearWorld(){
 }
 
 /* ---------- HUD helpers ---------- */
-function updateLegs(){const remaining=Math.max(0,G.legs||0);$('legs').textContent=tutorial.active?'🍗 ∞':`🍗 ${L.number(remaining)}`;$('legs').setAttribute('aria-label',tutorial.active?mode.text('tutorialHud'):t('livesRemaining',{remaining:L.number(remaining),total:L.number(G.initialLegs||0)}));$('practice').textContent=tutorial.active?mode.text('tutorialHud'):mode.text('hud',{mode:mode.text(G.config?.name||'hard'),count:L.number(G.initialLegs||2),lives:L.lifeWord(G.initialLegs||2)});}
+function updateLegs(){const remaining=Math.max(0,G.legs||0);$('legs').textContent=tutorial.active?'🍗 ∞':`🍗 ${L.number(remaining)}`;$('legs').setAttribute('aria-label',tutorial.active?mode.text('tutorialHud'):t('livesRemaining',{remaining:L.number(remaining),total:L.number(G.initialLegs||0)}));$('practice').textContent=tutorial.active?mode.text('tutorialHud'):G.config?.name==='free'?mode.text('freeHud'):mode.text('hud',{mode:mode.text(G.config?.name||'free'),count:L.number(G.initialLegs||1),lives:L.lifeWord(G.initialLegs||1)});}
 function updateScore(){ $('score').textContent=Math.floor(G.score); const m=1+Math.floor(G.streak/3); $('combo').textContent=m>1?`×${m}`:''; }
 let toastT=0;
 function toast(t,bad){const el=$('toast');el.textContent=t;el.classList.toggle('bad',!!bad);el.classList.add('show');toastT=.9}
@@ -778,7 +796,8 @@ canvas.addEventListener('touchend',e=>{
 canvas.addEventListener('touchmove',e=>{if(state==='play')e.preventDefault()},{passive:false});
 
 /* ---------- screens ---------- */
-const screens=['scrMenu','scrHow','scrAccess','scrArcade','scrPause','scrOver'];
+const screens=['scrMenu','scrHow','scrAccess','scrArcade','scrSponsor','scrPause','scrOver'];
+let freeSponsorDue=false,sponsorRun=null;
 function show(id){
   const closingShop=!$('scrAccess').hidden&&id!=='scrAccess';
   if(closingShop)document.dispatchEvent(new Event('mezzopollo:shopclose'));
@@ -799,7 +818,13 @@ async function openShop(){
   syncAccessUi();
 }
 function beginRun(config){
-  if(!config||!['arcade','subscription'].includes(config.name))return;
+  if(!config||!['free','arcade','subscription'].includes(config.name))return;
+  if(config.name==='free'){
+    if(config.lives!==1)return;
+    config=mode.config('free');
+    // Queue the promotion for the next round, including after quitting to the menu.
+    freeSponsorDue=true;
+  }
   if(config.name==='subscription'&&(!accessEligible||config.lives<10||config.lives!==accessLives)){void openShop();return;}
   if(config.name==='arcade'&&!window.MezzoArcade.consumeAdmission())return;
   audio();clearWorld();resetGame(config);state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true});clock.getDelta();
@@ -819,7 +844,7 @@ function tutorialScenario(spec){
   }
   updateLegs();updateScore();
 }
-function startTutorial(config=mode.config('arcade'),onFinish=()=>requestRun(config)){
+function startTutorial(config=mode.config('free'),onFinish=()=>requestRun(config)){
   if(!L.ready){L.open();return;}
   audio();clearWorld();resetGame(config);state='play';show(null);$('hud').hidden=false;music.start();
   tutorial.start({onStep:tutorialScenario,onAction:action=>{if(action==='jump')jump();else changeLane(action==='left'?-1:1);},onFinish});
@@ -832,9 +857,27 @@ function startGame(){
   if(tutorial.shouldStart())startTutorial(config);else requestRun(config);
 }
 function requestRun(config){
+  if(!config)return;
+  if(config.name==='free'&&freeSponsorDue){
+    sponsorRun=mode.config('free');music.pause();clearWorld();state='sponsor';$('hud').hidden=true;renderSponsor();show('scrSponsor');return;
+  }
   if(config.name!=='arcade'){beginRun(config);return;}
   music.pause();clearWorld();state='menu';$('hud').hidden=true;show('scrArcade');
   window.MezzoArcade.open(receipt=>beginRun(mode.config('arcade',0,receipt.tier)));
+}
+function renderSponsor(){
+  const pack=window.MezzoTranslations[L.code]||window.MezzoTranslations.en;
+  for(const element of document.querySelectorAll('[data-sponsor-text]'))element.textContent=pack.sponsor[element.dataset.sponsorText];
+}
+function continueFreeRound(){
+  if(state!=='sponsor'||!sponsorRun)return;
+  const config=sponsorRun;sponsorRun=null;freeSponsorDue=false;beginRun(config);
+}
+async function openSponsor(){
+  if(window.MezzoAndroid?.openSponsor){
+    try{await window.MezzoAndroid.openSponsor();return;}catch{}
+  }
+  window.open('https://club.devfridge.cool/download/onlyfridge-club','_blank','noopener,noreferrer');
 }
 function pause(){if(state!=='play')return;state='pause';tutorial.setPaused(true);music.pause();syncAccessUi();show('scrPause')}
 function resume(){if(state!=='pause')return;state='play';tutorial.setPaused(false);syncAccessUi();if(G.legs<=0&&!tutorial.active){gameOver();return}audio();music.start();show(null);canvas.focus({preventScroll:true});clock.getDelta()}
@@ -859,15 +902,23 @@ $('btnPlay').onclick=startGame;$('btnAgain').onclick=startGame;
 $('playMember').onclick=()=>{mode.select('subscription');startGame()};$('resumeRun').onclick=resume;
 $('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=openShop;
 $('btnVerifyAccess').onclick=openShop;
-$('btnTutorial').onclick=()=>startTutorial(mode.config(mode.selected,accessEligible?accessLives:0)||mode.config('arcade'),startGame);
+$('btnTutorial').onclick=()=>startTutorial(mode.config(mode.selected,accessEligible?accessLives:0)||mode.config('free'),startGame);
 document.querySelectorAll('[data-shop-back]').forEach(b=>b.onclick=()=>{if(state==='pause')show('scrPause');else toMenu()});
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=toMenu);
 $('pauseBtn').onclick=pause;$('btnResume').onclick=resume;
-function toMenu(){window.MezzoArcade.close();clearDeathTimer();tutorial.cancel();music.pause();clearWorld();state='menu';syncAccessUi();$('hud').hidden=true;menuBest();show('scrMenu')}
+function toMenu(){sponsorRun=null;window.MezzoArcade.close();clearDeathTimer();tutorial.cancel();music.pause();clearWorld();state='menu';syncAccessUi();$('hud').hidden=true;menuBest();show('scrMenu')}
+$('sponsorContinue').onclick=continueFreeRound;$('sponsorOpen').onclick=openSponsor;$('sponsorBack').onclick=toMenu;
+$('scrSponsor').addEventListener('keydown',event=>{
+  if(event.key==='Escape'){event.preventDefault();toMenu();return;}
+  if(event.key!=='Tab')return;
+  const buttons=[$('sponsorContinue'),$('sponsorOpen'),$('sponsorBack')];
+  if(event.shiftKey&&document.activeElement===buttons[0]){event.preventDefault();buttons.at(-1).focus();}
+  else if(!event.shiftKey&&document.activeElement===buttons.at(-1)){event.preventDefault();buttons[0].focus();}
+});
 $('arcadeBack').onclick=toMenu;
 $('btnQuit').onclick=toMenu;$('btnMenu').onclick=toMenu;
 
-function resultModeLabel(){return G.config.name==='arcade'?`${mode.text('arcade')} · ${window.MezzoArcade.text('difficulty',{level:window.MezzoArcade.text(G.config.tier)})}`:mode.text('badge',{mode:mode.text(G.config.name)})}
+function resultModeLabel(){return G.config.name==='free'?mode.text('freeEnd'):G.config.name==='arcade'?`${mode.text('arcade')} · ${window.MezzoArcade.text('difficulty',{level:window.MezzoArcade.text(G.config.tier)})}`:mode.text('badge',{mode:mode.text(G.config.name)})}
 $('btnShare').onclick=async()=>{
   const [c,ctx]=cv(1080,1080);
   ctx.fillStyle='#8a5a34';ctx.fillRect(0,0,1080,1080);ctx.drawImage(slateC,40,40,1000,1000);
@@ -972,6 +1023,7 @@ function step(){
 /* ---------- boot ---------- */
 document.addEventListener('mezzopollo:language',()=>{
   syncAccessUi();menuBest();updateLegs();
+  renderSponsor();
   if(lastMusicState)renderMusicState(lastMusicState);
   if(state==='menu')setQuestion(t('ready'),null,'');
 });

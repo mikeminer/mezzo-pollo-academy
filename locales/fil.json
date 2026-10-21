@@ -72,7 +72,7 @@
     "Basahin ang tanong sa itaas. Dumaan sa tarangkahang may <b>katugmang kalahati</b> para mabuo ang mga numero, salita at hugis.",
     "Kapag lumitaw ang <b>BUONG MANOK</b>, manatili sa iyong linya hanggang makalampas ang rebulto.",
     "Kung minsan ay nababaligtad ang tuntunin: sa <b>baligtad na paraan</b>, pumili ng maling sagot.",
-    "Arcade: Mahirap — 1 buhay sa 0.001 SOL; Katamtaman — 3 buhay sa 0.002 SOL; Madali — 9 na buhay sa 0.003 SOL; Diyos — 32 buhay sa 0.01 SOL. Kailangan ng bagong bayad sa bawat laro; hiwalay ang bayarin sa network.",
+    "Libre: 1 buhay bawat laro, na may promosyon ng OnlyFridge Club sa pagitan ng mga round. Hindi kailangan ng wallet o bayad. Arcade: Katamtaman — 3 buhay sa 0.002 SOL; Madali — 9 na buhay sa 0.003 SOL; Diyos — 32 buhay sa 0.01 SOL. Kailangan ng bagong bayad sa bawat laro; hiwalay ang bayarin sa network.",
     "Ikandado nang may takdang panahon ang hindi bababa sa 10,000,000 MEMEZZO sa DevFridge. Bawat buong milyon ay nagbibigay ng kabuuang 1 panimulang buhay, kaya hindi bababa sa 10 buhay. Manwal na magpatunay sa Tindahan; walang pagsusuring puputol sa laro.",
     "Bumalik",
     "Tindahan · Suskripsiyon",
@@ -253,7 +253,7 @@
     "community": "Sumali sa channel ng Telegram",
     "hard": "Arcade",
     "easy": "Suskripsiyon",
-    "hardDetail": "4 na antas · mula 0.001 SOL",
+    "hardDetail": "3 na antas · mula 0.002 SOL",
     "easyDetail": "10 milyon+ MEMEZZO na nakakandado",
     "choose": "Pumili ng paraan",
     "playHard": "Maglaro ng Arcade",
@@ -268,7 +268,7 @@
     "badge": "PARAANG {mode}",
     "shopNote": "Nananatiling nakakandado nang may takdang panahon ang MEMEZZO sa DevFridge. Walang bayad na SOL bawat laro sa Suskripsiyon. Kailangan ng bayad sa bawat laro ng Arcade.",
     "link": "Subukan ang libreng tutorial →",
-    "title": "MezzoPollo — Arcade · Suskripsiyon",
+    "title": "MezzoPollo — Libre · Arcade · Suskripsiyon",
     "back": "Bumalik sa laro",
     "tutorialHud": "GABAY · magsanay nang hindi nawawalan ng buhay",
     "tutorialQuestion": "Sundin ang gabay sa ibaba",
@@ -277,7 +277,13 @@
     "subscription": "Suskripsiyon",
     "subscriptionDetail": "10 milyon+ MEMEZZO na nakakandado",
     "playSubscription": "Maglaro sa Suskripsiyon · {count} {lives}",
-    "subscriptionHint": "Ikandado nang may takdang panahon ang hindi bababa sa 10,000,000 MEMEZZO sa DevFridge. Bawat buong milyon ay nagbibigay ng kabuuang 1 panimulang buhay, kaya hindi bababa sa 10 buhay. Manwal na magpatunay sa Tindahan; walang pagsusuring puputol sa laro."
+    "subscriptionHint": "Ikandado nang may takdang panahon ang hindi bababa sa 10,000,000 MEMEZZO sa DevFridge. Bawat buong milyon ay nagbibigay ng kabuuang 1 panimulang buhay, kaya hindi bababa sa 10 buhay. Manwal na magpatunay sa Tindahan; walang pagsusuring puputol sa laro.",
+    "free": "Libre",
+    "freeDesc": "1 buhay · Walang wallet o bayad",
+    "freeStart": "Maglaro nang libre",
+    "freeHud": "Libre · 1 buhay",
+    "freeEnd": "Libre · 1 buhay",
+    "freeHint": "1 buhay bawat laro, na may promosyon ng OnlyFridge Club sa pagitan ng mga round. Hindi kailangan ng wallet o bayad."
   },
   "tutorial": {
     "label": "Matuto habang naglalaro",
@@ -289,7 +295,7 @@
     "finish": "Magsimulang maglaro",
     "retry": "Subukang muli",
     "good": "Nakuha mo! Handa na para sa susunod na hamon.",
-    "done": "Handa na! Pumili ng Arcade o Suskripsiyon. Maaari mong ulitin ang libreng tutorial anumang oras.",
+    "done": "Handa na! Pumili ng Libre, Arcade o Suskripsiyon. Maaari mong ulitin ang libreng tutorial anumang oras.",
     "again": "Ayos lang! Subukan muli ang hamong ito.",
     "leftControl": "Lumipat pakaliwa",
     "rightControl": "Lumipat pakanan",
@@ -347,8 +353,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — pagpapakita ng laro",
-    "description": "MezzoPollo: Arcade at Suskripsiyon, libreng interaktibong tutorial, 20 wika at 25 rehiyonal na pagpipilian, musikang Italyano at mga subtitle ng kanta sa Ingles.",
-    "tag": "DevFridge Hackathon · Arcade · Suskripsiyon",
+    "description": "Libre: 1 buhay bawat laro, na may promosyon ng OnlyFridge Club sa pagitan ng mga round. Hindi kailangan ng wallet o bayad. MezzoPollo: Arcade at Suskripsiyon, libreng interaktibong tutorial, 20 wika at 25 rehiyonal na pagpipilian, musikang Italyano at mga subtitle ng kanta sa Ingles.",
+    "tag": "DevFridge Hackathon · Libre · Arcade · Suskripsiyon",
     "intro": "Tumatakbo ang kalahating manok na laruan sa tatlong linya, pinipili ang nawawalang kalahati ng mga numero, salita at hugis. Iwasan ang mga hadlang, mangolekta ng balahibo, at huwag gumalaw kapag lumitaw ang BUONG MANOK.",
     "play": "Pumili ng paraan at maglaro →",
     "source": "Source code at ebidensya ng pagsumite",
@@ -367,8 +373,8 @@
     "downloadMobile": "I-download ang bidyo sa telepono sa Ingles",
     "accessTitle": "Pag-access at mga limitasyon",
     "accessIntro": "Kailangan ng Suskripsiyon ang hindi bababa sa 10,000,000 MEMEZZO sa mga aktibong pagkakakandado ng DevFridge sa nakakonektang pitaka. Walang minimum na tagal; hindi binibilang ang mga paso nang pagkakakandado. Address ng token:",
-    "accessOutro": ". Maaaring ulitin mula sa menu ang libreng interaktibong tutorial. Magkahiwalay, lokal at hindi napatunayan ang mga rekord ng Arcade at Suskripsiyon.",
-    "lives": "Nagbibigay ang Suskripsiyon ng kabuuang 1 panimulang buhay bawat buong milyon ng MEMEZZO, na walang batayang buhay. Kailangan ng minimum na 10,000,000 MEMEZZO: nagbibigay ang 10,000,000 ng 10 buhay, ang 10,999,999 ng 10 at ang 11,000,000 ng 11. Nakatakda ang panimulang buhay sa bawat laro; hindi ito napupuno sa pagpapatuloy o pagsusuri sa Tindahan. Arcade: Mahirap — 1 buhay sa 0.001 SOL; Katamtaman — 3 buhay sa 0.002 SOL; Madali — 9 na buhay sa 0.003 SOL; Diyos — 32 buhay sa 0.01 SOL. Kailangan ng bagong bayad sa bawat laro; hiwalay ang bayarin sa network.",
+    "accessOutro": ". Maaaring ulitin mula sa menu ang libreng interaktibong tutorial. Magkahiwalay, lokal at hindi napatunayan ang mga rekord ng bawat mode.",
+    "lives": "Libre: 1 buhay bawat laro, na may promosyon ng OnlyFridge Club sa pagitan ng mga round. Hindi kailangan ng wallet o bayad. Nagbibigay ang Suskripsiyon ng kabuuang 1 panimulang buhay bawat buong milyon ng MEMEZZO, na walang batayang buhay. Kailangan ng minimum na 10,000,000 MEMEZZO: nagbibigay ang 10,000,000 ng 10 buhay, ang 10,999,999 ng 10 at ang 11,000,000 ng 11. Nakatakda ang panimulang buhay sa bawat laro; hindi ito napupuno sa pagpapatuloy o pagsusuri sa Tindahan. Arcade: Katamtaman — 3 buhay sa 0.002 SOL; Madali — 9 na buhay sa 0.003 SOL; Diyos — 32 buhay sa 0.01 SOL. Kailangan ng bagong bayad sa bawat laro; hiwalay ang bayarin sa network.",
     "verification": "Sinusuri lamang ang Suskripsiyon kapag hiniling mo sa Tindahan, hindi awtomatiko sa simula, habang naglalaro o sa pagpapatuloy. Balido ang napatunayang buhay sa sesyong ito hanggang sa bagong manwal na pagsusuri, pagbabago ng pitaka, pagdiskonekta o pag-reload. Hindi apektado ang kasalukuyang laro. Binabasa ng pagpapatunay ang mga pagkakakandado nang walang lagda sa transaksyon; kailangan ng pag-apruba sa pitaka para sa mga bayad sa Arcade.",
     "fees": "Ginagawa at kinukuha muli ang mga pagkakakandado sa DevFridge, walang maagang pag-withdraw at may 2% bayad sa pagkuha para sa pagbili at pagsunog ng PASTA, bukod sa bayad sa network. Ang pagkuha muli ng MEMEZZO ay nangangailangan ng gumaganang ruta sa Jupiter. Para sa nasa hustong gulang ang mga tampok ng pitaka.",
     "team": "Pangkat: Pappardelle · Pampublikong pakikipag-ugnayan:",
@@ -376,7 +382,7 @@
   },
   "native": {
     "menu": "Menu ng app",
-    "hard": "Arcade · 4 na antas · mula 0.001 SOL",
+    "hard": "Arcade · 3 na antas · mula 0.002 SOL",
     "easy": "Suskripsiyon · 10 milyon+ MEMEZZO na nakakandado",
     "reload": "I-reload",
     "privacy": "Pagkapribado at impormasyon ng app (Ingles)",
@@ -390,12 +396,13 @@
     "loadError": "Hindi mabuksan ang laro. Gamitin ang Menu ng app → I-reload.",
     "noBrowser": "Walang naka-install na browser",
     "walletMissing": "Mag-install ng pitakang Solana na katugma ng MWA, saka subukang muli.",
-    "arcade": "Arcade · 4 na antas · mula 0.001 SOL",
-    "subscription": "Suskripsiyon · 10 milyon+ MEMEZZO na nakakandado"
+    "arcade": "Arcade · 3 na antas · mula 0.002 SOL",
+    "subscription": "Suskripsiyon · 10 milyon+ MEMEZZO na nakakandado",
+    "free": "Libre · 1 buhay"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4 na antas · mula 0.001 SOL",
+    "detail": "3 na antas · mula 0.002 SOL",
     "play": "Maglaro ng Arcade",
     "hint": "Pumili ng antas sa Arcade. Bawat bagong laro ay nangangailangan ng bayad sa SOL. Hindi kailangan ng MEMEZZO.",
     "title": "Arcade",
@@ -420,7 +427,7 @@
     "connecting": "Aprubahan ang koneksyon sa iyong wallet. Walang pagbabayad na magaganap sa pagkonekta.",
     "busy": "Tapusin ang kasalukuyang bayad bago magsimula ng isa pa.",
     "receipt": "Tingnan ang bayad",
-    "how": "Arcade: Mahirap — 1 buhay sa 0.001 SOL; Katamtaman — 3 buhay sa 0.002 SOL; Madali — 9 na buhay sa 0.003 SOL; Diyos — 32 buhay sa 0.01 SOL. Kailangan ng bagong bayad sa bawat laro; hiwalay ang bayarin sa network.",
+    "how": "Arcade: Katamtaman — 3 buhay sa 0.002 SOL; Madali — 9 na buhay sa 0.003 SOL; Diyos — 32 buhay sa 0.01 SOL. Kailangan ng bagong bayad sa bawat laro; hiwalay ang bayarin sa network.",
     "choose": "Piliin ang iyong antas sa Arcade",
     "hard": "Mahirap",
     "medium": "Katamtaman",
@@ -436,5 +443,12 @@
     "connectHint": "Ikonekta muna ang iyong Solana wallet. Walang pagbabayad na magaganap sa pagkonekta.",
     "walletFailed": "Hindi makakonekta. I-unlock ang iyong wallet at subukan muli.",
     "walletMismatch": "Ang naka-save na bayad na ito ay para sa ibang wallet. Ikonekta ang wallet na ginamit sa pagbabayad na ito."
+  },
+  "sponsor": {
+    "label": "Promosyon",
+    "title": "OnlyFridge Club",
+    "body": "Tuklasin ang OnlyFridge Club sa Solana dApp Store. Handa na ang susunod mong libreng round.",
+    "open": "Buksan sa dApp Store",
+    "continue": "Magpatuloy sa paglalaro"
   }
 }

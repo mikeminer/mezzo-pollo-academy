@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { randomUUID } from 'node:crypto';
 import { readFileSync } from 'node:fs';
-import { ArcadeError, POLICY, TIERS, SYSTEM_PROGRAM, MEMO_PROGRAM, encode58, decode58, digest, requestSecret, loadConfig } from '../server/arcade-config.mjs';
+import { ArcadeError, POLICY, TIERS, AVAILABLE_TIERS, SYSTEM_PROGRAM, MEMO_PROGRAM, encode58, decode58, digest, requestSecret, loadConfig } from '../server/arcade-config.mjs';
 import { buildTransaction, verifyTransaction, SolanaRpc, memoFor } from '../server/arcade-chain.mjs';
 import { ArcadeService } from '../server/arcade-service.mjs';
 import { createHandler } from '../api/arcade.mjs';
@@ -36,6 +36,7 @@ class MemoryStore {
   async ready() {}
   async rateLimit() {}
   async get(id) { return clone(this.records.get(id) || null); }
+  async getByRequest(requestId) { return this.get(this.requests.get(requestId)); }
   async create(requestId, candidate) {
     if (this.requests.has(requestId)) return this.get(this.requests.get(requestId));
     this.requests.set(requestId, candidate.intentId); this.records.set(candidate.intentId, clone(candidate)); return clone(candidate);
@@ -64,6 +65,22 @@ class MemoryStore {
     record.revision += 1; return { record: clone(record), changed: true };
   }
 }
+
+test('retired Hard requests are recovered by their original capability without new credits', async () => {
+  const { service, store } = harness();
+  const requestId = randomUUID();
+  await assert.rejects(service.create({ requestId, payer: PAYER, tier: 'hard' }), { code: 'invalid_tier' });
+  assert.equal(store.records.size, 0);
+  const legacy = { ...intent('hard'), secretHash: digest(requestSecret(requestId)), status: 'paid', signature: SIGNATURE };
+  await store.create(requestId, legacy);
+  const recovered = await service.create({ requestId, payer: PAYER, tier: 'hard' });
+  assert.equal(recovered.intentId, legacy.intentId);
+  assert.equal(recovered.lives, 1);
+  const runId = randomUUID();
+  assert.equal((await service.start({ ...recovered, runId })).admitted, true);
+  assert.equal((await service.start({ ...recovered, runId })).admitted, false);
+  assert.equal(store.records.size, 1);
+});
 function harness() {
   const store = new MemoryStore();
   const rpc = { assertMainnet: async () => {}, recipientReady: async () => {},
@@ -82,7 +99,9 @@ for (const [tier, policy] of Object.entries(TIERS)) {
     assert.deepEqual([...wire.subarray(65, 69)], [1, 0, 3, 5]);
     assert.equal(wire.readBigUInt64LE(272), BigInt(policy.lamports));
     assert.deepEqual(wire.subarray(65), Buffer.from(arcadeMessage({ ...record, recipient: POLICY.recipient, network: POLICY.network, blockhash: HASH })));
-    const { create } = harness(); const created = await create(tier);
+    const { create } = harness();
+    if (tier === 'hard') { await assert.rejects(create(tier), { code: 'invalid_tier' }); return; }
+    const created = await create(tier);
     assert.equal(created.lamports, policy.lamports); assert.equal(created.lives, policy.lives); assert.equal(created.tier, tier);
   });
 }
@@ -188,9 +207,9 @@ test('bounded read-only account-info assertions accept their audited serialized 
 
 test('tier cannot be escalated through client lives or reused request ID', async () => {
   const { service } = harness(); const requestId = randomUUID();
-  const first = await service.create({ payer: PAYER, tier: 'hard', lives: 999, lamports: 0, requestId });
-  assert.equal(first.lives, 1); assert.equal(first.lamports, 1_000_000);
-  assert.equal((await service.create({ payer: PAYER, tier: 'hard', requestId })).intentId, first.intentId);
+  const first = await service.create({ payer: PAYER, tier: 'medium', lives: 999, lamports: 0, requestId });
+  assert.equal(first.lives, 3); assert.equal(first.lamports, 2_000_000);
+  assert.equal((await service.create({ payer: PAYER, tier: 'medium', requestId })).intentId, first.intentId);
   await assert.rejects(service.create({ payer: PAYER, tier: 'god', requestId }), { code: 'tier_mismatch' });
   for (const tier of [undefined, 'HARD', '__proto__', 'toString']) await assert.rejects(service.create({ payer: PAYER, tier, requestId: randomUUID() }), { code: 'invalid_tier' });
 });
@@ -306,7 +325,7 @@ test('API rejects foreign origins, form requests and oversized bodies before ser
   assert.equal((await apiRequest(configured, { method: 'POST', headers: { 'content-type': 'application/json', 'content-length': '5000' }, body: {} })).status, 413);
   assert.equal((await apiRequest(configured, { method: 'POST', headers: { 'content-type': 'application/json' }, body: { action: 'unknown' } })).status, 400);
   const config = await apiRequest(configured, { method: 'GET', headers: {} });
-  assert.equal(config.status, 200); assert.deepEqual(config.body.tiers, TIERS);
+  assert.equal(config.status, 200); assert.deepEqual(config.body.tiers, AVAILABLE_TIERS);
 });
 test('base58 handles canonical leading zeros and rejects malformed addresses', () => {
   for (const buffer of [Buffer.alloc(32), Buffer.alloc(32, 255), Buffer.concat([Buffer.alloc(31), Buffer.from([1])])]) assert.deepEqual(decode58(encode58(buffer), 32), buffer);

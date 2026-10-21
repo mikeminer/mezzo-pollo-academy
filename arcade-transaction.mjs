@@ -6,6 +6,8 @@ export const ARCADE_TIERS = Object.freeze({
   easy: Object.freeze({ lives: 9, lamports: 3_000_000, price: '0.003' }),
   god: Object.freeze({ lives: 32, lamports: 10_000_000, price: '0.01' }),
 });
+// Hard remains valid only for recovery of receipts from older versions.
+export const AVAILABLE_ARCADE_TIERS = Object.freeze({ medium: ARCADE_TIERS.medium, easy: ARCADE_TIERS.easy, god: ARCADE_TIERS.god });
 const SYSTEM = '11111111111111111111111111111111';
 const MEMO = 'MemoSq4gqABAXKb96qnH8TysNcWxMyWCqXgDLGmfcHr';
 const ALPHABET = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';

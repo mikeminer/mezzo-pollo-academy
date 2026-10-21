@@ -10,6 +10,9 @@ export class PostgresStore {
   async get(id) {
     return (await this.query('SELECT record FROM public.mezzopollo_arcade_intents WHERE intent_id = $1::uuid', [id]))[0]?.record || null;
   }
+  async getByRequest(requestId) {
+    return (await this.query('SELECT record FROM public.mezzopollo_arcade_intents WHERE request_hash = $1', [digest(requestId)]))[0]?.record || null;
+  }
   async create(requestId, record) {
     const rows = await this.query(`INSERT INTO public.mezzopollo_arcade_intents (intent_id, request_hash, record)
       VALUES ($1::uuid, $2, $3::jsonb)

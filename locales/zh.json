@@ -71,7 +71,7 @@
     "阅读上方题目，跑过带有<b>匹配另一半</b>的大门，补全数字、词语和形状。",
     "<b>完整小鸡</b>出现时，保持当前跑道，直到雕像经过。",
     "规则有时会反转：在<b>反向模式</b>中，要选择错误答案。",
-    "Arcade：困难 — 0.001 SOL，1条生命；中等 — 0.002 SOL，3条生命；简单 — 0.003 SOL，9条生命；神级 — 0.01 SOL，32条生命。每局都需要重新付款，网络手续费另计。",
+    "免费: 每局1条生命，局与局之间会展示OnlyFridge Club推广。无需钱包或付款。 Arcade：中等 — 0.002 SOL，3条生命；简单 — 0.003 SOL，9条生命；神级 — 0.01 SOL，32条生命。每局都需要重新付款，网络手续费另计。",
     "在DevFridge定时锁仓至少10,000,000 MEMEZZO。每满100万获得总计1条初始生命，最低10条生命。仅在商店手动验证，不会在游戏中进行验证或中断游戏。",
     "返回",
     "商店 · 订阅",
@@ -252,7 +252,7 @@
     "community": "加入 Telegram 频道",
     "hard": "Arcade",
     "easy": "订阅",
-    "hardDetail": "4个等级 · 0.001 SOL起",
+    "hardDetail": "3个等级 · 0.002 SOL起",
     "easyDetail": "锁仓至少1,000万MEMEZZO",
     "choose": "选择模式",
     "playHard": "玩Arcade",
@@ -267,7 +267,7 @@
     "badge": "{mode}模式",
     "shopNote": "MEMEZZO保持定时锁仓在DevFridge中。订阅模式无需每局支付SOL。Arcade每局都需要付款。",
     "link": "体验免费教程 →",
-    "title": "MezzoPollo — Arcade · 订阅",
+    "title": "MezzoPollo — 免费 · Arcade · 订阅",
     "back": "返回游戏",
     "tutorialHud": "教程 · 练习不消耗生命",
     "tutorialQuestion": "按照下方指引操作",
@@ -276,7 +276,13 @@
     "subscription": "订阅",
     "subscriptionDetail": "锁仓至少1,000万MEMEZZO",
     "playSubscription": "玩订阅模式 · {count} {lives}",
-    "subscriptionHint": "在DevFridge定时锁仓至少10,000,000 MEMEZZO。每满100万获得总计1条初始生命，最低10条生命。仅在商店手动验证，不会在游戏中进行验证或中断游戏。"
+    "subscriptionHint": "在DevFridge定时锁仓至少10,000,000 MEMEZZO。每满100万获得总计1条初始生命，最低10条生命。仅在商店手动验证，不会在游戏中进行验证或中断游戏。",
+    "free": "免费",
+    "freeDesc": "1条生命 · 无需钱包或付款",
+    "freeStart": "免费游玩",
+    "freeHud": "免费 · 1条生命",
+    "freeEnd": "免费 · 1条生命",
+    "freeHint": "每局1条生命，局与局之间会展示OnlyFridge Club推广。无需钱包或付款。"
   },
   "tutorial": {
     "label": "边玩边学",
@@ -288,7 +294,7 @@
     "finish": "开始游戏",
     "retry": "再试一次",
     "good": "学会了！准备下个挑战。",
-    "done": "准备好了！请选择Arcade或订阅。你可以随时重玩免费教程。",
+    "done": "准备好了！请选择免费、Arcade或订阅模式。你可以随时重玩免费教程。",
     "again": "没关系！再试一次这个挑战。",
     "leftControl": "向左移动",
     "rightControl": "向右移动",
@@ -346,8 +352,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — 玩法演示",
-    "description": "MezzoPollo：Arcade与订阅、免费互动教程、20种语言及25个地区选项、意大利语音乐和英文歌词字幕。",
-    "tag": "DevFridge Hackathon · Arcade · 订阅",
+    "description": "免费: 每局1条生命，局与局之间会展示OnlyFridge Club推广。无需钱包或付款。 MezzoPollo：Arcade与订阅、免费互动教程、20种语言及25个地区选项、意大利语音乐和英文歌词字幕。",
+    "tag": "DevFridge Hackathon · 免费 · Arcade · 订阅",
     "intro": "半只毛绒小鸡在三条跑道间奔跑，选择数字、词语和形状缺失的一半。躲避障碍、收集羽毛，完整小鸡出现时保持不动。",
     "play": "选择模式并开始 →",
     "source": "源代码与参赛材料",
@@ -366,8 +372,8 @@
     "downloadMobile": "下载英文手机版录像",
     "accessTitle": "访问条件与限制",
     "accessIntro": "订阅需要已连接钱包在DevFridge中有至少10,000,000 MEMEZZO的有效锁仓。没有最低锁仓时长要求，验证时不计算已到期锁仓。代币地址：",
-    "accessOutro": "。免费互动教程可以从菜单重新体验。Arcade和订阅的纪录分别保存在本地，未经验证。",
-    "lives": "订阅每满100万MEMEZZO获得总计1条初始生命，没有基础生命。最低需要10,000,000 MEMEZZO：10,000,000对应10条生命，10,999,999对应10条，11,000,000对应11条。每局初始生命固定，恢复游戏或商店验证都不会补充生命。 Arcade：困难 — 0.001 SOL，1条生命；中等 — 0.002 SOL，3条生命；简单 — 0.003 SOL，9条生命；神级 — 0.01 SOL，32条生命。每局都需要重新付款，网络手续费另计。",
+    "accessOutro": "。免费互动教程可以从菜单重新体验。各模式的纪录分别保存在本地，未经验证。",
+    "lives": "免费: 每局1条生命，局与局之间会展示OnlyFridge Club推广。无需钱包或付款。 订阅每满100万MEMEZZO获得总计1条初始生命，没有基础生命。最低需要10,000,000 MEMEZZO：10,000,000对应10条生命，10,999,999对应10条，11,000,000对应11条。每局初始生命固定，恢复游戏或商店验证都不会补充生命。 Arcade：中等 — 0.002 SOL，3条生命；简单 — 0.003 SOL，9条生命；神级 — 0.01 SOL，32条生命。每局都需要重新付款，网络手续费另计。",
     "verification": "订阅只在你主动请求时于商店验证，开始游戏、游戏过程中和恢复游戏时均不会自动验证。已验证生命在本次会话内有效，直至再次手动验证、更换钱包、断开连接或刷新页面。进行中的游戏不受影响。验证只读取锁仓，无需交易签名；Arcade付款需要钱包批准。",
     "fees": "锁仓的创建和赎回均在DevFridge进行，无法提前取出。赎回收取2%手续费，用于购买并销毁PASTA，另需支付网络费用。赎回MEMEZZO需要可执行的Jupiter路径。钱包功能仅供成年人使用。",
     "team": "团队：Pappardelle · 公开联系方式：",
@@ -375,7 +381,7 @@
   },
   "native": {
     "menu": "应用菜单",
-    "hard": "Arcade · 4个等级 · 0.001 SOL起",
+    "hard": "Arcade · 3个等级 · 0.002 SOL起",
     "easy": "订阅 · 锁仓至少1,000万MEMEZZO",
     "reload": "重新加载",
     "privacy": "隐私与应用信息（英文）",
@@ -389,12 +395,13 @@
     "loadError": "无法打开游戏。请使用应用菜单 → 重新加载。",
     "noBrowser": "未安装浏览器",
     "walletMissing": "请安装兼容MWA的Solana钱包，然后重试。",
-    "arcade": "Arcade · 4个等级 · 0.001 SOL起",
-    "subscription": "订阅 · 锁仓至少1,000万MEMEZZO"
+    "arcade": "Arcade · 3个等级 · 0.002 SOL起",
+    "subscription": "订阅 · 锁仓至少1,000万MEMEZZO",
+    "free": "免费 · 1条生命"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4个等级 · 0.001 SOL起",
+    "detail": "3个等级 · 0.002 SOL起",
     "play": "玩Arcade",
     "hint": "选择Arcade等级。每开始新的一局都需要支付SOL。无需MEMEZZO。",
     "title": "Arcade",
@@ -419,7 +426,7 @@
     "connecting": "请在钱包中批准连接。连接钱包不会进行付款。",
     "busy": "请先完成当前付款，再发起另一笔付款。",
     "receipt": "查看付款",
-    "how": "Arcade：困难 — 0.001 SOL，1条生命；中等 — 0.002 SOL，3条生命；简单 — 0.003 SOL，9条生命；神级 — 0.01 SOL，32条生命。每局都需要重新付款，网络手续费另计。",
+    "how": "Arcade：中等 — 0.002 SOL，3条生命；简单 — 0.003 SOL，9条生命；神级 — 0.01 SOL，32条生命。每局都需要重新付款，网络手续费另计。",
     "choose": "选择你的Arcade等级",
     "hard": "困难",
     "medium": "中等",
@@ -435,5 +442,12 @@
     "connectHint": "请先连接您的 Solana 钱包。连接钱包不会进行付款。",
     "walletFailed": "无法连接。请解锁钱包后重试。",
     "walletMismatch": "这笔已保存的付款属于另一个钱包。请连接用于这笔付款的钱包。"
+  },
+  "sponsor": {
+    "label": "推广",
+    "title": "OnlyFridge Club",
+    "body": "在Solana dApp Store探索OnlyFridge Club。下一局免费游戏已准备就绪。",
+    "open": "在dApp Store打开",
+    "continue": "继续游戏"
   }
 }

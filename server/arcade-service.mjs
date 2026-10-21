@@ -1,5 +1,5 @@
 import { randomBytes, randomUUID } from 'node:crypto';
-import { ArcadeError, POLICY, SYSTEM_PROGRAM, MEMO_PROGRAM, UUID, decode58, encode58, digest, requestSecret, authorized, tierPolicy } from './arcade-config.mjs';
+import { ArcadeError, POLICY, AVAILABLE_TIERS, SYSTEM_PROGRAM, MEMO_PROGRAM, UUID, decode58, encode58, digest, requestSecret, authorized, tierPolicy } from './arcade-config.mjs';
 import { buildTransaction, verifyTransaction } from './arcade-chain.mjs';
 
 function validateId(value) { if (typeof value !== 'string' || !UUID.test(value)) throw new ArcadeError('invalid_intent'); }
@@ -30,6 +30,16 @@ export class ArcadeService {
     const tier = tierPolicy(input.tier);
     decode58(input.payer, 32);
     if ([POLICY.recipient, SYSTEM_PROGRAM, MEMO_PROGRAM].includes(input.payer)) throw new ArcadeError('invalid_address');
+    // Resolve old idempotency keys without creating any new retired-tier credit.
+    if (!Object.hasOwn(AVAILABLE_TIERS, input.tier)) {
+      const existing = await this.store.getByRequest(input.requestId);
+      if (!existing) throw new ArcadeError('invalid_tier');
+      if (existing.payer !== input.payer) throw new ArcadeError('payer_mismatch', 409);
+      if (existing.tier !== input.tier) throw new ArcadeError('tier_mismatch', 409);
+      const secret = requestSecret(input.requestId);
+      authorized(existing, secret);
+      return { ...publicIntent(existing), secret };
+    }
     // Resolve storage/chain/recipient configuration before offering a payment.
     await this.ready();
     const secret = requestSecret(input.requestId);

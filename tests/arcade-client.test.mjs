@@ -141,7 +141,7 @@ test('an account switch while preparing a payment prevents signing and preserves
     if (action === 'prepare') h.provider.publicKey = OTHER_PAYER;
     return result;
   } });
-  await assert.rejects(h.client.pay('hard'), /payer_mismatch/);
+  await assert.rejects(h.client.pay('medium'), /payer_mismatch/);
   assert.equal(h.sends.length, 0);
   assert.equal(h.client.pending.payer, PAYER);
 });
@@ -150,7 +150,7 @@ test('checkout uses the provider from the active mobile session rather than redi
   const h = harness({ failAction: 'create' });
   let connected = 0;
   const session = { publicKey: PAYER, connect: async () => { connected++; return { publicKey: PAYER }; } };
-  await assert.rejects(h.client.pay('hard', session), /arcade_unavailable/);
+  await assert.rejects(h.client.pay('medium', session), /arcade_unavailable/);
   assert.equal(connected, 1);
   assert.equal(h.connects.length, 0);
   assert.equal(h.sends.length, 0);
@@ -177,7 +177,7 @@ test('concurrent payment, recovery and start cannot prompt a second transfer', a
 test('fresh explicit wallet cancellation releases the unpaid selection and grants no run', async () => {
   const rejected = Object.assign(Error('user cancelled'), { code: 4001 });
   const h = harness({ send: async () => { throw rejected; } });
-  await assert.rejects(h.client.pay('hard'), error => error === rejected);
+  await assert.rejects(h.client.pay('medium'), error => error === rejected);
   assert.equal(h.storage.getItem(KEY), null);
   assert.equal(h.client.pending, null);
   assert.ok(h.notifications.includes('rejected'));
@@ -194,9 +194,9 @@ test('cancellation after an unknown earlier attempt retains its recovery evidenc
     if (++attempts === 1) throw Error('wallet channel closed');
     throw Object.assign(Error('user cancelled'), { code: 4001 });
   } });
-  await assert.rejects(h.client.pay('hard'), /wallet channel closed/);
+  await assert.rejects(h.client.pay('medium'), /wallet channel closed/);
   const saved = JSON.parse(h.storage.getItem(KEY));
-  await assert.rejects(h.client.pay('hard'), /user cancelled/);
+  await assert.rejects(h.client.pay('medium'), /user cancelled/);
   assert.equal(JSON.parse(h.storage.getItem(KEY)).intentId, saved.intentId);
   assert.equal(h.client.pending.attempted, true);
   assert.ok(h.notifications.includes('recovery'));
@@ -212,7 +212,7 @@ test('shared cross-tab lock makes simultaneous clients recover one purchase inst
   };
   const h = harness({ withLock });
   const secondTab = h.makeClient();
-  const [first, second] = await Promise.all([h.client.pay('hard'), secondTab.pay('hard')]);
+  const [first, second] = await Promise.all([h.client.pay('medium'), secondTab.pay('medium')]);
   assert.equal(first.intentId, second.intentId);
   assert.equal(first.status, 'paid');
   assert.equal(second.status, 'paid');
@@ -279,10 +279,10 @@ test('failed signature persistence recovers the broadcast payment using the save
 
 test('pending confirmation blocks new-tier payments and account substitution', async () => {
   const h = harness({ confirmed: false });
-  assert.equal((await h.client.pay('hard')).status, 'pending');
+  assert.equal((await h.client.pay('medium')).status, 'pending');
   await assert.rejects(h.client.pay('god'), /pending_tier/);
   h.provider.publicKey = OTHER_PAYER;
-  await assert.rejects(h.client.pay('hard'), /payer_mismatch/);
+  await assert.rejects(h.client.pay('medium'), /payer_mismatch/);
   assert.equal(h.sends.length, 1);
   assert.equal(h.calls.filter(call => call.action === 'create').length, 1);
 });
@@ -318,7 +318,7 @@ test('paid intent starts exactly once and cannot be replayed after reload', asyn
 test('failed API operations never return run admission', async t => {
   for (const action of ['config', 'create', 'prepare', 'status']) await t.test(action, async () => {
     const h = harness({ failAction: action });
-    await assert.rejects(h.client.pay('hard'), /arcade_unavailable/);
+    await assert.rejects(h.client.pay('medium'), /arcade_unavailable/);
     assert.equal(h.calls.some(call => call.action === 'start'), false);
     if (action !== 'status') assert.equal(h.sends.length, 0);
   });
@@ -338,7 +338,7 @@ test('mismatched payment responses fail before any wallet transfer', async t => 
   };
   for (const [key, value] of Object.entries(mutations)) await t.test(key, async () => {
     const h = harness({ transform: (action, result) => action === 'prepare' ? { ...result, [key]: value } : result });
-    await assert.rejects(h.client.pay('hard'), /payment_mismatch/);
+    await assert.rejects(h.client.pay('medium'), /payment_mismatch/);
     assert.equal(h.sends.length, 0);
   });
 });
@@ -389,7 +389,7 @@ test('recovery preserves every ambiguous, prepared or already paid record', asyn
   for (const [name, scenario] of Object.entries(cases)) await t.test(name, async () => {
     const h = harness({ failAction: 'prepare', canReleaseDraft: scenario.canReleaseDraft,
       transform: (action, result) => action === 'status' ? { ...result, ...scenario.remote } : result });
-    await assert.rejects(h.client.pay('hard'), /arcade_unavailable/);
+    await assert.rejects(h.client.pay('medium'), /arcade_unavailable/);
     const stored = JSON.parse(h.storage.getItem(KEY));
     h.storage.setItem(KEY, JSON.stringify({ ...stored, ...scenario.local }));
     const reopened = h.makeClient();
@@ -408,7 +408,7 @@ test('failed recovery never deletes a draft without a fresh server result', asyn
     if (failStatus && action === 'status') throw Error('offline');
     return result;
   } });
-  await assert.rejects(h.client.pay('hard'), /arcade_unavailable/);
+  await assert.rejects(h.client.pay('medium'), /arcade_unavailable/);
   const saved = h.storage.getItem(KEY);
   failStatus = true;
   await assert.rejects(h.makeClient().recover(), /offline/);
@@ -427,7 +427,7 @@ test('recovery queued behind another tab rereads the paid receipt instead of rel
   };
   const h = harness({ withLock, send: async ({ paid }) => { enteredSend(); await blocked; paid(); return { signature: SIGNATURE }; } });
   const secondTab = h.makeClient();
-  const payment = h.client.pay('hard');
+  const payment = h.client.pay('medium');
   await entered;
   const recovery = secondTab.recover();
   releaseSend();
@@ -442,10 +442,54 @@ test('checkout messages distinguish drafts, wallet handoffs and confirmation', (
   assert.equal(arcadePaymentState(null), 'connecting');
   assert.equal(arcadePaymentState(intent()), 'connecting');
   assert.equal(arcadePaymentState({ ...intent(), prepared: true }), 'connecting');
+  assert.equal(arcadePaymentState({ ...intent(), prepared: true, recoveryRequired: true }), 'connecting');
   assert.equal(arcadePaymentState({ ...intent(), attempted: true }), 'recovery');
   assert.equal(arcadePaymentState({ ...intent(), recoveryRequired: true }), 'recovery');
   assert.equal(arcadePaymentState({ ...intent(), signature: SIGNATURE }), 'pending');
   assert.equal(arcadePaymentState({ ...intent(), confirming: true }), 'pending');
   assert.equal(arcadePaymentState({ ...intent(), status: 'paid' }), 'ready');
   assert.equal(arcadePaymentState({ ...intent(), status: 'started' }), 'consumed');
+});
+
+test('first checkout preparation never reports an unfinished previous payment', async () => {
+  const h = harness({ transform: (action, result) => action === 'prepare' ? { ...result, prepared: true } : result });
+  assert.equal(await h.client.recover(), null);
+  assert.equal(h.calls.length, 0, 'Opening an empty checkout does not create a request');
+  await h.client.pay('medium');
+  assert.equal(h.notifications.includes('recovery'), false);
+  assert.equal(h.sends.length, 1);
+});
+
+test('retired Hard cannot create a new purchase but its existing paid receipt starts once', async () => {
+  const h = harness();
+  await assert.rejects(h.client.pay('hard'), /invalid_tier/);
+  assert.equal(h.connects.length, 0);
+  assert.equal(h.calls.length, 0);
+  h.storage.setItem(KEY, JSON.stringify({ requestId: '00000000-0000-4000-8000-000000000098', payer: PAYER, tier: 'hard', attempted: true }));
+  const legacy = h.makeClient();
+  await legacy.recover();
+  h.paid();
+  assert.equal((await legacy.recover()).status, 'paid');
+  assert.equal((await legacy.start()).lives, 1);
+  await assert.rejects(legacy.start(), /payment_pending/);
+  assert.equal(h.sends.length, 0);
+});
+
+test('retired uncreated Hard draft is released only after a locked definitive no-intent response', async t => {
+  for (const scenario of [
+    { name: 'unused draft', fields: {}, release: true, canReleaseDraft: true, error: 'invalid_tier' },
+    { name: 'ambiguous wallet handoff', fields: { attempted: true }, release: false, canReleaseDraft: true, error: 'invalid_tier' },
+    { name: 'prepared evidence', fields: { prepared: true }, release: false, canReleaseDraft: true, error: 'invalid_tier' },
+    { name: 'no cross-tab lock', fields: {}, release: false, canReleaseDraft: false, error: 'invalid_tier' },
+    { name: 'network failure', fields: {}, release: false, canReleaseDraft: true, error: 'arcade_unavailable' },
+  ]) await t.test(scenario.name, async () => {
+    const storage = memoryStorage();
+    const draft = { requestId: '00000000-0000-4000-8000-000000000097', payer: PAYER, tier: 'hard', ...scenario.fields };
+    storage.setItem(KEY, JSON.stringify(draft));
+    const client = createArcadeClient({ storage, canReleaseDraft: scenario.canReleaseDraft,
+      getProvider: () => { throw Error('No wallet should be contacted'); },
+      request: async input => { assert.equal(input.action, 'create'); throw Error(scenario.error); } });
+    if (scenario.release) { assert.equal(await client.recover(), null); assert.equal(storage.getItem(KEY), null); }
+    else { await assert.rejects(client.recover(), new RegExp(scenario.error)); assert.equal(storage.getItem(KEY), JSON.stringify(draft)); }
+  });
 });

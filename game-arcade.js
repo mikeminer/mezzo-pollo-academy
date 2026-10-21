@@ -10,7 +10,7 @@
     'payment_pending', 'payment_required', 'pending_tier', 'rate_limited', 'recipient_unavailable', 'request_too_large',
     'storage_unavailable', 'tier_mismatch', 'unavailable', 'wallet_disconnected', 'wrong_network']);
   const diagnosticNames = new Set(['Error', 'TypeError', 'SyntaxError', 'RangeError', 'DOMException', 'AbortError', 'TimeoutError']);
-  let tier = 'hard', client, loading, visible = false, callback, admission = false, status = 'connecting', ready = false, working = false, timer, generation = 0;
+  let tier = 'medium', client, loading, visible = false, callback, admission = false, status = 'connecting', ready = false, working = false, timer, generation = 0;
   let walletConnecting = false, walletError = null;
   const provider = () => window.MezzoWallet?.getProvider() || window.MezzoAndroid?.provider || window.phantom?.solana || (window.solana?.isPhantom ? window.solana : null);
   const walletAddress = () => {
@@ -125,6 +125,7 @@
   function accept(result) {
     ready = result?.status === 'paid';
     if (result?.tier && result.status !== 'started') tier = result.tier;
+    else if (!result || result.status === 'started') { if (tier === 'hard') tier = 'medium'; }
     status = result?.status === 'started' ? 'consumed' : client.state;
     render();
   }

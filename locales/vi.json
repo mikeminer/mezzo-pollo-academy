@@ -71,7 +71,7 @@
     "Đọc câu hỏi phía trên. Chạy qua cổng có <b>nửa còn lại phù hợp</b> để hoàn thành số, từ và hình dạng.",
     "Khi <b>GÀ NGUYÊN CON</b> xuất hiện, giữ nguyên làn cho đến khi bức tượng đi qua.",
     "Đôi khi luật bị đảo: trong <b>chế độ đảo ngược</b>, hãy chọn đáp án sai.",
-    "Arcade: Khó — 1 mạng với 0,001 SOL; Trung bình — 3 mạng với 0,002 SOL; Dễ — 9 mạng với 0,003 SOL; Thần — 32 mạng với 0,01 SOL. Mỗi lượt cần thanh toán mới; phí mạng được tính riêng.",
+    "Miễn phí: 1 mạng mỗi lượt, có giới thiệu OnlyFridge Club giữa các lượt. Không cần ví hay thanh toán. Arcade: Trung bình — 3 mạng với 0,002 SOL; Dễ — 9 mạng với 0,003 SOL; Thần — 32 mạng với 0,01 SOL. Mỗi lượt cần thanh toán mới; phí mạng được tính riêng.",
     "Khóa có thời hạn ít nhất 10.000.000 MEMEZZO trên DevFridge. Mỗi triệu trọn vẹn cho tổng cộng 1 mạng ban đầu, tối thiểu 10 mạng. Xác minh thủ công trong Cửa hàng; không có kiểm tra làm gián đoạn lượt chơi.",
     "Quay lại",
     "Cửa hàng · Đăng ký",
@@ -252,7 +252,7 @@
     "community": "Tham gia kênh Telegram",
     "hard": "Arcade",
     "easy": "Đăng ký",
-    "hardDetail": "4 cấp độ · từ 0,001 SOL",
+    "hardDetail": "3 cấp độ · từ 0,002 SOL",
     "easyDetail": "10 triệu+ MEMEZZO khóa có thời hạn",
     "choose": "Chọn chế độ",
     "playHard": "Chơi Arcade",
@@ -267,7 +267,7 @@
     "badge": "CHẾ ĐỘ {mode}",
     "shopNote": "MEMEZZO vẫn được khóa có thời hạn trên DevFridge. Đăng ký không cần trả SOL cho từng lượt. Arcade cần thanh toán mỗi lượt.",
     "link": "Thử hướng dẫn miễn phí →",
-    "title": "MezzoPollo — Arcade · Đăng ký",
+    "title": "MezzoPollo — Miễn phí · Arcade · Đăng ký",
     "back": "Trở lại trò chơi",
     "tutorialHud": "HƯỚNG DẪN · luyện tập không mất mạng",
     "tutorialQuestion": "Làm theo hướng dẫn bên dưới",
@@ -276,7 +276,13 @@
     "subscription": "Đăng ký",
     "subscriptionDetail": "10 triệu+ MEMEZZO khóa có thời hạn",
     "playSubscription": "Chơi Đăng ký · {count} {lives}",
-    "subscriptionHint": "Khóa có thời hạn ít nhất 10.000.000 MEMEZZO trên DevFridge. Mỗi triệu trọn vẹn cho tổng cộng 1 mạng ban đầu, tối thiểu 10 mạng. Xác minh thủ công trong Cửa hàng; không có kiểm tra làm gián đoạn lượt chơi."
+    "subscriptionHint": "Khóa có thời hạn ít nhất 10.000.000 MEMEZZO trên DevFridge. Mỗi triệu trọn vẹn cho tổng cộng 1 mạng ban đầu, tối thiểu 10 mạng. Xác minh thủ công trong Cửa hàng; không có kiểm tra làm gián đoạn lượt chơi.",
+    "free": "Miễn phí",
+    "freeDesc": "1 mạng · Không cần ví hay thanh toán",
+    "freeStart": "Chơi miễn phí",
+    "freeHud": "Miễn phí · 1 mạng",
+    "freeEnd": "Miễn phí · 1 mạng",
+    "freeHint": "1 mạng mỗi lượt, có giới thiệu OnlyFridge Club giữa các lượt. Không cần ví hay thanh toán."
   },
   "tutorial": {
     "label": "Vừa chơi vừa học",
@@ -288,7 +294,7 @@
     "finish": "Bắt đầu chơi",
     "retry": "Thử lại",
     "good": "Hiểu rồi! Sẵn sàng cho thử thách tiếp theo.",
-    "done": "Sẵn sàng! Chọn Arcade hoặc Đăng ký. Bạn có thể chơi lại hướng dẫn miễn phí bất cứ lúc nào.",
+    "done": "Sẵn sàng! Chọn Miễn phí, Arcade hoặc Đăng ký. Bạn có thể chơi lại hướng dẫn miễn phí bất cứ lúc nào.",
     "again": "Không sao! Thử lại thử thách này nhé.",
     "leftControl": "Sang trái",
     "rightControl": "Sang phải",
@@ -346,8 +352,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — bản trình diễn trò chơi",
-    "description": "MezzoPollo: Arcade và Đăng ký, hướng dẫn tương tác miễn phí, 20 ngôn ngữ với 25 lựa chọn khu vực, nhạc tiếng Ý và phụ đề bài hát tiếng Anh.",
-    "tag": "DevFridge Hackathon · Arcade · Đăng ký",
+    "description": "Miễn phí: 1 mạng mỗi lượt, có giới thiệu OnlyFridge Club giữa các lượt. Không cần ví hay thanh toán. MezzoPollo: Arcade và Đăng ký, hướng dẫn tương tác miễn phí, 20 ngôn ngữ với 25 lựa chọn khu vực, nhạc tiếng Ý và phụ đề bài hát tiếng Anh.",
+    "tag": "DevFridge Hackathon · Miễn phí · Arcade · Đăng ký",
     "intro": "Nửa chú gà bông chạy qua ba làn, chọn nửa còn thiếu của số, từ và hình dạng. Né chướng ngại, nhặt lông và đứng yên khi GÀ NGUYÊN CON xuất hiện.",
     "play": "Chọn chế độ và chơi →",
     "source": "Mã nguồn và bằng chứng nộp bài",
@@ -366,8 +372,8 @@
     "downloadMobile": "Tải video di động tiếng Anh",
     "accessTitle": "Quyền truy cập và giới hạn",
     "accessIntro": "Đăng ký cần ít nhất 10.000.000 MEMEZZO trong các khóa DevFridge đang hoạt động của ví đã kết nối. Không có thời hạn tối thiểu; khóa hết hạn không được tính khi xác minh. Địa chỉ token:",
-    "accessOutro": ". Có thể chơi lại hướng dẫn tương tác miễn phí từ menu. Kỷ lục Arcade và Đăng ký được lưu riêng, cục bộ và chưa xác minh.",
-    "lives": "Đăng ký cho tổng cộng 1 mạng ban đầu cho mỗi triệu MEMEZZO trọn vẹn, không có mạng cơ bản. Cần tối thiểu 10.000.000 MEMEZZO: 10.000.000 cho 10 mạng, 10.999.999 cho 10 và 11.000.000 cho 11. Mạng ban đầu cố định cho mỗi lượt; tiếp tục hoặc xác minh trong Cửa hàng không nạp lại mạng. Arcade: Khó — 1 mạng với 0,001 SOL; Trung bình — 3 mạng với 0,002 SOL; Dễ — 9 mạng với 0,003 SOL; Thần — 32 mạng với 0,01 SOL. Mỗi lượt cần thanh toán mới; phí mạng được tính riêng.",
+    "accessOutro": ". Có thể chơi lại hướng dẫn tương tác miễn phí từ menu. Kỷ lục mỗi chế độ được lưu riêng, cục bộ và chưa xác minh.",
+    "lives": "Miễn phí: 1 mạng mỗi lượt, có giới thiệu OnlyFridge Club giữa các lượt. Không cần ví hay thanh toán. Đăng ký cho tổng cộng 1 mạng ban đầu cho mỗi triệu MEMEZZO trọn vẹn, không có mạng cơ bản. Cần tối thiểu 10.000.000 MEMEZZO: 10.000.000 cho 10 mạng, 10.999.999 cho 10 và 11.000.000 cho 11. Mạng ban đầu cố định cho mỗi lượt; tiếp tục hoặc xác minh trong Cửa hàng không nạp lại mạng. Arcade: Trung bình — 3 mạng với 0,002 SOL; Dễ — 9 mạng với 0,003 SOL; Thần — 32 mạng với 0,01 SOL. Mỗi lượt cần thanh toán mới; phí mạng được tính riêng.",
     "verification": "Đăng ký chỉ được kiểm tra khi bạn yêu cầu trong Cửa hàng, không tự động khi bắt đầu, đang chơi hoặc tiếp tục. Mạng đã xác minh có hiệu lực trong phiên này đến lần kiểm tra thủ công mới, đổi ví, ngắt kết nối hoặc tải lại trang. Lượt đang chơi không bị ảnh hưởng. Xác minh chỉ đọc khóa, không yêu cầu chữ ký giao dịch; thanh toán Arcade cần phê duyệt trong ví.",
     "fees": "Tạo và rút khóa trên DevFridge, không được rút trước hạn, có phí rút 2% để mua và đốt PASTA, cộng phí mạng. Rút MEMEZZO cần tuyến Jupiter có thể thực hiện được. Chức năng ví dành cho người lớn.",
     "team": "Nhóm: Pappardelle · Liên hệ công khai:",
@@ -375,7 +381,7 @@
   },
   "native": {
     "menu": "Menu ứng dụng",
-    "hard": "Arcade · 4 cấp độ · từ 0,001 SOL",
+    "hard": "Arcade · 3 cấp độ · từ 0,002 SOL",
     "easy": "Đăng ký · 10 triệu+ MEMEZZO khóa có thời hạn",
     "reload": "Tải lại",
     "privacy": "Quyền riêng tư và thông tin ứng dụng (tiếng Anh)",
@@ -389,12 +395,13 @@
     "loadError": "Không mở được trò chơi. Chọn Menu ứng dụng → Tải lại.",
     "noBrowser": "Chưa cài trình duyệt",
     "walletMissing": "Cài ví Solana tương thích MWA rồi thử lại.",
-    "arcade": "Arcade · 4 cấp độ · từ 0,001 SOL",
-    "subscription": "Đăng ký · 10 triệu+ MEMEZZO khóa có thời hạn"
+    "arcade": "Arcade · 3 cấp độ · từ 0,002 SOL",
+    "subscription": "Đăng ký · 10 triệu+ MEMEZZO khóa có thời hạn",
+    "free": "Miễn phí · 1 mạng"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4 cấp độ · từ 0,001 SOL",
+    "detail": "3 cấp độ · từ 0,002 SOL",
     "play": "Chơi Arcade",
     "hint": "Chọn cấp độ Arcade. Mỗi lượt mới cần thanh toán bằng SOL. Không cần MEMEZZO.",
     "title": "Arcade",
@@ -419,7 +426,7 @@
     "connecting": "Chấp thuận kết nối trong ví của bạn. Kết nối ví không thực hiện thanh toán.",
     "busy": "Hoàn tất khoản thanh toán hiện tại trước khi bắt đầu khoản khác.",
     "receipt": "Xem thanh toán",
-    "how": "Arcade: Khó — 1 mạng với 0,001 SOL; Trung bình — 3 mạng với 0,002 SOL; Dễ — 9 mạng với 0,003 SOL; Thần — 32 mạng với 0,01 SOL. Mỗi lượt cần thanh toán mới; phí mạng được tính riêng.",
+    "how": "Arcade: Trung bình — 3 mạng với 0,002 SOL; Dễ — 9 mạng với 0,003 SOL; Thần — 32 mạng với 0,01 SOL. Mỗi lượt cần thanh toán mới; phí mạng được tính riêng.",
     "choose": "Chọn cấp độ Arcade của bạn",
     "hard": "Khó",
     "medium": "Trung bình",
@@ -435,5 +442,12 @@
     "connectHint": "Hãy kết nối ví Solana của bạn trước. Kết nối ví không thực hiện thanh toán.",
     "walletFailed": "Không thể kết nối. Hãy mở khóa ví và thử lại.",
     "walletMismatch": "Khoản thanh toán đã lưu này thuộc về ví khác. Hãy kết nối ví đã dùng để thanh toán."
+  },
+  "sponsor": {
+    "label": "Quảng bá",
+    "title": "OnlyFridge Club",
+    "body": "Khám phá OnlyFridge Club trên Solana dApp Store. Lượt chơi miễn phí tiếp theo đã sẵn sàng.",
+    "open": "Mở trong dApp Store",
+    "continue": "Chơi tiếp"
   }
 }
