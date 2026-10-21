@@ -71,7 +71,7 @@
     "위쪽 문제를 읽고 <b>딱 맞는 나머지 절반</b>이 있는 문을 지나 숫자, 단어, 모양을 완성하세요.",
     "<b>온전한 닭</b>이 나타나면 조각상이 지나갈 때까지 현재 레인을 유지하세요.",
     "가끔 규칙이 뒤집힙니다. <b>반대 모드</b>에서는 틀린 답을 고르세요.",
-    "Arcade: 어려움 — 0.001 SOL에 목숨 1개; 보통 — 0.002 SOL에 목숨 3개; 쉬움 — 0.003 SOL에 목숨 9개; 신 — 0.01 SOL에 목숨 32개. 매 판 새 결제가 필요하며 네트워크 수수료는 별도입니다.",
+    "무료: 매 판 목숨 1개가 주어지며, 판 사이에 OnlyFridge Club 홍보가 표시됩니다. 지갑이나 결제가 필요하지 않습니다. Arcade: 보통 — 0.002 SOL에 목숨 3개; 쉬움 — 0.003 SOL에 목숨 9개; 신 — 0.01 SOL에 목숨 32개. 매 판 새 결제가 필요하며 네트워크 수수료는 별도입니다.",
     "DevFridge에 MEMEZZO를 최소 10,000,000개 기간 잠금하세요. 온전한 100만 개마다 총 시작 목숨 1개가 주어져 최소 10개로 시작합니다. 상점에서 수동으로 확인하며, 확인으로 게임이 중단되지 않습니다.",
     "뒤로",
     "상점 · 구독",
@@ -252,7 +252,7 @@
     "community": "Telegram 채널 참여하기",
     "hard": "Arcade",
     "easy": "구독",
-    "hardDetail": "4단계 · 0.001 SOL부터",
+    "hardDetail": "3단계 · 0.002 SOL부터",
     "easyDetail": "MEMEZZO 1,000만 이상 기간 잠금",
     "choose": "모드 선택",
     "playHard": "Arcade 플레이",
@@ -267,7 +267,7 @@
     "badge": "{mode} 모드",
     "shopNote": "MEMEZZO는 DevFridge에 기간 잠금된 상태로 유지됩니다. 구독은 매 판 SOL 결제를 요구하지 않습니다. Arcade는 매 판 결제가 필요합니다.",
     "link": "무료 튜토리얼 체험 →",
-    "title": "MezzoPollo — Arcade · 구독",
+    "title": "MezzoPollo — 무료 · Arcade · 구독",
     "back": "게임으로 돌아가기",
     "tutorialHud": "튜토리얼 · 목숨을 잃지 않는 연습",
     "tutorialQuestion": "아래 안내를 따르세요",
@@ -276,7 +276,13 @@
     "subscription": "구독",
     "subscriptionDetail": "MEMEZZO 1,000만 이상 기간 잠금",
     "playSubscription": "구독 플레이 · {count} {lives}",
-    "subscriptionHint": "DevFridge에 MEMEZZO를 최소 10,000,000개 기간 잠금하세요. 온전한 100만 개마다 총 시작 목숨 1개가 주어져 최소 10개로 시작합니다. 상점에서 수동으로 확인하며, 확인으로 게임이 중단되지 않습니다."
+    "subscriptionHint": "DevFridge에 MEMEZZO를 최소 10,000,000개 기간 잠금하세요. 온전한 100만 개마다 총 시작 목숨 1개가 주어져 최소 10개로 시작합니다. 상점에서 수동으로 확인하며, 확인으로 게임이 중단되지 않습니다.",
+    "free": "무료",
+    "freeDesc": "목숨 1개 · 지갑이나 결제 불필요",
+    "freeStart": "무료 플레이",
+    "freeHud": "무료 · 목숨 1개",
+    "freeEnd": "무료 · 목숨 1개",
+    "freeHint": "매 판 목숨 1개가 주어지며, 판 사이에 OnlyFridge Club 홍보가 표시됩니다. 지갑이나 결제가 필요하지 않습니다."
   },
   "tutorial": {
     "label": "플레이하며 배우기",
@@ -288,7 +294,7 @@
     "finish": "플레이 시작",
     "retry": "다시 도전",
     "good": "성공! 다음 도전을 시작해도 좋아요.",
-    "done": "준비 완료! Arcade 또는 구독을 선택하세요. 무료 튜토리얼은 언제든 다시 할 수 있습니다.",
+    "done": "준비 완료! 무료, Arcade 또는 구독을 선택하세요. 무료 튜토리얼은 언제든 다시 할 수 있습니다.",
     "again": "괜찮아요! 같은 도전에 다시 도전하세요.",
     "leftControl": "왼쪽 이동",
     "rightControl": "오른쪽 이동",
@@ -346,8 +352,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — 게임 플레이 데모",
-    "description": "MezzoPollo: Arcade와 구독, 무료 대화형 튜토리얼, 25개 지역 옵션을 지원하는 20개 언어, 이탈리아어 음악과 영어 가사 자막.",
-    "tag": "DevFridge Hackathon · Arcade · 구독",
+    "description": "무료: 매 판 목숨 1개가 주어지며, 판 사이에 OnlyFridge Club 홍보가 표시됩니다. 지갑이나 결제가 필요하지 않습니다. MezzoPollo: Arcade와 구독, 무료 대화형 튜토리얼, 25개 지역 옵션을 지원하는 20개 언어, 이탈리아어 음악과 영어 가사 자막.",
+    "tag": "DevFridge Hackathon · 무료 · Arcade · 구독",
     "intro": "반쪽 봉제 닭이 세 레인을 달리며 숫자, 단어, 모양의 빠진 절반을 고릅니다. 장애물을 피하고 깃털을 모으세요. 온전한 닭이 나타나면 가만히 있으세요.",
     "play": "모드를 고르고 플레이 →",
     "source": "소스 코드 및 출품 증빙",
@@ -366,8 +372,8 @@
     "downloadMobile": "영어 모바일 녹화 다운로드",
     "accessTitle": "이용 조건과 제한",
     "accessIntro": "구독에는 연결된 지갑의 활성 DevFridge 기간 잠금에 최소 10,000,000 MEMEZZO가 필요합니다. 최소 기간은 없으며, 만료된 잠금은 확인할 때 제외됩니다. 토큰 주소:",
-    "accessOutro": ". 무료 대화형 튜토리얼은 메뉴에서 다시 플레이할 수 있습니다. Arcade와 구독 기록은 별도로 기기에 저장되며 검증되지 않습니다.",
-    "lives": "구독은 MEMEZZO 100만 개마다 총 시작 목숨 1개를 제공하며 기본 목숨은 없습니다. 최소 10,000,000 MEMEZZO가 필요합니다. 10,000,000개는 목숨 10개, 10,999,999개는 10개, 11,000,000개는 11개입니다. 시작 목숨은 매 판 고정되며 재개나 상점 확인으로 충전되지 않습니다. Arcade: 어려움 — 0.001 SOL에 목숨 1개; 보통 — 0.002 SOL에 목숨 3개; 쉬움 — 0.003 SOL에 목숨 9개; 신 — 0.01 SOL에 목숨 32개. 매 판 새 결제가 필요하며 네트워크 수수료는 별도입니다.",
+    "accessOutro": ". 무료 대화형 튜토리얼은 메뉴에서 다시 플레이할 수 있습니다. 각 모드의 기록은 별도로 기기에 저장되며 검증되지 않습니다.",
+    "lives": "무료: 매 판 목숨 1개가 주어지며, 판 사이에 OnlyFridge Club 홍보가 표시됩니다. 지갑이나 결제가 필요하지 않습니다. 구독은 MEMEZZO 100만 개마다 총 시작 목숨 1개를 제공하며 기본 목숨은 없습니다. 최소 10,000,000 MEMEZZO가 필요합니다. 10,000,000개는 목숨 10개, 10,999,999개는 10개, 11,000,000개는 11개입니다. 시작 목숨은 매 판 고정되며 재개나 상점 확인으로 충전되지 않습니다. Arcade: 보통 — 0.002 SOL에 목숨 3개; 쉬움 — 0.003 SOL에 목숨 9개; 신 — 0.01 SOL에 목숨 32개. 매 판 새 결제가 필요하며 네트워크 수수료는 별도입니다.",
     "verification": "구독 확인은 상점에서 요청할 때만 이루어지며 시작, 플레이 중 또는 재개 시 자동 확인하지 않습니다. 확인된 목숨은 이번 세션에서 새 수동 확인, 지갑 변경, 연결 해제 또는 새로고침 전까지 유효합니다. 진행 중인 게임에는 영향이 없습니다. 확인은 거래 서명 없이 기간 잠금 정보를 읽으며, Arcade 결제에는 지갑 승인이 필요합니다.",
     "fees": "잠금 생성과 상환은 DevFridge에서 이루어집니다. 조기 출금은 불가능하며 상환 시 PASTA 매수·소각용 2% 수수료와 별도 네트워크 수수료가 부과됩니다. MEMEZZO 상환에는 실행 가능한 Jupiter 경로가 필요합니다. 지갑 기능은 성인용입니다.",
     "team": "팀: Pappardelle · 공개 연락처:",
@@ -375,7 +381,7 @@
   },
   "native": {
     "menu": "앱 메뉴",
-    "hard": "Arcade · 4단계 · 0.001 SOL부터",
+    "hard": "Arcade · 3단계 · 0.002 SOL부터",
     "easy": "구독 · MEMEZZO 1,000만 이상 기간 잠금",
     "reload": "새로고침",
     "privacy": "개인정보 처리방침 및 앱 정보(영어)",
@@ -389,12 +395,13 @@
     "loadError": "게임을 열 수 없습니다. 앱 메뉴 → 새로고침을 사용하세요.",
     "noBrowser": "설치된 브라우저가 없습니다",
     "walletMissing": "MWA와 호환되는 Solana 지갑을 설치한 뒤 다시 시도하세요.",
-    "arcade": "Arcade · 4단계 · 0.001 SOL부터",
-    "subscription": "구독 · MEMEZZO 1,000만 이상 기간 잠금"
+    "arcade": "Arcade · 3단계 · 0.002 SOL부터",
+    "subscription": "구독 · MEMEZZO 1,000만 이상 기간 잠금",
+    "free": "무료 · 목숨 1개"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4단계 · 0.001 SOL부터",
+    "detail": "3단계 · 0.002 SOL부터",
     "play": "Arcade 플레이",
     "hint": "Arcade 단계를 선택하세요. 새 게임마다 SOL 결제가 필요합니다. MEMEZZO는 필요하지 않습니다.",
     "title": "Arcade",
@@ -419,7 +426,7 @@
     "connecting": "지갑에서 연결을 승인하세요. 지갑을 연결해도 결제되지 않습니다.",
     "busy": "다른 결제를 시작하기 전에 현재 결제를 완료하세요.",
     "receipt": "결제 보기",
-    "how": "Arcade: 어려움 — 0.001 SOL에 목숨 1개; 보통 — 0.002 SOL에 목숨 3개; 쉬움 — 0.003 SOL에 목숨 9개; 신 — 0.01 SOL에 목숨 32개. 매 판 새 결제가 필요하며 네트워크 수수료는 별도입니다.",
+    "how": "Arcade: 보통 — 0.002 SOL에 목숨 3개; 쉬움 — 0.003 SOL에 목숨 9개; 신 — 0.01 SOL에 목숨 32개. 매 판 새 결제가 필요하며 네트워크 수수료는 별도입니다.",
     "choose": "Arcade 단계 선택",
     "hard": "어려움",
     "medium": "보통",
@@ -435,5 +442,20 @@
     "connectHint": "먼저 Solana 지갑을 연결하세요. 지갑을 연결해도 결제되지 않습니다.",
     "walletFailed": "연결하지 못했습니다. 지갑 잠금을 해제하고 다시 시도하세요.",
     "walletMismatch": "이 저장된 결제는 다른 지갑의 결제입니다. 결제에 사용한 지갑을 연결하세요."
+  },
+  "sponsor": {
+    "label": "홍보",
+    "title": "OnlyFridge Club",
+    "body": "Solana dApp Store에서 OnlyFridge Club을 만나보세요. 다음 무료 게임이 준비되어 있습니다.",
+    "open": "dApp Store에서 열기",
+    "continue": "계속 플레이"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "여기에 토큰을 소개하세요: DevFridge Scan 홍보 공간",
+    "paidLabel": "유료 광고 · scan.devfridge.cool",
+    "disclaimer": "투자 조언이 아닙니다",
+    "openLabel": "DevFridge Scan에서 {name} 보기",
+    "emptyLabel": "DevFridge Scan에서 내 토큰 홍보하기"
   }
 }

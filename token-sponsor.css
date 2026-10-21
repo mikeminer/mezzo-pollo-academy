@@ -1,0 +1,16 @@
+#app{display:flex;flex-direction:column}
+#gameViewport{position:relative;flex:1;min-height:0;width:100%;overflow:hidden}
+#tokenSponsorSlot{flex:none;width:100%;padding:6px 10px;background:#182b24;color:#f2efe4;border-bottom:1px solid #738e71;z-index:3}
+#tokenSponsorSlot[hidden]{display:none!important}
+#tokenSponsorLink{display:flex;align-items:center;gap:10px;width:min(640px,100%);min-height:58px;margin:auto;padding:6px 12px;color:inherit;background:#253d30;border:1px dashed #c5a352;border-radius:9px;text-decoration:none;touch-action:manipulation}
+#tokenSponsorLink:focus-visible{outline:3px solid #e9b949;outline-offset:2px}
+#tokenSponsorLogo{flex:none;width:40px;height:40px;object-fit:contain;border-radius:6px;background:#182b24}
+#tokenSponsorMark{flex:none;display:grid;place-items:center;width:36px;height:36px;border:1px solid #bba15b;border-radius:6px;color:#e9b949;font-size:26px}
+.token-sponsor-copy{min-width:0;flex:1;font-family:var(--ui);line-height:1.2}
+#tokenSponsorTitle{font-size:15px;font-weight:600;overflow-wrap:anywhere}
+#tokenSponsorSymbol{font-size:12px;color:#e9b949;margin-inline-start:7px;unicode-bidi:isolate;overflow-wrap:anywhere}
+.token-sponsor-copy small{display:block;font-size:11px;line-height:1.25;margin-top:2px;color:#d6dccf;overflow-wrap:anywhere}
+#tokenSponsorDisclaimer{font-size:10px;color:#c5cdbf}
+.token-sponsor-arrow{flex:none;color:#e9b949;font-size:20px}
+@media(max-width:360px){#tokenSponsorSlot{padding:4px 6px}#tokenSponsorLink{padding:6px 8px;gap:7px}#tokenSponsorTitle{font-size:14px}.token-sponsor-copy small{font-size:10px}}
+@media(max-height:500px){#tokenSponsorSlot{padding:3px 8px}#tokenSponsorLink{min-height:48px;padding:3px 10px}.token-sponsor-copy small{font-size:10px}#tokenSponsorLogo,#tokenSponsorMark{width:30px;height:30px}#tokenSponsorTitle{font-size:13px}#tokenSponsorDisclaimer{font-size:9px}}

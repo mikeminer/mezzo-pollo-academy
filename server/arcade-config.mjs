@@ -12,6 +12,7 @@ export const TIERS = Object.freeze({
   easy: Object.freeze({ lamports: 3_000_000, lives: 9 }),
   god: Object.freeze({ lamports: 10_000_000, lives: 32 }),
 });
+export const AVAILABLE_TIERS = Object.freeze({ medium: TIERS.medium, easy: TIERS.easy, god: TIERS.god });
 export function tierPolicy(name) {
   if (typeof name !== 'string' || !Object.hasOwn(TIERS, name)) throw new ArcadeError('invalid_tier');
   return TIERS[name];

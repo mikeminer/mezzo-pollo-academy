@@ -72,7 +72,7 @@
     "Üstteki soruyu okuyun. <b>Doğru yarının</b> bulunduğu kapıdan geçerek sayıları, kelimeleri ve şekilleri tamamlayın.",
     "<b>BÜTÜN TAVUK</b> göründüğünde heykel geçene kadar şeridinizde kalın.",
     "Bazen kural tersine döner: <b>ters modda</b> yanlış bir yanıt seçin.",
-    "Arcade: Zor — 0,001 SOL karşılığında 1 can; Orta — 0,002 SOL karşılığında 3 can; Kolay — 0,003 SOL karşılığında 9 can; Tanrı — 0,01 SOL karşılığında 32 can. Her koşu için yeni ödeme gerekir; ağ ücretleri ayrıdır.",
+    "Ücretsiz: Her koşuda 1 can; turlar arasında OnlyFridge Club tanıtımı gösterilir. Cüzdan veya ödeme gerekmez. Arcade: Orta — 0,002 SOL karşılığında 3 can; Kolay — 0,003 SOL karşılığında 9 can; Tanrı — 0,01 SOL karşılığında 32 can. Her koşu için yeni ödeme gerekir; ağ ücretleri ayrıdır.",
     "DevFridge üzerinde en az 10.000.000 MEMEZZO zaman kilidine alın. Her tam milyon toplam 1 başlangıç canı verir; en az 10 canla başlanır. Mağazada elle doğrulayın; hiçbir kontrol koşuyu kesmez.",
     "Geri",
     "Mağaza · Abonelik",
@@ -253,7 +253,7 @@
     "community": "Telegram kanalına katıl",
     "hard": "Arcade",
     "easy": "Abonelik",
-    "hardDetail": "4 seviye · 0,001 SOL’den başlayan fiyatlarla",
+    "hardDetail": "3 seviye · 0,002 SOL’den başlayan fiyatlarla",
     "easyDetail": "10 milyon+ kilitli MEMEZZO",
     "choose": "Modunuzu seçin",
     "playHard": "Arcade oyna",
@@ -268,7 +268,7 @@
     "badge": "{mode} MODU",
     "shopNote": "MEMEZZO, DevFridge üzerinde zaman kilidinde kalır. Abonelik koşu başına SOL ödemesi istemez. Arcade her koşu için ödeme gerektirir.",
     "link": "Ücretsiz öğreticiyi dene →",
-    "title": "MezzoPollo — Arcade · Abonelik",
+    "title": "MezzoPollo — Ücretsiz · Arcade · Abonelik",
     "back": "Oyuna dön",
     "tutorialHud": "EĞİTİM · can kaybetmeden alıştırma",
     "tutorialQuestion": "Aşağıdaki yönlendirmeleri izleyin",
@@ -277,7 +277,13 @@
     "subscription": "Abonelik",
     "subscriptionDetail": "10 milyon+ kilitli MEMEZZO",
     "playSubscription": "Abonelik oyna · {count} {lives}",
-    "subscriptionHint": "DevFridge üzerinde en az 10.000.000 MEMEZZO zaman kilidine alın. Her tam milyon toplam 1 başlangıç canı verir; en az 10 canla başlanır. Mağazada elle doğrulayın; hiçbir kontrol koşuyu kesmez."
+    "subscriptionHint": "DevFridge üzerinde en az 10.000.000 MEMEZZO zaman kilidine alın. Her tam milyon toplam 1 başlangıç canı verir; en az 10 canla başlanır. Mağazada elle doğrulayın; hiçbir kontrol koşuyu kesmez.",
+    "free": "Ücretsiz",
+    "freeDesc": "1 can · Cüzdan veya ödeme yok",
+    "freeStart": "Ücretsiz oyna",
+    "freeHud": "Ücretsiz · 1 can",
+    "freeEnd": "Ücretsiz · 1 can",
+    "freeHint": "Her koşuda 1 can; turlar arasında OnlyFridge Club tanıtımı gösterilir. Cüzdan veya ödeme gerekmez."
   },
   "tutorial": {
     "label": "Oynayarak öğren",
@@ -289,7 +295,7 @@
     "finish": "Oynamaya başla",
     "retry": "Tekrar dene",
     "good": "Oldu! Sonraki göreve hazırsınız.",
-    "done": "Hazır! Arcade veya Abonelik seçin. Ücretsiz öğreticiyi istediğiniz zaman tekrarlayabilirsiniz.",
+    "done": "Hazır! Ücretsiz, Arcade veya Abonelik seçin. Ücretsiz öğreticiyi istediğiniz zaman tekrarlayabilirsiniz.",
     "again": "Sorun değil! Aynı görevi tekrar deneyin.",
     "leftControl": "Sola git",
     "rightControl": "Sağa git",
@@ -347,8 +353,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — oyun tanıtımı",
-    "description": "MezzoPollo: Arcade ve Abonelik, ücretsiz etkileşimli öğretici, 25 bölgesel seçenekle 20 dil, İtalyanca müzik ve İngilizce şarkı altyazıları.",
-    "tag": "DevFridge Hackathon · Arcade · Abonelik",
+    "description": "Ücretsiz: Her koşuda 1 can; turlar arasında OnlyFridge Club tanıtımı gösterilir. Cüzdan veya ödeme gerekmez. MezzoPollo: Arcade ve Abonelik, ücretsiz etkileşimli öğretici, 25 bölgesel seçenekle 20 dil, İtalyanca müzik ve İngilizce şarkı altyazıları.",
+    "tag": "DevFridge Hackathon · Ücretsiz · Arcade · Abonelik",
     "intro": "Peluş bir yarım tavuk üç şeritte koşarak sayıların, kelimelerin ve şekillerin eksik yarısını seçiyor. Engellerden kaçın, tüy toplayın ve BÜTÜN TAVUK göründüğünde yerinizde kalın.",
     "play": "Bir mod seç ve oyna →",
     "source": "Kaynak kodu ve başvuru kanıtları",
@@ -367,8 +373,8 @@
     "downloadMobile": "İngilizce mobil kaydı indir",
     "accessTitle": "Erişim ve sınırlamalar",
     "accessIntro": "Abonelik, bağlı cüzdanın aktif DevFridge zaman kilitlerinde en az 10.000.000 MEMEZZO gerektirir. Asgari süre yoktur; süresi dolmuş kilitler doğrulamada sayılmaz. Token adresi:",
-    "accessOutro": ". Ücretsiz etkileşimli öğretici menüden tekrar oynanabilir. Arcade ve Abonelik rekorları ayrı, yerel ve doğrulanmamıştır.",
-    "lives": "Abonelik, her tam milyon MEMEZZO için toplam 1 başlangıç canı verir; temel can yoktur. En az 10.000.000 MEMEZZO gerekir: 10.000.000 için 10 can, 10.999.999 için 10 ve 11.000.000 için 11 can. Başlangıç canları her koşuda sabittir; devam etmek veya mağazada doğrulamak canları doldurmaz. Arcade: Zor — 0,001 SOL karşılığında 1 can; Orta — 0,002 SOL karşılığında 3 can; Kolay — 0,003 SOL karşılığında 9 can; Tanrı — 0,01 SOL karşılığında 32 can. Her koşu için yeni ödeme gerekir; ağ ücretleri ayrıdır.",
+    "accessOutro": ". Ücretsiz etkileşimli öğretici menüden tekrar oynanabilir. Her modun rekorları ayrı, yerel ve doğrulanmamıştır.",
+    "lives": "Ücretsiz: Her koşuda 1 can; turlar arasında OnlyFridge Club tanıtımı gösterilir. Cüzdan veya ödeme gerekmez. Abonelik, her tam milyon MEMEZZO için toplam 1 başlangıç canı verir; temel can yoktur. En az 10.000.000 MEMEZZO gerekir: 10.000.000 için 10 can, 10.999.999 için 10 ve 11.000.000 için 11 can. Başlangıç canları her koşuda sabittir; devam etmek veya mağazada doğrulamak canları doldurmaz. Arcade: Orta — 0,002 SOL karşılığında 3 can; Kolay — 0,003 SOL karşılığında 9 can; Tanrı — 0,01 SOL karşılığında 32 can. Her koşu için yeni ödeme gerekir; ağ ücretleri ayrıdır.",
     "verification": "Abonelik yalnızca mağazada istediğinizde doğrulanır; başlangıçta, oyun sırasında veya devam ederken otomatik kontrol yapılmaz. Doğrulanan canlar bu oturumda yeni elle kontrol, cüzdan değişimi, bağlantı kesilmesi veya yenilemeye kadar geçerlidir. Devam eden koşu etkilenmez. Doğrulama işlem imzası istemeden kilitleri okur; Arcade ödemeleri cüzdan onayı gerektirir.",
     "fees": "Kilitler DevFridge üzerinde oluşturulur ve geri alınır; erken çekim yoktur. Geri alımda PASTA alım ve yakımı için %2 ücret ile ağ ücretleri alınır. MEMEZZO geri alımı, yürütülebilir bir Jupiter rotası gerektirir. Cüzdan özellikleri yetişkinler içindir.",
     "team": "Ekip: Pappardelle · Herkese açık iletişim:",
@@ -376,7 +382,7 @@
   },
   "native": {
     "menu": "Uygulama menüsü",
-    "hard": "Arcade · 4 seviye · 0,001 SOL’den başlayan fiyatlarla",
+    "hard": "Arcade · 3 seviye · 0,002 SOL’den başlayan fiyatlarla",
     "easy": "Abonelik · 10 milyon+ kilitli MEMEZZO",
     "reload": "Yeniden yükle",
     "privacy": "Gizlilik ve uygulama bilgileri (İngilizce)",
@@ -390,12 +396,13 @@
     "loadError": "Oyun açılamadı. Uygulama menüsü → Yeniden yükle seçeneğini kullanın.",
     "noBrowser": "Yüklü tarayıcı yok",
     "walletMissing": "MWA uyumlu bir Solana cüzdanı yükleyip yeniden deneyin.",
-    "arcade": "Arcade · 4 seviye · 0,001 SOL’den başlayan fiyatlarla",
-    "subscription": "Abonelik · 10 milyon+ kilitli MEMEZZO"
+    "arcade": "Arcade · 3 seviye · 0,002 SOL’den başlayan fiyatlarla",
+    "subscription": "Abonelik · 10 milyon+ kilitli MEMEZZO",
+    "free": "Ücretsiz · 1 can"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4 seviye · 0,001 SOL’den başlayan fiyatlarla",
+    "detail": "3 seviye · 0,002 SOL’den başlayan fiyatlarla",
     "play": "Arcade oyna",
     "hint": "Bir Arcade seviyesi seçin. Her yeni koşu için SOL ile ödeme gerekir. MEMEZZO gerekmez.",
     "title": "Arcade",
@@ -420,7 +427,7 @@
     "connecting": "Cüzdanınızda bağlantıyı onaylayın. Bağlanmak ödeme yapmaz.",
     "busy": "Başka bir ödeme başlatmadan önce mevcut ödemeyi tamamlayın.",
     "receipt": "Ödemeyi görüntüle",
-    "how": "Arcade: Zor — 0,001 SOL karşılığında 1 can; Orta — 0,002 SOL karşılığında 3 can; Kolay — 0,003 SOL karşılığında 9 can; Tanrı — 0,01 SOL karşılığında 32 can. Her koşu için yeni ödeme gerekir; ağ ücretleri ayrıdır.",
+    "how": "Arcade: Orta — 0,002 SOL karşılığında 3 can; Kolay — 0,003 SOL karşılığında 9 can; Tanrı — 0,01 SOL karşılığında 32 can. Her koşu için yeni ödeme gerekir; ağ ücretleri ayrıdır.",
     "choose": "Arcade seviyenizi seçin",
     "hard": "Zor",
     "medium": "Orta",
@@ -436,5 +443,20 @@
     "connectHint": "Önce Solana cüzdanınızı bağlayın. Bağlanmak ödeme yapmaz.",
     "walletFailed": "Bağlanılamadı. Cüzdanınızın kilidini açıp tekrar deneyin.",
     "walletMismatch": "Bu kayıtlı ödeme başka bir cüzdana ait. Ödeme için kullanılan cüzdanı bağlayın."
+  },
+  "sponsor": {
+    "label": "Tanıtım",
+    "title": "OnlyFridge Club",
+    "body": "Solana dApp Store’da OnlyFridge Club’ı keşfedin. Sonraki ücretsiz turunuz hazır.",
+    "open": "dApp Store’da aç",
+    "continue": "Oynamaya devam et"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "Tokenını buraya koy: DevFridge Scan’de tanıt",
+    "paidLabel": "Ücretli yerleşim · scan.devfridge.cool",
+    "disclaimer": "Yatırım tavsiyesi değildir",
+    "openLabel": "{name} tokenını DevFridge Scan’de görüntüle",
+    "emptyLabel": "Tokenını DevFridge Scan’de tanıt"
   }
 }

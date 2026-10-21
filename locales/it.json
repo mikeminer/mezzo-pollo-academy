@@ -73,7 +73,7 @@
     "Leggi la domanda in alto. Passa dal portale con <b>la metà giusta</b>: completa numeri, parole e figure.",
     "Quando compare il <b>POLLO INTERO</b>, resta nella tua corsia finché la statua non è passata.",
     "A volte la regola si inverte: in <b>modalità inversa</b>, scegli una risposta sbagliata.",
-    "Arcade: Difficile — 1 vita per 0,001 SOL; Medio — 3 vite per 0,002 SOL; Facile — 9 vite per 0,003 SOL; Divino — 32 vite per 0,01 SOL. Ogni partita richiede un nuovo pagamento; le commissioni di rete sono separate.",
+    "Gratis: 1 vita a partita, con una promozione di OnlyFridge Club tra le partite. Non servono wallet o pagamenti. Arcade: Medio — 3 vite per 0,002 SOL; Facile — 9 vite per 0,003 SOL; Divino — 32 vite per 0,01 SOL. Ogni partita richiede un nuovo pagamento; le commissioni di rete sono separate.",
     "Metti almeno 10.000.000 MEMEZZO in timelock su DevFridge. Ogni milione intero dà 1 vita iniziale totale, con un minimo di 10 vite. Verifica manualmente nel Negozio; nessun controllo interrompe la partita.",
     "Indietro",
     "Negozio · Abbonamento",
@@ -314,7 +314,7 @@
     "community": "Unisciti al canale Telegram",
     "hard": "Arcade",
     "easy": "Abbonamento",
-    "hardDetail": "4 livelli · da 0,001 SOL",
+    "hardDetail": "3 livelli · da 0,002 SOL",
     "easyDetail": "10M+ MEMEZZO in timelock",
     "choose": "Scegli la modalità",
     "playHard": "Gioca Arcade",
@@ -329,7 +329,7 @@
     "badge": "MODALITÀ {mode}",
     "shopNote": "I MEMEZZO restano in timelock su DevFridge. Abbonamento non richiede pagamenti in SOL a partita. Arcade richiede un pagamento per ogni partita.",
     "link": "Prova il tutorial gratuito →",
-    "title": "MezzoPollo — Arcade · Abbonamento",
+    "title": "MezzoPollo — Gratis · Arcade · Abbonamento",
     "back": "Torna al gioco",
     "tutorialHud": "TUTORIAL · prova senza perdere vite",
     "tutorialQuestion": "Segui la guida qui sotto",
@@ -338,7 +338,13 @@
     "subscription": "Abbonamento",
     "subscriptionDetail": "10M+ MEMEZZO in timelock",
     "playSubscription": "Gioca Abbonamento · {count} {lives}",
-    "subscriptionHint": "Metti almeno 10.000.000 MEMEZZO in timelock su DevFridge. Ogni milione intero dà 1 vita iniziale totale, con un minimo di 10 vite. Verifica manualmente nel Negozio; nessun controllo interrompe la partita."
+    "subscriptionHint": "Metti almeno 10.000.000 MEMEZZO in timelock su DevFridge. Ogni milione intero dà 1 vita iniziale totale, con un minimo di 10 vite. Verifica manualmente nel Negozio; nessun controllo interrompe la partita.",
+    "free": "Gratis",
+    "freeDesc": "1 vita · Senza wallet o pagamenti",
+    "freeStart": "Gioca gratis",
+    "freeHud": "Gratis · 1 vita",
+    "freeEnd": "Gratis · 1 vita",
+    "freeHint": "1 vita a partita, con una promozione di OnlyFridge Club tra le partite. Non servono wallet o pagamenti."
   },
   "tutorial": {
     "label": "Impara giocando",
@@ -350,7 +356,7 @@
     "finish": "Inizia a giocare",
     "retry": "Riprova",
     "good": "Perfetto! Puoi passare alla prossima sfida.",
-    "done": "Pronto! Scegli Arcade o Abbonamento. Puoi ripetere il tutorial gratuito in qualsiasi momento.",
+    "done": "Pronto! Scegli Gratis, Arcade o Abbonamento. Puoi ripetere il tutorial gratuito in qualsiasi momento.",
     "again": "Nessun problema! Riprova questa sfida.",
     "leftControl": "Vai a sinistra",
     "rightControl": "Vai a destra",
@@ -408,8 +414,8 @@
   },
   "demo": {
     "title": "Mezzo Pollo Academy — demo di gioco",
-    "description": "MezzoPollo: Arcade e Abbonamento, tutorial interattivo gratuito, 20 lingue con 25 scelte regionali, musica italiana e sottotitoli della canzone in inglese.",
-    "tag": "DevFridge Hackathon · Arcade · Abbonamento",
+    "description": "Gratis: 1 vita a partita, con una promozione di OnlyFridge Club tra le partite. Non servono wallet o pagamenti. MezzoPollo: Arcade e Abbonamento, tutorial interattivo gratuito, 20 lingue con 25 scelte regionali, musica italiana e sottotitoli della canzone in inglese.",
+    "tag": "DevFridge Hackathon · Gratis · Arcade · Abbonamento",
     "intro": "Un mezzo pollo di peluche corre su tre corsie, scegliendo la metà mancante di numeri, parole e forme. Schiva gli ostacoli, raccogli le piume e resta fermo quando appare il POLLO INTERO.",
     "play": "Scegli una modalità e gioca →",
     "source": "Codice sorgente e prove della candidatura",
@@ -428,8 +434,8 @@
     "downloadMobile": "Scarica il video mobile in inglese",
     "accessTitle": "Accesso e limiti",
     "accessIntro": "Abbonamento richiede almeno 10.000.000 MEMEZZO nei timelock DevFridge attivi del wallet collegato. Nessuna durata minima; i blocchi scaduti non contano alla verifica. Indirizzo del token:",
-    "accessOutro": ". Il tutorial interattivo gratuito si può ripetere dal menu. I record Arcade e Abbonamento sono separati, locali e non verificati.",
-    "lives": "Abbonamento dà 1 vita iniziale totale per ogni milione intero di MEMEZZO, senza vite di base. Servono almeno 10.000.000 MEMEZZO: 10.000.000 dà 10 vite, 10.999.999 dà 10 vite e 11.000.000 dà 11 vite. Le vite iniziali sono fisse per ogni partita; riprendere o verificare nel Negozio non le ricarica. Arcade: Difficile — 1 vita per 0,001 SOL; Medio — 3 vite per 0,002 SOL; Facile — 9 vite per 0,003 SOL; Divino — 32 vite per 0,01 SOL. Ogni partita richiede un nuovo pagamento; le commissioni di rete sono separate.",
+    "accessOutro": ". Il tutorial interattivo gratuito si può ripetere dal menu. I record di ogni modalità sono separati, locali e non verificati.",
+    "lives": "Gratis: 1 vita a partita, con una promozione di OnlyFridge Club tra le partite. Non servono wallet o pagamenti. Abbonamento dà 1 vita iniziale totale per ogni milione intero di MEMEZZO, senza vite di base. Servono almeno 10.000.000 MEMEZZO: 10.000.000 dà 10 vite, 10.999.999 dà 10 vite e 11.000.000 dà 11 vite. Le vite iniziali sono fisse per ogni partita; riprendere o verificare nel Negozio non le ricarica. Arcade: Medio — 3 vite per 0,002 SOL; Facile — 9 vite per 0,003 SOL; Divino — 32 vite per 0,01 SOL. Ogni partita richiede un nuovo pagamento; le commissioni di rete sono separate.",
     "verification": "Le verifiche di Abbonamento avvengono solo quando le richiedi nel Negozio, mai automaticamente all’avvio, durante il gioco o alla ripresa. Le vite verificate valgono per questa sessione fino a una nuova verifica manuale, cambio wallet, disconnessione o ricaricamento. La partita in corso non viene interrotta. La verifica legge i timelock senza firme di transazioni; i pagamenti Arcade richiedono l’approvazione nel wallet.",
     "fees": "I timelock si creano e si riscattano su DevFridge, senza prelievo anticipato e con una commissione di riscatto del 2% destinata all’acquisto e alla distruzione di PASTA, oltre alle commissioni di rete. Per riscattare MEMEZZO serve una rotta Jupiter eseguibile. Le funzioni del wallet sono riservate agli adulti.",
     "team": "Team: Pappardelle · Contatto pubblico:",
@@ -437,7 +443,7 @@
   },
   "native": {
     "menu": "Menu app",
-    "hard": "Arcade · 4 livelli · da 0,001 SOL",
+    "hard": "Arcade · 3 livelli · da 0,002 SOL",
     "easy": "Abbonamento · 10M+ MEMEZZO in timelock",
     "reload": "Ricarica",
     "privacy": "Privacy e informazioni app (inglese)",
@@ -451,12 +457,13 @@
     "loadError": "Impossibile aprire il gioco. Usa Menu app → Ricarica.",
     "noBrowser": "Nessun browser installato",
     "walletMissing": "Installa un wallet Solana compatibile MWA e riprova.",
-    "arcade": "Arcade · 4 livelli · da 0,001 SOL",
-    "subscription": "Abbonamento · 10M+ MEMEZZO in timelock"
+    "arcade": "Arcade · 3 livelli · da 0,002 SOL",
+    "subscription": "Abbonamento · 10M+ MEMEZZO in timelock",
+    "free": "Gratis · 1 vita"
   },
   "arcade": {
     "name": "Arcade",
-    "detail": "4 livelli · da 0,001 SOL",
+    "detail": "3 livelli · da 0,002 SOL",
     "play": "Gioca Arcade",
     "hint": "Scegli un livello Arcade. Ogni nuova partita richiede un pagamento in SOL. Non servono MEMEZZO.",
     "title": "Arcade",
@@ -481,7 +488,7 @@
     "connecting": "Approva il collegamento nel wallet. Il collegamento non effettua alcun pagamento.",
     "busy": "Completa il pagamento in corso prima di iniziarne un altro.",
     "receipt": "Visualizza il pagamento",
-    "how": "Arcade: Difficile — 1 vita per 0,001 SOL; Medio — 3 vite per 0,002 SOL; Facile — 9 vite per 0,003 SOL; Divino — 32 vite per 0,01 SOL. Ogni partita richiede un nuovo pagamento; le commissioni di rete sono separate.",
+    "how": "Arcade: Medio — 3 vite per 0,002 SOL; Facile — 9 vite per 0,003 SOL; Divino — 32 vite per 0,01 SOL. Ogni partita richiede un nuovo pagamento; le commissioni di rete sono separate.",
     "choose": "Scegli il tuo livello Arcade",
     "hard": "Difficile",
     "medium": "Medio",
@@ -497,5 +504,20 @@
     "connectHint": "Collega prima il tuo wallet Solana. Il collegamento non effettua alcun pagamento.",
     "walletFailed": "Collegamento non riuscito. Sblocca il wallet e riprova.",
     "walletMismatch": "Questo pagamento salvato appartiene a un altro wallet. Collega il wallet usato per questo pagamento."
+  },
+  "sponsor": {
+    "label": "Promozione",
+    "title": "OnlyFridge Club",
+    "body": "Scopri OnlyFridge Club sul Solana dApp Store. La tua prossima partita gratuita è pronta.",
+    "open": "Apri nel dApp Store",
+    "continue": "Continua a giocare"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "Metti qui il tuo token: vetrina su DevFridge Scan",
+    "paidLabel": "Posizionamento a pagamento · scan.devfridge.cool",
+    "disclaimer": "Non è un consiglio d’investimento",
+    "openLabel": "Visualizza {name} su DevFridge Scan",
+    "emptyLabel": "Promuovi il tuo token su DevFridge Scan"
   }
 }

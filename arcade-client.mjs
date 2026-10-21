@@ -1,10 +1,12 @@
-import { ARCADE_TIERS, isUuid, validateIntent, decode58, sendArcadePayment } from './arcade-transaction.mjs';
+import { ARCADE_TIERS, AVAILABLE_ARCADE_TIERS, isUuid, validateIntent, decode58, sendArcadePayment } from './arcade-transaction.mjs';
 
 export function arcadePaymentState(record) {
   if (record?.status === 'paid') return 'ready';
   if (record?.status === 'started') return 'consumed';
   if (record?.signature || record?.confirming) return 'pending';
-  return record?.attempted || record?.recoveryRequired ? 'recovery' : 'connecting';
+  // Preparing unsigned bytes is not a wallet handoff. Keep that durable
+  // evidence for receipt recovery without warning on the first checkout.
+  return record?.attempted || (record?.recoveryRequired && record?.prepared !== true) ? 'recovery' : 'connecting';
 }
 
 function hasPaymentEvidence(record) {
@@ -49,7 +51,18 @@ export function createArcadeClient({ request, storage, getProvider, notify = () 
     if (!record) return null;
     const hadPaymentEvidence = hasPaymentEvidence(record);
     if (!record.intentId) {
-      const result = await request({ action: 'create', requestId: record.requestId, payer: record.payer, tier: record.tier });
+      let result;
+      try { result = await request({ action: 'create', requestId: record.requestId, payer: record.payer, tier: record.tier }); }
+      catch (error) {
+        // The retired-tier response is authoritative: the server/native ledger
+        // looked up this original request and found no existing intent. Release
+        // only a never-handed-off draft, while holding the checkout lock.
+        if (releaseDraft && canReleaseDraft && record.tier === 'hard' && !hadPaymentEvidence
+          && (error?.code || error?.message) === 'invalid_tier') {
+          clear(); notify('connecting'); return null;
+        }
+        throw error;
+      }
       if (typeof result.secret !== 'string' || !/^[A-Za-z0-9_-]{43}$/.test(result.secret)) throw Error('payment_mismatch');
       accept(result);
     }
@@ -75,6 +88,7 @@ export function createArcadeClient({ request, storage, getProvider, notify = () 
       if (!Object.hasOwn(ARCADE_TIERS,tier)) throw Error('invalid_tier');
       const recovered = await restore();
       if (recovered?.status === 'paid') return recovered;
+      if (!record && !Object.hasOwn(AVAILABLE_ARCADE_TIERS, tier)) throw Error('invalid_tier');
       if (record && record.tier !== tier) throw Error('pending_tier');
       const provider = sessionProvider || getProvider();
       if (!provider || typeof provider.connect !== 'function') throw Error('missing_wallet');
