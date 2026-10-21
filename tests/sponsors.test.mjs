@@ -125,7 +125,7 @@ function response() {
 
 test('the public endpoint is cacheable, accepts native GETs and only allows the approved web origins', async () => {
   let calls = 0;
-  const handler = createSponsorsHandler({ sponsorFeed: { async list() { calls++; return { sponsors: sanitizeSponsors([row()], NOW), fetchedAt: NOW }; } } });
+  const handler = createSponsorsHandler({ now: () => NOW, sponsorFeed: { async list() { calls++; return { sponsors: sanitizeSponsors([row()], NOW), fetchedAt: NOW }; } } });
   for (const headers of [{}, { origin: 'https://mezzopollo.it' }]) {
     const res = response(); await handler({ method: 'GET', headers }, res);
     assert.equal(res.statusCode, 200); assert.match(res.headers['Cache-Control'], /s-maxage=60/);
@@ -140,8 +140,31 @@ test('the public endpoint is cacheable, accepts native GETs and only allows the 
   const head = response(); await handler({ method: 'HEAD', headers: {} }, head); assert.equal(head.statusCode, 200); assert.equal(head.body, undefined);
 });
 
-test('an unexpected feed error still leaves an empty slot without leaking details', async () => {
+test('CDN freshness uses the remaining snapshot lifetime instead of stacking another minute', async () => {
+  let now = NOW, calls = 0;
+  const feed = createSponsorFeed({ now: () => now, fetchImpl: async () => { calls++; return json({ tokens: [row()] }); } });
+  const handler = createSponsorsHandler({ sponsorFeed: feed, now: () => now });
+  for (const [offset, ttl, expectedFetches] of [[0, 60, 1], [59_000, 1, 1], [59_001, 0, 1], [60_000, 60, 2]]) {
+    now = NOW + offset;
+    const res = response(); await handler({ method: 'GET', headers: {} }, res);
+    assert.equal(res.headers['Cache-Control'], `public, max-age=0, s-maxage=${ttl}, must-revalidate`);
+    assert.equal(calls, expectedFetches);
+    assert.equal(JSON.parse(res.body).fetchedAt, expectedFetches === 1 ? NOW : now);
+  }
+});
+
+test('invalid, future or exhausted snapshot timestamps cannot extend shared-cache freshness', async () => {
+  for (const fetchedAt of [undefined, null, '1800000000000', NaN, Infinity, 0, NOW + 1, NOW - 60_000, NOW - 120_000]) {
+    const handler = createSponsorsHandler({ now: () => NOW, sponsorFeed: { async list() { return { sponsors: [], fetchedAt }; } } });
+    const res = response(); await handler({ method: 'HEAD', headers: {} }, res);
+    assert.equal(res.headers['Cache-Control'], 'public, max-age=0, s-maxage=0, must-revalidate');
+    assert.equal(res.body, undefined);
+  }
+});
+
+test('an unexpected feed error still leaves an uncacheable empty slot without leaking details', async () => {
   const handler = createSponsorsHandler({ sponsorFeed: { async list() { throw Error('sensitive endpoint'); } } });
   const res = response(); await handler({ method: 'GET', headers: {} }, res);
   assert.equal(res.statusCode, 200); assert.deepEqual(JSON.parse(res.body), { sponsors: [], fetchedAt: 0 });
+  assert.equal(res.headers['Cache-Control'], 'no-store');
 });
