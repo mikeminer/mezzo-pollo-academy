@@ -449,5 +449,13 @@
     "body": "Khám phá OnlyFridge Club trên Solana dApp Store. Lượt chơi miễn phí tiếp theo đã sẵn sàng.",
     "open": "Mở trong dApp Store",
     "continue": "Chơi tiếp"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "Đặt token của bạn tại đây: giới thiệu trên DevFridge Scan",
+    "paidLabel": "Vị trí quảng cáo trả phí · scan.devfridge.cool",
+    "disclaimer": "Không phải lời khuyên đầu tư",
+    "openLabel": "Xem {name} trên DevFridge Scan",
+    "emptyLabel": "Quảng bá token của bạn trên DevFridge Scan"
   }
 }

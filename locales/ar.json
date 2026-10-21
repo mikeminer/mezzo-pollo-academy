@@ -454,5 +454,13 @@
     "body": "اكتشف OnlyFridge Club على Solana dApp Store. جولتك المجانية التالية جاهزة.",
     "open": "افتح في dApp Store",
     "continue": "واصل اللعب"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "ضع رمزك الرقمي هنا: مساحة عرض على DevFridge Scan",
+    "paidLabel": "موضع مدفوع · scan.devfridge.cool",
+    "disclaimer": "ليس نصيحة استثمارية",
+    "openLabel": "عرض {name} على DevFridge Scan",
+    "emptyLabel": "روّج لرمزك الرقمي على DevFridge Scan"
   }
 }

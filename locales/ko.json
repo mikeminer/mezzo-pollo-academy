@@ -449,5 +449,13 @@
     "body": "Solana dApp Store에서 OnlyFridge Club을 만나보세요. 다음 무료 게임이 준비되어 있습니다.",
     "open": "dApp Store에서 열기",
     "continue": "계속 플레이"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "여기에 토큰을 소개하세요: DevFridge Scan 홍보 공간",
+    "paidLabel": "유료 광고 · scan.devfridge.cool",
+    "disclaimer": "투자 조언이 아닙니다",
+    "openLabel": "DevFridge Scan에서 {name} 보기",
+    "emptyLabel": "DevFridge Scan에서 내 토큰 홍보하기"
   }
 }

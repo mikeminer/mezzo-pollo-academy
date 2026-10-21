@@ -450,5 +450,13 @@
     "body": "Solana dApp Store’da OnlyFridge Club’ı keşfedin. Sonraki ücretsiz turunuz hazır.",
     "open": "dApp Store’da aç",
     "continue": "Oynamaya devam et"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "Tokenını buraya koy: DevFridge Scan’de tanıt",
+    "paidLabel": "Ücretli yerleşim · scan.devfridge.cool",
+    "disclaimer": "Yatırım tavsiyesi değildir",
+    "openLabel": "{name} tokenını DevFridge Scan’de görüntüle",
+    "emptyLabel": "Tokenını DevFridge Scan’de tanıt"
   }
 }

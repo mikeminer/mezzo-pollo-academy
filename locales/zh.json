@@ -449,5 +449,13 @@
     "body": "在Solana dApp Store探索OnlyFridge Club。下一局免费游戏已准备就绪。",
     "open": "在dApp Store打开",
     "continue": "继续游戏"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "在这里展示你的代币：DevFridge Scan 推广位",
+    "paidLabel": "付费推广 · scan.devfridge.cool",
+    "disclaimer": "不构成投资建议",
+    "openLabel": "在 DevFridge Scan 查看 {name}",
+    "emptyLabel": "在 DevFridge Scan 推广你的代币"
   }
 }

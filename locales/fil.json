@@ -450,5 +450,13 @@
     "body": "Tuklasin ang OnlyFridge Club sa Solana dApp Store. Handa na ang susunod mong libreng round.",
     "open": "Buksan sa dApp Store",
     "continue": "Magpatuloy sa paglalaro"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "Ilagay ang token mo rito: itampok sa DevFridge Scan",
+    "paidLabel": "Bayad na puwesto · scan.devfridge.cool",
+    "disclaimer": "Hindi ito payo sa pamumuhunan",
+    "openLabel": "Tingnan ang {name} sa DevFridge Scan",
+    "emptyLabel": "I-promote ang token mo sa DevFridge Scan"
   }
 }

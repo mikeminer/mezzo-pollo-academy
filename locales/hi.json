@@ -450,5 +450,13 @@
     "body": "Solana dApp Store पर OnlyFridge Club देखें। आपका अगला मुफ़्त दौर तैयार है।",
     "open": "dApp Store में खोलें",
     "continue": "खेलना जारी रखें"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "अपना टोकन यहाँ दिखाएँ: DevFridge Scan पर प्रचार",
+    "paidLabel": "सशुल्क स्थान · scan.devfridge.cool",
+    "disclaimer": "यह निवेश संबंधी सलाह नहीं है",
+    "openLabel": "DevFridge Scan पर {name} देखें",
+    "emptyLabel": "DevFridge Scan पर अपने टोकन का प्रचार करें"
   }
 }

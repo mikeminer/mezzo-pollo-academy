@@ -266,6 +266,14 @@ window.MezzoTranslations = {
       "Menu",
       "The graphics stopped working. Reload the page to continue."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Not investment advice",
+      "emptyBody": "Put your token here: a showcase on DevFridge Scan",
+      "emptyLabel": "Promote your token on DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "View {name} on DevFridge Scan",
+      "paidLabel": "Paid placement · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "No problem! Try the same challenge again.",
       "done": "Ready! Choose Free, Arcade or Subscription. You can replay the free tutorial at any time.",
@@ -781,6 +789,14 @@ window.MezzoTranslations = {
       "Menu",
       "La grafica ha smesso di funzionare. Ricarica la pagina per continuare."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Non è un consiglio d’investimento",
+      "emptyBody": "Metti qui il tuo token: vetrina su DevFridge Scan",
+      "emptyLabel": "Promuovi il tuo token su DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Visualizza {name} su DevFridge Scan",
+      "paidLabel": "Posizionamento a pagamento · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Nessun problema! Riprova questa sfida.",
       "done": "Pronto! Scegli Gratis, Arcade o Abbonamento. Puoi ripetere il tutorial gratuito in qualsiasi momento.",
@@ -1297,6 +1313,14 @@ window.MezzoTranslations = {
       "Menu",
       "Grafika przestała działać. Odśwież stronę, aby kontynuować."
     ],
+    "tokenSponsor": {
+      "disclaimer": "To nie jest porada inwestycyjna",
+      "emptyBody": "Umieść tu swój token: zaprezentuj go na DevFridge Scan",
+      "emptyLabel": "Promuj swój token na DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Zobacz {name} na DevFridge Scan",
+      "paidLabel": "Płatna promocja · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Nic się nie stało! Spróbuj tego wyzwania ponownie.",
       "done": "Gotowe! Wybierz tryb Bezpłatnie, Arcade lub Abonament. Bezpłatny samouczek możesz powtórzyć w dowolnym momencie.",
@@ -1810,6 +1834,14 @@ window.MezzoTranslations = {
       "メニュー",
       "グラフィックが停止しました。続けるにはページを再読み込みしてください。"
     ],
+    "tokenSponsor": {
+      "disclaimer": "投資助言ではありません",
+      "emptyBody": "ここにあなたのトークンを掲載：DevFridge Scanで紹介",
+      "emptyLabel": "DevFridge Scanであなたのトークンを宣伝",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "DevFridge Scanで{name}を見る",
+      "paidLabel": "有料掲載 · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "大丈夫！同じ課題にもう一度挑戦しよう。",
       "done": "準備完了！無料、Arcade、サブスクリプションから選んでください。無料チュートリアルはいつでも繰り返せます。",
@@ -2265,6 +2297,14 @@ window.MezzoTranslations = {
       "Menú",
       "Los gráficos han dejado de funcionar. Recarga la página para continuar."
     ],
+    "tokenSponsor": {
+      "disclaimer": "No es asesoramiento de inversión",
+      "emptyBody": "Coloca tu token aquí: un escaparate en DevFridge Scan",
+      "emptyLabel": "Promociona tu token en DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Ver {name} en DevFridge Scan",
+      "paidLabel": "Espacio pagado · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "¡No pasa nada! Vuelve a intentar el mismo reto.",
       "done": "¡Listo! Elige Gratis, Arcade o Suscripción. Puedes repetir el tutorial gratuito cuando quieras.",
@@ -2719,6 +2759,14 @@ window.MezzoTranslations = {
       "Menu",
       "The graphics stopped working. Reload the page to continue."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Not investment advice",
+      "emptyBody": "Put your token here: a showcase on DevFridge Scan",
+      "emptyLabel": "Promote your token on DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "View {name} on DevFridge Scan",
+      "paidLabel": "Paid placement · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "No problem! Try the same challenge again.",
       "done": "Ready! Choose Free, Arcade or Subscription. You can replay the free tutorial at any time.",
@@ -3233,6 +3281,14 @@ window.MezzoTranslations = {
       "मेनू",
       "ग्राफ़िक्स ने काम करना बंद कर दिया। जारी रखने के लिए पेज फिर लोड करें।"
     ],
+    "tokenSponsor": {
+      "disclaimer": "यह निवेश संबंधी सलाह नहीं है",
+      "emptyBody": "अपना टोकन यहाँ दिखाएँ: DevFridge Scan पर प्रचार",
+      "emptyLabel": "DevFridge Scan पर अपने टोकन का प्रचार करें",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "DevFridge Scan पर {name} देखें",
+      "paidLabel": "सशुल्क स्थान · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "कोई बात नहीं! यही चुनौती फिर आज़माएँ।",
       "done": "तैयार! मुफ़्त, Arcade या सदस्यता चुनें। मुफ़्त ट्यूटोरियल कभी भी दोहरा सकते हैं।",
@@ -3688,6 +3744,14 @@ window.MezzoTranslations = {
       "Menu",
       "L’affichage graphique a cessé de fonctionner. Recharge la page pour continuer."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Ceci n’est pas un conseil en investissement",
+      "emptyBody": "Placez votre token ici : une vitrine sur DevFridge Scan",
+      "emptyLabel": "Promouvoir votre token sur DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Voir {name} sur DevFridge Scan",
+      "paidLabel": "Emplacement payant · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Pas de souci ! Essaie à nouveau le même défi.",
       "done": "Prêt ! Choisis Gratuit, Arcade ou Abonnement. Tu peux refaire le tutoriel gratuit à tout moment.",
@@ -4143,6 +4207,14 @@ window.MezzoTranslations = {
       "Menú",
       "Los gráficos han dejado de funcionar. Recarga la página para continuar."
     ],
+    "tokenSponsor": {
+      "disclaimer": "No es asesoramiento de inversión",
+      "emptyBody": "Coloca tu token aquí: un escaparate en DevFridge Scan",
+      "emptyLabel": "Promociona tu token en DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Ver {name} en DevFridge Scan",
+      "paidLabel": "Espacio pagado · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "¡No pasa nada! Vuelve a intentar el mismo reto.",
       "done": "¡Listo! Elige Gratis, Arcade o Suscripción. Puedes repetir el tutorial gratuito cuando quieras.",
@@ -4597,6 +4669,14 @@ window.MezzoTranslations = {
       "Μενού",
       "Τα γραφικά σταμάτησαν να λειτουργούν. Φόρτωσε ξανά τη σελίδα για να συνεχίσεις."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Δεν αποτελεί επενδυτική συμβουλή",
+      "emptyBody": "Βάλε εδώ το token σου: προβολή στο DevFridge Scan",
+      "emptyLabel": "Προώθησε το token σου στο DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Δες το {name} στο DevFridge Scan",
+      "paidLabel": "Πληρωμένη προβολή · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Δεν πειράζει! Δοκίμασε ξανά την ίδια δοκιμασία.",
       "done": "Έτοιμος! Διάλεξε Δωρεάν, Arcade ή Συνδρομή. Μπορείς να επαναλάβεις το δωρεάν μάθημα όποτε θέλεις.",
@@ -5051,6 +5131,14 @@ window.MezzoTranslations = {
       "Menü",
       "Grafikler çalışmayı durdurdu. Devam etmek için sayfayı yenileyin."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Yatırım tavsiyesi değildir",
+      "emptyBody": "Tokenını buraya koy: DevFridge Scan’de tanıt",
+      "emptyLabel": "Tokenını DevFridge Scan’de tanıt",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "{name} tokenını DevFridge Scan’de görüntüle",
+      "paidLabel": "Ücretli yerleşim · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Sorun değil! Aynı görevi tekrar deneyin.",
       "done": "Hazır! Ücretsiz, Arcade veya Abonelik seçin. Ücretsiz öğreticiyi istediğiniz zaman tekrarlayabilirsiniz.",
@@ -5504,6 +5592,14 @@ window.MezzoTranslations = {
       "菜单",
       "图形显示已停止。请刷新页面后继续。"
     ],
+    "tokenSponsor": {
+      "disclaimer": "不构成投资建议",
+      "emptyBody": "在这里展示你的代币：DevFridge Scan 推广位",
+      "emptyLabel": "在 DevFridge Scan 推广你的代币",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "在 DevFridge Scan 查看 {name}",
+      "paidLabel": "付费推广 · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "没关系！再试一次这个挑战。",
       "done": "准备好了！请选择免费、Arcade或订阅模式。你可以随时重玩免费教程。",
@@ -5957,6 +6053,14 @@ window.MezzoTranslations = {
       "메뉴",
       "그래픽이 중단되었습니다. 계속하려면 페이지를 새로고침하세요."
     ],
+    "tokenSponsor": {
+      "disclaimer": "투자 조언이 아닙니다",
+      "emptyBody": "여기에 토큰을 소개하세요: DevFridge Scan 홍보 공간",
+      "emptyLabel": "DevFridge Scan에서 내 토큰 홍보하기",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "DevFridge Scan에서 {name} 보기",
+      "paidLabel": "유료 광고 · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "괜찮아요! 같은 도전에 다시 도전하세요.",
       "done": "준비 완료! 무료, Arcade 또는 구독을 선택하세요. 무료 튜토리얼은 언제든 다시 할 수 있습니다.",
@@ -6410,6 +6514,14 @@ window.MezzoTranslations = {
       "เมนู",
       "กราฟิกหยุดทำงาน โหลดหน้าใหม่เพื่อเล่นต่อ"
     ],
+    "tokenSponsor": {
+      "disclaimer": "ไม่ใช่คำแนะนำการลงทุน",
+      "emptyBody": "นำโทเคนของคุณมาแสดงที่นี่: พื้นที่โปรโมตบน DevFridge Scan",
+      "emptyLabel": "โปรโมตโทเคนของคุณบน DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "ดู {name} บน DevFridge Scan",
+      "paidLabel": "พื้นที่โฆษณาแบบชำระเงิน · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "ไม่เป็นไร! ลองด่านเดิมอีกครั้ง",
       "done": "พร้อมแล้ว! เลือกฟรี Arcade หรือสมาชิก คุณเล่นบทสอนฟรีซ้ำได้ทุกเมื่อ",
@@ -6863,6 +6975,14 @@ window.MezzoTranslations = {
       "Menu",
       "Đồ họa đã ngừng hoạt động. Tải lại trang để tiếp tục."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Không phải lời khuyên đầu tư",
+      "emptyBody": "Đặt token của bạn tại đây: giới thiệu trên DevFridge Scan",
+      "emptyLabel": "Quảng bá token của bạn trên DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Xem {name} trên DevFridge Scan",
+      "paidLabel": "Vị trí quảng cáo trả phí · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Không sao! Thử lại thử thách này nhé.",
       "done": "Sẵn sàng! Chọn Miễn phí, Arcade hoặc Đăng ký. Bạn có thể chơi lại hướng dẫn miễn phí bất cứ lúc nào.",
@@ -7318,6 +7438,14 @@ window.MezzoTranslations = {
       "Menu",
       "Os gráficos pararam de funcionar. Recarregue a página para continuar."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Não é uma recomendação de investimento",
+      "emptyBody": "Coloque seu token aqui: uma vitrine no DevFridge Scan",
+      "emptyLabel": "Promova seu token no DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Ver {name} no DevFridge Scan",
+      "paidLabel": "Espaço pago · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Sem problema! Tente o mesmo desafio novamente.",
       "done": "Pronto! Escolha Grátis, Arcade ou Assinatura. Você pode repetir o tutorial grátis quando quiser.",
@@ -7773,6 +7901,14 @@ window.MezzoTranslations = {
       "Menú",
       "Los gráficos han dejado de funcionar. Recarga la página para continuar."
     ],
+    "tokenSponsor": {
+      "disclaimer": "No es asesoramiento de inversión",
+      "emptyBody": "Coloca tu token aquí: un escaparate en DevFridge Scan",
+      "emptyLabel": "Promociona tu token en DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Ver {name} en DevFridge Scan",
+      "paidLabel": "Espacio pagado · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "¡No pasa nada! Vuelve a intentar el mismo reto.",
       "done": "¡Listo! Elige Gratis, Arcade o Suscripción. Puedes repetir el tutorial gratuito cuando quieras.",
@@ -8231,6 +8367,14 @@ window.MezzoTranslations = {
       "القائمة",
       "توقفت الرسومات عن العمل. أعد تحميل الصفحة للمتابعة."
     ],
+    "tokenSponsor": {
+      "disclaimer": "ليس نصيحة استثمارية",
+      "emptyBody": "ضع رمزك الرقمي هنا: مساحة عرض على DevFridge Scan",
+      "emptyLabel": "روّج لرمزك الرقمي على DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "عرض {name} على DevFridge Scan",
+      "paidLabel": "موضع مدفوع · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "لا بأس! أعد المحاولة في التحدي نفسه.",
       "done": "جاهز! اختر الوضع المجاني أو Arcade أو الاشتراك. يمكنك إعادة التدريب المجاني في أي وقت.",
@@ -8685,6 +8829,14 @@ window.MezzoTranslations = {
       "Menu",
       "The graphics stopped working. Reload the page to continue."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Not investment advice",
+      "emptyBody": "Put your token here: a showcase on DevFridge Scan",
+      "emptyLabel": "Promote your token on DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "View {name} on DevFridge Scan",
+      "paidLabel": "Paid placement · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "No problem! Try the same challenge again.",
       "done": "Ready! Choose Free, Arcade or Subscription. You can replay the free tutorial at any time.",
@@ -9199,6 +9351,14 @@ window.MezzoTranslations = {
       "Menü",
       "Die Grafik funktioniert nicht mehr. Lade die Seite neu, um weiterzuspielen."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Keine Anlageberatung",
+      "emptyBody": "Hier könnte dein Token stehen: präsentiere ihn auf DevFridge Scan",
+      "emptyLabel": "Bewirb deinen Token auf DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "{name} auf DevFridge Scan ansehen",
+      "paidLabel": "Bezahlte Platzierung · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Kein Problem! Versuche dieselbe Aufgabe noch einmal.",
       "done": "Bereit! Wähle Kostenlos, Arcade oder Abonnement. Du kannst das kostenlose Tutorial jederzeit wiederholen.",
@@ -9653,6 +9813,14 @@ window.MezzoTranslations = {
       "Menu",
       "The graphics stopped working. Reload the page to continue."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Not investment advice",
+      "emptyBody": "Put your token here: a showcase on DevFridge Scan",
+      "emptyLabel": "Promote your token on DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "View {name} on DevFridge Scan",
+      "paidLabel": "Paid placement · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "No problem! Try the same challenge again.",
       "done": "Ready! Choose Free, Arcade or Subscription. You can replay the free tutorial at any time.",
@@ -10166,6 +10334,14 @@ window.MezzoTranslations = {
       "Menu",
       "Grafis berhenti bekerja. Muat ulang halaman untuk melanjutkan."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Bukan saran investasi",
+      "emptyBody": "Tempatkan tokenmu di sini: tampilkan di DevFridge Scan",
+      "emptyLabel": "Promosikan tokenmu di DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Lihat {name} di DevFridge Scan",
+      "paidLabel": "Penempatan berbayar · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Tidak apa-apa! Coba tantangan yang sama lagi.",
       "done": "Siap! Pilih Gratis, Arcade atau Langganan. Anda dapat mengulang tutorial gratis kapan saja.",
@@ -10622,6 +10798,14 @@ window.MezzoTranslations = {
       "Меню",
       "Графика перестала работать. Перезагрузите страницу, чтобы продолжить."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Не является инвестиционной рекомендацией",
+      "emptyBody": "Разместите здесь свой токен: витрина на DevFridge Scan",
+      "emptyLabel": "Продвигайте свой токен на DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Посмотреть {name} на DevFridge Scan",
+      "paidLabel": "Платное размещение · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Ничего страшного! Попробуйте это задание снова.",
       "done": "Готово! Выберите Бесплатно, Arcade или Подписку. Бесплатное обучение можно повторить в любой момент.",
@@ -11078,6 +11262,14 @@ window.MezzoTranslations = {
       "Меню",
       "Графіка перестала працювати. Перезавантажте сторінку, щоб продовжити."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Не є інвестиційною рекомендацією",
+      "emptyBody": "Розмістіть тут свій токен: вітрина на DevFridge Scan",
+      "emptyLabel": "Просувайте свій токен на DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Переглянути {name} на DevFridge Scan",
+      "paidLabel": "Платне розміщення · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Нічого страшного! Спробуйте це завдання ще раз.",
       "done": "Готово! Виберіть Безкоштовно, Arcade або Підписку. Безкоштовне навчання можна повторити будь-коли.",
@@ -11532,6 +11724,14 @@ window.MezzoTranslations = {
       "Menu",
       "Huminto ang paggana ng graphics. I-reload ang pahina upang magpatuloy."
     ],
+    "tokenSponsor": {
+      "disclaimer": "Hindi ito payo sa pamumuhunan",
+      "emptyBody": "Ilagay ang token mo rito: itampok sa DevFridge Scan",
+      "emptyLabel": "I-promote ang token mo sa DevFridge Scan",
+      "emptyTitle": "YOUR AD HERE",
+      "openLabel": "Tingnan ang {name} sa DevFridge Scan",
+      "paidLabel": "Bayad na puwesto · scan.devfridge.cool"
+    },
     "tutorial": {
       "again": "Ayos lang! Subukan muli ang hamong ito.",
       "done": "Handa na! Pumili ng Libre, Arcade o Suskripsiyon. Maaari mong ulitin ang libreng tutorial anumang oras.",

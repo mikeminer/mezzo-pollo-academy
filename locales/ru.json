@@ -452,5 +452,13 @@
     "body": "Откройте для себя OnlyFridge Club в Solana dApp Store. Следующий бесплатный раунд готов.",
     "open": "Открыть в dApp Store",
     "continue": "Продолжить игру"
+  },
+  "tokenSponsor": {
+    "emptyTitle": "YOUR AD HERE",
+    "emptyBody": "Разместите здесь свой токен: витрина на DevFridge Scan",
+    "paidLabel": "Платное размещение · scan.devfridge.cool",
+    "disclaimer": "Не является инвестиционной рекомендацией",
+    "openLabel": "Посмотреть {name} на DevFridge Scan",
+    "emptyLabel": "Продвигайте свой токен на DevFridge Scan"
   }
 }

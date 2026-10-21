@@ -8,6 +8,7 @@
 <base href="/">
 <link rel="stylesheet" href="locale.css">
 <link rel="stylesheet" href="game-tutorial.css">
+<link rel="stylesheet" href="token-sponsor.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -116,6 +117,15 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 </head>
 <body>
 <div id="app" data-country-root inert>
+  <aside id="tokenSponsorSlot" hidden>
+    <a id="tokenSponsorLink" href="https://scan.devfridge.cool/#feature" target="_blank" rel="sponsored noopener noreferrer" referrerpolicy="no-referrer" aria-describedby="tokenSponsorDetail tokenSponsorDisclaimer">
+      <img id="tokenSponsorLogo" width="40" height="40" alt="" referrerpolicy="no-referrer" hidden>
+      <span id="tokenSponsorMark" aria-hidden="true">＋</span>
+      <span class="token-sponsor-copy"><strong id="tokenSponsorTitle">YOUR AD HERE</strong><span id="tokenSponsorSymbol" dir="ltr" hidden></span><small id="tokenSponsorDetail"></small><small id="tokenSponsorDisclaimer" hidden></small></span>
+      <span class="token-sponsor-arrow" aria-hidden="true">↗</span>
+    </a>
+  </aside>
+  <div id="gameViewport" data-run-mode="free">
   <canvas id="c" aria-label="Game track" tabindex="0"></canvas>
   <audio id="gameMusic" src="media/mezzo-pollo-lyria.mp3" preload="none" loop data-captions-target="songCaptions"><track kind="subtitles" src="media/mezzo-pollo-en.vtt" srclang="en" label="English"></audio>
 
@@ -280,6 +290,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
     </section>
   </div>
   <div id="glLost">The graphics stopped working. Reload the page to continue.</div>
+  </div>
 </div>
 
 <script src="language-packs.js"></script>
@@ -293,6 +304,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 <script src="game-music.js"></script>
 <script src="song-captions.js"></script>
 <script src="game-tutorial.js"></script>
+<script type="module" src="game-token-sponsor.mjs"></script>
 <script>
 (function(){
 "use strict";
@@ -667,6 +679,7 @@ const G={};
 let deathTimer=null;
 function clearDeathTimer(){if(deathTimer!==null){clearTimeout(deathTimer);deathTimer=null}}
 function resetGame(config=mode.config('free')){
+  $('gameViewport').dataset.runMode=config.name;
   clearDeathTimer();
   music.setFocus(false);
   const startingLives=config.lives;
@@ -946,6 +959,8 @@ function resize(){
   camera.aspect=w/h;camera.fov=camera.aspect<.8?72:camera.aspect<1.2?64:56;camera.updateProjectionMatrix();
 }
 window.addEventListener('resize',resize);resize();
+if(typeof ResizeObserver==='function')new ResizeObserver(resize).observe($('gameViewport'));
+document.addEventListener('mezzopollo:token-sponsor-open',()=>{if(state==='play')pause()});
 
 /* ---------- loop ---------- */
 const clock=new THREE.Clock();
