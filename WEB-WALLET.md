@@ -16,6 +16,18 @@ Authorization tokens remain in JavaScript memory only. Reload and disconnect for
 
 Phantom signing uses `provider.signAndSendTransaction` with an official `Transaction` deserialized from the complete, locally constructed unsigned transaction. The previous message-only `request` call was interpreted as a full transaction by the current extension and failed with unsupported message version 57 before showing approval. The new path verifies exact message bytes, preserves the empty signature slot and never retries another signing method after a rejection or ambiguous result. The transaction helper is imported only after the native and MWA branches have returned.
 
+## Chrome's local network permission
+
+Mobile Wallet Adapter reaches the wallet through a WebSocket on `localhost`: the wallet is another app on the same phone. Chrome (also in a Custom Tab opened by another app, such as the OnlyFridge Club app) now asks before a website may reach "other apps and services on this device" (Local Network Access). If that question first appears while Seed Vault is already opening, it stays behind the wallet and ends as a denial, and the connection fails with `net::ERR_BLOCKED_BY_LOCAL_NETWORK_ACCESS_CHECKS`.
+
+`game-wallet.mjs` therefore reads the permission (`loopback-network`, or `local-network-access` on older Chrome) and keeps it current. The MWA session checks it synchronously when the player clicks:
+
+- `granted`, or a browser without the permission: the wallet opens at once, as before.
+- `prompt`: the game raises Chrome's question while it is on screen and rejects with `local_network_prompt`. The UI asks the player to tap Allow, then Connect wallet again, which opens the wallet from a fresh click.
+- `denied`: the session rejects with `local_network_blocked`. The UI explains that Chrome's site settings must allow other apps and services on this device. Only a player who chose Block reaches this state.
+
+Injected providers (Phantom's in-app browser, the APK bridge) don't use localhost and are not affected.
+
 ## Dependencies and verification
 
 The repository pins `@solana-mobile/mobile-wallet-adapter-protocol` at `3.0.1` and `esbuild` at `0.28.2` in the package lock. Regenerate the checked-in bundle with `npm run build:wallet`. `scripts/build-public.mjs` copies `vendor/` without exposing the dependency tree. Wallet transport code is not loaded from a third-party CDN.

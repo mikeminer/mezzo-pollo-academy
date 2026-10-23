@@ -347,6 +347,8 @@
     "unavailable": "Không thể xác minh Đăng ký hoặc dữ liệu đã cũ. Hãy thử lại trong Cửa hàng sau ít phút. Lượt đang chơi không bị ảnh hưởng.",
     "rejected": "Đã hủy kết nối trong ví. Bạn có thể thử lại khi sẵn sàng.",
     "missing-wallet": "Không có ví Solana tương thích trong trình duyệt này. Hãy mở khóa hoặc bật ví, hoặc mở trò chơi trong Phantom trên điện thoại. Phần hướng dẫn không cần ví.",
+    "allow-network": "Chrome xin phép cho trò chơi này kết nối với ví trên điện thoại này: chạm Cho phép trong cửa sổ của Chrome, rồi chạm lại Kết nối và xác minh.",
+    "network-blocked": "Chrome đang chặn trò chơi này kết nối với ví trên điện thoại này. Trong cài đặt trang web của Chrome cho trang này, hãy cho phép các ứng dụng và dịch vụ khác trên thiết bị này, rồi thử lại.",
     "captionsOn": "Phụ đề tiếng Anh: bật",
     "captionsOff": "Phụ đề tiếng Anh: tắt"
   },
@@ -441,6 +443,8 @@
     "connectedWallet": "Đã kết nối: {wallet}",
     "connectHint": "Hãy kết nối ví Solana của bạn trước. Kết nối ví không thực hiện thanh toán.",
     "walletFailed": "Không thể kết nối. Hãy mở khóa ví và thử lại.",
+    "allowNetwork": "Chrome xin phép cho trò chơi này kết nối với ví trên điện thoại này: chạm Cho phép trong cửa sổ của Chrome, rồi chạm lại Kết nối ví.",
+    "networkBlocked": "Chrome đang chặn trò chơi này kết nối với ví trên điện thoại này. Trong cài đặt trang web của Chrome cho trang này, hãy cho phép các ứng dụng và dịch vụ khác trên thiết bị này, rồi thử lại.",
     "walletMismatch": "Khoản thanh toán đã lưu này thuộc về ví khác. Hãy kết nối ví đã dùng để thanh toán."
   },
   "sponsor": {

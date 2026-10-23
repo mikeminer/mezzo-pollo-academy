@@ -26,6 +26,7 @@ function walletError(error) {
 export function createWebWallet({
   nativeProvider = () => null, phantomProvider = () => null, legacyProvider = () => null,
   mobileSupported = false, transact, origin = 'https://mezzopollo.it', icon, onChange = () => {},
+  localNetwork = null,
 }) {
   let publicKey = null, authToken = null, generation = 0, busy = false;
   const listeners = new Map(), watched = new WeakSet();
@@ -67,6 +68,16 @@ export function createWebWallet({
   }
   function withMobileSession(operation) {
     if (busy) return Promise.reject(fail('payment_busy'));
+    // Chrome asks before a website may reach another app on this phone (Local Network Access):
+    // the wallet listens on localhost. Asked while the wallet is already opening, the question
+    // stays behind it and ends as a denial. So it is raised while the game is on screen, and the
+    // wallet opens on the next click, once allowed (an app needs a fresh user activation anyway).
+    const network = localNetwork?.state?.();
+    if (network === 'prompt') {
+      localNetwork.request?.();
+      return Promise.reject(fail('local_network_prompt'));
+    }
+    if (network === 'denied') return Promise.reject(fail('local_network_blocked'));
     busy = true;
     const epoch = generation;
     let task;

@@ -209,6 +209,8 @@
     "unavailable": "La vérification d’Abonnement est indisponible ou les données sont périmées. Réessaie bientôt dans la Boutique. Une partie en cours n’est pas affectée.",
     "rejected": "Connexion annulée dans votre portefeuille. Réessayez quand vous le souhaitez.",
     "missing-wallet": "Aucun portefeuille Solana compatible n’est disponible dans ce navigateur. Déverrouillez ou activez votre portefeuille, ou ouvrez le jeu dans Phantom sur votre téléphone. Le tutoriel ne nécessite aucun portefeuille.",
+    "allow-network": "Chrome demande l’autorisation de relier ce jeu au wallet de ce téléphone : touche Autoriser dans la fenêtre de Chrome, puis touche de nouveau Connecter et vérifier.",
+    "network-blocked": "Chrome empêche ce jeu d’atteindre le wallet de ce téléphone. Dans les paramètres du site de Chrome pour cette page, autorise les autres applis et services de cet appareil, puis réessaie.",
     "captionsOn": "Sous-titres anglais : activés",
     "captionsOff": "Sous-titres anglais : désactivés"
   },
@@ -303,6 +305,8 @@
     "connectedWallet": "Connecté : {wallet}",
     "connectHint": "Connectez d’abord votre portefeuille Solana. La connexion ne déclenche aucun paiement.",
     "walletFailed": "Connexion impossible. Déverrouillez votre portefeuille et réessayez.",
+    "allowNetwork": "Chrome demande l’autorisation de relier ce jeu au wallet de ce téléphone : touche Autoriser dans la fenêtre de Chrome, puis touche de nouveau Connecter le portefeuille.",
+    "networkBlocked": "Chrome empêche ce jeu d’atteindre le wallet de ce téléphone. Dans les paramètres du site de Chrome pour cette page, autorise les autres applis et services de cet appareil, puis réessaie.",
     "walletMismatch": "Ce paiement enregistré appartient à un autre portefeuille. Connectez celui utilisé pour ce paiement."
   },
   "sponsor": {

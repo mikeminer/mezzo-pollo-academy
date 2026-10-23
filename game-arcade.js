@@ -5,7 +5,7 @@
   const tiers = Object.freeze({ hard: { lives: 1, price: '0.001' }, medium: { lives: 3, price: '0.002' }, easy: { lives: 9, price: '0.003' }, god: { lives: 32, price: '0.01' } });
   const diagnosticCodes = new Set(['USER_REJECTED', 'already_started', 'arcade_unavailable', 'chain_unavailable',
     'intent_not_found', 'invalid_action', 'invalid_address', 'invalid_intent', 'invalid_json', 'invalid_request', 'invalid_tier',
-    'invalid_wallet_response', 'json_required', 'method_not_allowed', 'missing_wallet', 'origin_not_allowed',
+    'invalid_wallet_response', 'json_required', 'local_network_blocked', 'local_network_prompt', 'method_not_allowed', 'missing_wallet', 'origin_not_allowed',
     'payer_mismatch', 'payment_already_used', 'payment_busy', 'payment_conflict', 'payment_mismatch', 'payment_needs_review',
     'payment_pending', 'payment_required', 'pending_tier', 'rate_limited', 'recipient_unavailable', 'request_too_large',
     'storage_unavailable', 'tier_mismatch', 'unavailable', 'wallet_disconnected', 'wrong_network']);
@@ -107,6 +107,8 @@
     }
     status = code === 4001 || code === 'USER_REJECTED' ? 'rejected'
       : code === 'missing_wallet' ? 'missingWallet'
+      : code === 'local_network_prompt' ? 'allowNetwork'
+      : code === 'local_network_blocked' ? 'networkBlocked'
       : code === 'already_started' ? 'consumed'
       : code === 'payment_busy' ? 'busy'
       : code === 'payer_mismatch' ? 'walletMismatch'
@@ -146,7 +148,9 @@
       if (!walletAddress()) throw Error('missing_wallet');
     } catch (error) {
       walletError = Number(error?.code) === 4001 || error?.code === 'USER_REJECTED' ? 'rejected'
-        : error?.message === 'missing_wallet' ? 'missingWallet' : 'walletFailed';
+        : error?.message === 'missing_wallet' ? 'missingWallet'
+        : error?.code === 'local_network_prompt' ? 'allowNetwork'
+        : error?.code === 'local_network_blocked' ? 'networkBlocked' : 'walletFailed';
     } finally { walletConnecting = false; render(); }
   }
   async function payFromGesture() {

@@ -209,6 +209,8 @@
     "unavailable": "La verificación de Suscripción no está disponible o los datos no están actualizados. Vuelve a comprobar en la Tienda en breve. La partida en curso no se ve afectada.",
     "rejected": "Conexión cancelada en tu billetera. Puedes volver a intentarlo cuando quieras.",
     "missing-wallet": "No hay una billetera Solana compatible disponible en este navegador. Desbloquea o activa tu billetera, o abre el juego en Phantom en tu teléfono. El tutorial no necesita una billetera.",
+    "allow-network": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar y verificar.",
+    "network-blocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
     "captionsOn": "Subtítulos en inglés: activados",
     "captionsOff": "Subtítulos en inglés: desactivados"
   },
@@ -303,6 +305,8 @@
     "connectedWallet": "Conectada: {wallet}",
     "connectHint": "Conecta primero tu billetera Solana. La conexión no realiza ningún pago.",
     "walletFailed": "No se pudo conectar. Desbloquea tu billetera e inténtalo de nuevo.",
+    "allowNetwork": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar billetera.",
+    "networkBlocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
     "walletMismatch": "Este pago guardado pertenece a otra billetera. Conecta la billetera usada para este pago."
   },
   "sponsor": {

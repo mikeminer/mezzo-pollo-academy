@@ -2,6 +2,7 @@
 window.MezzoTranslations = {
   "global": {
     "access": {
+      "allow-network": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect & verify again.",
       "captionsOff": "English subtitles: off",
       "captionsOn": "English subtitles: on",
       "check": "Verify Subscription",
@@ -18,11 +19,13 @@ window.MezzoTranslations = {
       "eligible": "Subscription verified for this page session: {amount} MEMEZZO actively locked at verification. Each new run starts with {lives} {lifeWord}. No checks during play.",
       "insufficient": "At least {minimum} MEMEZZO in active timelocks has not been confirmed for Subscription. Wait for lock confirmation and verify again. The tutorial is free.",
       "missing-wallet": "No compatible Solana wallet is available in this browser. Unlock or enable your wallet, or open the game in Phantom on your phone. The tutorial needs no wallet.",
+      "network-blocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "rejected": "Connection cancelled in your wallet. You can try again whenever you are ready.",
       "unavailable": "Subscription verification is unavailable or the data is out of date. Try the Shop check again shortly. An ongoing run is unaffected.",
       "wallet": "Wallet: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect wallet again.",
       "busy": "Finish the current payment before starting another.",
       "cancel": "Back to menu",
       "checking": "Checking payment…",
@@ -45,6 +48,7 @@ window.MezzoTranslations = {
       "medium": "Medium",
       "missingWallet": "Connect a compatible Solana wallet using Connect wallet. On a phone, you can also open the game in Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "openWallet": "Open in Phantom",
       "pay": "Pay {price} SOL and play",
       "pending": "Waiting for payment confirmation…",
@@ -524,6 +528,7 @@ window.MezzoTranslations = {
   },
   "it": {
     "access": {
+      "allow-network": "Chrome chiede il permesso di collegare il gioco al wallet di questo telefono: tocca Consenti nella finestra di Chrome, poi tocca di nuovo Collega e verifica.",
       "captionsOff": "Sottotitoli in inglese: disattivati",
       "captionsOn": "Sottotitoli in inglese: attivi",
       "check": "Verifica Abbonamento",
@@ -540,11 +545,13 @@ window.MezzoTranslations = {
       "eligible": "Abbonamento verificato per questa sessione della pagina: {amount} MEMEZZO in timelock attivi alla verifica. Ogni nuova partita inizia con {lives} {lifeWord}. Nessun controllo durante il gioco.",
       "insufficient": "Non sono confermati almeno {minimum} MEMEZZO in timelock attivi per Abbonamento. Attendi la conferma del timelock e verifica di nuovo. Il tutorial è gratuito.",
       "missing-wallet": "Nessun wallet Solana compatibile è disponibile in questo browser. Sblocca o abilita il wallet, oppure apri il gioco in Phantom sul telefono. Il tutorial non richiede un wallet.",
+      "network-blocked": "Chrome impedisce al gioco di raggiungere il wallet di questo telefono. Nelle impostazioni del sito di Chrome per questa pagina consenti l’accesso ad altri servizi e app su questo dispositivo, poi riprova.",
       "rejected": "Collegamento annullato nel wallet. Puoi riprovare quando vuoi.",
       "unavailable": "La verifica di Abbonamento non è disponibile oppure i dati non sono aggiornati. Riprova dal Negozio tra poco. La partita in corso non viene interrotta.",
       "wallet": "Wallet: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome chiede il permesso di collegare il gioco al wallet di questo telefono: tocca Consenti nella finestra di Chrome, poi tocca di nuovo Collega wallet.",
       "busy": "Completa il pagamento in corso prima di iniziarne un altro.",
       "cancel": "Torna al menu",
       "checking": "Controllo del pagamento…",
@@ -567,6 +574,7 @@ window.MezzoTranslations = {
       "medium": "Medio",
       "missingWallet": "Collega un wallet Solana compatibile con Collega wallet. Sul telefono puoi anche aprire il gioco in Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome impedisce al gioco di raggiungere il wallet di questo telefono. Nelle impostazioni del sito di Chrome per questa pagina consenti l’accesso ad altri servizi e app su questo dispositivo, poi riprova.",
       "openWallet": "Apri in Phantom",
       "pay": "Paga {price} SOL e gioca",
       "pending": "In attesa della conferma del pagamento…",
@@ -1047,6 +1055,7 @@ window.MezzoTranslations = {
   },
   "pl": {
     "access": {
+      "allow-network": "Chrome pyta, czy ta gra może połączyć się z portfelem na tym telefonie: dotknij Zezwól w oknie Chrome, a potem jeszcze raz Połącz i sprawdź.",
       "captionsOff": "Napisy angielskie: wyłączone",
       "captionsOn": "Napisy angielskie: włączone",
       "check": "Sprawdź Abonament",
@@ -1063,11 +1072,13 @@ window.MezzoTranslations = {
       "eligible": "Abonament potwierdzony na tę sesję strony: {amount} MEMEZZO w aktywnych blokadach w chwili sprawdzenia. Każda nowa rozgrywka zaczyna się z {lives} {lifeWord}. Bez kontroli podczas gry.",
       "insufficient": "Nie potwierdzono co najmniej {minimum} MEMEZZO w aktywnych blokadach dla Abonamentu. Poczekaj na potwierdzenie blokady i sprawdź ponownie. Samouczek jest bezpłatny.",
       "missing-wallet": "W tej przeglądarce nie ma dostępnego zgodnego portfela Solana. Odblokuj lub włącz portfel albo otwórz grę w Phantom na telefonie. Samouczek nie wymaga portfela.",
+      "network-blocked": "Chrome blokuje grze dostęp do portfela na tym telefonie. W ustawieniach witryny Chrome dla tej strony zezwól na dostęp do innych aplikacji i usług na tym urządzeniu, a potem spróbuj ponownie.",
       "rejected": "Połączenie anulowano w portfelu. Spróbuj ponownie, gdy będziesz gotowy.",
       "unavailable": "Sprawdzanie Abonamentu jest niedostępne lub dane są nieaktualne. Spróbuj ponownie w Sklepie za chwilę. Trwająca rozgrywka pozostaje bez zmian.",
       "wallet": "Portfel: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome pyta, czy ta gra może połączyć się z portfelem na tym telefonie: dotknij Zezwól w oknie Chrome, a potem jeszcze raz Połącz portfel.",
       "busy": "Zakończ bieżącą płatność przed rozpoczęciem kolejnej.",
       "cancel": "Wróć do menu",
       "checking": "Sprawdzanie płatności…",
@@ -1090,6 +1101,7 @@ window.MezzoTranslations = {
       "medium": "Średni",
       "missingWallet": "Połącz zgodny portfel Solana przyciskiem Połącz portfel. Na telefonie możesz też otworzyć grę w Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome blokuje grze dostęp do portfela na tym telefonie. W ustawieniach witryny Chrome dla tej strony zezwól na dostęp do innych aplikacji i usług na tym urządzeniu, a potem spróbuj ponownie.",
       "openWallet": "Otwórz w Phantom",
       "pay": "Zapłać {price} SOL i graj",
       "pending": "Oczekiwanie na potwierdzenie płatności…",
@@ -1571,6 +1583,7 @@ window.MezzoTranslations = {
   },
   "ja": {
     "access": {
+      "allow-network": "Chrome がこのゲームからこのスマホのウォレットへの接続許可を求めています：Chrome の画面で「許可」をタップしてから、もう一度「接続して確認」をタップしてください。",
       "captionsOff": "英語字幕：オフ",
       "captionsOn": "英語字幕：オン",
       "check": "サブスクリプションを確認",
@@ -1587,11 +1600,13 @@ window.MezzoTranslations = {
       "eligible": "このページのセッションでサブスクリプションを確認済み：確認時に{amount} MEMEZZOが有効な期間ロックにありました。毎回{lives} {lifeWord}で始まります。プレイ中の確認はありません。",
       "insufficient": "サブスクリプションに必要な最低{minimum} MEMEZZOの有効な期間ロックを確認できませんでした。ロックの確定後に再確認してください。チュートリアルは無料です。",
       "missing-wallet": "このブラウザでは対応するSolanaウォレットを利用できません。ウォレットのロックを解除するか有効にしてください。またはスマートフォンのPhantom内でゲームを開いてください。チュートリアルにウォレットは不要です。",
+      "network-blocked": "Chrome がこのゲームからこのスマホのウォレットへの接続をブロックしています。このページの Chrome のサイト設定で、このデバイスの他のアプリやサービスへのアクセスを許可してから、もう一度お試しください。",
       "rejected": "ウォレットで接続がキャンセルされました。準備ができたら再度お試しください。",
       "unavailable": "サブスクリプションの確認は利用できないか、データが古くなっています。少し待ってショップで再試行してください。進行中のゲームには影響しません。",
       "wallet": "ウォレット：{wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome がこのゲームからこのスマホのウォレットへの接続許可を求めています：Chrome の画面で「許可」をタップしてから、もう一度「ウォレットを接続」をタップしてください。",
       "busy": "現在の支払いを完了してから、次の支払いを始めてください。",
       "cancel": "メニューに戻る",
       "checking": "支払いを確認中…",
@@ -1614,6 +1629,7 @@ window.MezzoTranslations = {
       "medium": "ふつう",
       "missingWallet": "「ウォレットを接続」で対応するSolanaウォレットを接続してください。スマートフォンではPhantom内でゲームを開くこともできます。",
       "name": "Arcade",
+      "networkBlocked": "Chrome がこのゲームからこのスマホのウォレットへの接続をブロックしています。このページの Chrome のサイト設定で、このデバイスの他のアプリやサービスへのアクセスを許可してから、もう一度お試しください。",
       "openWallet": "Phantomで開く",
       "pay": "{price} SOLを支払って遊ぶ",
       "pending": "支払いの確定を待っています…",
@@ -2032,6 +2048,7 @@ window.MezzoTranslations = {
   },
   "es-MX": {
     "access": {
+      "allow-network": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar y verificar.",
       "captionsOff": "Subtítulos en inglés: desactivados",
       "captionsOn": "Subtítulos en inglés: activados",
       "check": "Verificar Suscripción",
@@ -2048,11 +2065,13 @@ window.MezzoTranslations = {
       "eligible": "Suscripción verificada para esta sesión de la página: {amount} MEMEZZO bloqueados activamente al verificar. Cada nueva partida empieza con {lives} {lifeWord}. Sin comprobaciones durante el juego.",
       "insufficient": "No se han confirmado al menos {minimum} MEMEZZO en bloqueos activos para Suscripción. Espera la confirmación del bloqueo y verifica de nuevo. El tutorial es gratuito.",
       "missing-wallet": "No hay una billetera Solana compatible disponible en este navegador. Desbloquea o activa tu billetera, o abre el juego en Phantom en tu teléfono. El tutorial no necesita una billetera.",
+      "network-blocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
       "rejected": "Conexión cancelada en tu billetera. Puedes volver a intentarlo cuando quieras.",
       "unavailable": "La verificación de Suscripción no está disponible o los datos no están actualizados. Vuelve a comprobar en la Tienda en breve. La partida en curso no se ve afectada.",
       "wallet": "Monedero: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar billetera.",
       "busy": "Termina el pago actual antes de iniciar otro.",
       "cancel": "Volver al menú",
       "checking": "Comprobando el pago…",
@@ -2075,6 +2094,7 @@ window.MezzoTranslations = {
       "medium": "Medio",
       "missingWallet": "Conecta una billetera Solana compatible con Conectar billetera. En el teléfono también puedes abrir el juego en Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
       "openWallet": "Abrir en Phantom",
       "pay": "Pagar {price} SOL y jugar",
       "pending": "Esperando la confirmación del pago…",
@@ -2495,6 +2515,7 @@ window.MezzoTranslations = {
   },
   "en": {
     "access": {
+      "allow-network": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect & verify again.",
       "captionsOff": "English subtitles: off",
       "captionsOn": "English subtitles: on",
       "check": "Verify Subscription",
@@ -2511,11 +2532,13 @@ window.MezzoTranslations = {
       "eligible": "Subscription verified for this page session: {amount} MEMEZZO actively locked at verification. Each new run starts with {lives} {lifeWord}. No checks during play.",
       "insufficient": "At least {minimum} MEMEZZO in active timelocks has not been confirmed for Subscription. Wait for lock confirmation and verify again. The tutorial is free.",
       "missing-wallet": "No compatible Solana wallet is available in this browser. Unlock or enable your wallet, or open the game in Phantom on your phone. The tutorial needs no wallet.",
+      "network-blocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "rejected": "Connection cancelled in your wallet. You can try again whenever you are ready.",
       "unavailable": "Subscription verification is unavailable or the data is out of date. Try the Shop check again shortly. An ongoing run is unaffected.",
       "wallet": "Wallet: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect wallet again.",
       "busy": "Finish the current payment before starting another.",
       "cancel": "Back to menu",
       "checking": "Checking payment…",
@@ -2538,6 +2561,7 @@ window.MezzoTranslations = {
       "medium": "Medium",
       "missingWallet": "Connect a compatible Solana wallet using Connect wallet. On a phone, you can also open the game in Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "openWallet": "Open in Phantom",
       "pay": "Pay {price} SOL and play",
       "pending": "Waiting for payment confirmation…",
@@ -3017,6 +3041,7 @@ window.MezzoTranslations = {
   },
   "hi": {
     "access": {
+      "allow-network": "Chrome इस गेम को इस फ़ोन के वॉलेट तक पहुँचने की अनुमति माँगता है: Chrome की विंडो में अनुमति दें पर टैप करें, फिर दोबारा जोड़ें और सत्यापन करें पर टैप करें।",
       "captionsOff": "अंग्रेज़ी उपशीर्षक: बंद",
       "captionsOn": "अंग्रेज़ी उपशीर्षक: चालू",
       "check": "सदस्यता सत्यापित करें",
@@ -3033,11 +3058,13 @@ window.MezzoTranslations = {
       "eligible": "इस पेज सत्र के लिए सदस्यता सत्यापित: जाँच के समय {amount} MEMEZZO सक्रिय टाइमलॉक में थे। हर नई दौड़ {lives} {lifeWord} से शुरू होती है। खेलते समय कोई जाँच नहीं।",
       "insufficient": "सदस्यता के लिए सक्रिय टाइमलॉक में कम से कम {minimum} MEMEZZO की पुष्टि नहीं हुई। लॉक की पुष्टि का इंतज़ार करके फिर सत्यापित करें। ट्यूटोरियल मुफ़्त है।",
       "missing-wallet": "इस ब्राउज़र में कोई संगत Solana वॉलेट उपलब्ध नहीं है। वॉलेट अनलॉक या सक्षम करें, या फ़ोन पर गेम को Phantom में खोलें। ट्यूटोरियल के लिए वॉलेट की ज़रूरत नहीं है।",
+      "network-blocked": "Chrome इस गेम को इस फ़ोन के वॉलेट तक पहुँचने से रोक रहा है। इस पेज की Chrome साइट सेटिंग में इस डिवाइस के अन्य ऐप और सेवाओं की अनुमति दें, फिर दोबारा कोशिश करें।",
       "rejected": "वॉलेट में कनेक्शन रद्द कर दिया गया। तैयार होने पर फिर कोशिश करें।",
       "unavailable": "सदस्यता सत्यापन उपलब्ध नहीं है या डेटा पुराना है। थोड़ी देर में दुकान से फिर कोशिश करें। चल रही दौड़ पर असर नहीं पड़ता।",
       "wallet": "वॉलेट: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome इस गेम को इस फ़ोन के वॉलेट तक पहुँचने की अनुमति माँगता है: Chrome की विंडो में अनुमति दें पर टैप करें, फिर दोबारा वॉलेट कनेक्ट करें पर टैप करें।",
       "busy": "दूसरा भुगतान शुरू करने से पहले मौजूदा भुगतान पूरा करें।",
       "cancel": "मेन्यू पर वापस जाएँ",
       "checking": "भुगतान की जाँच हो रही है…",
@@ -3060,6 +3087,7 @@ window.MezzoTranslations = {
       "medium": "मध्यम",
       "missingWallet": "वॉलेट कनेक्ट करें बटन से संगत Solana वॉलेट कनेक्ट करें। फ़ोन पर आप गेम को Phantom में भी खोल सकते हैं।",
       "name": "Arcade",
+      "networkBlocked": "Chrome इस गेम को इस फ़ोन के वॉलेट तक पहुँचने से रोक रहा है। इस पेज की Chrome साइट सेटिंग में इस डिवाइस के अन्य ऐप और सेवाओं की अनुमति दें, फिर दोबारा कोशिश करें।",
       "openWallet": "Phantom में खोलें",
       "pay": "{price} SOL देकर खेलें",
       "pending": "भुगतान की पुष्टि की प्रतीक्षा है…",
@@ -3479,6 +3507,7 @@ window.MezzoTranslations = {
   },
   "fr": {
     "access": {
+      "allow-network": "Chrome demande l’autorisation de relier ce jeu au wallet de ce téléphone : touche Autoriser dans la fenêtre de Chrome, puis touche de nouveau Connecter et vérifier.",
       "captionsOff": "Sous-titres anglais : désactivés",
       "captionsOn": "Sous-titres anglais : activés",
       "check": "Vérifier Abonnement",
@@ -3495,11 +3524,13 @@ window.MezzoTranslations = {
       "eligible": "Abonnement vérifié pour cette session de la page : {amount} MEMEZZO activement verrouillés lors de la vérification. Chaque nouvelle partie commence avec {lives} {lifeWord}. Aucun contrôle pendant le jeu.",
       "insufficient": "Au moins {minimum} MEMEZZO dans des verrouillages actifs n’ont pas été confirmés pour Abonnement. Attends la confirmation du verrouillage puis vérifie à nouveau. Le tutoriel est gratuit.",
       "missing-wallet": "Aucun portefeuille Solana compatible n’est disponible dans ce navigateur. Déverrouillez ou activez votre portefeuille, ou ouvrez le jeu dans Phantom sur votre téléphone. Le tutoriel ne nécessite aucun portefeuille.",
+      "network-blocked": "Chrome empêche ce jeu d’atteindre le wallet de ce téléphone. Dans les paramètres du site de Chrome pour cette page, autorise les autres applis et services de cet appareil, puis réessaie.",
       "rejected": "Connexion annulée dans votre portefeuille. Réessayez quand vous le souhaitez.",
       "unavailable": "La vérification d’Abonnement est indisponible ou les données sont périmées. Réessaie bientôt dans la Boutique. Une partie en cours n’est pas affectée.",
       "wallet": "Portefeuille : {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome demande l’autorisation de relier ce jeu au wallet de ce téléphone : touche Autoriser dans la fenêtre de Chrome, puis touche de nouveau Connecter le portefeuille.",
       "busy": "Termine le paiement en cours avant d’en commencer un autre.",
       "cancel": "Retour au menu",
       "checking": "Vérification du paiement…",
@@ -3522,6 +3553,7 @@ window.MezzoTranslations = {
       "medium": "Moyen",
       "missingWallet": "Connectez un portefeuille Solana compatible avec Connecter le portefeuille. Sur téléphone, vous pouvez aussi ouvrir le jeu dans Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome empêche ce jeu d’atteindre le wallet de ce téléphone. Dans les paramètres du site de Chrome pour cette page, autorise les autres applis et services de cet appareil, puis réessaie.",
       "openWallet": "Ouvrir dans Phantom",
       "pay": "Payer {price} SOL et jouer",
       "pending": "En attente de confirmation du paiement…",
@@ -3942,6 +3974,7 @@ window.MezzoTranslations = {
   },
   "es": {
     "access": {
+      "allow-network": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar y verificar.",
       "captionsOff": "Subtítulos en inglés: desactivados",
       "captionsOn": "Subtítulos en inglés: activados",
       "check": "Verificar Suscripción",
@@ -3958,11 +3991,13 @@ window.MezzoTranslations = {
       "eligible": "Suscripción verificada para esta sesión de la página: {amount} MEMEZZO bloqueados activamente al verificar. Cada nueva partida empieza con {lives} {lifeWord}. Sin comprobaciones durante el juego.",
       "insufficient": "No se han confirmado al menos {minimum} MEMEZZO en bloqueos activos para Suscripción. Espera la confirmación del bloqueo y verifica de nuevo. El tutorial es gratuito.",
       "missing-wallet": "No hay una billetera Solana compatible disponible en este navegador. Desbloquea o activa tu billetera, o abre el juego en Phantom en tu teléfono. El tutorial no necesita una billetera.",
+      "network-blocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
       "rejected": "Conexión cancelada en tu billetera. Puedes volver a intentarlo cuando quieras.",
       "unavailable": "La verificación de Suscripción no está disponible o los datos no están actualizados. Vuelve a comprobar en la Tienda en breve. La partida en curso no se ve afectada.",
       "wallet": "Monedero: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar billetera.",
       "busy": "Termina el pago actual antes de iniciar otro.",
       "cancel": "Volver al menú",
       "checking": "Comprobando el pago…",
@@ -3985,6 +4020,7 @@ window.MezzoTranslations = {
       "medium": "Medio",
       "missingWallet": "Conecta una billetera Solana compatible con Conectar billetera. En el teléfono también puedes abrir el juego en Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
       "openWallet": "Abrir en Phantom",
       "pay": "Pagar {price} SOL y jugar",
       "pending": "Esperando la confirmación del pago…",
@@ -4405,6 +4441,7 @@ window.MezzoTranslations = {
   },
   "el": {
     "access": {
+      "allow-network": "Το Chrome ζητά άδεια ώστε το παιχνίδι να φτάσει στο πορτοφόλι αυτού του κινητού: πάτα Να επιτρέπεται στο παράθυρο του Chrome και μετά πάτα ξανά Σύνδεση και επαλήθευση.",
       "captionsOff": "Αγγλικοί υπότιτλοι: ανενεργοί",
       "captionsOn": "Αγγλικοί υπότιτλοι: ενεργοί",
       "check": "Επαλήθευση Συνδρομής",
@@ -4421,11 +4458,13 @@ window.MezzoTranslations = {
       "eligible": "Η Συνδρομή επαληθεύτηκε για αυτή τη συνεδρία της σελίδας: {amount} MEMEZZO ενεργά κλειδωμένα κατά την επαλήθευση. Κάθε νέος γύρος ξεκινά με {lives} {lifeWord}. Χωρίς ελέγχους κατά το παιχνίδι.",
       "insufficient": "Δεν επιβεβαιώθηκαν τουλάχιστον {minimum} MEMEZZO σε ενεργά κλειδώματα για Συνδρομή. Περίμενε την επιβεβαίωση του κλειδώματος και επαλήθευσε ξανά. Το μάθημα είναι δωρεάν.",
       "missing-wallet": "Δεν υπάρχει διαθέσιμο συμβατό πορτοφόλι Solana σε αυτό το πρόγραμμα περιήγησης. Ξεκλειδώστε ή ενεργοποιήστε το πορτοφόλι σας ή ανοίξτε το παιχνίδι στο Phantom στο κινητό. Το εκπαιδευτικό δεν απαιτεί πορτοφόλι.",
+      "network-blocked": "Το Chrome εμποδίζει το παιχνίδι να φτάσει στο πορτοφόλι αυτού του κινητού. Στις ρυθμίσεις ιστοτόπου του Chrome για αυτή τη σελίδα επίτρεψε άλλες εφαρμογές και υπηρεσίες σε αυτή τη συσκευή και δοκίμασε ξανά.",
       "rejected": "Η σύνδεση ακυρώθηκε στο πορτοφόλι σας. Μπορείτε να δοκιμάσετε ξανά όταν είστε έτοιμοι.",
       "unavailable": "Η επαλήθευση Συνδρομής δεν είναι διαθέσιμη ή τα δεδομένα είναι παλιά. Δοκίμασε ξανά από το κατάστημα σε λίγο. Ο γύρος σε εξέλιξη δεν επηρεάζεται.",
       "wallet": "Πορτοφόλι: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Το Chrome ζητά άδεια ώστε το παιχνίδι να φτάσει στο πορτοφόλι αυτού του κινητού: πάτα Να επιτρέπεται στο παράθυρο του Chrome και μετά πάτα ξανά Σύνδεση πορτοφολιού.",
       "busy": "Ολοκλήρωσε την τρέχουσα πληρωμή πριν ξεκινήσεις άλλη.",
       "cancel": "Επιστροφή στο μενού",
       "checking": "Έλεγχος πληρωμής…",
@@ -4448,6 +4487,7 @@ window.MezzoTranslations = {
       "medium": "Μεσαίο",
       "missingWallet": "Συνδέστε ένα συμβατό πορτοφόλι Solana με το κουμπί Σύνδεση πορτοφολιού. Στο κινητό μπορείτε επίσης να ανοίξετε το παιχνίδι στο Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Το Chrome εμποδίζει το παιχνίδι να φτάσει στο πορτοφόλι αυτού του κινητού. Στις ρυθμίσεις ιστοτόπου του Chrome για αυτή τη σελίδα επίτρεψε άλλες εφαρμογές και υπηρεσίες σε αυτή τη συσκευή και δοκίμασε ξανά.",
       "openWallet": "Άνοιγμα στο Phantom",
       "pay": "Πλήρωσε {price} SOL και παίξε",
       "pending": "Αναμονή επιβεβαίωσης πληρωμής…",
@@ -4867,6 +4907,7 @@ window.MezzoTranslations = {
   },
   "tr": {
     "access": {
+      "allow-network": "Chrome, bu oyunun bu telefondaki cüzdana ulaşması için izin istiyor: Chrome penceresinde İzin ver’e dokun, sonra tekrar Bağlan ve doğrula düğmesine dokun.",
       "captionsOff": "İngilizce altyazılar: kapalı",
       "captionsOn": "İngilizce altyazılar: açık",
       "check": "Aboneliği doğrula",
@@ -4883,11 +4924,13 @@ window.MezzoTranslations = {
       "eligible": "Bu sayfa oturumu için Abonelik doğrulandı: doğrulama anında {amount} MEMEZZO aktif kilitli. Her yeni koşu {lives} {lifeWord} ile başlar. Oyun sırasında kontrol yok.",
       "insufficient": "Abonelik için aktif zaman kilitlerinde en az {minimum} MEMEZZO doğrulanamadı. Kilit onayını bekleyip tekrar doğrulayın. Öğretici ücretsizdir.",
       "missing-wallet": "Bu tarayıcıda uyumlu bir Solana cüzdanı bulunmuyor. Cüzdanınızın kilidini açın veya cüzdanı etkinleştirin ya da telefonda oyunu Phantom içinde açın. Eğitim için cüzdan gerekmez.",
+      "network-blocked": "Chrome bu oyunun bu telefondaki cüzdana ulaşmasını engelliyor. Bu sayfanın Chrome site ayarlarında bu cihazdaki diğer uygulama ve hizmetlere izin ver, sonra tekrar dene.",
       "rejected": "Bağlantı cüzdanınızda iptal edildi. Hazır olduğunuzda tekrar deneyebilirsiniz.",
       "unavailable": "Abonelik doğrulaması kullanılamıyor veya veriler güncel değil. Birazdan mağazada tekrar deneyin. Devam eden koşu etkilenmez.",
       "wallet": "Cüzdan: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome, bu oyunun bu telefondaki cüzdana ulaşması için izin istiyor: Chrome penceresinde İzin ver’e dokun, sonra tekrar Cüzdanı bağla düğmesine dokun.",
       "busy": "Başka bir ödeme başlatmadan önce mevcut ödemeyi tamamlayın.",
       "cancel": "Menüye dön",
       "checking": "Ödeme kontrol ediliyor…",
@@ -4910,6 +4953,7 @@ window.MezzoTranslations = {
       "medium": "Orta",
       "missingWallet": "Cüzdanı bağla düğmesiyle uyumlu bir Solana cüzdanı bağlayın. Telefonda oyunu Phantom içinde de açabilirsiniz.",
       "name": "Arcade",
+      "networkBlocked": "Chrome bu oyunun bu telefondaki cüzdana ulaşmasını engelliyor. Bu sayfanın Chrome site ayarlarında bu cihazdaki diğer uygulama ve hizmetlere izin ver, sonra tekrar dene.",
       "openWallet": "Phantom ile aç",
       "pay": "{price} SOL öde ve oyna",
       "pending": "Ödeme onayı bekleniyor…",
@@ -5329,6 +5373,7 @@ window.MezzoTranslations = {
   },
   "zh": {
     "access": {
+      "allow-network": "Chrome 正在询问是否允许此游戏连接这部手机上的钱包：请在 Chrome 窗口中点按“允许”，然后再次点按“连接并验证”。",
       "captionsOff": "英文字幕：关",
       "captionsOn": "英文字幕：开",
       "check": "验证订阅",
@@ -5345,11 +5390,13 @@ window.MezzoTranslations = {
       "eligible": "本次页面会话的订阅已验证：验证时有{amount} MEMEZZO处于有效锁仓中。每局初始有{lives} {lifeWord}。游戏过程中不会验证。",
       "insufficient": "未能确认订阅所需的至少{minimum} MEMEZZO有效锁仓。请等待锁仓确认后重新验证。教程免费。",
       "missing-wallet": "此浏览器中没有可用的兼容 Solana 钱包。请解锁或启用钱包，或在手机的 Phantom 中打开游戏。教程不需要钱包。",
+      "network-blocked": "Chrome 阻止了此游戏连接这部手机上的钱包。请在 Chrome 中此页面的网站设置里允许访问此设备上的其他应用和服务，然后重试。",
       "rejected": "已在钱包中取消连接。准备好后可以重试。",
       "unavailable": "订阅验证不可用或数据已过期。请稍后在商店重试。进行中的游戏不受影响。",
       "wallet": "钱包：{wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome 正在询问是否允许此游戏连接这部手机上的钱包：请在 Chrome 窗口中点按“允许”，然后再次点按“连接钱包”。",
       "busy": "请先完成当前付款，再发起另一笔付款。",
       "cancel": "返回菜单",
       "checking": "正在核实付款…",
@@ -5372,6 +5419,7 @@ window.MezzoTranslations = {
       "medium": "中等",
       "missingWallet": "请点击“连接钱包”连接兼容的 Solana 钱包。在手机上，您也可以在 Phantom 中打开游戏。",
       "name": "Arcade",
+      "networkBlocked": "Chrome 阻止了此游戏连接这部手机上的钱包。请在 Chrome 中此页面的网站设置里允许访问此设备上的其他应用和服务，然后重试。",
       "openWallet": "在Phantom中打开",
       "pay": "支付{price} SOL并开始游戏",
       "pending": "正在等待付款确认…",
@@ -5790,6 +5838,7 @@ window.MezzoTranslations = {
   },
   "ko": {
     "access": {
+      "allow-network": "Chrome이 이 게임이 이 휴대폰의 지갑에 연결해도 되는지 묻고 있어요: Chrome 창에서 허용을 누른 다음 연결 및 확인을(를) 다시 누르세요.",
       "captionsOff": "영어 자막: 꺼짐",
       "captionsOn": "영어 자막: 켜짐",
       "check": "구독 확인",
@@ -5806,11 +5855,13 @@ window.MezzoTranslations = {
       "eligible": "이번 페이지 세션의 구독 확인 완료: 확인 시 {amount} MEMEZZO가 활성 잠금 상태입니다. 매 판 {lives} {lifeWord}로 시작합니다. 플레이 중에는 확인하지 않습니다.",
       "insufficient": "구독에 필요한 활성 기간 잠금의 최소 {minimum} MEMEZZO를 확인하지 못했습니다. 잠금 확정을 기다린 후 다시 확인하세요. 튜토리얼은 무료입니다.",
       "missing-wallet": "이 브라우저에서 호환되는 Solana 지갑을 사용할 수 없습니다. 지갑 잠금을 해제하거나 활성화하세요. 또는 휴대폰의 Phantom에서 게임을 여세요. 튜토리얼에는 지갑이 필요하지 않습니다.",
+      "network-blocked": "Chrome이 이 게임이 이 휴대폰의 지갑에 연결하는 것을 막고 있어요. 이 페이지의 Chrome 사이트 설정에서 이 기기의 다른 앱 및 서비스 접근을 허용한 뒤 다시 시도하세요.",
       "rejected": "지갑에서 연결을 취소했습니다. 준비되면 다시 시도할 수 있습니다.",
       "unavailable": "구독 확인을 이용할 수 없거나 데이터가 오래되었습니다. 잠시 후 상점에서 다시 확인하세요. 진행 중인 게임에는 영향이 없습니다.",
       "wallet": "지갑: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome이 이 게임이 이 휴대폰의 지갑에 연결해도 되는지 묻고 있어요: Chrome 창에서 허용을 누른 다음 지갑 연결을(를) 다시 누르세요.",
       "busy": "다른 결제를 시작하기 전에 현재 결제를 완료하세요.",
       "cancel": "메뉴로 돌아가기",
       "checking": "결제 확인 중…",
@@ -5833,6 +5884,7 @@ window.MezzoTranslations = {
       "medium": "보통",
       "missingWallet": "지갑 연결 버튼으로 호환되는 Solana 지갑을 연결하세요. 휴대폰에서는 Phantom에서 게임을 열 수도 있습니다.",
       "name": "Arcade",
+      "networkBlocked": "Chrome이 이 게임이 이 휴대폰의 지갑에 연결하는 것을 막고 있어요. 이 페이지의 Chrome 사이트 설정에서 이 기기의 다른 앱 및 서비스 접근을 허용한 뒤 다시 시도하세요.",
       "openWallet": "Phantom에서 열기",
       "pay": "{price} SOL 결제하고 플레이",
       "pending": "결제 확인을 기다리는 중…",
@@ -6251,6 +6303,7 @@ window.MezzoTranslations = {
   },
   "th": {
     "access": {
+      "allow-network": "Chrome ขออนุญาตให้เกมนี้เชื่อมต่อกับวอลเล็ตในโทรศัพท์เครื่องนี้: แตะ อนุญาต ในหน้าต่างของ Chrome แล้วแตะ เชื่อมต่อและตรวจสอบ อีกครั้ง",
       "captionsOff": "คำบรรยายภาษาอังกฤษ: ปิด",
       "captionsOn": "คำบรรยายภาษาอังกฤษ: เปิด",
       "check": "ตรวจสอบสมาชิก",
@@ -6267,11 +6320,13 @@ window.MezzoTranslations = {
       "eligible": "ยืนยันสมาชิกสำหรับเซสชันหน้านี้แล้ว: มี {amount} MEMEZZO ในการล็อกที่ใช้งานอยู่ขณะตรวจสอบ แต่ละรอบใหม่เริ่มด้วย {lives} {lifeWord} ไม่มีการตรวจสอบระหว่างเล่น",
       "insufficient": "ยังไม่ยืนยัน MEMEZZO อย่างน้อย {minimum} ในการล็อกที่ใช้งานอยู่สำหรับสมาชิก รอการยืนยันการล็อกแล้วตรวจสอบอีกครั้ง บทสอนเล่นฟรี",
       "missing-wallet": "ไม่มีกระเป๋าเงิน Solana ที่รองรับในเบราว์เซอร์นี้ ปลดล็อกหรือเปิดใช้งานกระเป๋าเงิน หรือเปิดเกมใน Phantom บนโทรศัพท์ บทสอนไม่ต้องใช้กระเป๋าเงิน",
+      "network-blocked": "Chrome บล็อกไม่ให้เกมนี้เชื่อมต่อกับวอลเล็ตในโทรศัพท์เครื่องนี้ ในการตั้งค่าเว็บไซต์ของ Chrome สำหรับหน้านี้ ให้อนุญาตแอปและบริการอื่นในอุปกรณ์นี้ แล้วลองอีกครั้ง",
       "rejected": "ยกเลิกการเชื่อมต่อในกระเป๋าเงินแล้ว คุณสามารถลองอีกครั้งเมื่อพร้อม",
       "unavailable": "ไม่สามารถตรวจสอบสมาชิกได้หรือข้อมูลเก่าแล้ว ลองตรวจสอบในร้านค้าอีกครั้งภายหลัง เกมที่กำลังเล่นไม่ถูกกระทบ",
       "wallet": "กระเป๋า: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome ขออนุญาตให้เกมนี้เชื่อมต่อกับวอลเล็ตในโทรศัพท์เครื่องนี้: แตะ อนุญาต ในหน้าต่างของ Chrome แล้วแตะ เชื่อมต่อกระเป๋าเงิน อีกครั้ง",
       "busy": "ดำเนินการชำระเงินปัจจุบันให้เสร็จก่อนเริ่มรายการใหม่",
       "cancel": "กลับเมนู",
       "checking": "กำลังตรวจสอบการชำระเงิน…",
@@ -6294,6 +6349,7 @@ window.MezzoTranslations = {
       "medium": "ปานกลาง",
       "missingWallet": "ใช้ปุ่มเชื่อมต่อกระเป๋าเงินเพื่อเชื่อมต่อกระเป๋าเงิน Solana ที่รองรับ บนโทรศัพท์ คุณยังสามารถเปิดเกมใน Phantom ได้",
       "name": "Arcade",
+      "networkBlocked": "Chrome บล็อกไม่ให้เกมนี้เชื่อมต่อกับวอลเล็ตในโทรศัพท์เครื่องนี้ ในการตั้งค่าเว็บไซต์ของ Chrome สำหรับหน้านี้ ให้อนุญาตแอปและบริการอื่นในอุปกรณ์นี้ แล้วลองอีกครั้ง",
       "openWallet": "เปิดใน Phantom",
       "pay": "จ่าย {price} SOL แล้วเล่น",
       "pending": "กำลังรอการยืนยันการชำระเงิน…",
@@ -6712,6 +6768,7 @@ window.MezzoTranslations = {
   },
   "vi": {
     "access": {
+      "allow-network": "Chrome xin phép cho trò chơi này kết nối với ví trên điện thoại này: chạm Cho phép trong cửa sổ của Chrome, rồi chạm lại Kết nối và xác minh.",
       "captionsOff": "Phụ đề tiếng Anh: tắt",
       "captionsOn": "Phụ đề tiếng Anh: bật",
       "check": "Xác minh Đăng ký",
@@ -6728,11 +6785,13 @@ window.MezzoTranslations = {
       "eligible": "Đăng ký đã xác minh cho phiên trang này: {amount} MEMEZZO đang khóa tại thời điểm xác minh. Mỗi lượt mới bắt đầu với {lives} {lifeWord}. Không kiểm tra trong lúc chơi.",
       "insufficient": "Chưa xác nhận được ít nhất {minimum} MEMEZZO trong khóa đang hoạt động cho Đăng ký. Đợi khóa được xác nhận rồi xác minh lại. Hướng dẫn miễn phí.",
       "missing-wallet": "Không có ví Solana tương thích trong trình duyệt này. Hãy mở khóa hoặc bật ví, hoặc mở trò chơi trong Phantom trên điện thoại. Phần hướng dẫn không cần ví.",
+      "network-blocked": "Chrome đang chặn trò chơi này kết nối với ví trên điện thoại này. Trong cài đặt trang web của Chrome cho trang này, hãy cho phép các ứng dụng và dịch vụ khác trên thiết bị này, rồi thử lại.",
       "rejected": "Đã hủy kết nối trong ví. Bạn có thể thử lại khi sẵn sàng.",
       "unavailable": "Không thể xác minh Đăng ký hoặc dữ liệu đã cũ. Hãy thử lại trong Cửa hàng sau ít phút. Lượt đang chơi không bị ảnh hưởng.",
       "wallet": "Ví: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome xin phép cho trò chơi này kết nối với ví trên điện thoại này: chạm Cho phép trong cửa sổ của Chrome, rồi chạm lại Kết nối ví.",
       "busy": "Hoàn tất khoản thanh toán hiện tại trước khi bắt đầu khoản khác.",
       "cancel": "Về menu",
       "checking": "Đang kiểm tra thanh toán…",
@@ -6755,6 +6814,7 @@ window.MezzoTranslations = {
       "medium": "Trung bình",
       "missingWallet": "Dùng nút Kết nối ví để kết nối ví Solana tương thích. Trên điện thoại, bạn cũng có thể mở trò chơi trong Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome đang chặn trò chơi này kết nối với ví trên điện thoại này. Trong cài đặt trang web của Chrome cho trang này, hãy cho phép các ứng dụng và dịch vụ khác trên thiết bị này, rồi thử lại.",
       "openWallet": "Mở trong Phantom",
       "pay": "Trả {price} SOL và chơi",
       "pending": "Đang chờ xác nhận thanh toán…",
@@ -7173,6 +7233,7 @@ window.MezzoTranslations = {
   },
   "pt": {
     "access": {
+      "allow-network": "O Chrome pede permissão para este jogo acessar a carteira deste celular: toque em Permitir na janela do Chrome e depois toque de novo em Conectar e verificar.",
       "captionsOff": "Legendas em inglês: desativadas",
       "captionsOn": "Legendas em inglês: ativadas",
       "check": "Verificar Assinatura",
@@ -7189,11 +7250,13 @@ window.MezzoTranslations = {
       "eligible": "Assinatura verificada para esta sessão da página: {amount} MEMEZZO bloqueados ativamente no momento da verificação. Cada nova partida começa com {lives} {lifeWord}. Sem verificações durante o jogo.",
       "insufficient": "Não foram confirmados pelo menos {minimum} MEMEZZO em bloqueios ativos para Assinatura. Aguarde a confirmação do bloqueio e verifique novamente. O tutorial é grátis.",
       "missing-wallet": "Nenhuma carteira Solana compatível está disponível neste navegador. Desbloqueie ou habilite sua carteira, ou abra o jogo no Phantom no celular. O tutorial não precisa de carteira.",
+      "network-blocked": "O Chrome impede este jogo de acessar a carteira deste celular. Nas configurações do site do Chrome para esta página, permita outros apps e serviços deste dispositivo e tente de novo.",
       "rejected": "Conexão cancelada na sua carteira. Você pode tentar novamente quando quiser.",
       "unavailable": "A verificação de Assinatura está indisponível ou os dados estão desatualizados. Tente verificar na Loja novamente em breve. A partida em andamento não é afetada.",
       "wallet": "Carteira: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "O Chrome pede permissão para este jogo acessar a carteira deste celular: toque em Permitir na janela do Chrome e depois toque de novo em Conectar carteira.",
       "busy": "Conclua o pagamento atual antes de iniciar outro.",
       "cancel": "Voltar ao menu",
       "checking": "Verificando pagamento…",
@@ -7216,6 +7279,7 @@ window.MezzoTranslations = {
       "medium": "Médio",
       "missingWallet": "Use Conectar carteira para conectar uma carteira Solana compatível. No celular, você também pode abrir o jogo no Phantom.",
       "name": "Arcade",
+      "networkBlocked": "O Chrome impede este jogo de acessar a carteira deste celular. Nas configurações do site do Chrome para esta página, permita outros apps e serviços deste dispositivo e tente de novo.",
       "openWallet": "Abrir na Phantom",
       "pay": "Pagar {price} SOL e jogar",
       "pending": "Aguardando confirmação do pagamento…",
@@ -7636,6 +7700,7 @@ window.MezzoTranslations = {
   },
   "es-PE": {
     "access": {
+      "allow-network": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar y verificar.",
       "captionsOff": "Subtítulos en inglés: desactivados",
       "captionsOn": "Subtítulos en inglés: activados",
       "check": "Verificar Suscripción",
@@ -7652,11 +7717,13 @@ window.MezzoTranslations = {
       "eligible": "Suscripción verificada para esta sesión de la página: {amount} MEMEZZO bloqueados activamente al verificar. Cada nueva partida empieza con {lives} {lifeWord}. Sin comprobaciones durante el juego.",
       "insufficient": "No se han confirmado al menos {minimum} MEMEZZO en bloqueos activos para Suscripción. Espera la confirmación del bloqueo y verifica de nuevo. El tutorial es gratuito.",
       "missing-wallet": "No hay una billetera Solana compatible disponible en este navegador. Desbloquea o activa tu billetera, o abre el juego en Phantom en tu teléfono. El tutorial no necesita una billetera.",
+      "network-blocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
       "rejected": "Conexión cancelada en tu billetera. Puedes volver a intentarlo cuando quieras.",
       "unavailable": "La verificación de Suscripción no está disponible o los datos no están actualizados. Vuelve a comprobar en la Tienda en breve. La partida en curso no se ve afectada.",
       "wallet": "Monedero: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome pide permiso para que este juego llegue a la billetera de este teléfono: toca Permitir en la ventana de Chrome y luego toca otra vez Conectar billetera.",
       "busy": "Termina el pago actual antes de iniciar otro.",
       "cancel": "Volver al menú",
       "checking": "Comprobando el pago…",
@@ -7679,6 +7746,7 @@ window.MezzoTranslations = {
       "medium": "Medio",
       "missingWallet": "Conecta una billetera Solana compatible con Conectar billetera. En el teléfono también puedes abrir el juego en Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome impide que este juego llegue a la billetera de este teléfono. En la configuración del sitio de Chrome para esta página, permite otras apps y servicios de este dispositivo y vuelve a intentarlo.",
       "openWallet": "Abrir en Phantom",
       "pay": "Pagar {price} SOL y jugar",
       "pending": "Esperando la confirmación del pago…",
@@ -8099,6 +8167,7 @@ window.MezzoTranslations = {
   },
   "ar": {
     "access": {
+      "allow-network": "يطلب Chrome الإذن لتصل هذه اللعبة إلى المحفظة على هذا الهاتف: انقر «سماح» في نافذة Chrome، ثم انقر «اتصل وتحقق» مرة أخرى.",
       "captionsOff": "الترجمة النصية بالإنجليزية: متوقفة",
       "captionsOn": "الترجمة النصية بالإنجليزية: مفعّلة",
       "check": "تحقق من الاشتراك",
@@ -8115,11 +8184,13 @@ window.MezzoTranslations = {
       "eligible": "تم التحقق من الاشتراك لجلسة الصفحة هذه: {amount} MEMEZZO مقفلة بنشاط وقت التحقق. تبدأ كل جولة جديدة بـ {lives} {lifeWord}. لا فحوص أثناء اللعب.",
       "insufficient": "لم يتم تأكيد وجود {minimum} MEMEZZO على الأقل في أقفال نشطة للاشتراك. انتظر تأكيد القفل وتحقق مجددًا. التدريب مجاني.",
       "missing-wallet": "لا توجد محفظة Solana متوافقة متاحة في هذا المتصفح. افتح قفل محفظتك أو فعّلها، أو افتح اللعبة داخل Phantom على هاتفك. لا يحتاج البرنامج التعليمي إلى محفظة.",
+      "network-blocked": "يمنع Chrome هذه اللعبة من الوصول إلى المحفظة على هذا الهاتف. في إعدادات الموقع في Chrome لهذه الصفحة اسمح بالتطبيقات والخدمات الأخرى على هذا الجهاز، ثم حاول مرة أخرى.",
       "rejected": "أُلغي الاتصال في محفظتك. يمكنك المحاولة مجدداً عندما تكون مستعداً.",
       "unavailable": "التحقق من الاشتراك غير متاح أو البيانات قديمة. حاول مجددًا في المتجر قريبًا. لا تتأثر الجولة الجارية.",
       "wallet": "المحفظة: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "يطلب Chrome الإذن لتصل هذه اللعبة إلى المحفظة على هذا الهاتف: انقر «سماح» في نافذة Chrome، ثم انقر «ربط المحفظة» مرة أخرى.",
       "busy": "أكمل الدفعة الحالية قبل بدء دفعة أخرى.",
       "cancel": "العودة إلى القائمة",
       "checking": "جارٍ التحقق من الدفعة…",
@@ -8142,6 +8213,7 @@ window.MezzoTranslations = {
       "medium": "متوسط",
       "missingWallet": "استخدم زر ربط المحفظة لربط محفظة Solana متوافقة. على الهاتف، يمكنك أيضاً فتح اللعبة داخل Phantom.",
       "name": "Arcade",
+      "networkBlocked": "يمنع Chrome هذه اللعبة من الوصول إلى المحفظة على هذا الهاتف. في إعدادات الموقع في Chrome لهذه الصفحة اسمح بالتطبيقات والخدمات الأخرى على هذا الجهاز، ثم حاول مرة أخرى.",
       "openWallet": "افتح في Phantom",
       "pay": "ادفع {price} SOL والعب",
       "pending": "في انتظار تأكيد الدفع…",
@@ -8565,6 +8637,7 @@ window.MezzoTranslations = {
   },
   "en-GB": {
     "access": {
+      "allow-network": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect & verify again.",
       "captionsOff": "English subtitles: off",
       "captionsOn": "English subtitles: on",
       "check": "Verify Subscription",
@@ -8581,11 +8654,13 @@ window.MezzoTranslations = {
       "eligible": "Subscription verified for this page session: {amount} MEMEZZO actively locked at verification. Each new run starts with {lives} {lifeWord}. No checks during play.",
       "insufficient": "At least {minimum} MEMEZZO in active timelocks has not been confirmed for Subscription. Wait for lock confirmation and verify again. The tutorial is free.",
       "missing-wallet": "No compatible Solana wallet is available in this browser. Unlock or enable your wallet, or open the game in Phantom on your phone. The tutorial needs no wallet.",
+      "network-blocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "rejected": "Connection cancelled in your wallet. You can try again whenever you are ready.",
       "unavailable": "Subscription verification is unavailable or the data is out of date. Try the Shop check again shortly. An ongoing run is unaffected.",
       "wallet": "Wallet: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect wallet again.",
       "busy": "Finish the current payment before starting another.",
       "cancel": "Back to menu",
       "checking": "Checking payment…",
@@ -8608,6 +8683,7 @@ window.MezzoTranslations = {
       "medium": "Medium",
       "missingWallet": "Connect a compatible Solana wallet using Connect wallet. On a phone, you can also open the game in Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "openWallet": "Open in Phantom",
       "pay": "Pay {price} SOL and play",
       "pending": "Waiting for payment confirmation…",
@@ -9087,6 +9163,7 @@ window.MezzoTranslations = {
   },
   "de": {
     "access": {
+      "allow-network": "Chrome fragt, ob dieses Spiel die Wallet auf diesem Handy erreichen darf: Tippe im Chrome-Fenster auf Zulassen und dann noch einmal auf Verbinden und prüfen.",
       "captionsOff": "Englische Untertitel: aus",
       "captionsOn": "Englische Untertitel: an",
       "check": "Abonnement prüfen",
@@ -9103,11 +9180,13 @@ window.MezzoTranslations = {
       "eligible": "Abonnement für diese Seitensitzung bestätigt: {amount} MEMEZZO bei der Prüfung aktiv gesperrt. Jeder neue Lauf beginnt mit {lives} {lifeWord}. Keine Prüfungen während des Spiels.",
       "insufficient": "Mindestens {minimum} MEMEZZO in aktiven Zeitsperren wurden für Abonnement nicht bestätigt. Warte auf die Bestätigung der Sperre und prüfe erneut. Das Tutorial ist kostenlos.",
       "missing-wallet": "In diesem Browser ist keine kompatible Solana-Wallet verfügbar. Entsperre oder aktiviere deine Wallet oder öffne das Spiel auf deinem Smartphone in Phantom. Für das Tutorial brauchst du keine Wallet.",
+      "network-blocked": "Chrome hindert dieses Spiel daran, die Wallet auf diesem Handy zu erreichen. Erlaube in den Chrome-Website-Einstellungen dieser Seite andere Apps und Dienste auf diesem Gerät und versuche es dann erneut.",
       "rejected": "Verbindung in deiner Wallet abgebrochen. Du kannst es jederzeit erneut versuchen.",
       "unavailable": "Die Abonnementprüfung ist nicht verfügbar oder die Daten sind veraltet. Versuche die Shopprüfung gleich erneut. Ein laufendes Spiel bleibt unberührt.",
       "wallet": "Wallet: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome fragt, ob dieses Spiel die Wallet auf diesem Handy erreichen darf: Tippe im Chrome-Fenster auf Zulassen und dann noch einmal auf Wallet verbinden.",
       "busy": "Schließe die aktuelle Zahlung ab, bevor du eine weitere beginnst.",
       "cancel": "Zurück zum Menü",
       "checking": "Zahlung wird geprüft…",
@@ -9130,6 +9209,7 @@ window.MezzoTranslations = {
       "medium": "Mittel",
       "missingWallet": "Verbinde über Wallet verbinden eine kompatible Solana-Wallet. Auf dem Smartphone kannst du das Spiel auch in Phantom öffnen.",
       "name": "Arcade",
+      "networkBlocked": "Chrome hindert dieses Spiel daran, die Wallet auf diesem Handy zu erreichen. Erlaube in den Chrome-Website-Einstellungen dieser Seite andere Apps und Dienste auf diesem Gerät und versuche es dann erneut.",
       "openWallet": "In Phantom öffnen",
       "pay": "{price} SOL bezahlen und spielen",
       "pending": "Warten auf Zahlungsbestätigung…",
@@ -9549,6 +9629,7 @@ window.MezzoTranslations = {
   },
   "en-NG": {
     "access": {
+      "allow-network": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect & verify again.",
       "captionsOff": "English subtitles: off",
       "captionsOn": "English subtitles: on",
       "check": "Verify Subscription",
@@ -9565,11 +9646,13 @@ window.MezzoTranslations = {
       "eligible": "Subscription verified for this page session: {amount} MEMEZZO actively locked at verification. Each new run starts with {lives} {lifeWord}. No checks during play.",
       "insufficient": "At least {minimum} MEMEZZO in active timelocks has not been confirmed for Subscription. Wait for lock confirmation and verify again. The tutorial is free.",
       "missing-wallet": "No compatible Solana wallet is available in this browser. Unlock or enable your wallet, or open the game in Phantom on your phone. The tutorial needs no wallet.",
+      "network-blocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "rejected": "Connection cancelled in your wallet. You can try again whenever you are ready.",
       "unavailable": "Subscription verification is unavailable or the data is out of date. Try the Shop check again shortly. An ongoing run is unaffected.",
       "wallet": "Wallet: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect wallet again.",
       "busy": "Finish the current payment before starting another.",
       "cancel": "Back to menu",
       "checking": "Checking payment…",
@@ -9592,6 +9675,7 @@ window.MezzoTranslations = {
       "medium": "Medium",
       "missingWallet": "Connect a compatible Solana wallet using Connect wallet. On a phone, you can also open the game in Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
       "openWallet": "Open in Phantom",
       "pay": "Pay {price} SOL and play",
       "pending": "Waiting for payment confirmation…",
@@ -10071,6 +10155,7 @@ window.MezzoTranslations = {
   },
   "id": {
     "access": {
+      "allow-network": "Chrome meminta izin agar game ini bisa menjangkau wallet di ponsel ini: ketuk Izinkan di jendela Chrome, lalu ketuk lagi Hubungkan & verifikasi.",
       "captionsOff": "Takarir bahasa Inggris: nonaktif",
       "captionsOn": "Takarir bahasa Inggris: aktif",
       "check": "Verifikasi Langganan",
@@ -10087,11 +10172,13 @@ window.MezzoTranslations = {
       "eligible": "Langganan terverifikasi untuk sesi halaman ini: {amount} MEMEZZO terkunci aktif saat verifikasi. Setiap permainan baru dimulai dengan {lives} {lifeWord}. Tidak ada pemeriksaan selama bermain.",
       "insufficient": "Setidaknya {minimum} MEMEZZO dalam penguncian aktif belum terkonfirmasi untuk Langganan. Tunggu konfirmasi penguncian lalu verifikasi lagi. Tutorial gratis.",
       "missing-wallet": "Tidak ada dompet Solana yang kompatibel di peramban ini. Buka kunci atau aktifkan dompet Anda, atau buka permainan di Phantom pada ponsel. Tutorial tidak memerlukan dompet.",
+      "network-blocked": "Chrome memblokir game ini menjangkau wallet di ponsel ini. Di setelan situs Chrome untuk halaman ini, izinkan aplikasi dan layanan lain di perangkat ini, lalu coba lagi.",
       "rejected": "Koneksi dibatalkan di dompet Anda. Anda dapat mencoba lagi saat siap.",
       "unavailable": "Verifikasi Langganan tidak tersedia atau datanya kedaluwarsa. Coba periksa lagi di Toko sebentar lagi. Permainan yang sedang berjalan tidak terpengaruh.",
       "wallet": "Dompet: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome meminta izin agar game ini bisa menjangkau wallet di ponsel ini: ketuk Izinkan di jendela Chrome, lalu ketuk lagi Hubungkan dompet.",
       "busy": "Selesaikan pembayaran saat ini sebelum memulai yang lain.",
       "cancel": "Kembali ke menu",
       "checking": "Memeriksa pembayaran…",
@@ -10114,6 +10201,7 @@ window.MezzoTranslations = {
       "medium": "Sedang",
       "missingWallet": "Gunakan Hubungkan dompet untuk menghubungkan dompet Solana yang kompatibel. Di ponsel, Anda juga dapat membuka permainan di Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome memblokir game ini menjangkau wallet di ponsel ini. Di setelan situs Chrome untuk halaman ini, izinkan aplikasi dan layanan lain di perangkat ini, lalu coba lagi.",
       "openWallet": "Buka di Phantom",
       "pay": "Bayar {price} SOL dan main",
       "pending": "Menunggu konfirmasi pembayaran…",
@@ -10532,6 +10620,7 @@ window.MezzoTranslations = {
   },
   "ru": {
     "access": {
+      "allow-network": "Chrome спрашивает, можно ли этой игре связаться с кошельком на этом телефоне: нажми «Разрешить» в окне Chrome, затем снова нажми «Подключить и проверить».",
       "captionsOff": "Английские субтитры: выкл.",
       "captionsOn": "Английские субтитры: вкл.",
       "check": "Проверить подписку",
@@ -10548,11 +10637,13 @@ window.MezzoTranslations = {
       "eligible": "Подписка подтверждена на эту сессию страницы: {amount} MEMEZZO активно заблокировано при проверке. Каждый новый забег начинается с {lives} {lifeWord}. Проверок во время игры нет.",
       "insufficient": "Не подтверждено не менее {minimum} MEMEZZO в активных блокировках для Подписки. Дождитесь подтверждения блокировки и проверьте снова. Обучение бесплатное.",
       "missing-wallet": "В этом браузере нет доступного совместимого кошелька Solana. Разблокируйте или включите кошелёк либо откройте игру в Phantom на телефоне. Для обучения кошелёк не нужен.",
+      "network-blocked": "Chrome не даёт этой игре связаться с кошельком на этом телефоне. В настройках сайта Chrome для этой страницы разреши доступ к другим приложениям и сервисам на этом устройстве и попробуй снова.",
       "rejected": "Подключение отменено в кошельке. Повторите попытку, когда будете готовы.",
       "unavailable": "Проверка Подписки недоступна или данные устарели. Скоро попробуйте снова в магазине. Текущий забег не затрагивается.",
       "wallet": "Кошелёк: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome спрашивает, можно ли этой игре связаться с кошельком на этом телефоне: нажми «Разрешить» в окне Chrome, затем снова нажми «Подключить кошелёк».",
       "busy": "Завершите текущий платёж, прежде чем начинать другой.",
       "cancel": "Вернуться в меню",
       "checking": "Проверка платежа…",
@@ -10575,6 +10666,7 @@ window.MezzoTranslations = {
       "medium": "Средний",
       "missingWallet": "Нажмите «Подключить кошелёк», чтобы подключить совместимый кошелёк Solana. На телефоне можно также открыть игру в Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome не даёт этой игре связаться с кошельком на этом телефоне. В настройках сайта Chrome для этой страницы разреши доступ к другим приложениям и сервисам на этом устройстве и попробуй снова.",
       "openWallet": "Открыть в Phantom",
       "pay": "Заплатить {price} SOL и играть",
       "pending": "Ожидание подтверждения платежа…",
@@ -10996,6 +11088,7 @@ window.MezzoTranslations = {
   },
   "uk": {
     "access": {
+      "allow-network": "Chrome питає, чи може ця гра зв’язатися з гаманцем на цьому телефоні: натисни «Дозволити» у вікні Chrome, а потім знову «Під’єднати й перевірити».",
       "captionsOff": "Англійські субтитри: вимкнено",
       "captionsOn": "Англійські субтитри: увімкнено",
       "check": "Перевірити Підписку",
@@ -11012,11 +11105,13 @@ window.MezzoTranslations = {
       "eligible": "Підписку підтверджено на цю сесію сторінки: {amount} MEMEZZO активно заблоковано під час перевірки. Кожен новий забіг починається з {lives} {lifeWord}. Без перевірок під час гри.",
       "insufficient": "Не підтверджено щонайменше {minimum} MEMEZZO в активних блокуваннях для Підписки. Дочекайтеся підтвердження блокування та перевірте знову. Навчання безкоштовне.",
       "missing-wallet": "У цьому браузері немає доступного сумісного гаманця Solana. Розблокуйте або увімкніть гаманець чи відкрийте гру у Phantom на телефоні. Для навчання гаманець не потрібен.",
+      "network-blocked": "Chrome не дає цій грі зв’язатися з гаманцем на цьому телефоні. У налаштуваннях сайту Chrome для цієї сторінки дозволь доступ до інших застосунків і сервісів на цьому пристрої та спробуй знову.",
       "rejected": "Підключення скасовано у гаманці. Можете спробувати ще раз, коли будете готові.",
       "unavailable": "Перевірка Підписки недоступна або дані застаріли. Невдовзі спробуйте знову в магазині. Поточний забіг не змінюється.",
       "wallet": "Гаманець: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Chrome питає, чи може ця гра зв’язатися з гаманцем на цьому телефоні: натисни «Дозволити» у вікні Chrome, а потім знову «Підключити гаманець».",
       "busy": "Завершіть поточний платіж, перш ніж починати інший.",
       "cancel": "Повернутися до меню",
       "checking": "Перевірка платежу…",
@@ -11039,6 +11134,7 @@ window.MezzoTranslations = {
       "medium": "Середній",
       "missingWallet": "Натисніть «Підключити гаманець», щоб підключити сумісний гаманець Solana. На телефоні також можна відкрити гру в Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Chrome не дає цій грі зв’язатися з гаманцем на цьому телефоні. У налаштуваннях сайту Chrome для цієї сторінки дозволь доступ до інших застосунків і сервісів на цьому пристрої та спробуй знову.",
       "openWallet": "Відкрити в Phantom",
       "pay": "Сплатити {price} SOL і грати",
       "pending": "Очікування підтвердження платежу…",
@@ -11460,6 +11556,7 @@ window.MezzoTranslations = {
   },
   "fil": {
     "access": {
+      "allow-network": "Humihingi ng pahintulot ang Chrome para maabot ng larong ito ang wallet sa teleponong ito: i-tap ang Payagan sa window ng Chrome, pagkatapos i-tap ulit ang Ikonekta at patunayan.",
       "captionsOff": "Mga subtitle sa Ingles: patay",
       "captionsOn": "Mga subtitle sa Ingles: bukas",
       "check": "Patunayan ang Suskripsiyon",
@@ -11476,11 +11573,13 @@ window.MezzoTranslations = {
       "eligible": "Napatunayan ang Suskripsiyon para sa sesyon ng pahinang ito: {amount} MEMEZZO na aktibong nakakandado nang suriin. Bawat bagong laro ay nagsisimula sa {lives} {lifeWord}. Walang pagsusuri habang naglalaro.",
       "insufficient": "Hindi nakumpirma ang hindi bababa sa {minimum} MEMEZZO sa mga aktibong pagkakakandado para sa Suskripsiyon. Hintayin ang kumpirmasyon ng pagkakakandado at magpatunay muli. Libre ang tutorial.",
       "missing-wallet": "Walang katugmang Solana wallet na magagamit sa browser na ito. I-unlock o paganahin ang iyong wallet, o buksan ang laro sa Phantom sa telepono. Hindi kailangan ng wallet para sa tutorial.",
+      "network-blocked": "Hinaharangan ng Chrome ang larong ito na maabot ang wallet sa teleponong ito. Sa site settings ng Chrome para sa page na ito, payagan ang ibang app at serbisyo sa device na ito, pagkatapos subukan ulit.",
       "rejected": "Kinansela ang koneksyon sa iyong wallet. Maaari mong subukan muli kapag handa ka na.",
       "unavailable": "Hindi magagamit ang pagpapatunay ng Suskripsiyon o luma na ang datos. Subukan muli sa Tindahan pagkaraan ng sandali. Hindi apektado ang kasalukuyang laro.",
       "wallet": "Pitaka: {wallet}"
     },
     "arcade": {
+      "allowNetwork": "Humihingi ng pahintulot ang Chrome para maabot ng larong ito ang wallet sa teleponong ito: i-tap ang Payagan sa window ng Chrome, pagkatapos i-tap ulit ang Ikonekta ang wallet.",
       "busy": "Tapusin ang kasalukuyang bayad bago magsimula ng isa pa.",
       "cancel": "Bumalik sa menu",
       "checking": "Sinusuri ang bayad…",
@@ -11503,6 +11602,7 @@ window.MezzoTranslations = {
       "medium": "Katamtaman",
       "missingWallet": "Gamitin ang Ikonekta ang wallet upang magkonekta ng katugmang Solana wallet. Sa telepono, maaari mo ring buksan ang laro sa Phantom.",
       "name": "Arcade",
+      "networkBlocked": "Hinaharangan ng Chrome ang larong ito na maabot ang wallet sa teleponong ito. Sa site settings ng Chrome para sa page na ito, payagan ang ibang app at serbisyo sa device na ito, pagkatapos subukan ulit.",
       "openWallet": "Buksan sa Phantom",
       "pay": "Magbayad ng {price} SOL at maglaro",
       "pending": "Naghihintay ng kumpirmasyon ng bayad…",

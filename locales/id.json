@@ -347,6 +347,8 @@
     "unavailable": "Verifikasi Langganan tidak tersedia atau datanya kedaluwarsa. Coba periksa lagi di Toko sebentar lagi. Permainan yang sedang berjalan tidak terpengaruh.",
     "rejected": "Koneksi dibatalkan di dompet Anda. Anda dapat mencoba lagi saat siap.",
     "missing-wallet": "Tidak ada dompet Solana yang kompatibel di peramban ini. Buka kunci atau aktifkan dompet Anda, atau buka permainan di Phantom pada ponsel. Tutorial tidak memerlukan dompet.",
+    "allow-network": "Chrome meminta izin agar game ini bisa menjangkau wallet di ponsel ini: ketuk Izinkan di jendela Chrome, lalu ketuk lagi Hubungkan & verifikasi.",
+    "network-blocked": "Chrome memblokir game ini menjangkau wallet di ponsel ini. Di setelan situs Chrome untuk halaman ini, izinkan aplikasi dan layanan lain di perangkat ini, lalu coba lagi.",
     "captionsOn": "Takarir bahasa Inggris: aktif",
     "captionsOff": "Takarir bahasa Inggris: nonaktif"
   },
@@ -441,6 +443,8 @@
     "connectedWallet": "Terhubung: {wallet}",
     "connectHint": "Hubungkan dompet Solana Anda terlebih dahulu. Menghubungkan dompet tidak melakukan pembayaran.",
     "walletFailed": "Tidak dapat terhubung. Buka kunci dompet Anda dan coba lagi.",
+    "allowNetwork": "Chrome meminta izin agar game ini bisa menjangkau wallet di ponsel ini: ketuk Izinkan di jendela Chrome, lalu ketuk lagi Hubungkan dompet.",
+    "networkBlocked": "Chrome memblokir game ini menjangkau wallet di ponsel ini. Di setelan situs Chrome untuk halaman ini, izinkan aplikasi dan layanan lain di perangkat ini, lalu coba lagi.",
     "walletMismatch": "Pembayaran tersimpan ini milik dompet lain. Hubungkan dompet yang digunakan untuk pembayaran ini."
   },
   "sponsor": {

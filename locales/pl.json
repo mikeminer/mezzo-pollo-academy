@@ -410,6 +410,8 @@
     "unavailable": "Sprawdzanie Abonamentu jest niedostępne lub dane są nieaktualne. Spróbuj ponownie w Sklepie za chwilę. Trwająca rozgrywka pozostaje bez zmian.",
     "rejected": "Połączenie anulowano w portfelu. Spróbuj ponownie, gdy będziesz gotowy.",
     "missing-wallet": "W tej przeglądarce nie ma dostępnego zgodnego portfela Solana. Odblokuj lub włącz portfel albo otwórz grę w Phantom na telefonie. Samouczek nie wymaga portfela.",
+    "allow-network": "Chrome pyta, czy ta gra może połączyć się z portfelem na tym telefonie: dotknij Zezwól w oknie Chrome, a potem jeszcze raz Połącz i sprawdź.",
+    "network-blocked": "Chrome blokuje grze dostęp do portfela na tym telefonie. W ustawieniach witryny Chrome dla tej strony zezwól na dostęp do innych aplikacji i usług na tym urządzeniu, a potem spróbuj ponownie.",
     "captionsOn": "Napisy angielskie: włączone",
     "captionsOff": "Napisy angielskie: wyłączone"
   },
@@ -504,6 +506,8 @@
     "connectedWallet": "Połączono: {wallet}",
     "connectHint": "Najpierw połącz swój portfel Solana. Połączenie nie powoduje płatności.",
     "walletFailed": "Nie udało się połączyć. Odblokuj portfel i spróbuj ponownie.",
+    "allowNetwork": "Chrome pyta, czy ta gra może połączyć się z portfelem na tym telefonie: dotknij Zezwól w oknie Chrome, a potem jeszcze raz Połącz portfel.",
+    "networkBlocked": "Chrome blokuje grze dostęp do portfela na tym telefonie. W ustawieniach witryny Chrome dla tej strony zezwól na dostęp do innych aplikacji i usług na tym urządzeniu, a potem spróbuj ponownie.",
     "walletMismatch": "Ta zapisana płatność należy do innego portfela. Połącz portfel użyty do tej płatności."
   },
   "sponsor": {

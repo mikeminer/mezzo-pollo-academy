@@ -214,7 +214,9 @@ export function createLockAccess({
       } catch (error) {
         if (destroyed || candidate !== provider || attempt !== connectionAttempt) return state;
         invalidate();
-        return publish({ ...BASE_STATE, status: Number(error?.code) === 4001 || error?.code === 'USER_REJECTED' ? 'rejected' : 'unavailable' });
+        return publish({ ...BASE_STATE, status: Number(error?.code) === 4001 || error?.code === 'USER_REJECTED' ? 'rejected'
+          : error?.code === 'local_network_prompt' ? 'allow-network'
+          : error?.code === 'local_network_blocked' ? 'network-blocked' : 'unavailable' });
       } finally { if (connectionRequest === request) connectionRequest = null; }
     })();
     return request.promise;

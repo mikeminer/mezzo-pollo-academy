@@ -348,6 +348,8 @@
     "unavailable": "Hindi magagamit ang pagpapatunay ng Suskripsiyon o luma na ang datos. Subukan muli sa Tindahan pagkaraan ng sandali. Hindi apektado ang kasalukuyang laro.",
     "rejected": "Kinansela ang koneksyon sa iyong wallet. Maaari mong subukan muli kapag handa ka na.",
     "missing-wallet": "Walang katugmang Solana wallet na magagamit sa browser na ito. I-unlock o paganahin ang iyong wallet, o buksan ang laro sa Phantom sa telepono. Hindi kailangan ng wallet para sa tutorial.",
+    "allow-network": "Humihingi ng pahintulot ang Chrome para maabot ng larong ito ang wallet sa teleponong ito: i-tap ang Payagan sa window ng Chrome, pagkatapos i-tap ulit ang Ikonekta at patunayan.",
+    "network-blocked": "Hinaharangan ng Chrome ang larong ito na maabot ang wallet sa teleponong ito. Sa site settings ng Chrome para sa page na ito, payagan ang ibang app at serbisyo sa device na ito, pagkatapos subukan ulit.",
     "captionsOn": "Mga subtitle sa Ingles: bukas",
     "captionsOff": "Mga subtitle sa Ingles: patay"
   },
@@ -442,6 +444,8 @@
     "connectedWallet": "Nakakonekta: {wallet}",
     "connectHint": "Ikonekta muna ang iyong Solana wallet. Walang pagbabayad na magaganap sa pagkonekta.",
     "walletFailed": "Hindi makakonekta. I-unlock ang iyong wallet at subukan muli.",
+    "allowNetwork": "Humihingi ng pahintulot ang Chrome para maabot ng larong ito ang wallet sa teleponong ito: i-tap ang Payagan sa window ng Chrome, pagkatapos i-tap ulit ang Ikonekta ang wallet.",
+    "networkBlocked": "Hinaharangan ng Chrome ang larong ito na maabot ang wallet sa teleponong ito. Sa site settings ng Chrome para sa page na ito, payagan ang ibang app at serbisyo sa device na ito, pagkatapos subukan ulit.",
     "walletMismatch": "Ang naka-save na bayad na ito ay para sa ibang wallet. Ikonekta ang wallet na ginamit sa pagbabayad na ito."
   },
   "sponsor": {

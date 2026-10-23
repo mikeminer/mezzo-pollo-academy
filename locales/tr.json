@@ -348,6 +348,8 @@
     "unavailable": "Abonelik doğrulaması kullanılamıyor veya veriler güncel değil. Birazdan mağazada tekrar deneyin. Devam eden koşu etkilenmez.",
     "rejected": "Bağlantı cüzdanınızda iptal edildi. Hazır olduğunuzda tekrar deneyebilirsiniz.",
     "missing-wallet": "Bu tarayıcıda uyumlu bir Solana cüzdanı bulunmuyor. Cüzdanınızın kilidini açın veya cüzdanı etkinleştirin ya da telefonda oyunu Phantom içinde açın. Eğitim için cüzdan gerekmez.",
+    "allow-network": "Chrome, bu oyunun bu telefondaki cüzdana ulaşması için izin istiyor: Chrome penceresinde İzin ver’e dokun, sonra tekrar Bağlan ve doğrula düğmesine dokun.",
+    "network-blocked": "Chrome bu oyunun bu telefondaki cüzdana ulaşmasını engelliyor. Bu sayfanın Chrome site ayarlarında bu cihazdaki diğer uygulama ve hizmetlere izin ver, sonra tekrar dene.",
     "captionsOn": "İngilizce altyazılar: açık",
     "captionsOff": "İngilizce altyazılar: kapalı"
   },
@@ -442,6 +444,8 @@
     "connectedWallet": "Bağlandı: {wallet}",
     "connectHint": "Önce Solana cüzdanınızı bağlayın. Bağlanmak ödeme yapmaz.",
     "walletFailed": "Bağlanılamadı. Cüzdanınızın kilidini açıp tekrar deneyin.",
+    "allowNetwork": "Chrome, bu oyunun bu telefondaki cüzdana ulaşması için izin istiyor: Chrome penceresinde İzin ver’e dokun, sonra tekrar Cüzdanı bağla düğmesine dokun.",
+    "networkBlocked": "Chrome bu oyunun bu telefondaki cüzdana ulaşmasını engelliyor. Bu sayfanın Chrome site ayarlarında bu cihazdaki diğer uygulama ve hizmetlere izin ver, sonra tekrar dene.",
     "walletMismatch": "Bu kayıtlı ödeme başka bir cüzdana ait. Ödeme için kullanılan cüzdanı bağlayın."
   },
   "sponsor": {

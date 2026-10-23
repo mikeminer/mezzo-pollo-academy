@@ -168,6 +168,29 @@ test('injected providers connect immediately and their wallet events refresh the
   assert.equal(await adapter.withPaymentSession(provider => provider), phantom);
 });
 
+test('local network permission: asked with the game on screen, the wallet opens only once allowed', async () => {
+  let state = 'prompt', requests = 0;
+  const localNetwork = { state: () => state, request: () => { requests++; } };
+  const h = setup({ options: { localNetwork } });
+  await assert.rejects(h.adapter.connect(), { code: 'local_network_prompt' });
+  assert.equal(requests, 1);
+  assert.deepEqual(h.calls, []); // Seed Vault is not opened behind Chrome's question
+  await assert.rejects(h.adapter.withPaymentSession(provider => provider.payArcade(intent())), { code: 'local_network_prompt' });
+  assert.deepEqual(h.calls, []); assert.equal(h.sends.length, 0);
+  state = 'denied';
+  await assert.rejects(h.adapter.connect(), { code: 'local_network_blocked' });
+  assert.equal(requests, 2); // a denial is not asked again: only the settings can change it
+  assert.deepEqual(h.calls, []);
+  state = 'granted';
+  const pending = h.adapter.connect();
+  assert.equal(h.calls[0][0], 'transact'); // still synchronous within the click
+  assert.deepEqual(await pending, { publicKey: A });
+  const unsupported = setup({ options: { localNetwork: { state: () => 'unsupported', request() { throw Error('never'); } } } });
+  const started = unsupported.adapter.connect();
+  assert.equal(unsupported.calls[0][0], 'transact');
+  await started;
+});
+
 test('official adapter is bundled locally and credentials are never persisted by the facade', async () => {
   const bundle = await readFile(new URL('../vendor/mwa.mjs', import.meta.url), 'utf8');
   assert.match(bundle, /mobile-wallet-adapter-protocol 3\.0\.1/);

@@ -209,6 +209,8 @@
     "unavailable": "Die Abonnementprüfung ist nicht verfügbar oder die Daten sind veraltet. Versuche die Shopprüfung gleich erneut. Ein laufendes Spiel bleibt unberührt.",
     "rejected": "Verbindung in deiner Wallet abgebrochen. Du kannst es jederzeit erneut versuchen.",
     "missing-wallet": "In diesem Browser ist keine kompatible Solana-Wallet verfügbar. Entsperre oder aktiviere deine Wallet oder öffne das Spiel auf deinem Smartphone in Phantom. Für das Tutorial brauchst du keine Wallet.",
+    "allow-network": "Chrome fragt, ob dieses Spiel die Wallet auf diesem Handy erreichen darf: Tippe im Chrome-Fenster auf Zulassen und dann noch einmal auf Verbinden und prüfen.",
+    "network-blocked": "Chrome hindert dieses Spiel daran, die Wallet auf diesem Handy zu erreichen. Erlaube in den Chrome-Website-Einstellungen dieser Seite andere Apps und Dienste auf diesem Gerät und versuche es dann erneut.",
     "captionsOn": "Englische Untertitel: an",
     "captionsOff": "Englische Untertitel: aus"
   },
@@ -303,6 +305,8 @@
     "connectedWallet": "Verbunden: {wallet}",
     "connectHint": "Verbinde zuerst deine Solana-Wallet. Beim Verbinden erfolgt keine Zahlung.",
     "walletFailed": "Verbindung fehlgeschlagen. Entsperre deine Wallet und versuche es erneut.",
+    "allowNetwork": "Chrome fragt, ob dieses Spiel die Wallet auf diesem Handy erreichen darf: Tippe im Chrome-Fenster auf Zulassen und dann noch einmal auf Wallet verbinden.",
+    "networkBlocked": "Chrome hindert dieses Spiel daran, die Wallet auf diesem Handy zu erreichen. Erlaube in den Chrome-Website-Einstellungen dieser Seite andere Apps und Dienste auf diesem Gerät und versuche es dann erneut.",
     "walletMismatch": "Diese gespeicherte Zahlung gehört zu einer anderen Wallet. Verbinde die für diese Zahlung verwendete Wallet."
   },
   "sponsor": {

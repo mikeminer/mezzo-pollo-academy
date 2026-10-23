@@ -408,6 +408,8 @@
     "unavailable": "Subscription verification is unavailable or the data is out of date. Try the Shop check again shortly. An ongoing run is unaffected.",
     "rejected": "Connection cancelled in your wallet. You can try again whenever you are ready.",
     "missing-wallet": "No compatible Solana wallet is available in this browser. Unlock or enable your wallet, or open the game in Phantom on your phone. The tutorial needs no wallet.",
+    "allow-network": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect & verify again.",
+    "network-blocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
     "captionsOn": "English subtitles: on",
     "captionsOff": "English subtitles: off"
   },
@@ -502,6 +504,8 @@
     "connectedWallet": "Connected: {wallet}",
     "connectHint": "Connect your Solana wallet first. Connecting does not make a payment.",
     "walletFailed": "Could not connect. Unlock your wallet and try again.",
+    "allowNetwork": "Chrome asks to let this game reach the wallet on this phone: tap Allow in Chrome's window, then tap Connect wallet again.",
+    "networkBlocked": "Chrome blocks this game from reaching the wallet on this phone. In Chrome's site settings for this page, allow other apps and services on this device, then try again.",
     "walletMismatch": "This saved payment belongs to another wallet. Connect the wallet used for this payment."
   },
   "sponsor": {

@@ -209,6 +209,8 @@
     "unavailable": "A verificação de Assinatura está indisponível ou os dados estão desatualizados. Tente verificar na Loja novamente em breve. A partida em andamento não é afetada.",
     "rejected": "Conexão cancelada na sua carteira. Você pode tentar novamente quando quiser.",
     "missing-wallet": "Nenhuma carteira Solana compatível está disponível neste navegador. Desbloqueie ou habilite sua carteira, ou abra o jogo no Phantom no celular. O tutorial não precisa de carteira.",
+    "allow-network": "O Chrome pede permissão para este jogo acessar a carteira deste celular: toque em Permitir na janela do Chrome e depois toque de novo em Conectar e verificar.",
+    "network-blocked": "O Chrome impede este jogo de acessar a carteira deste celular. Nas configurações do site do Chrome para esta página, permita outros apps e serviços deste dispositivo e tente de novo.",
     "captionsOn": "Legendas em inglês: ativadas",
     "captionsOff": "Legendas em inglês: desativadas"
   },
@@ -303,6 +305,8 @@
     "connectedWallet": "Conectada: {wallet}",
     "connectHint": "Conecte sua carteira Solana primeiro. A conexão não realiza nenhum pagamento.",
     "walletFailed": "Não foi possível conectar. Desbloqueie sua carteira e tente novamente.",
+    "allowNetwork": "O Chrome pede permissão para este jogo acessar a carteira deste celular: toque em Permitir na janela do Chrome e depois toque de novo em Conectar carteira.",
+    "networkBlocked": "O Chrome impede este jogo de acessar a carteira deste celular. Nas configurações do site do Chrome para esta página, permita outros apps e serviços deste dispositivo e tente de novo.",
     "walletMismatch": "Este pagamento salvo pertence a outra carteira. Conecte a carteira usada para este pagamento."
   },
   "sponsor": {

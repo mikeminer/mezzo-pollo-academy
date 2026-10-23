@@ -347,6 +347,8 @@
     "unavailable": "订阅验证不可用或数据已过期。请稍后在商店重试。进行中的游戏不受影响。",
     "rejected": "已在钱包中取消连接。准备好后可以重试。",
     "missing-wallet": "此浏览器中没有可用的兼容 Solana 钱包。请解锁或启用钱包，或在手机的 Phantom 中打开游戏。教程不需要钱包。",
+    "allow-network": "Chrome 正在询问是否允许此游戏连接这部手机上的钱包：请在 Chrome 窗口中点按“允许”，然后再次点按“连接并验证”。",
+    "network-blocked": "Chrome 阻止了此游戏连接这部手机上的钱包。请在 Chrome 中此页面的网站设置里允许访问此设备上的其他应用和服务，然后重试。",
     "captionsOn": "英文字幕：开",
     "captionsOff": "英文字幕：关"
   },
@@ -441,6 +443,8 @@
     "connectedWallet": "已连接：{wallet}",
     "connectHint": "请先连接您的 Solana 钱包。连接钱包不会进行付款。",
     "walletFailed": "无法连接。请解锁钱包后重试。",
+    "allowNetwork": "Chrome 正在询问是否允许此游戏连接这部手机上的钱包：请在 Chrome 窗口中点按“允许”，然后再次点按“连接钱包”。",
+    "networkBlocked": "Chrome 阻止了此游戏连接这部手机上的钱包。请在 Chrome 中此页面的网站设置里允许访问此设备上的其他应用和服务，然后重试。",
     "walletMismatch": "这笔已保存的付款属于另一个钱包。请连接用于这笔付款的钱包。"
   },
   "sponsor": {
