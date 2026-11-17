@@ -6,7 +6,7 @@ import { readFile } from 'node:fs/promises';
 const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const beginSource = html.slice(html.indexOf('function beginRun(config){'), html.indexOf('function tutorialScenario(spec){'));
 const requestSource = html.slice(html.indexOf('function requestRun(config){'), html.indexOf('function pause(){'));
-const gameOverSource = html.slice(html.indexOf('function gameOver(){'), html.indexOf("$('btnPlay').onclick="));
+const gameOverSource = html.slice(html.indexOf('function gameOver(){'), html.indexOf('const storeBadge ='));
 
 function harness({ eligible = false, lives = 0, paid = false } = {}) {
   const runs = [], screens = [], elements = new Map(), opened = [];
@@ -26,7 +26,7 @@ function harness({ eligible = false, lives = 0, paid = false } = {}) {
     mode: { config: (name, lives, tier) => ({ name, tier, lives: name==='free'?1:({ hard: 1, medium: 3, easy: 9, god: 32 })[tier] }) },
   });
   vm.runInContext(beginSource + '\n' + requestSource + '\n' + gameOverSource, context);
-  return { context, runs, screens, opened, get shop() { return shop; }, get checkout() { return checkout; } };
+  return { context, runs, screens, opened, get shop() { return shop; }, get checkout() { return checkout; }, elements };
 }
 
 test('Free, Arcade and Subscription are selectable; only Medium, Easy and God are sold', () => {
@@ -100,3 +100,20 @@ test('Subscription rejects old subthreshold grants and stale tutorial snapshots'
   assert.equal(h.runs[0].lives, 10, 'the active snapshot is unaffected');
 });
 
+
+test('store download invite appears only after Arcade and Subscription rounds', () => {
+  for (const name of ['free', 'arcade', 'subscription']) {
+    const h = harness();
+    h.context.G.config = { name, lives: 1 };
+    h.context.state = 'play';
+    h.context.gameOver();
+    assert.equal(h.elements.get('storeDownloadInvite').hidden, name === 'free');
+    assert.equal(h.screens.at(-1), 'scrOver');
+    assert.equal(h.opened.length, 0, 'the store must never open automatically');
+  }
+  const h = harness();
+  h.context.tutorial.active = true;
+  h.context.state = 'play';
+  h.context.gameOver();
+  assert.equal(h.elements.has('storeDownloadInvite'), false);
+});
