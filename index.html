@@ -115,6 +115,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #storeDownloadLink{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--straw);min-height:44px}
 #storeDownloadLink img{display:block;width:220px;max-width:100%;height:auto}
 </style>
+<script type="module" src="arcade-share.mjs"></script>
 </head>
 <body>
 <div id="app" data-country-root inert>
@@ -261,6 +262,12 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="stat"><span id="recordLabel">Personal best (local)</span><b id="oBest"></b></div>
       <img id="shareImg" alt="Your score card">
       <p class="note" id="shareNote"></p>
+      <aside id="arcadeShareInvite" hidden>
+        <p id="arcadeShareText"></p>
+        <a class="btn" id="arcadeDownload" download="mezzopollo-arcade-score.png">Download score photo</a>
+        <a class="btn primary" id="arcadeShareX" target="_blank" rel="noopener noreferrer">Share on X</a>
+        <a class="btn" id="arcadeSharePump" href="https://pump.fun/coin/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Share on Pump.fun</a>
+      </aside>
       <aside id="storeDownloadInvite" hidden>
         <p id="storeDownloadText">Download MezzoPollo from the Solana dApp Store.</p>
         <a id="storeDownloadLink" href="solanadappstore://details?id=it.mezzopollo.academy">
@@ -882,6 +889,7 @@ function gameOver(){
   })[L.code] || ['Download MezzoPollo from the Solana dApp Store.', 'Download MezzoPollo'];
   $('storeDownloadText').textContent = storeCopy[0];
   $('storeDownloadLabel').textContent = storeCopy[1];
+  window.MezzoArcadeShare?.show(G.config.name==='arcade'?{score:s,tier:G.config.tier,image:window.MezzoScoreCard?.().url}:null);
   $('hud').hidden=true;show('scrOver');
 }
 const storeBadge = $('storeDownloadBadge');
@@ -901,7 +909,7 @@ $('arcadeBack').onclick=toMenu;
 $('btnQuit').onclick=toMenu;$('btnMenu').onclick=toMenu;
 
 function resultModeLabel(){return G.config.name==='free'?mode.text('freeEnd'):G.config.name==='arcade'?`${mode.text('arcade')} · ${window.MezzoArcade.text('difficulty',{level:window.MezzoArcade.text(G.config.tier)})}`:mode.text('badge',{mode:mode.text(G.config.name)})}
-$('btnShare').onclick=async()=>{
+window.MezzoScoreCard=()=>{
   const [c,ctx]=cv(1080,1080);
   ctx.fillStyle='#8a5a34';ctx.fillRect(0,0,1080,1080);ctx.drawImage(slateC,40,40,1000,1000);
   ctx.textAlign='center';ctx.fillStyle='#e9b949';ctx.font=`120px ${HAND}`;ctx.fillText('Mezzo Pollo',540,230);
@@ -911,12 +919,15 @@ $('btnShare').onclick=async()=>{
   ctx.font=`80px ${HAND}`;ctx.fillText(t('shareStats',{score:$('oScore').textContent,right:G.right}),540,690,900);
   ctx.fillStyle='#e9b949';ctx.font=`60px ${HAND}`;ctx.fillText(t('shareQuestion'),540,880,900);
   const url=c.toDataURL('image/png');
-  const shareText=G.config.name==='arcade'?window.MezzoArcade.text('share',{level:window.MezzoArcade.text(G.config.tier),score:L.number(Math.floor(G.score))}):`MezzoPollo · ${resultModeLabel()} · ${L.number(Math.floor(G.score))}`;
+  const shareText=G.config.name==='arcade'?window.MezzoArcade.text('share',{level:window.MezzoArcade.text(G.config.tier),score:L.number(Math.floor(G.score))})+' #mezzopollo':`MezzoPollo · ${resultModeLabel()} · ${L.number(Math.floor(G.score))}`;
+  return {url,shareText};
+};
+$('btnShare').onclick=async()=>{
+  const {url,shareText}=window.MezzoScoreCard();
   try{
     if(window.MezzoAndroid?.shareScore){await window.MezzoAndroid.shareScore({text:`${shareText}\nhttps://mezzopollo.it/`,png:url});return}
     const blob=await (await fetch(url)).blob();const file=new File([blob],'mezzo-pollo.png',{type:'image/png'});
     if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Mezzo Pollo Academy',text:shareText,url:'https://mezzopollo.it/'});return}
-    if(navigator.share){await navigator.share({title:'Mezzo Pollo Academy',text:shareText,url:'https://mezzopollo.it/'});return}
   }catch(e){}
   const img=$('shareImg');img.src=url;img.style.display='block';
   $('shareNote').textContent=`${shareText}\nhttps://mezzopollo.it/\n${t('shareHint')}`;
