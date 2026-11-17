@@ -114,8 +114,10 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #storeDownloadInvite p{margin:0 0 10px}
 #storeDownloadLink{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--straw);min-height:44px}
 #storeDownloadLink img{display:block;width:220px;max-width:100%;height:auto}
+.mode-perks{text-align:left;margin:12px 0}.mode-perks details{padding:10px;border:1px solid #8eb969;border-radius:10px;margin:8px 0}.mode-perks summary{cursor:pointer;font-weight:bold}.mode-perks p{font-size:14px;line-height:1.5}
 </style>
 <script type="module" src="arcade-share.mjs"></script>
+<script type="module" src="mode-perks.mjs"></script>
 </head>
 <body>
 <div id="app" data-country-root inert>
@@ -149,6 +151,10 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <button class="mode-choice" data-mode-select="tutorial" aria-pressed="true"><strong data-mode-text="tutorial">Tutorial</strong><small data-mode-text="tutorialHud">Tutorial</small></button>
         <button class="mode-choice" data-mode-select="arcade" aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">3 levels · from 0.002 SOL</small></button>
         <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">10,000,000 MEMEZZO timelock · from 10 lives</small></button>
+      </div>
+      <div class="mode-perks">
+        <details><summary id="arcadePerksTitle">Arcade · Play and get noticed</summary><p id="arcadePerksText">Share your score photo on X with #mezzopollo or on the MEMEZZO Pump.fun page for a chance to be contacted about a SOL prize. Prizes are not guaranteed.</p></details>
+        <details><summary id="subscriptionPerksTitle">Subscription · Play and connect</summary><p id="subscriptionPerksText">In development: a 0.2 SOL monthly pass for 30 days, with a leaderboard and clickable Cherry profiles to meet and follow other players. The new monthly pass and social leaderboard are not active yet.</p></details>
       </div>
       <div class="btns">
         <button class="btn primary" id="btnPlay">Tutorial</button>
