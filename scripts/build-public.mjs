@@ -25,6 +25,9 @@ for (const entry of await readdir(root, { withFileTypes: true })) {
     html = html.replace(/<main\b/i, '</head><main');
   }
   await writeFile(destination, html);
+  if (entry.name === 'index.html') {
+    for (const route of ['cherry', 'play']) await writeFile(join(output, `${route}.html`), html);
+  }
 }
 for (const directory of ['flags', 'media', 'downloads', 'vendor']) await cp(join(root, directory), join(output, directory), { recursive: true });
 console.log('Public game assets prepared; server, database schema, tests and credentials excluded.');

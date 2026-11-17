@@ -7,11 +7,7 @@
   "rewrites": [
     {
       "source": "/practice",
-      "destination": "/"
-    },
-    {
-      "source": "/cherry",
-      "destination": "/"
+      "destination": "/play"
     },
     {
       "source": "/.well-known/cherry-app.json",
@@ -27,6 +23,13 @@
           "value": "frame-ancestors 'self' https://chat.cherry.fun https://cherry.fun https://*.cherry.fun"
         }
       ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/cherry",
+      "permanent": false
     }
   ]
 }
