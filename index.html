@@ -110,6 +110,10 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #shareImg{width:100%;border-radius:6px;margin:10px 0 4px;display:none}
 .keys{font-size:14px;color:var(--chalk-dim)}
 #glLost{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(--slate-deep);color:var(--chalk);font-size:18px;padding:24px;text-align:center}
+#storeDownloadInvite{margin:18px 0;padding:16px;border:1px solid var(--chalk-dim);border-radius:12px;text-align:center}
+#storeDownloadInvite p{margin:0 0 10px}
+#storeDownloadLink{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--straw);min-height:44px}
+#storeDownloadLink img{display:block;width:220px;max-width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -257,6 +261,13 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="stat"><span id="recordLabel">Personal best (local)</span><b id="oBest"></b></div>
       <img id="shareImg" alt="Your score card">
       <p class="note" id="shareNote"></p>
+      <aside id="storeDownloadInvite" hidden>
+        <p id="storeDownloadText">Download MezzoPollo from the Solana dApp Store.</p>
+        <a id="storeDownloadLink" href="solanadappstore://details?id=it.mezzopollo.academy">
+          <img id="storeDownloadBadge" src="solana-dapp-store-badge.png" alt="Solana dApp Store" loading="lazy" hidden>
+          <span id="storeDownloadLabel">Download MezzoPollo</span>
+        </a>
+      </aside>
       <div class="btns">
         <button class="btn primary" id="btnAgain">Try again</button>
         <button class="btn" id="btnShare">Share your rank</button>
@@ -863,8 +874,21 @@ function gameOver(){
   $('resultDifficulty').textContent=resultModeLabel();
   $('btnShare').textContent=window.MezzoArcade.text('shareAction');
   $('shareImg').style.display='none';$('shareNote').textContent='';
+  const storeInvite = $('storeDownloadInvite');
+  storeInvite.hidden = !['arcade', 'subscription'].includes(G.config.name);
+  const storeCopy = ({
+    it: ['Scarica MezzoPollo dal Solana dApp Store.', 'Scarica MezzoPollo'],
+    pl: ['Pobierz MezzoPollo ze sklepu Solana dApp Store.', 'Pobierz MezzoPollo'],
+    en: ['Download MezzoPollo from the Solana dApp Store.', 'Download MezzoPollo'],
+  })[L.code] || ['Download MezzoPollo from the Solana dApp Store.', 'Download MezzoPollo'];
+  $('storeDownloadText').textContent = storeCopy[0];
+  $('storeDownloadLabel').textContent = storeCopy[1];
   $('hud').hidden=true;show('scrOver');
 }
+const storeBadge = $('storeDownloadBadge');
+storeBadge.addEventListener('load', () => { storeBadge.hidden = false; });
+storeBadge.addEventListener('error', () => { storeBadge.hidden = true; });
+if(storeBadge.complete && storeBadge.naturalWidth > 0)storeBadge.hidden = false;
 $('btnPlay').onclick=startGame;$('btnAgain').onclick=startGame;
 $('playMember').onclick=()=>{mode.select('subscription');startGame()};$('resumeRun').onclick=resume;
 $('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=openShop;
