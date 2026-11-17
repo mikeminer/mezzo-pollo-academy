@@ -186,7 +186,7 @@ export function createLockAccess({
     if (connectionRequest) return connectionRequest.promise;
     let candidate;
     try { candidate = getProvider(); } catch { candidate = null; }
-    const supported = candidate?.isPhantom === true || candidate?.isMezzoMobile === true || candidate?.isMezzoWebWallet === true;
+    const supported = candidate?.isMezzoCherry === true || candidate?.isPhantom === true || candidate?.isMezzoMobile === true || candidate?.isMezzoWebWallet === true;
     if (!supported || typeof candidate.connect !== 'function') {
       invalidate(); detachProvider(); backoffUntil = 0;
       return publish({ ...BASE_STATE, status: 'missing-wallet' });

@@ -36,7 +36,7 @@ function render(state, notify = true) {
   amountFormat = new Intl.NumberFormat(locale);
   const connected = !!state.wallet;
   const busy = state.status === 'connecting' || state.status === 'checking';
-  byId('connectWallet').hidden = connected;
+  byId('connectWallet').hidden = connected || location.pathname==='/cherry';
   byId('connectWallet').disabled = busy;
   byId('connectWallet').textContent = translated(busy ? 'connectingButton' : 'connect');
   byId('checkLocks').hidden = !connected;
@@ -83,7 +83,8 @@ byId('copyMint').addEventListener('click', async () => {
   byId('copyMint').textContent = translated(copyMessage);
 });
 document.addEventListener('mezzopollo:language', () => render(lastState, false));
-document.addEventListener('mezzopollo:shopopen', () => { shopOpen = true; });
+document.addEventListener('mezzopollo:shopopen', () => { shopOpen = true; if(location.pathname==='/cherry'&&window.MezzoWallet?.getProvider()?.isMezzoCherry)void access.connect(); });
+document.addEventListener('mezzopollo:cherry-ready',()=>{if(shopOpen)void access.connect();});
 document.addEventListener('mezzopollo:shopclose', () => {
   shopOpen = false;
   access.cancelPending();

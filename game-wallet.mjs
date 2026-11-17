@@ -30,3 +30,34 @@ window.MezzoWallet = createWebWallet({
   transact, origin: location.origin, onChange: changed, localNetwork,
 });
 changed();
+
+// The dedicated listing URL never falls back to external wallets inside Cherry.
+if(location.pathname==='/cherry'){
+ let cherryProvider=null;
+ window.MezzoWallet=Object.freeze({
+  getProvider:()=>cherryProvider,
+  async connect(){if(!cherryProvider)throw Error('cherry_launch_unavailable');return cherryProvider.connect();},
+  async withPaymentSession(operation){if(!cherryProvider?.isConnected)throw Error('cherry_launch_unavailable');return operation(cherryProvider);}
+ });
+ const label=document.createElement('p');
+ label.setAttribute('role','status');
+ document.getElementById('modeChoices').before(label);
+ const it=()=>window.MezzoLocale?.code==='it';
+ label.textContent=it()?'Collegamento a Cherry…':'Connecting to Cherry…';
+ for(const selector of ['[data-mode-select="arcade"]','#monthlyBuy','#monthlyCheck','#connectWallet']){
+  const element=document.querySelector(selector);if(element)element.hidden=true;
+ }
+ const outside=document.createElement('a');
+ outside.href='https://mezzopollo.it/';outside.target='_blank';outside.rel='noopener noreferrer';
+ outside.textContent=it()?'Apri il sito per acquistare o giocare in Arcade':'Open the website to buy a pass or play Arcade';
+ label.after(outside);
+ void (async()=>{
+  try{
+   const [{CherryMiniApp,isInsideCherry},{connectCherry}]=await Promise.all([import('./vendor/cherry.mjs'),import('./cherry-wallet.mjs')]);
+   if(!isInsideCherry({strict:true}))throw Error();
+   cherryProvider=await connectCherry({app:new CherryMiniApp({strict:true}),changed:()=>{changed();label.textContent=it()?'Wallet scollegato. Riapri il gioco da Cherry.':'Wallet disconnected. Reopen the game from Cherry.';}});
+   label.textContent=it()?'Wallet Cherry collegato':'Cherry wallet connected';
+   changed();document.dispatchEvent(new Event('mezzopollo:cherry-ready'));
+  }catch{label.textContent=it()?'Apri Mezzopollo dalla sua scheda mini app in Cherry.':'Open MezzoPollo from its mini app listing in Cherry.';}
+ })();
+}

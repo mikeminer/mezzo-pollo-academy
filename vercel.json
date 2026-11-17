@@ -5,6 +5,28 @@
   "outputDirectory": ".web-output",
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/practice", "destination": "/" }
+    {
+      "source": "/practice",
+      "destination": "/"
+    },
+    {
+      "source": "/cherry",
+      "destination": "/"
+    },
+    {
+      "source": "/.well-known/cherry-app.json",
+      "destination": "/api/cherry-proof"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/cherry",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' https://chat.cherry.fun https://cherry.fun https://*.cherry.fun"
+        }
+      ]
+    }
   ]
 }

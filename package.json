@@ -10,6 +10,7 @@
     "check:locales": "node scripts/build-locales.mjs --check"
   },
   "dependencies": {
+    "@cherrydotfun/miniapp-sdk": "0.1.24",
     "@neondatabase/serverless": "1.0.2",
     "@pump-fun/pump-sdk": "4.3.1",
     "@solana-mobile/mobile-wallet-adapter-protocol": "3.0.1",
