@@ -46,44 +46,23 @@ test('first Free run needs no wallet or shop, starts with one life, and rejects 
   assert.equal(h.runs.length,1);
 });
 
-test('Free preserves the result screen, then shows a sponsor between rounds; Continue grants exactly one new run', () => {
-  const h=harness();
-  h.context.requestRun({name:'free',lives:1});
-  h.context.gameOver();
-  assert.equal(h.screens.at(-1),'scrOver');
-  assert.equal(h.context.freeSponsorDue,true);
-  h.context.requestRun({name:'free',lives:1});
-  assert.equal(h.screens.at(-1),'scrSponsor');
-  assert.equal(h.runs.length,1);
-  assert.equal(h.context.state,'sponsor');
-  h.context.continueFreeRound();
-  h.context.continueFreeRound();
-  assert.equal(h.runs.length,2);
-  assert.equal(h.context.freeSponsorDue,true,'the newly started round queues only its following promotion');
-  assert.equal(h.context.state,'play');
-  assert.equal(h.opened.length,0,'continuing never opens the sponsor or requires installation');
-  assert.equal(h.shop,0);
-  h.context.gameOver();
-  h.context.requestRun({name:'free',lives:1});
-  assert.equal(h.screens.at(-1),'scrSponsor','every completed free round queues the next promotion');
+test('Free preserves results and starts successive rounds directly without a sponsor', () => {
+  const h = harness();
+  for (let round = 1; round <= 3; round++) {
+    h.context.requestRun({ name: 'free', lives: 1 });
+    assert.equal(h.runs.length, round);
+    assert.equal(h.runs.at(-1).lives, 1);
+    assert.equal(h.context.state, 'play');
+    assert.equal(h.screens.at(-1), null);
+    h.context.gameOver();
+    assert.equal(h.screens.at(-1), 'scrOver');
+  }
+  assert.equal(h.shop, 0);
+  assert.equal(h.opened.length, 0);
 });
 
-test('sponsor does not interrupt Arcade or Subscription, and an optional native Store link does not start gameplay', async () => {
-  const h=harness({eligible:true,lives:10});
-  h.context.freeSponsorDue=true;
-  h.context.requestRun({name:'subscription',lives:10});
-  assert.equal(h.runs.length,1);
-  h.context.requestRun({name:'arcade',tier:'medium',lives:3});
-  assert.equal(h.screens.at(-1),'scrArcade');
-  let nativeOpens=0;
-  h.context.window.MezzoAndroid={openSponsor:async()=>{nativeOpens++;}};
-  await h.context.openSponsor();
-  assert.equal(nativeOpens,1);
-  assert.equal(h.opened.length,0);
-  assert.equal(h.runs.length,1);
-  delete h.context.window.MezzoAndroid;
-  await h.context.openSponsor();
-  assert.deepEqual(h.opened[0],['https://club.devfridge.cool/download/onlyfridge-club','_blank','noopener,noreferrer']);
+test('DevFridge advertising UI and loader are absent', () => {
+  assert.doesNotMatch(html, /scrSponsor|tokenSponsorSlot|game-token-sponsor\.mjs/);
 });
 
 test('unpaid runs and removed modes cannot enter gameplay', () => {
