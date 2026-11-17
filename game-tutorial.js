@@ -126,6 +126,7 @@
     }
     if (!accepted) return false;
     outcome = success ? 'success' : 'retry';
+    if (success && index === STEPS.length - 1) { finish(false); return true; }
     render();
     return true;
   }

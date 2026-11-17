@@ -29,36 +29,16 @@ function harness({ eligible = false, lives = 0, paid = false } = {}) {
   return { context, runs, screens, opened, get shop() { return shop; }, get checkout() { return checkout; }, elements };
 }
 
-test('Free, Arcade and Subscription are selectable; only Medium, Easy and God are sold', () => {
-  assert.deepEqual([...html.matchAll(/<button\b[^>]*data-mode-select="([^"]+)"/g)].map(match => match[1]), ['free', 'arcade', 'subscription']);
+test('Tutorial, Arcade and Subscription are selectable; only Medium, Easy and God are sold', () => {
+  assert.deepEqual([...html.matchAll(/<button\b[^>]*data-mode-select="([^"]+)"/g)].map(match => match[1]), ['tutorial', 'arcade', 'subscription']);
   assert.deepEqual([...html.matchAll(/<button\b[^>]*data-arcade-tier="([^"]+)"/g)].map(match => match[1]), ['medium', 'easy', 'god']);
 });
 
-test('first Free run needs no wallet or shop, starts with one life, and rejects inflated lives', () => {
+test('removed Free mode cannot start any run', () => {
   const h=harness();
-  h.context.requestRun({name:'free',lives:1});
-  assert.equal(h.runs.length,1);
-  assert.equal(h.runs[0].lives,1);
-  assert.equal(h.shop,0);
-  assert.equal(h.checkout,undefined);
-  assert.equal(h.screens.at(-1),null);
-  h.context.beginRun({name:'free',lives:32});
-  assert.equal(h.runs.length,1);
-});
-
-test('Free preserves results and starts successive rounds directly without a sponsor', () => {
-  const h = harness();
-  for (let round = 1; round <= 3; round++) {
-    h.context.requestRun({ name: 'free', lives: 1 });
-    assert.equal(h.runs.length, round);
-    assert.equal(h.runs.at(-1).lives, 1);
-    assert.equal(h.context.state, 'play');
-    assert.equal(h.screens.at(-1), null);
-    h.context.gameOver();
-    assert.equal(h.screens.at(-1), 'scrOver');
-  }
-  assert.equal(h.shop, 0);
-  assert.equal(h.opened.length, 0);
+  for(const lives of [1,10,32]) h.context.requestRun({name:'free',lives});
+  assert.equal(h.runs.length,0);
+  assert.match(html, /const onFinish=\(\)=>queueMicrotask\(toMenu\)/);
 });
 
 test('DevFridge advertising UI and loader are absent', () => {
@@ -102,12 +82,12 @@ test('Subscription rejects old subthreshold grants and stale tutorial snapshots'
 
 
 test('store download invite appears only after Arcade and Subscription rounds', () => {
-  for (const name of ['free', 'arcade', 'subscription']) {
+  for (const name of ['tutorial', 'arcade', 'subscription']) {
     const h = harness();
     h.context.G.config = { name, lives: 1 };
     h.context.state = 'play';
     h.context.gameOver();
-    assert.equal(h.elements.get('storeDownloadInvite').hidden, name === 'free');
+    assert.equal(h.elements.get('storeDownloadInvite').hidden, name === 'tutorial');
     assert.equal(h.screens.at(-1), 'scrOver');
     assert.equal(h.opened.length, 0, 'the store must never open automatically');
   }

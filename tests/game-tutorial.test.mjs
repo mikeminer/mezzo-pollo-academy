@@ -71,7 +71,7 @@ test('every profile renders its six lessons and preserves physical control meani
       if (step.id === 'left') assert.equal(step.targetDirection, -1, code);
       if (step.id === 'right') assert.equal(step.targetDirection, 1, code);
       assert.equal(h.tutorial.observe(evidence), true, code);
-      assert.equal(h.tutorial.next(), true, code);
+      assert.equal(h.tutorial.next(), step.id !== 'whole', code);
     }
     assert.equal(h.tutorial.active, false, code);
     assert.equal(h.tutorial.shouldStart(), false, code);
@@ -81,7 +81,7 @@ function reachGate(h) {
   for (const event of successes.slice(0, 3)) { h.tutorial.observe(event); h.tutorial.next(); }
 }
 
-test('all six lessons require accepted gameplay evidence and explicit advancement', () => {
+test('final successful lesson finishes immediately without another click', () => {
   const h = setup();
   assert.equal(h.tutorial.shouldStart(), true);
   assert.equal(h.start(), true);
@@ -93,9 +93,9 @@ test('all six lessons require accepted gameplay evidence and explicit advancemen
     assert.equal(h.tutorial.waiting, false);
     assert.equal(h.tutorial.next(), false);
     assert.equal(h.tutorial.observe(event), true);
-    assert.equal(h.tutorial.waiting, true);
+    assert.equal(h.tutorial.waiting, index < 5);
     assert.equal(h.tutorial.observe(event), false);
-    assert.equal(h.tutorial.next(), true);
+    assert.equal(h.tutorial.next(), index < 5);
   }
   assert.equal(h.tutorial.active, false);
   assert.equal(h.tutorial.step, null);

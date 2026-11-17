@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MezzoPollo — Free, Arcade &amp; Subscription</title>
-<meta name="description" content="Play MezzoPollo free with 1 life, choose from three paid Arcade levels, or unlock Subscription with 10,000,000 actively timelocked MEMEZZO. Available in 20 languages with 25 regional choices.">
+<meta name="description" content="Learn MezzoPollo with the free tutorial, then choose Arcade or Subscription. Available in 20 languages with 25 regional choices.">
 <base href="/">
 <link rel="stylesheet" href="locale.css">
 <link rel="stylesheet" href="game-tutorial.css">
@@ -98,7 +98,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #modeChoices{grid-template-columns:1fr}
 .mode-choice[data-mode-select]{display:flex;align-items:center;justify-content:space-between;gap:12px}
 .mode-choice[data-mode-select="arcade"]{border-color:#9d7ce0}
-.mode-choice[data-mode-select="free"]{border-color:#8eb969}
+.mode-choice[data-mode-select="tutorial"]{border-color:#8eb969}
 .mode-choice[data-mode-select] small{text-align:end}
 #scrMenu .btns{display:grid;grid-template-columns:1fr 1fr}#btnPlay,#btnAccess{grid-column:1/-1}
 #btnTutorial,#btnHow{font-size:15px;padding:10px 6px;min-height:48px}
@@ -145,12 +145,12 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="review-badge" data-review-label hidden></div>
       <p class="chop">A plush chicken has lost half of itself. Help it run through the gate with the matching half.</p>
       <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
-        <button class="mode-choice" data-mode-select="free" aria-pressed="true"><strong data-mode-text="free">Free</strong><small data-mode-text="freeDesc">1 life · No wallet or payment</small></button>
+        <button class="mode-choice" data-mode-select="tutorial" aria-pressed="true"><strong data-mode-text="tutorial">Tutorial</strong><small data-mode-text="tutorialHud">Tutorial</small></button>
         <button class="mode-choice" data-mode-select="arcade" aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">3 levels · from 0.002 SOL</small></button>
         <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">10,000,000 MEMEZZO timelock · from 10 lives</small></button>
       </div>
       <div class="btns">
-        <button class="btn primary" id="btnPlay">Play free</button>
+        <button class="btn primary" id="btnPlay">Tutorial</button>
         <button class="btn" id="btnTutorial" data-mode-text="tutorial">Play the tutorial</button>
         <button class="btn" id="btnHow">How to play</button>
         <button class="btn ghost" id="btnAccess" data-mode-text="shop">Shop · MEMEZZO lives</button>
@@ -532,8 +532,8 @@ const statue=buildChicken(true,M.bronze); statue.scale.setScalar(2.2); statue.vi
 let accessEligible=false, accessLives=0;
 function syncAccessUi(){
   const lives={count:L.number(accessLives),lives:L.lifeWord(accessLives)};
-  $('btnPlay').textContent=mode.selected==='free'?mode.text('freeStart'):mode.selected==='arcade'?window.MezzoArcade.text('play'):mode.text(accessEligible?'playSubscription':'unlock',lives);
-  $('memberHint').textContent=mode.selected==='free'?mode.text('freeHint'):mode.selected==='arcade'?window.MezzoArcade.text('hint'):mode.text(accessEligible?'unlocked':'subscriptionHint',lives);
+  $('btnPlay').textContent=mode.selected==='tutorial'?mode.text('tutorial'):mode.selected==='arcade'?window.MezzoArcade.text('play'):mode.text(accessEligible?'playSubscription':'unlock',lives);
+  $('memberHint').textContent=mode.selected==='tutorial'?mode.text('tutorialQuestion'):mode.selected==='arcade'?window.MezzoArcade.text('hint'):mode.text(accessEligible?'unlocked':'subscriptionHint',lives);
   $('resumeRun').hidden=state!=='pause';
   $('btnResume').textContent=t('resume');
   $('playMember').textContent=mode.text('playSubscription',lives);
@@ -663,7 +663,7 @@ let state='menu';
 const G={};
 let deathTimer=null;
 function clearDeathTimer(){if(deathTimer!==null){clearTimeout(deathTimer);deathTimer=null}}
-function resetGame(config=mode.config('free')){
+function resetGame(config=mode.config('tutorial')){
   $('gameViewport').dataset.runMode=config.name;
   clearDeathTimer();
   music.setFocus(false);
@@ -815,11 +815,7 @@ async function openShop(){
   syncAccessUi();
 }
 function beginRun(config){
-  if(!config||!['free','arcade','subscription'].includes(config.name))return;
-  if(config.name==='free'){
-    if(config.lives!==1)return;
-    config=mode.config('free');
-  }
+  if(!config||!['arcade','subscription'].includes(config.name))return;
   if(config.name==='subscription'&&(!accessEligible||config.lives<10||config.lives!==accessLives)){void openShop();return;}
   if(config.name==='arcade'&&!window.MezzoArcade.consumeAdmission())return;
   audio();clearWorld();resetGame(config);state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true});clock.getDelta();
@@ -839,7 +835,9 @@ function tutorialScenario(spec){
   }
   updateLegs();updateScore();
 }
-function startTutorial(config=mode.config('free'),onFinish=()=>requestRun(config)){
+function startTutorial(){
+  const config=mode.config('tutorial');
+  const onFinish=()=>queueMicrotask(toMenu);
   if(!L.ready){L.open();return;}
   audio();clearWorld();resetGame(config);state='play';show(null);$('hud').hidden=false;music.start();
   tutorial.start({onStep:tutorialScenario,onAction:action=>{if(action==='jump')jump();else changeLane(action==='left'?-1:1);},onFinish});
@@ -847,9 +845,10 @@ function startTutorial(config=mode.config('free'),onFinish=()=>requestRun(config
 }
 function startGame(){
   if(!L.ready){L.open();return;}
+  if(mode.selected==='tutorial'){startTutorial();return;}
   const config=mode.config(mode.selected,accessEligible?accessLives:0);
   if(!config){void openShop();return;}
-  if(tutorial.shouldStart())startTutorial(config);else requestRun(config);
+  if(tutorial.shouldStart())startTutorial();else requestRun(config);
 }
 function requestRun(config){
   if(!config)return;
@@ -893,7 +892,7 @@ $('btnPlay').onclick=startGame;$('btnAgain').onclick=startGame;
 $('playMember').onclick=()=>{mode.select('subscription');startGame()};$('resumeRun').onclick=resume;
 $('btnHow').onclick=()=>show('scrHow');$('btnAccess').onclick=openShop;
 $('btnVerifyAccess').onclick=openShop;
-$('btnTutorial').onclick=()=>startTutorial(mode.config(mode.selected,accessEligible?accessLives:0)||mode.config('free'),startGame);
+$('btnTutorial').onclick=startTutorial;
 document.querySelectorAll('[data-shop-back]').forEach(b=>b.onclick=()=>{if(state==='pause')show('scrPause');else toMenu()});
 document.querySelectorAll('[data-back]').forEach(b=>b.onclick=toMenu);
 $('pauseBtn').onclick=pause;$('btnResume').onclick=resume;
