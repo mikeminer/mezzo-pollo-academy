@@ -21,11 +21,16 @@ byId('monthlyBuy').onclick=()=>operation(async()=>{
  quote=null;byId('monthlyApprove').hidden=true;byId('monthlyReview').textContent='';
  const provider=window.MezzoWallet?.getProvider();
  if(!provider||provider.isMezzoMobile){status(copy().unsupported);return;}
- await window.MezzoShopAccess.connect();
- if(!provider.isConnected)throw Error('wallet_disconnected');
- status(copy().wait);quote=await exclusive(()=>client.prepare(provider.publicKey.toString(), {cherry: provider.isMezzoCherry===true}));
+ status(copy().wait);
+ // Preparing a new pass does not require an existing entitlement lookup.
+ if(!provider.isConnected)await provider.connect();
+ const wallet=provider.publicKey?.toString();
+ if(!provider.isConnected||!wallet)throw Error('wallet_disconnected');
+ quote=await exclusive(()=>client.prepare(wallet, {cherry: provider.isMezzoCherry===true}));
+ if(provider.publicKey?.toString()!==wallet){quote=null;throw Error('wallet_disconnected');}
+ status(copy().review);
  const c=copy();byId('monthlyReview').textContent=`${c.review}\n0.2 SOL · 30 days · 2% slippage\n${c.min}: ${(BigInt(quote.minimumRaw)/1000000n).toLocaleString()}\n${c.fee}: ${sol(quote.feeLamports)} SOL\n${c.setup}: ${sol(quote.setupLamports)} SOL\n${c.reserve}: ${sol(quote.reserveLamports)} SOL\n${c.end}: ${new Date(quote.expiresAt*1000).toLocaleString()} (${new Date(quote.expiresAt*1000).toISOString()})`;
- byId('monthlyApprove').hidden=false;status('');
+ byId('monthlyApprove').hidden=false;byId('monthlyApprove').focus({preventScroll:true});byId('monthlyReview').scrollIntoView({block:'nearest'});
 });
 byId('monthlyApprove').onclick=()=>operation(async()=>{
  if(!quote)throw Error('quote_expired');
