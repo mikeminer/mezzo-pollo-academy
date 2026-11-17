@@ -1,4 +1,5 @@
-import {prepareMonthly} from '../server/monthly-purchase.mjs';
+import runtime from '../server/monthly-runtime.cjs';
+const {prepareMonthly}=runtime;
 const ORIGINS=new Set(['https://mezzopollo.it','https://www.mezzopollo.it','https://mezzo-pollo-academy.vercel.app']);
 const SAFE=new Set(['invalid_wallet','invalid_slippage','route_unavailable','token_unavailable','subscription_slots_full','insufficient_sol','simulation_failed','quote_too_small','transaction_too_large','fee_unavailable']);
 export function createMonthlyHandler({env=process.env,prepare=prepareMonthly,now=Date.now}={}){

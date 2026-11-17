@@ -1,5 +1,5 @@
-import {Connection,PublicKey} from '@solana/web3.js';
-import {lockAddress} from '../server/monthly-purchase.mjs';
+import runtime from '../server/monthly-runtime.cjs';
+const {Connection,PublicKey,lockAddress}=runtime;
 const ORIGINS=new Set(['https://mezzopollo.it','https://www.mezzopollo.it','https://mezzo-pollo-academy.vercel.app']);
 export function createRecoveryHandler({env=process.env,connect=url=>new Connection(url,{commitment:'finalized',disableRetryOnRateLimit:true,fetch:(url,opts)=>fetch(url,{...opts,signal:AbortSignal.timeout(6000)})})}={}){
  return async(req,res)=>{
