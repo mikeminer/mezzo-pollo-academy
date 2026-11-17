@@ -1,5 +1,5 @@
 import {randomUUID,createPublicKey,verify} from 'node:crypto';
-import {PublicKey} from '@solana/web3.js';
+import {PublicKey} from '../vendor/solana-transaction.mjs';
 import {readVerifiedTimelocks} from '../timelock-chain.mjs';
 import {scoreMessage} from '../community-protocol.mjs';
 // Social score sharing only: a signature proves authorship, not honest gameplay.

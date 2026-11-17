@@ -1,3 +1,4 @@
+import {communityError} from './community-errors.mjs';
 import {cherryProfile,scoreMessage} from './community-protocol.mjs';
 const el=id=>document.getElementById(id);
 const COPY={
@@ -8,8 +9,8 @@ const COPY={
 const copy=()=>COPY[window.MezzoLocale?.code]||COPY.en;
 let result=null,challenge=null,busy=false;
 function render(){const c=copy();for(const [id,key]of [['communityTitle','title'],['communityDisclosure','disclosure'],['communityRefresh','load'],['communityShareText','share'],['communityPublish','publish'],['communityApprove','approve']])el(id).textContent=c[key];}
-async function api(body){const response=await fetch('/api/community',{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,cache:'no-store',signal:AbortSignal.timeout(20000)});const data=await response.json();if(!response.ok)throw Error(data.error);return data;}
-async function operation(statusId,fn){if(busy)return;busy=true;for(const id of ['communityRefresh','communityPublish','communityApprove'])el(id).disabled=true;el(statusId).textContent=copy().wait;try{await fn();}catch{el(statusId).textContent=copy().error;}finally{busy=false;for(const id of ['communityRefresh','communityPublish','communityApprove'])el(id).disabled=false;}}
+async function api(body){const response=await fetch('/api/community',{method:body?'POST':'GET',headers:body?{'Content-Type':'application/json'}:{},body:body?JSON.stringify(body):undefined,cache:'no-store',signal:AbortSignal.timeout(20000)});let data;try{data=await response.json();}catch{throw Error('community_unavailable');}if(!response.ok)throw Error(data.error||'community_unavailable');return data;}
+async function operation(statusId,fn){if(busy)return;busy=true;for(const id of ['communityRefresh','communityPublish','communityApprove'])el(id).disabled=true;el(statusId).textContent=copy().wait;try{await fn();}catch(error){el(statusId).textContent=communityError(error,window.MezzoLocale?.code);}finally{busy=false;for(const id of ['communityRefresh','communityPublish','communityApprove'])el(id).disabled=false;}}
 el('communityRefresh').onclick=()=>operation('communityStatus',async()=>{
  const data=await api();if(data.scoreAuthority!=='player-reported'||!Array.isArray(data.scores))throw Error('invalid_list');
  const list=document.createDocumentFragment();
@@ -22,7 +23,7 @@ el('communityRefresh').onclick=()=>operation('communityStatus',async()=>{
 });
 el('communityPublish').onclick=()=>operation('communityPublishStatus',async()=>{
  challenge=null;el('communityApprove').hidden=true;
- const provider=window.MezzoWallet?.getProvider();if(!result||!provider||provider.isMezzoMobile)throw Error('unsupported_wallet');
+ const provider=window.MezzoWallet?.getProvider();if(!result)throw Error('missing_score');if(!provider||provider.isMezzoMobile)throw Error('unsupported_wallet');
  await window.MezzoShopAccess.connect();
  if(provider.publicKey?.toString()!==result.wallet)throw Error('wallet_changed');
  const c=await api({action:'challenge',wallet:result.wallet,score:result.score});

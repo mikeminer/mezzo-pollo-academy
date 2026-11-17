@@ -1,5 +1,4 @@
 import {neon} from '@neondatabase/serverless';
-import {Community} from '../server/community.mjs';
 let service=null;
 export default async function(req,res){
  res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');
@@ -8,8 +7,8 @@ export default async function(req,res){
   if(req.headers?.origin&&!['https://mezzopollo.it','https://www.mezzopollo.it','https://mezzo-pollo-academy.vercel.app'].includes(req.headers.origin)||req.headers?.['sec-fetch-site']==='cross-site')return send(403,{error:'origin_not_allowed'});
   if(!['GET','POST'].includes(req.method))return send(405,{error:'method_not_allowed'});
   const database=process.env.ARCADE_DATABASE_URL||process.env.DATABASE_URL,rpcUrl=process.env.SUBSCRIPTION_SOLANA_RPC_URL;
-  if(!database||!rpcUrl)throw Error('community_unavailable');
-  if(!service){const next=new Community({sql:neon(database),rpcUrl});await next.ready();service=next;}
+  if(!database||!rpcUrl)return send(503,{error:'community_not_configured'});
+  if(!service){const {Community}=await import('../server/community.mjs');const next=new Community({sql:neon(database),rpcUrl});await next.ready();service=next;}
   if(req.method==='GET')return send(200,{scores:await service.list(),scoreAuthority:'player-reported'});
   if(!String(req.headers?.['content-type']).startsWith('application/json')||Number(req.headers?.['content-length']||0)>1500)return send(400,{error:'invalid_request'});
   const b=typeof req.body==='string'?JSON.parse(req.body):req.body;
@@ -21,5 +20,10 @@ export default async function(req,res){
   if(b.action==='challenge')return send(200,await service.challenge(b));
   if(b.action==='publish')return send(200,await service.publish(b));
   return send(400,{error:'invalid_action'});
- }catch(e){const safe=['invalid_score','subscription_required','invalid_signature','challenge_expired'].includes(e.message)?e.message:'community_unavailable';return send(503,{error:safe});}
+ }catch(e){
+  const statuses={invalid_score:400,invalid_request:400,subscription_required:403,invalid_signature:400,challenge_expired:409,rate_limited:429};
+  const error=Object.hasOwn(statuses,e.message)?e.message:'community_unavailable';
+  console.error('community request failed',{code:typeof e.code==='string'?e.code.slice(0,60):e.name});
+  return send(statuses[error]||503,{error});
+ }
 }
