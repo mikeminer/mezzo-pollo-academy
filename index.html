@@ -122,6 +122,11 @@ html[data-cherry] [data-hide-in-cherry]{display:none!important}
 .panel a:not(.btn):focus-visible{outline:2px solid #ffe17a;outline-offset:3px}
 #communityScores{color:#ffe17a;font-family:Fredoka,system-ui,sans-serif;font-weight:700;font-size:clamp(19px,4.7vw,22px);line-height:1.45}
 #communityScores a{display:inline-flex;align-items:center;min-height:44px;overflow-wrap:anywhere}
+#monthlyDialog{box-sizing:border-box;width:min(calc(100% - 32px),440px);max-height:calc(100dvh - 32px);overflow:auto;background:var(--slate,#26372a);color:var(--chalk,#fff);border:2px solid var(--straw);border-radius:16px;padding:20px;text-align:start;box-shadow:0 14px 60px #0009}
+#monthlyDialog::backdrop{background:rgba(0,0,0,.75)}
+#monthlyDialog h2{font-size:clamp(26px,7vw,36px);line-height:1.1}
+#monthlyReview{white-space:pre-line;overflow-wrap:anywhere;line-height:1.45}
+#monthlyDialog .btns{display:flex;flex-wrap:wrap;gap:12px}
 </style>
 <script type="module" src="arcade-share.mjs"></script>
 <script type="module" src="mode-perks.mjs"></script>
@@ -208,7 +213,15 @@ html[data-cherry] [data-hide-in-cherry]{display:none!important}
         <p id="monthlyIntro"></p><p class="note"><a href="/web-terms" target="_blank" rel="noopener">Terms</a> · <a href="/web-privacy" target="_blank" rel="noopener">Privacy</a></p><p id="monthlyDetails"></p><p id="monthlyCountdown"></p>
         <p id="monthlyStatus" role="status" aria-live="polite"></p>
         <div class="btns"><button class="btn primary" id="monthlyBuy">Subscribe · 0.2 SOL / 30 days</button><button class="btn" id="monthlyCheck">Check payment</button></div>
-        <p id="monthlyReview" style="white-space:pre-line"></p><button class="btn primary" id="monthlyApprove" hidden>Approve in wallet</button>
+        <dialog id="monthlyDialog" aria-labelledby="monthlyReviewTitle" aria-describedby="monthlyReview">
+          <h2 id="monthlyReviewTitle">Review before approving</h2>
+          <p id="monthlyReview"></p>
+          <p id="monthlyDialogStatus" role="status" aria-live="polite"></p>
+          <div class="btns">
+            <button type="button" class="btn ghost" id="monthlyCancel" autofocus>Cancel</button>
+            <button type="button" class="btn primary" id="monthlyApprove">Approve in wallet</button>
+          </div>
+        </dialog>
       </div>
       <p class="access-status" id="accessStatus" role="status" aria-live="polite">Connect your wallet to check your subscription.</p>
       <p class="access-note" id="accessWallet" hidden></p>

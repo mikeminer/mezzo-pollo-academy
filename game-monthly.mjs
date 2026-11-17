@@ -6,10 +6,11 @@ const COPY={
  pl:{retrySafe:'Płatność nie została zrealizowana. Możesz przygotować nową propozycję.',buy:'Subskrybuj · 0,2 SOL / 30 dni',approve:'Zatwierdź w portfelu',check:'Sprawdź płatność',intro:'Abonament miesięczny: 30 dni i 10 żyć na rozgrywkę.',details:'Twoje 0,2 SOL kupuje MEMEZZO dla Twojego portfela. Tokeny pozostają odłożone na czas abonamentu, a ich wartość może się zmieniać. Bez automatycznego odnowienia.',review:'Sprawdź przed zatwierdzeniem',fee:'Opłata sieciowa',reserve:'Pozostawione SOL (bez obciążenia)',setup:'Utworzenie kont',min:'Minimum MEMEZZO',end:'Wygasa',wait:'Przygotowywanie…',pending:'Wynik niepotwierdzony. Sprawdź płatność przed kolejną próbą.',success:'Abonament aktywny.',error:'Nie udało się przygotować płatności. Spróbuj ponownie.',funds:'Potrzebujesz 0,2 SOL oraz opłat sieciowych i utworzenia kont.',unsupported:'Aby kupić abonament, otwórz mezzopollo.it w przeglądarce z Phantom lub kompatybilnym portfelem Solana.',photo:'Ranking społecznościowy w przygotowaniu.'}
 };
 const copy=()=>COPY[window.MezzoLocale?.code]||COPY.en;
-const client=createMonthlyClient({storage:{getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v),removeItem:k=>localStorage.removeItem(k)}});let quote=null,busy=false;
+const client=createMonthlyClient({storage:{getItem:k=>localStorage.getItem(k),setItem:(k,v)=>localStorage.setItem(k,v),removeItem:k=>localStorage.removeItem(k)}});let quote=null,busy=false,shopEpoch=0;
 const sol=n=>(Number(n)/1e9).toLocaleString(window.MezzoLocale?.locale||'en-US',{maximumFractionDigits:9});
-function status(text){byId('monthlyStatus').textContent=text;}
-function render(){const c=copy();byId('monthlyBuy').textContent=c.buy;byId('monthlyApprove').textContent=c.approve;byId('monthlyCheck').textContent=c.check;byId('monthlyDetails').textContent=c.details;byId('monthlyIntro').textContent=c.intro;byId('monthlyBuy').disabled=busy;byId('monthlyApprove').disabled=busy;byId('monthlyCheck').disabled=busy;}
+const dialog=byId('monthlyDialog');
+function status(text){byId('monthlyStatus').textContent=text;byId('monthlyDialogStatus').textContent=dialog.open?text:'';}
+function render(){const c=copy();byId('monthlyReviewTitle').textContent=c.review;byId('monthlyCancel').textContent=({it:'Annulla',pl:'Anuluj'})[window.MezzoLocale?.code]||'Cancel';byId('monthlyCancel').disabled=busy;byId('monthlyBuy').textContent=c.buy;byId('monthlyApprove').textContent=c.approve;byId('monthlyCheck').textContent=c.check;byId('monthlyDetails').textContent=c.details;byId('monthlyIntro').textContent=c.intro;byId('monthlyBuy').disabled=busy;byId('monthlyApprove').disabled=busy;byId('monthlyCheck').disabled=busy;}
 const ERRORS={
  it:{route_unavailable:'Acquisto temporaneamente non disponibile per questo mercato. Riprova più tardi.',token_unavailable:'Non è stato possibile verificare MEMEZZO. Riprova.',subscription_slots_full:'Non puoi preparare un altro abbonamento con questo wallet. Contatta l’assistenza.',simulation_failed:'Il controllo del pagamento non è riuscito. Prepara una nuova proposta.',quote_too_small:'La proposta di acquisto non è valida. Riprova.',transaction_too_large:'Il pagamento non può essere preparato con questa configurazione.',fee_unavailable:'Le commissioni di rete non sono disponibili. Riprova.',payment_mismatch:'La proposta è scaduta o non corrisponde ai dettagli previsti. Preparala di nuovo.',storage_unavailable:'Consenti il salvataggio dei dati del sito per recuperare eventuali pagamenti.',wallet_disconnected:'Collega il wallet prima di continuare.',verification_unavailable:'Verifica del pagamento non disponibile. Riprova senza pagare di nuovo.'},
  en:{route_unavailable:'Purchasing is temporarily unavailable on this market. Try later.',token_unavailable:'MEMEZZO could not be verified. Try again.',subscription_slots_full:'Another subscription cannot be prepared for this wallet. Contact support.',simulation_failed:'The payment check failed. Prepare a new quote.',quote_too_small:'The purchase quote is invalid. Try again.',transaction_too_large:'The payment cannot be prepared with this configuration.',fee_unavailable:'Network fees are unavailable. Try again.',payment_mismatch:'The quote expired or did not match the reviewed details. Prepare it again.',storage_unavailable:'Allow site storage so pending payments can be recovered.',wallet_disconnected:'Connect your wallet before continuing.',verification_unavailable:'Payment verification is unavailable. Check again without paying again.'}
@@ -18,7 +19,8 @@ function safePending(){try{return client.pending();}catch{return null;}}
 async function operation(fn){if(busy)return;busy=true;render();try{await fn();}catch(e){status(e.message==='insufficient_sol'?copy().funds:e.message==='payment_pending'||safePending()?copy().pending:(ERRORS[window.MezzoLocale?.code]||ERRORS.en)[e.message]||copy().error);}finally{busy=false;render();}}
 const exclusive=fn=>{if(!navigator.locks)throw Error('storage_unavailable');return navigator.locks.request('mp-monthly-payment',{mode:'exclusive'},fn);};
 byId('monthlyBuy').onclick=()=>operation(async()=>{
- quote=null;byId('monthlyApprove').hidden=true;byId('monthlyReview').textContent='';
+ const epoch=shopEpoch;quote=null;
+ byId('monthlyReview').textContent='';
  const provider=window.MezzoWallet?.getProvider();
  if(!provider||provider.isMezzoMobile){status(copy().unsupported);return;}
  status(copy().wait);
@@ -27,19 +29,23 @@ byId('monthlyBuy').onclick=()=>operation(async()=>{
  const wallet=provider.publicKey?.toString();
  if(!provider.isConnected||!wallet)throw Error('wallet_disconnected');
  quote=await exclusive(()=>client.prepare(wallet, {cherry: provider.isMezzoCherry===true}));
+ if(epoch!==shopEpoch){quote=null;return;}
  if(provider.publicKey?.toString()!==wallet){quote=null;throw Error('wallet_disconnected');}
- status(copy().review);
- const c=copy();byId('monthlyReview').textContent=`${c.review}\n0.2 SOL · 30 days · 2% slippage\n${c.min}: ${(BigInt(quote.minimumRaw)/1000000n).toLocaleString()}\n${c.fee}: ${sol(quote.feeLamports)} SOL\n${c.setup}: ${sol(quote.setupLamports)} SOL\n${c.reserve}: ${sol(quote.reserveLamports)} SOL\n${c.end}: ${new Date(quote.expiresAt*1000).toLocaleString()} (${new Date(quote.expiresAt*1000).toISOString()})`;
- byId('monthlyApprove').hidden=false;byId('monthlyApprove').focus({preventScroll:true});byId('monthlyReview').scrollIntoView({block:'nearest'});
+ status('');
+ const c=copy();byId('monthlyReview').textContent=`0.2 SOL · 30 days · 2% slippage\n${c.min}: ${(BigInt(quote.minimumRaw)/1000000n).toLocaleString()}\n${c.fee}: ${sol(quote.feeLamports)} SOL\n${c.setup}: ${sol(quote.setupLamports)} SOL\n${c.reserve}: ${sol(quote.reserveLamports)} SOL\n${c.end}: ${new Date(quote.expiresAt*1000).toLocaleString()} (${new Date(quote.expiresAt*1000).toISOString()})`;
+ dialog.showModal();
 });
 byId('monthlyApprove').onclick=()=>operation(async()=>{
  if(!quote)throw Error('quote_expired');
  await exclusive(()=>client.approve(quote,fn=>window.MezzoWallet.withPaymentSession(fn)));
- quote=null;byId('monthlyApprove').hidden=true;status(copy().pending);
+ quote=null;dialog.close();status(copy().pending);
  const result=await client.recover();if(result?.confirmed){await window.MezzoShopAccess.connect();status(copy().success);}
 });
 byId('monthlyCheck').onclick=()=>operation(async()=>{const result=await exclusive(()=>client.recover());if(result?.confirmed){await window.MezzoShopAccess.connect();status(copy().success);}else if(result?.retrySafe)status(copy().retrySafe);else if(result)status(copy().pending);else{await window.MezzoShopAccess.connect();status('');}});
 document.addEventListener('mezzopollo:language',render);
-document.addEventListener('mezzopollo:shopclose',()=>{quote=null;byId('monthlyApprove').hidden=true;byId('monthlyReview').textContent='';});
+byId('monthlyCancel').onclick=()=>{if(!busy)dialog.close();};
+dialog.addEventListener('cancel',ev=>{if(busy)ev.preventDefault();});
+dialog.addEventListener('close',()=>{if(!dialog.open){quote=null;byId('monthlyDialogStatus').textContent='';}});
+document.addEventListener('mezzopollo:shopclose',()=>{shopEpoch++;quote=null;if(dialog.open)dialog.close();byId('monthlyReview').textContent='';});
 setInterval(()=>{const state=window.MezzoShopAccess?.getState();byId('monthlyCountdown').textContent=state?.eligible&&state.expiresAt?`${copy().end}: ${new Date(state.expiresAt*1000).toLocaleString()} · ${Math.max(0,Math.floor((state.expiresAt-Date.now()/1000)/86400))}d ${Math.max(0,Math.floor((state.expiresAt-Date.now()/1000)%86400/3600))}h`:'';},1000);
 render();
