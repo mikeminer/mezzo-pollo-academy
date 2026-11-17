@@ -49,7 +49,7 @@ if(/^\/cherry\/?$/.test(location.pathname)&&cherryHost){
  document.getElementById('modeChoices').before(label);
  const it=()=>window.MezzoLocale?.code==='it';
  label.textContent=it()?'Collegamento a Cherry…':'Connecting to Cherry…';
- for(const selector of ['[data-mode-select="arcade"]','#monthlyBuy','#monthlyCheck','#connectWallet']){
+ for(const selector of ['[data-mode-select="arcade"]','#connectWallet']){
   const element=document.querySelector(selector);if(element)element.hidden=true;
  }
  void (async()=>{

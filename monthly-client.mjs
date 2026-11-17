@@ -7,10 +7,10 @@ export function createMonthlyClient({storage,fetchImpl=fetch,now=()=>Math.floor(
  async function single(fn){if(busy)throw Error('payment_busy');busy=true;try{return await fn();}finally{busy=false;}}
  return {
   pending,
-  prepare:wallet=>single(async()=>{
+  prepare:(wallet,{cherry=false}={})=>single(async()=>{
    if(pending())throw Error('payment_pending');
-   const r=await fetchImpl('/api/monthly',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({wallet,slippageBps:200}),cache:'no-store',signal:AbortSignal.timeout(45000)});
-   const data=await r.json();if(!r.ok)throw Error(data.error||'purchase_unavailable');validateMonthlyTransaction(data,wallet,now());return data;
+   const r=await fetchImpl('/api/monthly',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({wallet,slippageBps:200,...(cherry?{cherry:true}:{})}),cache:'no-store',signal:AbortSignal.timeout(45000)});
+   const data=await r.json();if(!r.ok)throw Error(data.error||'purchase_unavailable');if(Boolean(data.cherry)!==cherry)throw Error('payment_mismatch');validateMonthlyTransaction(data,wallet,now());return data;
   }),
   approve:(record,withSession)=>single(async()=>{
    if(pending())throw Error('payment_pending');
@@ -21,6 +21,8 @@ export function createMonthlyClient({storage,fetchImpl=fetch,now=()=>Math.floor(
     const result=await withSession(async provider=>{
      if(provider.publicKey?.toString()!==record.wallet||provider.isConnected===false)throw Error('payer_mismatch');
      const tx=validateMonthlyTransaction(record,record.wallet,now());
+     if(Boolean(record.cherry)!==(provider.isMezzoCherry===true))throw Error('payment_mismatch');
+     if(provider.isMezzoCherry&&provider.payMonthly)return provider.payMonthly(tx);
      if(provider.isMezzoWebWallet&&provider.payMonthly)return provider.payMonthly(record);
      if(provider.isPhantom===true&&provider.signAndSendTransaction)return provider.signAndSendTransaction(tx);
      throw Error('unsupported_wallet');

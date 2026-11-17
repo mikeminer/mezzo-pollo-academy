@@ -10,7 +10,7 @@ export function createMonthlyHandler({env=process.env,prepare=prepareMonthly,now
   if(req.method!=='POST')return send(405,{error:'method_not_allowed'});
   if(!String(req.headers?.['content-type']).startsWith('application/json')||Number(req.headers?.['content-length']||0)>1024)return send(400,{error:'invalid_request'});
   let body;try{body=typeof req.body==='string'?JSON.parse(req.body):req.body;
-   if(!body||Object.keys(body).some(k=>!['wallet','slippageBps'].includes(k))||!/^\w{32,44}$/.test(body.wallet)||JSON.stringify(body).length>1024)throw Error();
+   if(!body||Object.keys(body).some(k=>!['wallet','slippageBps','cherry'].includes(k))||(body.cherry!==undefined&&body.cherry!==true)||!/^\w{32,44}$/.test(body.wallet)||JSON.stringify(body).length>1024)throw Error();
   }catch{return send(400,{error:'invalid_request'});}
   let rpcUrl;try{const u=new URL(env.SUBSCRIPTION_SOLANA_RPC_URL);if(u.protocol!=='https:'||u.hostname!=='mainnet.helius-rpc.com'||!u.searchParams.get('api-key'))throw Error();rpcUrl=u.href;}catch{return send(503,{error:'purchase_unavailable'});}
   if(now()-windowStart>=60000){count=0;windowStart=now();}if(++count>20||busy>=4){res.setHeader('Retry-After','30');return send(429,{error:'retry_later'});}

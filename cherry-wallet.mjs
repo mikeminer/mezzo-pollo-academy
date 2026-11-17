@@ -19,6 +19,11 @@ export async function connectCherry({app, fetchImpl=fetch, changed=()=>{}}) {
   disconnect:revoke,
   on(event,fn){if(!listeners.has(event))listeners.set(event,new Set());listeners.get(event).add(fn);},
   removeListener(event,fn){listeners.get(event)?.delete(fn);},
+  async payMonthly(transaction){
+   if(!this.isConnected)throw Error('payer_mismatch');
+   const signature=await app.wallet.signAndSendTransaction(transaction.serialize(),{label:'Buy MEMEZZO with 0.2 SOL for a 30-day pass'});
+   return {signature};
+  },
   async signMessage(bytes){if(!this.isConnected)throw Error('wallet_changed');const signature=await app.wallet.signMessage(bytes);if(!this.isConnected)throw Error('wallet_changed');return {signature};}
  });
 }

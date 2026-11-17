@@ -23,7 +23,7 @@ byId('monthlyBuy').onclick=()=>operation(async()=>{
  if(!provider||provider.isMezzoMobile){status(copy().unsupported);return;}
  await window.MezzoShopAccess.connect();
  if(!provider.isConnected)throw Error('wallet_disconnected');
- status(copy().wait);quote=await exclusive(()=>client.prepare(provider.publicKey.toString()));
+ status(copy().wait);quote=await exclusive(()=>client.prepare(provider.publicKey.toString(), {cherry: provider.isMezzoCherry===true}));
  const c=copy();byId('monthlyReview').textContent=`${c.review}\n0.2 SOL · 30 days · 2% slippage\n${c.min}: ${(BigInt(quote.minimumRaw)/1000000n).toLocaleString()}\n${c.fee}: ${sol(quote.feeLamports)} SOL\n${c.setup}: ${sol(quote.setupLamports)} SOL\n${c.reserve}: ${sol(quote.reserveLamports)} SOL\n${c.end}: ${new Date(quote.expiresAt*1000).toLocaleString()} (${new Date(quote.expiresAt*1000).toISOString()})`;
  byId('monthlyApprove').hidden=false;status('');
 });

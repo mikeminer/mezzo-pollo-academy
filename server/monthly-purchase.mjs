@@ -4,6 +4,7 @@ import { OnlinePumpSdk, PUMP_SDK, PUMP_PROGRAM_ID, GLOBAL_PDA, PUMP_FEE_CONFIG_P
 import BN from 'bn.js';
 import { ACCESS_POLICY } from '../access-policy.mjs';
 import { verifyMint,decodeLock,verifyVault } from '../timelock-chain.mjs';
+import {CHERRY_PAYMENT_REFERENCE} from '../cherry-payment-config.mjs';
 export const MONTHLY_PRICE = 200000000n;
 export const MONTHLY_SECONDS = 30 * 86400;
 export const FRIDGE = new PublicKey('9RY54dNPYTzDyh3TfFqDdt2b2KMM56KW1tw9erRTGQo6');
@@ -23,7 +24,7 @@ export function exactInInstruction(buy, minimum) {
  // Borsh OptionBool here is the one-byte tuple struct, not Option<bool>.
  return new TransactionInstruction({programId:buy.programId,keys:buy.keys,data:Buffer.concat([Buffer.from(exact.discriminator),raw(MONTHLY_PRICE),raw(minimum),Buffer.from([1,0])])});
 }
-export async function prepareMonthly({wallet:walletAddress,slippageBps=200}, {rpcUrl,now=()=>Math.floor(Date.now()/1000),connection}={}) {
+export async function prepareMonthly({wallet:walletAddress,slippageBps=200,cherry=false}, {rpcUrl,now=()=>Math.floor(Date.now()/1000),connection}={}) {
  if(![100,200,500].includes(slippageBps))fail('invalid_slippage');
  const wallet=new PublicKey(walletAddress);
  if(!PublicKey.isOnCurve(wallet.toBytes()))fail('invalid_wallet');
@@ -59,6 +60,8 @@ export async function prepareMonthly({wallet:walletAddress,slippageBps=200}, {rp
  const minimum=received*BigInt(10000-slippageBps)/10000n;if(minimum<=0n)fail('quote_too_small');
  const createdAt=now(),expiresAt=createdAt+MONTHLY_SECONDS;
  const lock=createMonthlyLock(wallet,id,minimum,expiresAt);
+ // Put attribution on the Fridge instruction, not Pump's protocol-defined trailing accounts.
+ if(cherry)lock.keys.push({pubkey:new PublicKey(CHERRY_PAYMENT_REFERENCE),isSigner:false,isWritable:false});
  const transaction=compile([...prefix,exactInInstruction(base,minimum),lock]);
  const wire=transaction.serialize();if(wire.length>1232)fail('transaction_too_large');
  const [fee,rentLock,rentVault]=await Promise.all([conn.getFeeForMessage(transaction.message,'confirmed'),conn.getMinimumBalanceForRentExemption(105),conn.getMinimumBalanceForRentExemption(170)]);
@@ -75,5 +78,5 @@ export async function prepareMonthly({wallet:walletAddress,slippageBps=200}, {rp
  const setupLamports=simulation.value.preBalances[0]-simulation.value.postBalances[0]-Number(MONTHLY_PRICE)-fee.value;
  if(!Number.isSafeInteger(setupLamports)||setupLamports<0)fail('simulation_failed');
  if(balance<Number(MONTHLY_PRICE)+fee.value+setupLamports+1000000)fail('insufficient_sol');
- return {plan:'monthly',wallet:wallet.toBase58(),mint:MINT.toBase58(),priceLamports:MONTHLY_PRICE.toString(),days:30,expectedRaw:received.toString(),minimumRaw:minimum.toString(),slippageBps,createdAt,expiresAt,quoteExpiresAt:createdAt+30,lockId:String(id),deposit:lockAddress(wallet,id).toBase58(),feeLamports:String(fee.value),setupLamports:String(setupLamports),reserveLamports:'1000000',blockhash:latest.blockhash,lastValidBlockHeight:latest.lastValidBlockHeight,transaction:Buffer.from(wire).toString('base64'),route:'pump-bonding-curve'};
+ return {plan:'monthly',...(cherry?{cherry:true}:{}),wallet:wallet.toBase58(),mint:MINT.toBase58(),priceLamports:MONTHLY_PRICE.toString(),days:30,expectedRaw:received.toString(),minimumRaw:minimum.toString(),slippageBps,createdAt,expiresAt,quoteExpiresAt:createdAt+30,lockId:String(id),deposit:lockAddress(wallet,id).toBase58(),feeLamports:String(fee.value),setupLamports:String(setupLamports),reserveLamports:'1000000',blockhash:latest.blockhash,lastValidBlockHeight:latest.lastValidBlockHeight,transaction:Buffer.from(wire).toString('base64'),route:'pump-bonding-curve'};
 }

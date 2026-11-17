@@ -54,3 +54,21 @@ test('every reviewed route account and account flag is validated',()=>{
  for(let i=0;i<18;i++)if(i!==7)assert.throws(()=>validateMonthlyTransaction(changed(m=>m.instructions[2].keys[i].pubkey=new PublicKey('11111111111111111111111111111111')),fixture.wallet,now()),String(i));
  assert.throws(()=>validateMonthlyTransaction(changed(m=>m.instructions[2].keys[0].isWritable=true),fixture.wallet,now()));
 });
+
+test('Cherry payment pins the attribution account and hands off the validated transaction once',async()=>{
+ const reference=new PublicKey('CD8Ve27Fy5R7mqfFbvaQUSYdkB27Y6GTws5XLctjP3Ry');
+ const add=(m,key)=>m.instructions[3].keys.push({pubkey:key,isSigner:false,isWritable:false});
+ const cherry={...changed(m=>add(m,reference)),cherry:true};
+ assert.ok(validateMonthlyTransaction(cherry,fixture.wallet,now()));
+ assert.throws(()=>validateMonthlyTransaction({...record(),cherry:true},fixture.wallet,now()));
+ assert.throws(()=>validateMonthlyTransaction({...changed(m=>add(m,new PublicKey(fixture.blockhash))),cherry:true},fixture.wallet,now()));
+ const c=createMonthlyClient({storage:storage(),now});
+ let calls=0;
+ await c.approve(cherry,fn=>fn({isMezzoCherry:true,isConnected:true,publicKey:fixture.wallet,payMonthly:async tx=>{
+  calls++; assert.equal(c.pending().status,'awaiting-wallet');
+  assert.equal(Buffer.from(tx.serialize()).toString('base64'),cherry.transaction);
+  return {signature:'1'.repeat(64)};
+ }}));
+ await assert.rejects(c.approve(cherry,()=>assert.fail()),/payment_pending/);
+ assert.equal(calls,1);
+});

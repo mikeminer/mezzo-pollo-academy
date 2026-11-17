@@ -1,5 +1,6 @@
 import { PublicKey, VersionedTransaction, TransactionMessage } from './vendor/solana-transaction.mjs';
 import { ACCESS_POLICY } from './access-policy.mjs';
+import {CHERRY_PAYMENT_REFERENCE} from './cherry-payment-config.mjs';
 const PUMP='6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P',FRIDGE='9RY54dNPYTzDyh3TfFqDdt2b2KMM56KW1tw9erRTGQo6';
 const ATA='ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL',SYSTEM='11111111111111111111111111111111';
 const pk=x=>new PublicKey(x),equal=(a,b)=>a.toBase58()===b;
@@ -32,10 +33,11 @@ export function validateMonthlyTransaction(record,wallet,now=Math.floor(Date.now
  if(buy.keys.some((k,i)=>k.isSigner!==(i===6)||k.isWritable!==writable.has(i)))invalid();
  if(ata.keys.some((k,i)=>k.isSigner!==[0,2].includes(i)||k.isWritable!==[0,1,2].includes(i)))invalid();
  if(lock.keys.some((k,i)=>k.isSigner!==(i===0)||k.isWritable!==[0,2,3,4].includes(i)))invalid();
- if(!equal(lock.programId,FRIDGE)||lock.keys.length!==8||lock.data.length!==32||!same(lock.data,[171,216,92,167,165,8,153,90])||u64(lock.data,8)!==BigInt(record.minimumRaw)||u64(lock.data,16)!==BigInt(record.expiresAt)||u64(lock.data,24)!==BigInt(record.lockId))invalid();
+ if(!equal(lock.programId,FRIDGE)||lock.keys.length!==(record.cherry===true?9:8)||lock.data.length!==32||!same(lock.data,[171,216,92,167,165,8,153,90])||u64(lock.data,8)!==BigInt(record.minimumRaw)||u64(lock.data,16)!==BigInt(record.expiresAt)||u64(lock.data,24)!==BigInt(record.lockId))invalid();
  const address=PublicKey.findProgramAddressSync([new TextEncoder().encode('lock'),user.toBytes(),mint.toBytes(),lock.data.subarray(24,32)],program)[0];
  const vault=PublicKey.findProgramAddressSync([address.toBytes(),token.toBytes(),mint.toBytes()],pk(ATA))[0];
  const lockKeys=[wallet,ACCESS_POLICY.mint,userAta.toBase58(),address.toBase58(),vault.toBase58(),ACCESS_POLICY.tokenProgram,ATA,SYSTEM];
+ if(record.cherry===true)lockKeys.push(CHERRY_PAYMENT_REFERENCE);
  if(record.deposit!==address.toBase58()||lock.keys.some((k,i)=>!equal(k.pubkey,lockKeys[i])))invalid();
  // No additional signer, independent transfer, delegate, claim or account closure exists.
  return tx;

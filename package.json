@@ -20,5 +20,10 @@
   },
   "devDependencies": {
     "esbuild": "0.28.2"
+  },
+  "overrides": {
+    "@solana/web3.js": {
+      "rpc-websockets": "9.3.6"
+    }
   }
 }
