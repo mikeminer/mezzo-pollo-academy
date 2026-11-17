@@ -32,7 +32,12 @@ window.MezzoWallet = createWebWallet({
 changed();
 
 // The dedicated listing URL never falls back to external wallets inside Cherry.
-if(location.pathname==='/cherry'){
+// Match the Cherry SDK's strict host markers. A regular visit to /cherry
+// still uses the standalone wallet and can buy the monthly pass.
+const cherryHost = !!window.__cherry ||
+ (window.parent!==window && new URLSearchParams(location.search).get('cherry_embed')==='1');
+if(/^\/cherry\/?$/.test(location.pathname)&&cherryHost){
+ document.documentElement.dataset.cherryWallet = '';
  let cherryProvider=null;
  window.MezzoWallet=Object.freeze({
   getProvider:()=>cherryProvider,

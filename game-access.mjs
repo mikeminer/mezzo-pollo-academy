@@ -36,7 +36,7 @@ function render(state, notify = true) {
   amountFormat = new Intl.NumberFormat(locale);
   const connected = !!state.wallet;
   const busy = state.status === 'connecting' || state.status === 'checking';
-  byId('connectWallet').hidden = connected || location.pathname==='/cherry';
+  byId('connectWallet').hidden = connected || document.documentElement?.dataset?.cherryWallet==='';
   byId('connectWallet').disabled = busy;
   byId('connectWallet').textContent = translated(busy ? 'connectingButton' : 'connect');
   byId('checkLocks').hidden = !connected;
