@@ -16,3 +16,17 @@ test('Cherry wallet requires verified identity and revokes access on wallet chan
  assert.equal(revoked,true);assert.equal(provider.publicKey,null);
  await assert.rejects(provider.signMessage(new Uint8Array([1])),/wallet_changed/);
 });
+
+test('disconnect in the shop permits reconnect, but revocation by Cherry does not',async()=>{
+ const events={}, states=[];
+ const app={init:async()=>{},paymentWallet:'wallet-A',launchToken:'test-token',wallet:{},on:(name,fn)=>events[name]=fn,onContextChange(){}};
+ const p=await connectCherry({app,changed:s=>states.push(s),fetchImpl:async()=>({ok:true,json:async()=>({wallet:'wallet-A'})})});
+ p.disconnect();
+ assert.equal(p.publicKey,null);
+ assert.equal((await p.connect()).publicKey,'wallet-A');
+ assert.equal(p.isConnected,true);
+ p.disconnect();
+ events.walletDisconnected();
+ await assert.rejects(p.connect(),/cherry_reopen_required/);
+ assert.deepEqual(states,['disconnected','connected','disconnected','revoked']);
+});

@@ -56,7 +56,7 @@ if(/^\/cherry\/?$/.test(location.pathname)&&cherryHost){
   try{
    const [{CherryMiniApp,isInsideCherry},{connectCherry}]=await Promise.all([import('./vendor/cherry.mjs'),import('./cherry-wallet.mjs')]);
    if(!isInsideCherry({strict:true}))throw Error();
-   cherryProvider=await connectCherry({app:new CherryMiniApp({strict:true}),changed:()=>{changed();label.textContent=it()?'Wallet scollegato. Riapri il gioco da Cherry.':'Wallet disconnected. Reopen the game from Cherry.';}});
+   cherryProvider=await connectCherry({app:new CherryMiniApp({strict:true}),changed:status=>{changed();label.textContent=status==='connected'?(it()?'Wallet Cherry collegato':'Cherry wallet connected'):status==='revoked'?(it()?'Riapri il gioco da Cherry per ricollegare il wallet.':'Reopen the game from Cherry to reconnect.'):(it()?'Wallet Cherry scollegato':'Cherry wallet disconnected');}});
    label.textContent=it()?'Wallet Cherry collegato':'Cherry wallet connected';
    changed();document.dispatchEvent(new Event('mezzopollo:cherry-ready'));
   }catch{label.textContent=it()?'Apri Mezzopollo dalla sua scheda mini app in Cherry.':'Open MezzoPollo from its mini app listing in Cherry.';}

@@ -28,6 +28,7 @@ function wholeTokens(raw) {
   // Display is rounded down; eligibility always uses exact BigInt raw amounts.
   return amountFormat.format(BigInt(raw) / (10n ** BigInt(ACCESS_POLICY.decimals)));
 }
+let allowCherryReconnect=false;
 function render(state, notify = true) {
   if(state.eligible && (!Number.isSafeInteger(state.expiresAt)||state.expiresAt<=Date.now()/1000||state.livesPerGame!==10))
     state={...state,eligible:false,livesPerGame:0,status:'insufficient'};
@@ -36,7 +37,7 @@ function render(state, notify = true) {
   amountFormat = new Intl.NumberFormat(locale);
   const connected = !!state.wallet;
   const busy = state.status === 'connecting' || state.status === 'checking';
-  byId('connectWallet').hidden = connected || document.documentElement?.dataset?.cherryWallet==='';
+  byId('connectWallet').hidden = connected || (document.documentElement?.dataset?.cherryWallet===''&&!allowCherryReconnect);
   byId('connectWallet').disabled = busy;
   byId('connectWallet').textContent = translated(busy ? 'connectingButton' : 'connect');
   byId('checkLocks').hidden = !connected;
@@ -75,7 +76,7 @@ lastState = access.getState();
 render(lastState, false);
 byId('connectWallet').disabled = false;
 byId('connectWallet').addEventListener('click', () => { if (shopOpen) void access.connect(); });
-byId('disconnectWallet').addEventListener('click', () => { void access.disconnect(); });
+byId('disconnectWallet').addEventListener('click', () => { allowCherryReconnect=true;void access.disconnect(); });
 byId('checkLocks').addEventListener('click', () => { if (shopOpen) void access.refresh(); });
 byId('copyMint').addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(ACCESS_POLICY.mint); copyMessage = 'copied'; }
@@ -83,7 +84,7 @@ byId('copyMint').addEventListener('click', async () => {
   byId('copyMint').textContent = translated(copyMessage);
 });
 document.addEventListener('mezzopollo:language', () => render(lastState, false));
-document.addEventListener('mezzopollo:shopopen', () => { shopOpen = true; if(location.pathname==='/cherry'&&window.MezzoWallet?.getProvider()?.isMezzoCherry)void access.connect(); });
+document.addEventListener('mezzopollo:shopopen', () => { shopOpen = true; if(location.pathname==='/cherry'&&window.MezzoWallet?.getProvider()?.isMezzoCherry&&window.MezzoWallet.getProvider().isConnected)void access.connect(); });
 document.addEventListener('mezzopollo:cherry-ready',()=>{if(shopOpen)void access.connect();});
 document.addEventListener('mezzopollo:shopclose', () => {
   shopOpen = false;

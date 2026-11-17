@@ -5,9 +5,10 @@ export async function connectCherry({app, fetchImpl=fetch, changed=()=>{}}) {
  if(!response.ok)throw Error('cherry_launch_unavailable');
  const {wallet}=await response.json();
  if(wallet!==address())throw Error('cherry_wallet_changed');
- let connected=true;
+ let connected=true, revoked=false;
  const listeners=new Map();
- const revoke=()=>{if(!connected)return;connected=false;for(const fn of listeners.get('disconnect')||[])fn();changed();};
+ const disconnect=()=>{if(!connected)return;connected=false;for(const fn of listeners.get('disconnect')||[])fn();changed('disconnected');};
+ const revoke=()=>{revoked=true;disconnect();changed('revoked');};
  app.on('walletDisconnected',revoke);
  app.on('resumed',()=>{if(address()!==wallet)revoke();});
  app.onContextChange(()=>{if(address()!==wallet)revoke();});
@@ -15,8 +16,8 @@ export async function connectCherry({app, fetchImpl=fetch, changed=()=>{}}) {
   isMezzoCherry:true,
   get isConnected(){return connected&&address()===wallet;},
   get publicKey(){return this.isConnected?wallet:null;},
-  async connect(){if(!this.isConnected)throw Error('cherry_reopen_required');return {publicKey:wallet};},
-  disconnect:revoke,
+  async connect(){if(revoked||address()!==wallet)throw Error('cherry_reopen_required');if(!connected){connected=true;changed('connected');}return {publicKey:wallet};},
+  disconnect,
   on(event,fn){if(!listeners.has(event))listeners.set(event,new Set());listeners.get(event).add(fn);},
   removeListener(event,fn){listeners.get(event)?.delete(fn);},
   async payMonthly(transaction){
