@@ -40,7 +40,7 @@ function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvide
   configureWindow(win, wallet);
   doc.addEventListener('mezzopollo:access', event => notices.push(event.detail));
   vm.runInNewContext(code, {
-    ACCESS_POLICY, readVerifiedTimelocks: async (...args) => {
+    ACCESS_POLICY, readSubscriptionEvidence: async (...args) => {
       requests.push(args);
       const response = await fetchImpl(...args);
       if (!response.ok) throw Error('Unavailable');

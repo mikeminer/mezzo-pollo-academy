@@ -18,3 +18,11 @@ Validation: 80 tests passed across timelock-chain, lock-access, shop-access, run
 The compatibility fetch path in lock-access remains for existing consumers/tests; game-access always supplies readVerifiedTimelocks. Generated vendor transaction bundle now also exports the pinned official PublicKey class, preserving the transaction implementation.
 
 Publication is pending a successful Vercel deployment; previous deployments were blocked by Vercel. This is not physical-device or production certification.
+
+## Helius follow-up
+
+The browser now calls `/api/subscription?wallet=…`. The Vercel function uses the server-only `SUBSCRIPTION_SOLANA_RPC_URL` variable, set to the owner's Helius mainnet endpoint. Do not prefix it with NEXT_PUBLIC/VITE or put its value in source files. Configure the variable for Production (and Preview if needed), then redeploy. Missing configuration returns unavailable; there is no public-RPC fallback.
+
+Clients can supply only one wallet. Mint, program, method sequence and vault addresses are fixed or derived by the verifier. The server validates the configured Helius host, coalesces simultaneous wallet checks, caches evidence for ten seconds without refreshing its timestamp, caps concurrent lookups and applies a per-instance request budget. Origin filtering is not authentication; these process-local limits supplement deployment edge controls and the Helius quota, not a globally shared rate limiter. Errors never return provider URLs or keys.
+
+Helius change validation: 66 tests passed, including endpoint input restrictions, missing/unsafe configuration, request deduplication, timestamp preservation, error redaction and browser same-origin behavior; public build passed. The Vercel connector returned 403 for the owning team, its authorization helper returned 404, and the browser is at Vercel login. Environment setup and production verification remain pending.

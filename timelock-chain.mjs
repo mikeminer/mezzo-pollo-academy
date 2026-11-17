@@ -59,7 +59,7 @@ function verifyMint(account) {
   }
 }
 export async function readVerifiedTimelocks(walletAddress, { signal, fetchImpl = globalThis.fetch,
-  now = () => Math.floor(Date.now() / 1000) } = {}) {
+  now = () => Math.floor(Date.now() / 1000), rpcUrl = RPC } = {}) {
   const wallet = new PublicKey(walletAddress), mint = new PublicKey(ACCESS_POLICY.mint);
   const observedAt = now();
   const deadline = AbortSignal.timeout(6000);
@@ -67,7 +67,7 @@ export async function readVerifiedTimelocks(walletAddress, { signal, fetchImpl =
   let id = 0;
   async function rpc(method, params) {
     const requestId = ++id;
-    const response = await fetchImpl(RPC, { method: 'POST', credentials: 'omit', cache: 'no-store', signal: requestSignal,
+    const response = await fetchImpl(rpcUrl, { method: 'POST', credentials: 'omit', cache: 'no-store', signal: requestSignal,
       headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: requestId, method, params }) });
     if (!response.ok) {
       const error = Error('Subscription lookup unavailable');
