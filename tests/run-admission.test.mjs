@@ -15,7 +15,7 @@ function harness({ eligible = false, lives = 0, paid = false } = {}) {
     accessEligible: eligible, accessLives: lives, state: 'menu', freeSponsorDue:false, sponsorRun:null,
     document:{querySelectorAll:()=>[]}, L:{code:'en'}, tutorial:{active:false},
     G:{config:{name:'free',lives:1},score:123,right:5}, loadBest:()=>0, saveBest(){}, gradeOf:()=>'',resultModeLabel:()=>'',
-    window: { open: (...args)=>opened.push(args), MezzoTranslations:{en:{sponsor:{}}}, MezzoArcade: {
+    window: { MezzoShopAccess:{getState:()=>({expiresAt:Date.now()/1000+1000})}, open: (...args)=>opened.push(args), MezzoTranslations:{en:{sponsor:{}}}, MezzoArcade: {
       consumeAdmission() { const value = admission; admission = false; return value; },
       open(callback) { checkout = callback; },
       text:key=>key,
@@ -63,7 +63,7 @@ test('Arcade admission is consumed once and every retry returns to checkout', ()
   assert.equal(h.runs.length, 1, 'a callback without a fresh one-shot receipt cannot grant a second run');
 });
 
-test('Subscription rejects old subthreshold grants and stale tutorial snapshots', () => {
+test('Subscription rejects invalid life grants and stale tutorial snapshots', () => {
   for (const [eligible, lives, requested] of [[false, 10, 10], [true, 9, 9], [true, 10, 11], [true, 0, 10]]) {
     const h = harness({ eligible, lives });
     h.context.requestRun({ name: 'subscription', lives: requested });
@@ -97,3 +97,5 @@ test('store download invite appears only after Arcade and Subscription rounds', 
   h.context.gameOver();
   assert.equal(h.elements.has('storeDownloadInvite'), false);
 });
+
+test('expired subscription cannot begin a new round',()=>{const h=harness({eligible:true,lives:10});h.context.window.MezzoShopAccess.getState=()=>({expiresAt:1});h.context.requestRun({name:'subscription',lives:10});assert.equal(h.runs.length,0);assert.equal(h.shop,1);});

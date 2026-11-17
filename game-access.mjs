@@ -1,5 +1,5 @@
 import { ACCESS_POLICY } from './access-policy.mjs';
-import { createLockAccess } from './lock-access.mjs';
+import { createLockAccess } from './monthly-access.mjs';
 import { readSubscriptionEvidence } from './subscription-client.mjs';
 
 const byId = id => document.getElementById(id);
@@ -29,11 +29,8 @@ function wholeTokens(raw) {
   return amountFormat.format(BigInt(raw) / (10n ** BigInt(ACCESS_POLICY.decimals)));
 }
 function render(state, notify = true) {
-  // Never present an older/sub-threshold snapshot as a Subscription grant.
-  if (state.eligible && (!Number.isSafeInteger(state.livesPerGame) || state.livesPerGame < ACCESS_POLICY.minimumLives ||
-    !/^\d+$/.test(state.totalRaw) || BigInt(state.totalRaw) < ACCESS_POLICY.minimumRaw)) {
-    state = { ...state, eligible: false, livesPerGame: 0, status: 'insufficient' };
-  }
+  if(state.eligible && (!Number.isSafeInteger(state.expiresAt)||state.expiresAt<=Date.now()/1000||state.livesPerGame!==10))
+    state={...state,eligible:false,livesPerGame:0,status:'insufficient'};
   lastState = state;
   const locale = window.MezzoLocale?.locale || { it: 'it-IT', en: 'en-US', pl: 'pl-PL' }[languageCode()];
   amountFormat = new Intl.NumberFormat(locale);
@@ -57,7 +54,7 @@ function render(state, notify = true) {
   });
   byId('copyMint').textContent = translated(copyMessage);
   byId('accessStatus').dataset.status = state.status;
-  if (notify) document.dispatchEvent(new CustomEvent('mezzopollo:access', { detail: { eligible: state.eligible, wallet: state.wallet, status: state.status, livesPerGame: state.livesPerGame } }));
+  if (notify) document.dispatchEvent(new CustomEvent('mezzopollo:access', { detail: { eligible: state.eligible, wallet: state.wallet, status: state.status, livesPerGame: state.livesPerGame, expiresAt:state.expiresAt } }));
 }
 const access = createLockAccess({ getProvider: () => {
   if (typeof window.MezzoWallet?.getProvider === 'function') return window.MezzoWallet.getProvider();
@@ -71,6 +68,8 @@ let shopOpen = false;
 window.MezzoShopAccess = Object.freeze({
   getState: access.getState,
   cancelPending: access.cancelPending,
+  refresh: access.refresh,
+  connect: access.connect,
 });
 lastState = access.getState();
 render(lastState, false);
@@ -89,3 +88,5 @@ document.addEventListener('mezzopollo:shopclose', () => {
   shopOpen = false;
   access.cancelPending();
 });
+
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&access.getState().wallet)void access.refresh();});

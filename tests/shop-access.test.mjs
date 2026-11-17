@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import vm from 'node:vm';
-import { createLockAccess } from '../lock-access.mjs';
+import { createLockAccess } from '../monthly-access.mjs';
 import { ACCESS_POLICY } from '../access-policy.mjs';
 
 const code = (await readFile(new URL('../game-access.mjs', import.meta.url), 'utf8'))
@@ -48,7 +48,7 @@ function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvide
     }, createLockAccess: options => {
       publishSnapshot = options.onChange;
       return createLockAccess({ ...options, now: () => now,
-        fetchImpl: (...args) => { requests.push(args); return fetchImpl(...args); } });
+        fetchImpl: (...args) => { requests.push(args); return fetchImpl(...args); }, timers:{setTimeout:(fn,ms)=>{const timer=setTimeout(fn,ms);timer.unref();return timer;},clearTimeout} });
     },
     document: doc, window: win, location: { origin: 'https://mezzopollo.it' },
     navigator: { clipboard: { writeText: async () => {} } }, CustomEvent: DetailEvent,
@@ -57,7 +57,7 @@ function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvide
   return { doc, win, wallet, elements, requests, notices, publishSnapshot, click: id => doc.getElementById(id).dispatchEvent(new Event('click')) };
 }
 
-test('the shop UI never looks up locks on load, background, resume or open; only its buttons do', async () => {
+test('the shop UI never looks up locks on load, background or open; foreground resume refreshes connected subscriptions', async () => {
   const h = setup();
   assert.equal(h.requests.length, 0);
   h.click('connectWallet');
@@ -80,11 +80,11 @@ test('the shop UI never looks up locks on load, background, resume or open; only
   h.doc.dispatchEvent(new Event('mezzopollo:revalidate'));
   h.doc.dispatchEvent(new Event('mezzopollo:language'));
   h.click('connectWallet'); h.click('checkLocks'); await settle();
-  assert.equal(h.requests.length, 1);
+  assert.equal(h.requests.length, 2);
   assert.equal(h.win.MezzoShopAccess.getState().eligible, true);
   h.doc.dispatchEvent(new Event('mezzopollo:shopopen'));
   h.click('checkLocks'); await settle();
-  assert.equal(h.requests.length, 2);
+  assert.equal(h.requests.length, 3);
   h.click('disconnectWallet'); await settle();
 });
 
@@ -103,7 +103,7 @@ test('shopclose aborts the manual UI lookup and its late result cannot grant Sub
   h.click('disconnectWallet'); await settle();
 });
 
-test('an old cached entitlement below ten million cannot enable Subscription in the shop UI', () => {
+test('an old cached entitlement without an expiry cannot enable Subscription in the shop UI', () => {
   const h = setup();
   for (const snapshot of [
     { totalRaw: '1000000000000', livesPerGame: 1 },

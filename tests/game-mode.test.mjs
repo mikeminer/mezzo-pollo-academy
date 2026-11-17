@@ -13,7 +13,7 @@ class Element extends EventTarget {
   getAttribute(key) { return this.attributes.get(key); }
 }
 function setup() {
-  const free = new Element({ modeSelect: 'free' }), freeLabel = new Element({modeText:'free'});
+  const free = new Element({ modeSelect: 'tutorial' }), freeLabel = new Element({modeText:'tutorial'});
   const hard = new Element({ modeSelect: 'arcade' }), easy = new Element({ modeSelect: 'subscription' });
   const hardLabel = new Element({ modeText: 'arcade' }), easyLabel = new Element({ modeText: 'subscription' });
   const choices = new Element(), reviewLink = new Element(), reviewLabel = new Element();
@@ -30,35 +30,19 @@ function setup() {
   return { mode: window.MezzoMode, window, document, free, freeLabel, hard, easy, hardLabel, easyLabel, choices };
 }
 
-test('Free is the default with exactly one life and unknown modes remain unavailable', () => {
+test('Tutorial is the default with exactly one life and unknown modes remain unavailable', () => {
   const { mode, document } = setup();
-  assert.equal(mode.selected, 'free');
+  assert.equal(mode.selected, 'tutorial');
   assert.equal(mode.config().lives, 1);
   let events = 0;
   document.addEventListener('mezzopollo:mode', () => events++);
   for (const name of ['hard', 'easy', 'practice', '', null, undefined, 'ARCADE']) mode.select(name);
-  assert.equal(mode.selected, 'free');
+  assert.equal(mode.selected, 'tutorial');
   assert.equal(events, 0);
   for (const name of ['hard', 'easy', 'practice', '', null, 'ARCADE']) assert.throws(() => mode.config(name, 100), { name: 'TypeError' });
 });
 
-test('Subscription requires at least ten exact whole lives and adds no base lives', () => {
-  const { mode } = setup();
-  for (const entitlement of [undefined, 0, -1, 1, 9, 9.9, 10.5, NaN, Infinity, Number.MAX_SAFE_INTEGER + 1, '10', null]) {
-    assert.equal(mode.config('subscription', entitlement), null);
-  }
-  for (const [raw, expected] of [
-    [ACCESS_POLICY.minimumRaw - 1n, 0],
-    [ACCESS_POLICY.minimumRaw, 10],
-    [ACCESS_POLICY.minimumRaw + ACCESS_POLICY.rawPerLife - 1n, 10],
-    [ACCESS_POLICY.minimumRaw + ACCESS_POLICY.rawPerLife, 11],
-    [ACCESS_POLICY.rawPerLife * 1000n, 1000],
-  ]) {
-    const config = mode.config('subscription', livesForRawAmount(raw));
-    if (expected === 0) assert.equal(config, null);
-    else assert.equal(config.lives, expected);
-  }
-});
+test('Monthly subscription has exactly ten starting lives',()=>{const {mode}=setup();for(const n of [0,1,9,11,17,Infinity,NaN,'10',null])assert.equal(mode.config('subscription',n),null);assert.equal(mode.config('subscription',10).lives,10);});
 
 test('Subscription retains the slower pace and existing Easy local record', () => {
   const { mode } = setup(), arcade = mode.config('arcade'), subscription = mode.config('subscription', 10);
@@ -77,11 +61,11 @@ test('an ongoing run keeps its immutable life snapshot after entitlement or sele
   assert.throws(() => { startedRun.lives = 50; }, TypeError);
   mode.select('arcade');
   const nextArcade = mode.config();
-  const nextSubscription = mode.config('subscription', 17);
+  const nextSubscription = mode.config('subscription', 10);
   assert.equal(startedRun.name, 'subscription');
   assert.equal(startedRun.lives, 10);
   assert.equal(nextArcade.lives, 3);
-  assert.equal(nextSubscription.lives, 17);
+  assert.equal(nextSubscription.lives, 10);
   assert.notEqual(startedRun, nextSubscription);
   assert.equal(mode.config('subscription', 9), null);
   assert.equal(startedRun.lives, 10);
@@ -118,16 +102,16 @@ test('all registered profiles retain Subscription selection and render their mod
     assert.equal(h.easyLabel.textContent, pack.mode.subscription, code);
     assert.equal(h.hardLabel.textContent, pack.arcade.name, code);
     assert.equal(h.mode.selected, 'subscription', code);
-    assert.equal(h.freeLabel.textContent, pack.mode.free, code);
-    assert.equal(h.mode.config('free', 100).lives, 1, code);
+    assert.equal(h.freeLabel.textContent, pack.mode.tutorial, code);
+    assert.equal(h.mode.config('tutorial', 100).lives, 1, code);
     assert.equal(h.mode.config('arcade').lives, 3, code);
     assert.equal(h.mode.config('subscription', 10).lives, 10, code);
   }
 });
 
-test('Free uses a separate local record and immutable life count; older paid Hard receipts still have a configuration', () => {
+test('Tutorial uses a separate local record and immutable life count; older paid Hard receipts still have a configuration', () => {
   const { mode } = setup();
-  const free = mode.config('free', 100);
+  const free = mode.config('tutorial', 100);
   assert.equal(free.lives, 1);
   assert.equal(free.scoreKey, 'mp_free_best');
   assert.ok(Object.isFrozen(free));

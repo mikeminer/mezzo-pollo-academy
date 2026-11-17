@@ -105,6 +105,30 @@ export function createWebWallet({
           get isConnected() { return active && epoch === generation && publicKey === accountKey; },
           connect() { assertActive(); return Promise.resolve({ publicKey: accountKey }); },
           disconnect: mobile.disconnect, on, off, removeListener: off,
+          async signMessage(message) {
+            assertActive();
+            if(signing||attempted||!(message instanceof Uint8Array)||message.length>1000)throw fail('invalid_message');
+            signing=true;attempted=true;
+            try{
+              const result=await wallet.signMessages({addresses:[account.address],payloads:[toBase64(message)]});
+              if(result?.signed_payloads?.length!==1)throw fail('invalid_wallet_response');
+              const payload=fromBase64(result.signed_payloads[0],message.length+64);
+              if(message.some((v,i)=>v!==payload[i]))throw fail('invalid_wallet_response');
+              return {signature:payload.slice(-64)};
+            }catch(error){throw walletError(error);}finally{signing=false;}
+          },
+          async payMonthly(record) {
+            assertActive();
+            if(signing||attempted)throw fail('payment_busy');
+            const {validateMonthlyTransaction}=await import('./monthly-transaction.mjs');
+            const transaction=validateMonthlyTransaction(record,accountKey);
+            signing=true;attempted=true;
+            try {
+              const result=await wallet.signAndSendTransactions({payloads:[toBase64(transaction.serialize())],options:{commitment:'confirmed'}});
+              if(!Array.isArray(result?.signatures)||result.signatures.length!==1)throw fail('invalid_wallet_response');
+              return {signature:encode58(fromBase64(result.signatures[0],64))};
+            } catch(error){throw walletError(error);} finally{signing=false;}
+          },
           async payArcade(prepared) {
             assertActive();
             if (signing || attempted) throw fail('payment_busy');

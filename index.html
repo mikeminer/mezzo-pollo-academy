@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MezzoPollo — Free, Arcade &amp; Subscription</title>
+<title>MezzoPollo — Tutorial, Arcade &amp; Subscription</title>
 <meta name="description" content="Learn MezzoPollo with the free tutorial, then choose Arcade or Subscription. Available in 20 languages with 25 regional choices.">
 <base href="/">
 <link rel="stylesheet" href="locale.css">
@@ -37,6 +37,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #hud[hidden]{display:none}
 .hud-row{display:flex;justify-content:space-between;align-items:center;gap:8px}
 #legs{font-size:24px;white-space:nowrap;filter:drop-shadow(0 2px 0 rgba(0,0,0,.25))}
+.mode-perks{text-align:left;margin:12px 0}.mode-perks details{padding:10px;border:1px solid #8eb969;border-radius:10px;margin:8px 0}.mode-perks summary{cursor:pointer;font-weight:bold}.mode-perks p{font-size:14px;line-height:1.5}
 .score-wrap{display:flex;align-items:center;gap:8px}
 #score{font-weight:700;font-size:22px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.35)}
 #combo{font-weight:600;font-size:14px;background:var(--straw);color:#3a2a10;border-radius:999px;padding:2px 9px}
@@ -114,10 +115,11 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #storeDownloadInvite p{margin:0 0 10px}
 #storeDownloadLink{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--straw);min-height:44px}
 #storeDownloadLink img{display:block;width:220px;max-width:100%;height:auto}
-.mode-perks{text-align:left;margin:12px 0}.mode-perks details{padding:10px;border:1px solid #8eb969;border-radius:10px;margin:8px 0}.mode-perks summary{cursor:pointer;font-weight:bold}.mode-perks p{font-size:14px;line-height:1.5}
 </style>
 <script type="module" src="arcade-share.mjs"></script>
 <script type="module" src="mode-perks.mjs"></script>
+<script type="module" src="game-monthly.mjs"></script>
+<script type="module" src="community-client.mjs"></script>
 </head>
 <body>
 <div id="app" data-country-root inert>
@@ -150,12 +152,13 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
         <button class="mode-choice" data-mode-select="tutorial" aria-pressed="true"><strong data-mode-text="tutorial">Tutorial</strong><small data-mode-text="tutorialHud">Tutorial</small></button>
         <button class="mode-choice" data-mode-select="arcade" aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">3 levels · from 0.002 SOL</small></button>
-        <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">10,000,000 MEMEZZO timelock · from 10 lives</small></button>
+        <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">0.2 SOL · 30 days · 10 lives</small></button>
       </div>
       <div class="mode-perks">
-        <details><summary id="arcadePerksTitle">Arcade · Play and get noticed</summary><p id="arcadePerksText">Share your score photo on X with #mezzopollo or on the MEMEZZO Pump.fun page for a chance to be contacted about a SOL prize. Prizes are not guaranteed.</p></details>
-        <details><summary id="subscriptionPerksTitle">Subscription · Play and connect</summary><p id="subscriptionPerksText">In development: a 0.2 SOL monthly pass for 30 days, with a leaderboard and clickable Cherry profiles to meet and follow other players. The new monthly pass and social leaderboard are not active yet.</p></details>
+        <details><summary id="arcadePerksTitle">Arcade · Play and get noticed</summary><p id="arcadePerksText"></p></details>
+        <details><summary id="subscriptionPerksTitle">Subscription · Play and connect</summary><p id="subscriptionPerksText"></p></details>
       </div>
+      <details id="communityPanel" class="mode-perks"><summary id="communityTitle">Subscription community</summary><p id="communityDisclosure"></p><button class="btn" id="communityRefresh">Load leaderboard</button><p id="communityStatus" role="status"></p><ol id="communityScores"></ol></details>
       <div class="btns">
         <button class="btn primary" id="btnPlay">Tutorial</button>
         <button class="btn" id="btnTutorial" data-mode-text="tutorial">Play the tutorial</button>
@@ -182,7 +185,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <li>Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.</li>
         <li>When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.</li>
         <li>Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.</li>
-        <li>Free gives you 1 life per round. Arcade offers three paid levels. Subscription gives you more time and one life per full million actively timelocked MEMEZZO, with a minimum of 10 million verified in the Shop.</li>
+        <li>Learn with the free tutorial. Arcade offers three paid levels. A monthly Subscription costs 0.2 SOL for 30 days, with 10 lives per round and a social leaderboard.</li>
         <li>Only the shop checks tokens, when you ask. Playing, restarting and resuming never trigger verification. Pausing preserves remaining lives.</li>
       </ul>
       <div class="btns"><button class="btn" data-back>Back</button></div>
@@ -190,10 +193,16 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 
     <section class="panel" id="scrAccess" hidden>
       <div class="shop-heading"><h2 data-shop-title>Shop · Subscription</h2><button class="music-toggle" data-shop-back data-mode-text="back">Back to game</button></div>
-      <p>Timelock MEMEZZO on <b>DevFridge</b>, then verify here for Subscription. <b>Minimum 10,000,000 actively locked MEMEZZO.</b></p>
-      <p><b>Subscription: 1 total life per full million actively locked MEMEZZO.</b> At least 10 lives; no base lives. Expired locks do not count when verified.</p>
-      <p class="access-note">Only manual Shop checks; no automatic checks interrupt play. Subscription access lasts for this page session. Recheck to update; wallet changes, disconnection or reload clear future access. Ongoing runs continue with their remaining lives.</p>
-      <p class="access-status" id="accessStatus" role="status" aria-live="polite">Connect Phantom to check your timelocks. The game will not request any transactions.</p>
+      <p hidden>Timelock MEMEZZO on <b>DevFridge</b>, then verify here for Subscription. <b>Minimum 10,000,000 actively locked MEMEZZO.</b></p>
+      <p hidden><b>Subscription: 1 total life per full million actively locked MEMEZZO.</b> At least 10 lives; no base lives. Expired locks do not count when verified.</p>
+      <p hidden class="access-note">Only manual Shop checks; no automatic checks interrupt play. Subscription access lasts for this page session. Recheck to update; wallet changes, disconnection or reload clear future access. Ongoing runs continue with their remaining lives.</p>
+      <div id="monthlyPurchase">
+        <p id="monthlyIntro"></p><p class="note"><a href="/web-terms" target="_blank" rel="noopener">Terms</a> · <a href="/web-privacy" target="_blank" rel="noopener">Privacy</a></p><p id="monthlyDetails"></p><p id="monthlyCountdown"></p>
+        <p id="monthlyStatus" role="status" aria-live="polite"></p>
+        <div class="btns"><button class="btn primary" id="monthlyBuy">Subscribe · 0.2 SOL / 30 days</button><button class="btn" id="monthlyCheck">Check payment</button></div>
+        <p id="monthlyReview" style="white-space:pre-line"></p><button class="btn primary" id="monthlyApprove" hidden>Approve in wallet</button>
+      </div>
+      <p class="access-status" id="accessStatus" role="status" aria-live="polite">Connect your wallet to check your subscription.</p>
       <p class="access-note" id="accessWallet" hidden></p>
       <div class="btns">
         <button class="btn primary" id="connectWallet" disabled>Connect Phantom</button>
@@ -205,16 +214,16 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <p class="access-note" id="shopMintLabel">MEMEZZO mint · Solana mainnet</p>
       <code class="mint" id="tokenMint">Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump</code>
       <button class="music-toggle" id="copyMint">Copy mint</button>
-      <div class="access-links"><a id="phantomBrowse" href="https://phantom.app/" hidden>Open in Phantom browser ↗</a><a href="https://pump.fun/coin/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Token on Pump.fun ↗</a><a href="https://scan.devfridge.cool/t/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" id="scanToken" target="_blank" rel="noopener noreferrer">Explore timelocks ↗</a></div>
-      <h3>Before creating a timelock</h3>
-      <ul>
+      <div class="access-links"><a id="phantomBrowse" href="https://phantom.app/" hidden>Open in Phantom browser ↗</a><a href="https://pump.fun/coin/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Token on Pump.fun ↗</a><a hidden href="https://scan.devfridge.cool/t/Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" id="scanToken" target="_blank" rel="noopener noreferrer">Explore timelocks ↗</a></div>
+      <h3 hidden>Before creating a timelock</h3>
+      <ul hidden>
         <li>Tokens stay locked until your chosen expiry, with no early withdrawal.</li>
         <li>Redemption includes a 2% fee that buys and burns PASTA. Network fees are separate.</li>
         <li>Redeeming MEMEZZO requires an available Jupiter route. New or low-liquidity tokens may lack a route even after expiry.</li>
         <li>Locking does not guarantee prizes or price increases.</li>
       </ul>
-      <p class="note">Wallet and timelock features are for adults. The game reads timelocks; creation and redemption take place on DevFridge, with your wallet approval.</p>
-      <div class="access-links"><a href="https://devfridge.cool/?mint=Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Open MEMEZZO on DevFridge ↗</a></div>
+      <p hidden class="note">Wallet and timelock features are for adults. The game reads timelocks; creation and redemption take place on DevFridge, with your wallet approval.</p>
+      <div class="access-links" hidden><a href="https://devfridge.cool/?mint=Dv1prgxPZs1M6vpacCzmGjLkd7ZFZVJSHCH9PLwEpump" target="_blank" rel="noopener noreferrer">Open MEMEZZO on DevFridge ↗</a></div>
       <div class="btns"><button class="btn" data-shop-back data-mode-text="back">Back to game</button></div>
     </section>
 
@@ -268,6 +277,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <div class="stat"><span id="recordLabel">Personal best (local)</span><b id="oBest"></b></div>
       <img id="shareImg" alt="Your score card">
       <p class="note" id="shareNote"></p>
+      <aside id="communityShare" hidden><p id="communityShareText"></p><button class="btn" id="communityPublish">Publish score</button><button class="btn" id="communityApprove" hidden>Sign publication</button><p id="communityPublishStatus" role="status"></p></aside>
       <aside id="arcadeShareInvite" hidden>
         <p id="arcadeShareText"></p>
         <a class="btn" id="arcadeDownload" download="mezzopollo-arcade-score.png">Download score photo</a>
@@ -555,7 +565,7 @@ function syncAccessUi(){
 }
 document.addEventListener('mezzopollo:access',event=>{
   accessLives=event.detail.livesPerGame;
-  accessEligible=event.detail.eligible===true&&typeof event.detail.wallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives>=10;
+  accessEligible=event.detail.eligible===true&&typeof event.detail.wallet==='string'&&Number.isSafeInteger(accessLives)&&accessLives===10;
   // Shop updates affect future runs only; an active run owns its life snapshot.
   syncAccessUi();
 });
@@ -829,7 +839,7 @@ async function openShop(){
 }
 function beginRun(config){
   if(!config||!['arcade','subscription'].includes(config.name))return;
-  if(config.name==='subscription'&&(!accessEligible||config.lives<10||config.lives!==accessLives)){void openShop();return;}
+  if(config.name==='subscription'&&((window.MezzoShopAccess?.getState()?.expiresAt||0)<=Date.now()/1000||!accessEligible||config.lives!==10||config.lives!==accessLives)){void openShop();return;}
   if(config.name==='arcade'&&!window.MezzoArcade.consumeAdmission())return;
   audio();clearWorld();resetGame(config);state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true});clock.getDelta();
 }
@@ -895,6 +905,7 @@ function gameOver(){
   })[L.code] || ['Download MezzoPollo from the Solana dApp Store.', 'Download MezzoPollo'];
   $('storeDownloadText').textContent = storeCopy[0];
   $('storeDownloadLabel').textContent = storeCopy[1];
+  window.MezzoCommunity?.show(G.config.name==='subscription'?{score:s,wallet:window.MezzoShopAccess?.getState()?.wallet}:null);
   window.MezzoArcadeShare?.show(G.config.name==='arcade'?{score:s,tier:G.config.tier,image:window.MezzoScoreCard?.().url}:null);
   $('hud').hidden=true;show('scrOver');
 }

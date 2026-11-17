@@ -1,6 +1,15 @@
 {
-  "meta": { "locale": "de-DE", "country": "Deutschland", "language": "Deutsch", "flag": "de", "dir": "ltr" },
-  "life": { "one": "Leben", "other": "Leben" },
+  "meta": {
+    "locale": "de-DE",
+    "country": "Deutschland",
+    "language": "Deutsch",
+    "flag": "de",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "Leben",
+    "other": "Leben"
+  },
   "core": {
     "chooseCountry": "Wähle dein Land",
     "chooseNote": "Wähle eine Flagge, um die Spielsprache festzulegen.",
@@ -63,13 +72,13 @@
     "Lies die Frage oben. Laufe durch das Tor mit <b>der passenden Hälfte</b>: Ergänze Zahlen, Wörter und Formen.",
     "Wenn das <b>GANZE HUHN</b> erscheint, bleib auf deiner Spur, bis die Statue vorbei ist.",
     "Manchmal kehrt sich die Regel um: Wähle im <b>Umkehrmodus</b> eine falsche Antwort.",
-    "Kostenlos: 1 Leben pro Runde, mit Werbung für OnlyFridge Club zwischen den Runden. Keine Wallet oder Zahlung erforderlich. Arcade: Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
-    "Sperre mindestens 10.000.000 MEMEZZO auf DevFridge. Jede volle Million gibt insgesamt 1 Startleben, mindestens also 10 Leben. Prüfe manuell im Shop; keine Prüfung unterbricht einen Lauf.",
+    "Free tutorial: learn the controls and return to the menu. Arcade offers three paid levels, purchased per round.",
+    "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
     "Zurück",
     "Shop · Abonnement",
-    "MEMEZZO bleiben auf DevFridge zeitlich gesperrt. Abonnement verlangt keine SOL-Zahlung pro Lauf. Arcade verlangt eine Zahlung für jeden Lauf.",
-    "Sperre mindestens 10.000.000 MEMEZZO auf DevFridge. Jede volle Million gibt insgesamt 1 Startleben, mindestens also 10 Leben. Prüfe manuell im Shop; keine Prüfung unterbricht einen Lauf.",
-    "Abonnementprüfungen erfolgen nur auf deine Anforderung im Shop, niemals automatisch beim Start, während des Spiels oder beim Fortsetzen. Bestätigte Leben gelten für diese Sitzung bis zur nächsten manuellen Prüfung, einem Walletwechsel, einer Trennung oder einem Neuladen. Ein laufendes Spiel bleibt unberührt. Die Prüfung liest Zeitsperren ohne Transaktionssignaturen; Arcade-Zahlungen benötigen die Walletbestätigung.",
+    "Your SOL buys MEMEZZO for your wallet. It stays set aside for your subscription and its value can change. No automatic renewal.",
+    "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
+    "Subscription access is checked when connecting, after returning to the game and at expiry. An ongoing round keeps its lives.",
     "MEMEZZO-Mint · Solana-Hauptnetz",
     "Mint kopieren",
     "Verbindung trennen",
@@ -99,41 +108,153 @@
     "Die Grafik funktioniert nicht mehr. Lade die Seite neu, um weiterzuspielen."
   ],
   "words": [
-    ["HU", "HN", "Legt Eier im Hühnerstall"],
-    ["KAT", "ZE", "Tier, das miaut"],
-    ["HU", "ND", "Tier, das bellt"],
-    ["PFE", "RD", "Tier, das wiehert"],
-    ["KANIN", "CHEN", "Kleines Tier mit langen Löffeln"],
-    ["SCHILD", "KRÖTE", "Reptil mit Panzer"],
-    ["DEL", "FIN", "Meeressäuger mit Schnabelschnauze"],
-    ["SCHMET", "TERLING", "Insekt mit bunten Flügeln"],
-    ["ZE", "BRA", "Schwarzweiß gestreifter Pferdeverwandter"],
-    ["TI", "GER", "Großkatze mit Streifen"],
-    ["LÖ", "WE", "Großkatze mit Mähne"],
-    ["SCH", "AF", "Tier, das Wolle liefert"],
-    ["EN", "TE", "Vogel, der quakt"],
-    ["AD", "LER", "Großer Greifvogel"],
-    ["ELE", "FANT", "Tier mit Rüssel"],
-    ["AP", "FEL", "Obst vom Apfelbaum"],
-    ["ORAN", "GE", "Zitrusfrucht mit orangefarbener Schale"],
-    ["ZI", "TRONE", "Saure gelbe Zitrusfrucht"],
-    ["BA", "NANE", "Krummes gelbes Obst"],
-    ["KÄ", "SE", "Lebensmittel aus geronnener Milch"],
-    ["KA", "ROTTE", "Essbare orangefarbene Wurzel"],
-    ["ST", "ERN", "Selbst leuchtender Himmelskörper"],
-    ["MO", "ND", "Natürlicher Begleiter der Erde"],
-    ["WOL", "KE", "Ansammlung von Wassertröpfchen am Himmel"],
-    ["BA", "UM", "Pflanze mit verholztem Stamm"],
-    ["FENS", "TER", "Verglaste Öffnung in der Hauswand"],
-    ["BU", "CH", "Gebundene Seiten zum Lesen"],
-    ["BLEI", "STIFT", "Schreibgerät mit Graphitmine"]
+    [
+      "HU",
+      "HN",
+      "Legt Eier im Hühnerstall"
+    ],
+    [
+      "KAT",
+      "ZE",
+      "Tier, das miaut"
+    ],
+    [
+      "HU",
+      "ND",
+      "Tier, das bellt"
+    ],
+    [
+      "PFE",
+      "RD",
+      "Tier, das wiehert"
+    ],
+    [
+      "KANIN",
+      "CHEN",
+      "Kleines Tier mit langen Löffeln"
+    ],
+    [
+      "SCHILD",
+      "KRÖTE",
+      "Reptil mit Panzer"
+    ],
+    [
+      "DEL",
+      "FIN",
+      "Meeressäuger mit Schnabelschnauze"
+    ],
+    [
+      "SCHMET",
+      "TERLING",
+      "Insekt mit bunten Flügeln"
+    ],
+    [
+      "ZE",
+      "BRA",
+      "Schwarzweiß gestreifter Pferdeverwandter"
+    ],
+    [
+      "TI",
+      "GER",
+      "Großkatze mit Streifen"
+    ],
+    [
+      "LÖ",
+      "WE",
+      "Großkatze mit Mähne"
+    ],
+    [
+      "SCH",
+      "AF",
+      "Tier, das Wolle liefert"
+    ],
+    [
+      "EN",
+      "TE",
+      "Vogel, der quakt"
+    ],
+    [
+      "AD",
+      "LER",
+      "Großer Greifvogel"
+    ],
+    [
+      "ELE",
+      "FANT",
+      "Tier mit Rüssel"
+    ],
+    [
+      "AP",
+      "FEL",
+      "Obst vom Apfelbaum"
+    ],
+    [
+      "ORAN",
+      "GE",
+      "Zitrusfrucht mit orangefarbener Schale"
+    ],
+    [
+      "ZI",
+      "TRONE",
+      "Saure gelbe Zitrusfrucht"
+    ],
+    [
+      "BA",
+      "NANE",
+      "Krummes gelbes Obst"
+    ],
+    [
+      "KÄ",
+      "SE",
+      "Lebensmittel aus geronnener Milch"
+    ],
+    [
+      "KA",
+      "ROTTE",
+      "Essbare orangefarbene Wurzel"
+    ],
+    [
+      "ST",
+      "ERN",
+      "Selbst leuchtender Himmelskörper"
+    ],
+    [
+      "MO",
+      "ND",
+      "Natürlicher Begleiter der Erde"
+    ],
+    [
+      "WOL",
+      "KE",
+      "Ansammlung von Wassertröpfchen am Himmel"
+    ],
+    [
+      "BA",
+      "UM",
+      "Pflanze mit verholztem Stamm"
+    ],
+    [
+      "FENS",
+      "TER",
+      "Verglaste Öffnung in der Hauswand"
+    ],
+    [
+      "BU",
+      "CH",
+      "Gebundene Seiten zum Lesen"
+    ],
+    [
+      "BLEI",
+      "STIFT",
+      "Schreibgerät mit Graphitmine"
+    ]
   ],
   "mode": {
     "community": "Dem Telegram-Kanal beitreten",
     "hard": "Arcade",
     "easy": "Abonnement",
     "hardDetail": "3 Stufen · ab 0,002 SOL",
-    "easyDetail": "10 Mio.+ MEMEZZO zeitgesperrt",
+    "easyDetail": "0.2 SOL · 30 days · 10 lives",
     "choose": "Wähle deinen Modus",
     "playHard": "Arcade spielen",
     "playEasy": "Abonnement spielen · {count} {lives}",
@@ -141,22 +262,22 @@
     "shop": "Shop · Abonnement",
     "tutorial": "Einführung spielen",
     "hardHint": "Wähle eine Arcade-Stufe. Jeder neue Lauf erfordert eine Zahlung in SOL. MEMEZZO wird nicht benötigt.",
-    "easyHint": "Sperre mindestens 10.000.000 MEMEZZO auf DevFridge. Jede volle Million gibt insgesamt 1 Startleben, mindestens also 10 Leben. Prüfe manuell im Shop; keine Prüfung unterbricht einen Lauf.",
-    "unlocked": "Abonnement für diese Sitzung bestätigt: {count} {lives} pro Lauf. Keine automatischen Prüfungen.",
+    "easyHint": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
+    "unlocked": "Subscription active · {count} {lives} per round.",
     "hud": "{mode} · {count} {lives} zu Beginn · Lokale Punkte",
     "badge": "MODUS {mode}",
-    "shopNote": "MEMEZZO bleiben auf DevFridge zeitlich gesperrt. Abonnement verlangt keine SOL-Zahlung pro Lauf. Arcade verlangt eine Zahlung für jeden Lauf.",
+    "shopNote": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
     "link": "Kostenloses Tutorial ausprobieren →",
-    "title": "MezzoPollo — Kostenlos · Arcade · Abonnement",
+    "title": "MezzoPollo · Tutorial · Arcade · Subscription",
     "back": "Zurück zum Spiel",
     "tutorialHud": "EINFÜHRUNG · Üben ohne Lebensverlust",
     "tutorialQuestion": "Folge der Anleitung unten",
     "shopLoading": "Shop wird geöffnet…",
     "shopError": "Der Shop konnte nicht geöffnet werden. Versuche es erneut oder spiele das kostenlose Tutorial.",
     "subscription": "Abonnement",
-    "subscriptionDetail": "10 Mio.+ MEMEZZO zeitgesperrt",
+    "subscriptionDetail": "0.2 SOL · 30 days · 10 lives",
     "playSubscription": "Abonnement spielen · {count} {lives}",
-    "subscriptionHint": "Sperre mindestens 10.000.000 MEMEZZO auf DevFridge. Jede volle Million gibt insgesamt 1 Startleben, mindestens also 10 Leben. Prüfe manuell im Shop; keine Prüfung unterbricht einen Lauf.",
+    "subscriptionHint": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
     "free": "Kostenlos",
     "freeDesc": "1 Leben · Ohne Wallet oder Zahlung",
     "freeStart": "Kostenlos spielen",
@@ -174,7 +295,7 @@
     "finish": "Spiel starten",
     "retry": "Erneut versuchen",
     "good": "Geschafft! Weiter zur nächsten Aufgabe.",
-    "done": "Bereit! Wähle Kostenlos, Arcade oder Abonnement. Du kannst das kostenlose Tutorial jederzeit wiederholen.",
+    "done": "Complete! Returning to the menu.",
     "again": "Kein Problem! Versuche dieselbe Aufgabe noch einmal.",
     "leftControl": "Nach links",
     "rightControl": "Nach rechts",
@@ -184,12 +305,30 @@
     "reverseRule": "Umkehrung: Wähle eine FALSCHE Antwort",
     "wholeQuestion": "GANZES HUHN!",
     "wholeRule": "Halte deine Spur, bis die Statue vorbei ist",
-    "left": ["Geh nach links", "Probiere es aus: Wische auf der Strecke nach links, drücke ← oder A oder tippe unten auf den linken Pfeil."],
-    "right": ["Jetzt nach rechts", "Wische auf der Strecke nach rechts, drücke → oder D oder tippe unten auf den rechten Pfeil."],
-    "jump": ["Lass das Huhn springen", "Wische auf der Strecke nach oben, drücke ↑, W oder die Leertaste oder tippe auf Springen. Überspringe während eines Laufs die Heuballen."],
-    "gate": ["Finde die fehlende Hälfte", "Lies die Tafel: Die Hälfte von 8 ist 4. Wechsle auf die mittlere Spur und laufe durch das Tor mit der 4."],
-    "reverse": ["Achtung: UMKEHRUNG!", "Die Regel ist umgekehrt! Die Hälfte von 8 ist 4. Wähle deshalb eine FALSCHE Antwort: Geh nach links zur 2 oder nach rechts zur 8."],
-    "whole": ["GANZES HUHN: Halte deine Spur", "Wechsle die Spur nicht, bis die Statue vorbei ist. Bleib auf der Spur, auf der du begonnen hast. Probiere es jetzt aus!"]
+    "left": [
+      "Geh nach links",
+      "Probiere es aus: Wische auf der Strecke nach links, drücke ← oder A oder tippe unten auf den linken Pfeil."
+    ],
+    "right": [
+      "Jetzt nach rechts",
+      "Wische auf der Strecke nach rechts, drücke → oder D oder tippe unten auf den rechten Pfeil."
+    ],
+    "jump": [
+      "Lass das Huhn springen",
+      "Wische auf der Strecke nach oben, drücke ↑, W oder die Leertaste oder tippe auf Springen. Überspringe während eines Laufs die Heuballen."
+    ],
+    "gate": [
+      "Finde die fehlende Hälfte",
+      "Lies die Tafel: Die Hälfte von 8 ist 4. Wechsle auf die mittlere Spur und laufe durch das Tor mit der 4."
+    ],
+    "reverse": [
+      "Achtung: UMKEHRUNG!",
+      "Die Regel ist umgekehrt! Die Hälfte von 8 ist 4. Wähle deshalb eine FALSCHE Antwort: Geh nach links zur 2 oder nach rechts zur 8."
+    ],
+    "whole": [
+      "GANZES HUHN: Halte deine Spur",
+      "Wechsle die Spur nicht, bis die Statue vorbei ist. Bleib auf der Spur, auf der du begonnen hast. Probiere es jetzt aus!"
+    ]
   },
   "access": {
     "connect": "Verbinden und prüfen",
@@ -200,12 +339,12 @@
     "copyMint": "Mint kopieren",
     "copied": "Mint kopiert",
     "copyFallback": "Markiere und kopiere den Mint oben",
-    "disconnected": "Verbinde deine Solana-Wallet im Shop, um mindestens 10.000.000 MEMEZZO in aktiven Zeitsperren zu prüfen. Die Prüfung im Shop fordert keine Transaktionen an.",
-    "connected": "Wallet verbunden. Wähle Abonnement prüfen, um aktive MEMEZZO-Zeitsperren für diese Sitzung zu prüfen.",
+    "disconnected": "Connect your wallet to verify your subscription.",
+    "connected": "Wallet connected. Verify your subscription.",
     "connecting": "Bestätige die Verbindung in deiner Wallet. Es ist keine Transaktionssignatur erforderlich.",
-    "checking": "Die MEMEZZO-Zeitsperren dieser Wallet werden auf Solana geprüft…",
-    "eligible": "Abonnement für diese Seitensitzung bestätigt: {amount} MEMEZZO bei der Prüfung aktiv gesperrt. Jeder neue Lauf beginnt mit {lives} {lifeWord}. Keine Prüfungen während des Spiels.",
-    "insufficient": "Mindestens {minimum} MEMEZZO in aktiven Zeitsperren wurden für Abonnement nicht bestätigt. Warte auf die Bestätigung der Sperre und prüfe erneut. Das Tutorial ist kostenlos.",
+    "checking": "Checking subscription…",
+    "eligible": "Subscription active · {lives} {lifeWord} per round.",
+    "insufficient": "No active subscription confirmed. Subscribe or check again.",
     "unavailable": "Die Abonnementprüfung ist nicht verfügbar oder die Daten sind veraltet. Versuche die Shopprüfung gleich erneut. Ein laufendes Spiel bleibt unberührt.",
     "rejected": "Verbindung in deiner Wallet abgebrochen. Du kannst es jederzeit erneut versuchen.",
     "missing-wallet": "In diesem Browser ist keine kompatible Solana-Wallet verfügbar. Entsperre oder aktiviere deine Wallet oder öffne das Spiel auf deinem Smartphone in Phantom. Für das Tutorial brauchst du keine Wallet.",
@@ -235,10 +374,10 @@
     "mobileNote": "Historische Browseremulation der englischen Oberfläche mit 390 × 844 Pixeln, vor den aktuellen Regeln für Arcade/Abonnement und der Einführung, mit simulierten Wallet- und Sperrnachweisen. Stumme Aufnahme; kein Test auf einem echten Handy oder mit einer echten Wallet.",
     "downloadMobile": "Englische Handyaufnahme herunterladen",
     "accessTitle": "Zugang und Einschränkungen",
-    "accessIntro": "Abonnement erfordert mindestens 10.000.000 MEMEZZO in aktiven DevFridge-Zeitsperren der verbundenen Wallet. Keine Mindestdauer; abgelaufene Sperren zählen bei der Prüfung nicht. Tokenadresse:",
+    "accessIntro": "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
     "accessOutro": ". Das kostenlose interaktive Tutorial kann im Menü wiederholt werden. Die Rekorde jedes Modus sind getrennt, lokal und ungeprüft.",
-    "lives": "Kostenlos: 1 Leben pro Runde, mit Werbung für OnlyFridge Club zwischen den Runden. Keine Wallet oder Zahlung erforderlich. Abonnement gibt insgesamt 1 Startleben pro voller Million MEMEZZO, ohne Basisleben. Mindestens 10.000.000 MEMEZZO sind nötig: 10.000.000 gibt 10 Leben, 10.999.999 gibt 10 und 11.000.000 gibt 11. Die Startleben sind pro Lauf festgelegt; Fortsetzen oder Shopprüfungen füllen sie nicht auf. Arcade: Mittel — 3 Leben für 0,002 SOL; Leicht — 9 Leben für 0,003 SOL; Gott — 32 Leben für 0,01 SOL. Jeder Lauf erfordert eine neue Zahlung; Netzwerkgebühren werden gesondert berechnet.",
-    "verification": "Abonnementprüfungen erfolgen nur auf deine Anforderung im Shop, niemals automatisch beim Start, während des Spiels oder beim Fortsetzen. Bestätigte Leben gelten für diese Sitzung bis zur nächsten manuellen Prüfung, einem Walletwechsel, einer Trennung oder einem Neuladen. Ein laufendes Spiel bleibt unberührt. Die Prüfung liest Zeitsperren ohne Transaktionssignaturen; Arcade-Zahlungen benötigen die Walletbestätigung.",
+    "lives": "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
+    "verification": "Subscription access is checked when connecting, after returning to the game and at expiry. An ongoing round keeps its lives.",
     "fees": "Sperren werden auf DevFridge erstellt und zurückgefordert, ohne vorzeitige Auszahlung und mit 2% Rückforderungsgebühr für den Kauf und das Verbrennen von PASTA, zuzüglich Netzwerkgebühren. Die Rückforderung von MEMEZZO benötigt eine ausführbare Jupiter-Route. Walletfunktionen sind für Erwachsene bestimmt.",
     "team": "Team: Pappardelle · Öffentlicher Kontakt:",
     "submission": ". Die Einreichung in der Galerie wird geprüft; sie bestätigt weder die Teilnahmeberechtigung am Wettbewerb noch einen Preis."
@@ -246,7 +385,7 @@
   "native": {
     "menu": "App-Menü",
     "hard": "Arcade · 3 Stufen · ab 0,002 SOL",
-    "easy": "Abonnement · 10 Mio.+ MEMEZZO zeitgesperrt",
+    "easy": "0.2 SOL · 30 days · 10 lives",
     "reload": "Neu laden",
     "privacy": "Datenschutz und App-Informationen (auf Englisch)",
     "website": "Webseite öffnen",

@@ -1,6 +1,16 @@
 {
-  "meta": { "locale": "pt-BR", "country": "Brasil", "language": "Português", "flag": "br", "dir": "ltr" },
-  "life": { "one": "vida", "many": "vidas", "other": "vidas" },
+  "meta": {
+    "locale": "pt-BR",
+    "country": "Brasil",
+    "language": "Português",
+    "flag": "br",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "vida",
+    "many": "vidas",
+    "other": "vidas"
+  },
   "core": {
     "chooseCountry": "Escolha seu país",
     "chooseNote": "Escolha uma bandeira para definir o idioma do jogo.",
@@ -63,13 +73,13 @@
     "Leia a pergunta no alto. Passe pelo portão com <b>a metade correspondente</b>: complete números, palavras e formas.",
     "Quando aparecer o <b>FRANGO INTEIRO</b>, fique na sua faixa até a estátua passar.",
     "Às vezes a regra se inverte: no <b>modo inverso</b>, escolha uma resposta errada.",
-    "Grátis: 1 vida por partida, com uma promoção do OnlyFridge Club entre as partidas. Não precisa de carteira nem de pagamento. Arcade: Médio — 3 vidas por 0,002 SOL; Fácil — 9 vidas por 0,003 SOL; Deus — 32 vidas por 0,01 SOL. Cada partida exige um novo pagamento; as taxas de rede são cobradas à parte.",
-    "Bloqueie pelo menos 10.000.000 MEMEZZO por prazo na DevFridge. Cada milhão completo dá 1 vida inicial total, com no mínimo 10 vidas. Verifique manualmente na Loja; nenhuma verificação interrompe a partida.",
+    "Free tutorial: learn the controls and return to the menu. Arcade offers three paid levels, purchased per round.",
+    "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
     "Voltar",
     "Loja · Assinatura",
-    "MEMEZZO permanece bloqueado por prazo na DevFridge. Assinatura não exige pagamentos em SOL por partida. Arcade exige um pagamento a cada partida.",
-    "Bloqueie pelo menos 10.000.000 MEMEZZO por prazo na DevFridge. Cada milhão completo dá 1 vida inicial total, com no mínimo 10 vidas. Verifique manualmente na Loja; nenhuma verificação interrompe a partida.",
-    "Assinatura só é verificada quando você solicita na Loja, nunca automaticamente no início, durante o jogo ou ao continuar. As vidas verificadas duram esta sessão até nova verificação manual, troca de carteira, desconexão ou recarga. A partida em andamento não é afetada. A verificação consulta bloqueios sem assinaturas de transações; pagamentos Arcade exigem aprovação na carteira.",
+    "Your SOL buys MEMEZZO for your wallet. It stays set aside for your subscription and its value can change. No automatic renewal.",
+    "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
+    "Subscription access is checked when connecting, after returning to the game and at expiry. An ongoing round keeps its lives.",
     "Mint do MEMEZZO · Rede principal da Solana",
     "Copiar mint",
     "Desconectar",
@@ -99,41 +109,153 @@
     "Os gráficos pararam de funcionar. Recarregue a página para continuar."
   ],
   "words": [
-    ["GALI", "NHA", "Ave que bota ovos no galinheiro"],
-    ["GA", "TO", "Animal que mia"],
-    ["CA", "CHORRO", "Animal que late"],
-    ["CAVA", "LO", "Animal que relincha"],
-    ["COE", "LHO", "Animal de orelhas compridas"],
-    ["TARTA", "RUGA", "Réptil com casco"],
-    ["GOL", "FINHO", "Mamífero marinho que salta"],
-    ["BORBO", "LETA", "Inseto de asas coloridas"],
-    ["ZE", "BRA", "Parente do cavalo com listras"],
-    ["TI", "GRE", "Grande felino listrado"],
-    ["LE", "ÃO", "Felino com juba"],
-    ["OVE", "LHA", "Animal que fornece lã"],
-    ["PA", "TO", "Ave que faz quá-quá"],
-    ["Á", "GUIA", "Grande ave de rapina"],
-    ["ELE", "FANTE", "Animal com tromba"],
-    ["MA", "ÇÃ", "Fruta da macieira"],
-    ["LA", "RANJA", "Fruta da laranjeira"],
-    ["LI", "MÃO", "Fruta ácida usada na limonada"],
-    ["BA", "NANA", "Fruta amarela e curva"],
-    ["QUEI", "JO", "Alimento feito de leite coalhado"],
-    ["CE", "NOURA", "Raiz comestível alaranjada"],
-    ["ES", "TRELA", "Astro com luz própria"],
-    ["LU", "A", "Satélite natural da Terra"],
-    ["NU", "VEM", "Conjunto de gotículas no céu"],
-    ["ÁR", "VORE", "Planta de tronco lenhoso"],
-    ["JA", "NELA", "Abertura com vidro na parede"],
-    ["LI", "VRO", "Páginas encadernadas para ler"],
-    ["LÁ", "PIS", "Escreve com uma ponta de grafite"]
+    [
+      "GALI",
+      "NHA",
+      "Ave que bota ovos no galinheiro"
+    ],
+    [
+      "GA",
+      "TO",
+      "Animal que mia"
+    ],
+    [
+      "CA",
+      "CHORRO",
+      "Animal que late"
+    ],
+    [
+      "CAVA",
+      "LO",
+      "Animal que relincha"
+    ],
+    [
+      "COE",
+      "LHO",
+      "Animal de orelhas compridas"
+    ],
+    [
+      "TARTA",
+      "RUGA",
+      "Réptil com casco"
+    ],
+    [
+      "GOL",
+      "FINHO",
+      "Mamífero marinho que salta"
+    ],
+    [
+      "BORBO",
+      "LETA",
+      "Inseto de asas coloridas"
+    ],
+    [
+      "ZE",
+      "BRA",
+      "Parente do cavalo com listras"
+    ],
+    [
+      "TI",
+      "GRE",
+      "Grande felino listrado"
+    ],
+    [
+      "LE",
+      "ÃO",
+      "Felino com juba"
+    ],
+    [
+      "OVE",
+      "LHA",
+      "Animal que fornece lã"
+    ],
+    [
+      "PA",
+      "TO",
+      "Ave que faz quá-quá"
+    ],
+    [
+      "Á",
+      "GUIA",
+      "Grande ave de rapina"
+    ],
+    [
+      "ELE",
+      "FANTE",
+      "Animal com tromba"
+    ],
+    [
+      "MA",
+      "ÇÃ",
+      "Fruta da macieira"
+    ],
+    [
+      "LA",
+      "RANJA",
+      "Fruta da laranjeira"
+    ],
+    [
+      "LI",
+      "MÃO",
+      "Fruta ácida usada na limonada"
+    ],
+    [
+      "BA",
+      "NANA",
+      "Fruta amarela e curva"
+    ],
+    [
+      "QUEI",
+      "JO",
+      "Alimento feito de leite coalhado"
+    ],
+    [
+      "CE",
+      "NOURA",
+      "Raiz comestível alaranjada"
+    ],
+    [
+      "ES",
+      "TRELA",
+      "Astro com luz própria"
+    ],
+    [
+      "LU",
+      "A",
+      "Satélite natural da Terra"
+    ],
+    [
+      "NU",
+      "VEM",
+      "Conjunto de gotículas no céu"
+    ],
+    [
+      "ÁR",
+      "VORE",
+      "Planta de tronco lenhoso"
+    ],
+    [
+      "JA",
+      "NELA",
+      "Abertura com vidro na parede"
+    ],
+    [
+      "LI",
+      "VRO",
+      "Páginas encadernadas para ler"
+    ],
+    [
+      "LÁ",
+      "PIS",
+      "Escreve com uma ponta de grafite"
+    ]
   ],
   "mode": {
     "community": "Entre no canal do Telegram",
     "hard": "Arcade",
     "easy": "Assinatura",
     "hardDetail": "3 níveis · a partir de 0,002 SOL",
-    "easyDetail": "10 M+ MEMEZZO bloqueados",
+    "easyDetail": "0.2 SOL · 30 days · 10 lives",
     "choose": "Escolha seu modo",
     "playHard": "Jogar Arcade",
     "playEasy": "Jogar Assinatura · {count} {lives}",
@@ -141,22 +263,22 @@
     "shop": "Loja · Assinatura",
     "tutorial": "Jogar o tutorial",
     "hardHint": "Escolha um nível Arcade. Cada nova partida exige um pagamento em SOL. Não é necessário MEMEZZO.",
-    "easyHint": "Bloqueie pelo menos 10.000.000 MEMEZZO por prazo na DevFridge. Cada milhão completo dá 1 vida inicial total, com no mínimo 10 vidas. Verifique manualmente na Loja; nenhuma verificação interrompe a partida.",
-    "unlocked": "Assinatura verificada para esta sessão: {count} {lives} por partida. Sem verificações automáticas.",
+    "easyHint": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
+    "unlocked": "Subscription active · {count} {lives} per round.",
     "hud": "{mode} · {count} {lives} ao começar · Pontuação local",
     "badge": "MODO {mode}",
-    "shopNote": "MEMEZZO permanece bloqueado por prazo na DevFridge. Assinatura não exige pagamentos em SOL por partida. Arcade exige um pagamento a cada partida.",
+    "shopNote": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
     "link": "Experimente o tutorial grátis →",
-    "title": "MezzoPollo — Grátis · Arcade · Assinatura",
+    "title": "MezzoPollo · Tutorial · Arcade · Subscription",
     "back": "Voltar ao jogo",
     "tutorialHud": "TUTORIAL · Pratique sem perder vidas",
     "tutorialQuestion": "Siga o guia abaixo",
     "shopLoading": "Abrindo a loja…",
     "shopError": "Não foi possível abrir a Loja. Tente novamente ou jogue o tutorial grátis.",
     "subscription": "Assinatura",
-    "subscriptionDetail": "10 M+ MEMEZZO bloqueados",
+    "subscriptionDetail": "0.2 SOL · 30 days · 10 lives",
     "playSubscription": "Jogar Assinatura · {count} {lives}",
-    "subscriptionHint": "Bloqueie pelo menos 10.000.000 MEMEZZO por prazo na DevFridge. Cada milhão completo dá 1 vida inicial total, com no mínimo 10 vidas. Verifique manualmente na Loja; nenhuma verificação interrompe a partida.",
+    "subscriptionHint": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
     "free": "Grátis",
     "freeDesc": "1 vida · Sem carteira ou pagamento",
     "freeStart": "Jogar grátis",
@@ -174,7 +296,7 @@
     "finish": "Começar a jogar",
     "retry": "Tentar novamente",
     "good": "Acertou! Tudo pronto para o próximo desafio.",
-    "done": "Pronto! Escolha Grátis, Arcade ou Assinatura. Você pode repetir o tutorial grátis quando quiser.",
+    "done": "Complete! Returning to the menu.",
     "again": "Sem problema! Tente o mesmo desafio novamente.",
     "leftControl": "Mover à esquerda",
     "rightControl": "Mover à direita",
@@ -184,12 +306,30 @@
     "reverseRule": "Inverso: escolha uma resposta ERRADA",
     "wholeQuestion": "FRANGO INTEIRO!",
     "wholeRule": "Fique na sua faixa até a estátua passar",
-    "left": ["Mova para a esquerda", "Experimente: deslize para a esquerda na pista, pressione ← ou A, ou toque na seta para a esquerda abaixo."],
-    "right": ["Agora mova para a direita", "Deslize para a direita na pista, pressione → ou D, ou toque na seta para a direita abaixo."],
-    "jump": ["Faça o frango pular", "Deslize para cima na pista, pressione ↑, W ou Espaço, ou toque em Pular. Pule os fardos de feno durante a partida."],
-    "gate": ["Encontre a metade que falta", "Leia a placa: a metade de 8 é 4. Vá para a faixa do meio e passe pelo portão com o número 4."],
-    "reverse": ["Atenção: INVERSO!", "A regra se inverteu! A metade de 8 é 4, então escolha uma resposta ERRADA: vá para a esquerda, no 2, ou para a direita, no 8."],
-    "whole": ["FRANGO INTEIRO: mantenha sua faixa", "Pare de mudar de faixa até a estátua passar. Fique na faixa em que começou. Experimente agora!"]
+    "left": [
+      "Mova para a esquerda",
+      "Experimente: deslize para a esquerda na pista, pressione ← ou A, ou toque na seta para a esquerda abaixo."
+    ],
+    "right": [
+      "Agora mova para a direita",
+      "Deslize para a direita na pista, pressione → ou D, ou toque na seta para a direita abaixo."
+    ],
+    "jump": [
+      "Faça o frango pular",
+      "Deslize para cima na pista, pressione ↑, W ou Espaço, ou toque em Pular. Pule os fardos de feno durante a partida."
+    ],
+    "gate": [
+      "Encontre a metade que falta",
+      "Leia a placa: a metade de 8 é 4. Vá para a faixa do meio e passe pelo portão com o número 4."
+    ],
+    "reverse": [
+      "Atenção: INVERSO!",
+      "A regra se inverteu! A metade de 8 é 4, então escolha uma resposta ERRADA: vá para a esquerda, no 2, ou para a direita, no 8."
+    ],
+    "whole": [
+      "FRANGO INTEIRO: mantenha sua faixa",
+      "Pare de mudar de faixa até a estátua passar. Fique na faixa em que começou. Experimente agora!"
+    ]
   },
   "access": {
     "connect": "Conectar e verificar",
@@ -200,12 +340,12 @@
     "copyMint": "Copiar mint",
     "copied": "Mint copiado",
     "copyFallback": "Selecione e copie o mint acima",
-    "disconnected": "Conecte sua carteira Solana na Loja para verificar pelo menos 10.000.000 MEMEZZO em bloqueios temporais ativos. A verificação na Loja não solicita transações.",
-    "connected": "Carteira conectada. Escolha Verificar Assinatura para consultar os bloqueios MEMEZZO ativos nesta sessão.",
+    "disconnected": "Connect your wallet to verify your subscription.",
+    "connected": "Wallet connected. Verify your subscription.",
     "connecting": "Aprove a conexão na sua carteira. Não é necessário assinar nenhuma transação.",
-    "checking": "Consultando na Solana os bloqueios de MEMEZZO desta carteira…",
-    "eligible": "Assinatura verificada para esta sessão da página: {amount} MEMEZZO bloqueados ativamente no momento da verificação. Cada nova partida começa com {lives} {lifeWord}. Sem verificações durante o jogo.",
-    "insufficient": "Não foram confirmados pelo menos {minimum} MEMEZZO em bloqueios ativos para Assinatura. Aguarde a confirmação do bloqueio e verifique novamente. O tutorial é grátis.",
+    "checking": "Checking subscription…",
+    "eligible": "Subscription active · {lives} {lifeWord} per round.",
+    "insufficient": "No active subscription confirmed. Subscribe or check again.",
     "unavailable": "A verificação de Assinatura está indisponível ou os dados estão desatualizados. Tente verificar na Loja novamente em breve. A partida em andamento não é afetada.",
     "rejected": "Conexão cancelada na sua carteira. Você pode tentar novamente quando quiser.",
     "missing-wallet": "Nenhuma carteira Solana compatível está disponível neste navegador. Desbloqueie ou habilite sua carteira, ou abra o jogo no Phantom no celular. O tutorial não precisa de carteira.",
@@ -235,10 +375,10 @@
     "mobileNote": "Emulação histórica no navegador em 390 × 844 da interface em inglês, anterior às regras atuais de Arcade/Assinatura e ao tutorial, com evidências simuladas de carteira e bloqueio. Gravação sem áudio; não é um teste em celular físico nem com carteira real.",
     "downloadMobile": "Baixar gravação móvel em inglês",
     "accessTitle": "Acesso e limitações",
-    "accessIntro": "Assinatura exige pelo menos 10.000.000 MEMEZZO em bloqueios DevFridge ativos da carteira conectada. Não há prazo mínimo; bloqueios expirados não contam na verificação. Endereço do token:",
+    "accessIntro": "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
     "accessOutro": ". O tutorial interativo grátis pode ser repetido pelo menu. Os recordes de cada modo são separados, locais e não verificados.",
-    "lives": "Grátis: 1 vida por partida, com uma promoção do OnlyFridge Club entre as partidas. Não precisa de carteira nem de pagamento. Assinatura dá 1 vida inicial total por milhão completo de MEMEZZO, sem vidas base. São necessários pelo menos 10.000.000 MEMEZZO: 10.000.000 dá 10 vidas, 10.999.999 dá 10 e 11.000.000 dá 11. As vidas iniciais são fixas por partida; continuar ou verificar na Loja não as repõe. Arcade: Médio — 3 vidas por 0,002 SOL; Fácil — 9 vidas por 0,003 SOL; Deus — 32 vidas por 0,01 SOL. Cada partida exige um novo pagamento; as taxas de rede são cobradas à parte.",
-    "verification": "Assinatura só é verificada quando você solicita na Loja, nunca automaticamente no início, durante o jogo ou ao continuar. As vidas verificadas duram esta sessão até nova verificação manual, troca de carteira, desconexão ou recarga. A partida em andamento não é afetada. A verificação consulta bloqueios sem assinaturas de transações; pagamentos Arcade exigem aprovação na carteira.",
+    "lives": "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
+    "verification": "Subscription access is checked when connecting, after returning to the game and at expiry. An ongoing round keeps its lives.",
     "fees": "Os bloqueios são criados e resgatados na DevFridge, sem saque antecipado e com taxa de resgate de 2% para comprar e queimar PASTA, além das taxas de rede. O resgate de MEMEZZO precisa de uma rota executável na Jupiter. Os recursos de carteira são para adultos.",
     "team": "Equipe: Pappardelle · Contato público:",
     "submission": ". A inscrição na galeria está sujeita a análise; ela não confirma a elegibilidade para a competição nem um prêmio."
@@ -246,7 +386,7 @@
   "native": {
     "menu": "Menu do aplicativo",
     "hard": "Arcade · 3 níveis · a partir de 0,002 SOL",
-    "easy": "Assinatura · 10 M+ MEMEZZO bloqueados",
+    "easy": "0.2 SOL · 30 days · 10 lives",
     "reload": "Recarregar",
     "privacy": "Privacidade e informações do aplicativo (em inglês)",
     "website": "Abrir site",
