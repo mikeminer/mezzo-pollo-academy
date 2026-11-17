@@ -49,7 +49,7 @@ if(location.pathname==='/cherry'){
  }
  const outside=document.createElement('a');
  outside.href='https://mezzopollo.it/';outside.target='_blank';outside.rel='noopener noreferrer';
- outside.textContent=it()?'Apri il sito per acquistare o giocare in Arcade':'Open the website to buy a pass or play Arcade';
+ outside.textContent=it()?'Apri il sito per acquistare l’abbonamento':'Open the website to buy a subscription';
  label.after(outside);
  void (async()=>{
   try{

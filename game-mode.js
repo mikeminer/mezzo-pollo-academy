@@ -1,6 +1,7 @@
 /* Mode selection is independent from the optional shop's wallet session. */
 (() => {
   'use strict';
+  const cherry = /^\/cherry\/?$/.test(window.location?.pathname || '');
   let selected = 'tutorial';
   const copy = Object.fromEntries(Object.entries(window.MezzoTranslations).map(([code,pack])=>[code,pack.mode]));
   const text = (key, params = {}) => (key === 'arcade' ? (window.MezzoTranslations[window.MezzoLocale?.code] || window.MezzoTranslations.en).arcade.name : (copy[window.MezzoLocale?.code] || copy.en)[key] || key)
@@ -17,13 +18,14 @@
       : {name, lives:unlockedLives, speed:8, minSpeed:7, maxSpeed:14, acceleration:.7, maxLevel:2, reaction:7.8, minReaction:5.2, ruleSeconds:45, scoreKey:'mp_easy_best'});
   }
   function select(name) {
+    if(cherry && name === 'arcade') return;
     if (!['tutorial', 'arcade', 'subscription'].includes(name)) return;
     selected = name;
     render();
     document.dispatchEvent(new Event('mezzopollo:mode'));
   }
   function render() {
-    if (document.getElementById('modeChoices')) document.title = `MezzoPollo · ${text('tutorialHud')} · ${text('arcade')} · ${text('subscription')}`;
+    if (document.getElementById('modeChoices')) document.title = `MezzoPollo · ${text('tutorialHud')}${cherry ? '' : ` · ${text('arcade')}`} · ${text('subscription')}`;
     for (const link of document.querySelectorAll('[data-review-link]')) { link.href='/practice'; link.textContent=text('link'); }
     for (const label of document.querySelectorAll('[data-review-label]')) label.hidden=true;
     for (const element of document.querySelectorAll('[data-mode-text]')) element.textContent=text(element.dataset.modeText);

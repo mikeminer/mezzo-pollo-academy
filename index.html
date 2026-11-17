@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>if (/^\/cherry\/?$/.test(location.pathname)) document.documentElement.dataset.cherry = '';</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MezzoPollo — Tutorial, Arcade &amp; Subscription</title>
@@ -115,6 +116,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
 #storeDownloadInvite p{margin:0 0 10px}
 #storeDownloadLink{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--straw);min-height:44px}
 #storeDownloadLink img{display:block;width:220px;max-width:100%;height:auto}
+html[data-cherry] [data-hide-in-cherry]{display:none!important}
 </style>
 <script type="module" src="arcade-share.mjs"></script>
 <script type="module" src="mode-perks.mjs"></script>
@@ -151,11 +153,11 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
       <p class="chop">A plush chicken has lost half of itself. Help it run through the gate with the matching half.</p>
       <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
         <button class="mode-choice" data-mode-select="tutorial" aria-pressed="true"><strong data-mode-text="tutorial">Tutorial</strong><small data-mode-text="tutorialHud">Tutorial</small></button>
-        <button class="mode-choice" data-mode-select="arcade" aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">3 levels · from 0.002 SOL</small></button>
+        <button class="mode-choice" data-mode-select="arcade" data-hide-in-cherry aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">3 levels · from 0.002 SOL</small></button>
         <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">0.2 SOL · 30 days · 10 lives</small></button>
       </div>
       <div class="mode-perks">
-        <details><summary id="arcadePerksTitle">Arcade · Play and get noticed</summary><p id="arcadePerksText"></p></details>
+        <details data-hide-in-cherry><summary id="arcadePerksTitle">Arcade · Play and get noticed</summary><p id="arcadePerksText"></p></details>
         <details><summary id="subscriptionPerksTitle">Subscription · Play and connect</summary><p id="subscriptionPerksText"></p></details>
       </div>
       <details id="communityPanel" class="mode-perks"><summary id="communityTitle">Subscription community</summary><p id="communityDisclosure"></p><button class="btn" id="communityRefresh">Load leaderboard</button><p id="communityStatus" role="status"></p><ol id="communityScores"></ol></details>
@@ -185,7 +187,7 @@ button:focus-visible{outline:3px solid var(--straw);outline-offset:3px}
         <li>Read the question at the top. Run through the gate with <b>the matching half</b>: complete numbers, words and shapes.</li>
         <li>When the <b>WHOLE CHICKEN</b> appears, stay in your lane until the statue passes.</li>
         <li>Sometimes the rule flips: in <b>reverse mode</b>, choose a wrong answer.</li>
-        <li>Learn with the free tutorial. Arcade offers three paid levels. A monthly Subscription costs 0.2 SOL for 30 days, with 10 lives per round and a social leaderboard.</li>
+        <li data-hide-in-cherry>Learn with the free tutorial. Arcade offers three paid levels. A monthly Subscription costs 0.2 SOL for 30 days, with 10 lives per round and a social leaderboard.</li>
         <li>Only the shop checks tokens, when you ask. Playing, restarting and resuming never trigger verification. Pausing preserves remaining lives.</li>
       </ul>
       <div class="btns"><button class="btn" data-back>Back</button></div>
@@ -840,7 +842,7 @@ async function openShop(){
 function beginRun(config){
   if(!config||!['arcade','subscription'].includes(config.name))return;
   if(config.name==='subscription'&&((window.MezzoShopAccess?.getState()?.expiresAt||0)<=Date.now()/1000||!accessEligible||config.lives!==10||config.lives!==accessLives)){void openShop();return;}
-  if(config.name==='arcade'&&!window.MezzoArcade.consumeAdmission())return;
+  if(config.name==='arcade'&&(window.location?.pathname?.replace(/\/$/,'')==='/cherry'||!window.MezzoArcade.consumeAdmission()))return;
   audio();clearWorld();resetGame(config);state='play';syncAccessUi();music.start();$('hud').hidden=false;show(null);canvas.focus({preventScroll:true});clock.getDelta();
 }
 function tutorialScenario(spec){
@@ -874,6 +876,7 @@ function startGame(){
   if(tutorial.shouldStart())startTutorial();else requestRun(config);
 }
 function requestRun(config){
+  if(config?.name==='arcade'&&window.location?.pathname?.replace(/\/$/,'')==='/cherry')return;
   if(!config)return;
   if(config.name!=='arcade'){beginRun(config);return;}
   music.pause();clearWorld();state='menu';$('hud').hidden=true;show('scrArcade');
