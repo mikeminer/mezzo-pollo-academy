@@ -6,6 +6,7 @@
 tests/
 scripts/*
 !scripts/build-public.mjs
+!scripts/build-monthly-server.mjs
 locales/
 .env*
 node_modules/
