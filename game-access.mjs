@@ -1,5 +1,6 @@
 import { ACCESS_POLICY } from './access-policy.mjs';
 import { createLockAccess } from './lock-access.mjs';
+import { readVerifiedTimelocks } from './timelock-chain.mjs';
 
 const byId = id => document.getElementById(id);
 const trustedOrigins = ['https://mezzopollo.it', 'https://www.mezzopollo.it', 'https://mezzo-pollo-academy.vercel.app'];
@@ -65,7 +66,7 @@ const access = createLockAccess({ getProvider: () => {
   if (window.MezzoAndroid?.provider?.isMezzoMobile === true) return window.MezzoAndroid.provider;
   if (window.phantom?.solana?.isPhantom === true) return window.phantom.solana;
   return window.solana?.isPhantom === true ? window.solana : null;
-}, onChange: render });
+}, onChange: render, readEvidence: readVerifiedTimelocks });
 let shopOpen = false;
 window.MezzoShopAccess = Object.freeze({
   getState: access.getState,

@@ -21,7 +21,7 @@ export function livesForRawAmount(totalRaw) {
 // This browser state is not wallet authentication or score proof.
 export function createLockAccess({
   getProvider, onChange = () => {}, fetchImpl = globalThis.fetch,
-  now, timers = globalThis,
+  now, timers = globalThis, readEvidence,
 } = {}) {
   if (typeof getProvider !== 'function') throw new TypeError('A supported Solana wallet provider getter is required');
   const wallStart = Date.now() / 1000;
@@ -110,6 +110,7 @@ export function createLockAccess({
       }, ACCESS_POLICY.requestTimeoutMs);
     });
     const fetchEvidence = async () => {
+      if (readEvidence) return readEvidence(wallet, { signal: abort.signal });
       const url = `${ACCESS_POLICY.apiBase}?wallet=${encodeURIComponent(wallet)}&mint=${encodeURIComponent(ACCESS_POLICY.mint)}`;
       const response = await fetchImpl(url, { signal: abort.signal, credentials: 'omit', cache: 'no-store' });
       if (!response.ok) {

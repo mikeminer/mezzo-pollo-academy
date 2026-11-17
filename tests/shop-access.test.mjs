@@ -40,7 +40,12 @@ function setup(fetchImpl = async () => ({ ok: true, json: async () => validEvide
   configureWindow(win, wallet);
   doc.addEventListener('mezzopollo:access', event => notices.push(event.detail));
   vm.runInNewContext(code, {
-    ACCESS_POLICY, createLockAccess: options => {
+    ACCESS_POLICY, readVerifiedTimelocks: async (...args) => {
+      requests.push(args);
+      const response = await fetchImpl(...args);
+      if (!response.ok) throw Error('Unavailable');
+      return response.json();
+    }, createLockAccess: options => {
       publishSnapshot = options.onChange;
       return createLockAccess({ ...options, now: () => now,
         fetchImpl: (...args) => { requests.push(args); return fetchImpl(...args); } });
