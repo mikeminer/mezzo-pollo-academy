@@ -47,10 +47,6 @@ if(location.pathname==='/cherry'){
  for(const selector of ['[data-mode-select="arcade"]','#monthlyBuy','#monthlyCheck','#connectWallet']){
   const element=document.querySelector(selector);if(element)element.hidden=true;
  }
- const outside=document.createElement('a');
- outside.href='https://mezzopollo.it/play';outside.target='_blank';outside.rel='noopener noreferrer';
- outside.textContent=it()?'Apri il sito per acquistare l’abbonamento':'Open the website to buy a subscription';
- label.after(outside);
  void (async()=>{
   try{
    const [{CherryMiniApp,isInsideCherry},{connectCherry}]=await Promise.all([import('./vendor/cherry.mjs'),import('./cherry-wallet.mjs')]);
