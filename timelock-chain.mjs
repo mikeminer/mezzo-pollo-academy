@@ -45,7 +45,7 @@ export function verifyVault(account, lock) {
       !keyAt(data, 32).equals(new PublicKey(lock.address)) || data[108] !== 1 ||
       v.getBigUint64(64, true) < BigInt(lock.amount) || (data.length > 165 && data[165] !== 2)) return invalid();
 }
-function verifyMint(account) {
+export function verifyMint(account) {
   const data = bytes(account, TOKEN, 0);
   if ((data.length !== 82 && (data.length < 166 || data[165] !== 1)) || data[44] !== ACCESS_POLICY.decimals || data[45] !== 1) return invalid();
   // Only metadata extensions are supported; economic/transfer extensions fail closed.

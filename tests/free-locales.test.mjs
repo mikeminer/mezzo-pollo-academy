@@ -2,17 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildLocales, GAME_ROOT } from '../scripts/build-locales.mjs';
 
-test('every regional choice explains Free and keeps sponsor actions distinct', async () => {
-  const { packs } = await buildLocales(GAME_ROOT, { check: true });
-  for (const [code, pack] of Object.entries(packs)) {
-    assert.ok(pack.mode.freeStart && pack.mode.freeHint && pack.native.free, code);
-    assert.match(pack.mode.freeHint, /OnlyFridge Club/, code);
-    assert.equal(pack.sponsor.title, 'OnlyFridge Club', code);
-    assert.match(pack.sponsor.body, /Solana dApp Store/, code);
-    assert.notEqual(pack.sponsor.open, pack.sponsor.continue, code);
-    assert.ok(pack.mode.title.includes(pack.mode.free), code);
-  }
-});
+test('all regional profiles advertise Tutorial and the monthly price',async()=>{const {packs}=await buildLocales(GAME_ROOT,{check:true});for(const [code,pack] of Object.entries(packs)){assert.ok(pack.mode.tutorial,code);assert.match(pack.mode.subscriptionDetail,/0[.,]2 SOL/,code);assert.match(pack.static[16],/30/,code);assert.doesNotMatch(pack.static[16],/10,000,000|timelock/i,code);}});
 
 test('current Arcade copy offers only the three active prices in all languages', async () => {
   const { packs } = await buildLocales(GAME_ROOT, { check: true });

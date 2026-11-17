@@ -7,7 +7,7 @@
     .replace(/\{(\w+)\}/g, (match, name) => String(params[name] ?? match));
   function config(name = selected, unlockedLives = 0, arcadeTier = 'medium') {
     if (!['tutorial', 'arcade', 'subscription'].includes(name)) throw new TypeError('Unknown game mode');
-    if (name === 'subscription' && (!Number.isSafeInteger(unlockedLives) || unlockedLives < 10)) return null;
+    if (name === 'subscription' && (!Number.isSafeInteger(unlockedLives) || unlockedLives !== 10)) return null;
     if (name === 'tutorial') return Object.freeze({name, lives:1, speed:11, minSpeed:10, maxSpeed:24, acceleration:1.2, maxLevel:3, reaction:5.2, minReaction:3.1, ruleSeconds:30, scoreKey:'mp_free_best'});
     // Keep valid older paid Hard receipts playable, although Hard is no longer sold.
     const arcadeLives = {hard:1,medium:3,easy:9,god:32};

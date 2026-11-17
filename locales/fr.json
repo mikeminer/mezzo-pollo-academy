@@ -1,6 +1,16 @@
 {
-  "meta": { "locale": "fr-FR", "country": "France", "language": "Français", "flag": "fr", "dir": "ltr" },
-  "life": { "one": "vie", "many": "vies", "other": "vies" },
+  "meta": {
+    "locale": "fr-FR",
+    "country": "France",
+    "language": "Français",
+    "flag": "fr",
+    "dir": "ltr"
+  },
+  "life": {
+    "one": "vie",
+    "many": "vies",
+    "other": "vies"
+  },
   "core": {
     "chooseCountry": "Choisis ton pays",
     "chooseNote": "Choisis un drapeau pour définir la langue du jeu.",
@@ -63,13 +73,13 @@
     "Lis la question en haut. Franchis la porte avec <b>la moitié correspondante</b> : complète les nombres, les mots et les formes.",
     "Quand le <b>POULET ENTIER</b> apparaît, reste dans ta voie jusqu’au passage de la statue.",
     "Parfois, la règle s’inverse : en <b>mode inversé</b>, choisis une mauvaise réponse.",
-    "Gratuit: 1 vie par partie, avec une promotion OnlyFridge Club entre les parties. Aucun portefeuille ni paiement nécessaire. Arcade : Moyen — 3 vies pour 0,002 SOL ; Facile — 9 vies pour 0,003 SOL ; Divin — 32 vies pour 0,01 SOL. Chaque partie nécessite un nouveau paiement ; les frais de réseau sont facturés séparément.",
-    "Verrouille au moins 10 000 000 MEMEZZO sur DevFridge. Chaque million entier donne 1 vie initiale au total, avec un minimum de 10 vies. Vérifie manuellement dans la Boutique ; aucun contrôle n’interrompt une partie.",
+    "Free tutorial: learn the controls and return to the menu. Arcade offers three paid levels, purchased per round.",
+    "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
     "Retour",
     "Boutique · Abonnement",
-    "Les MEMEZZO restent verrouillés sur DevFridge. Abonnement ne demande pas de paiement en SOL par partie. Arcade demande un paiement pour chaque partie.",
-    "Verrouille au moins 10 000 000 MEMEZZO sur DevFridge. Chaque million entier donne 1 vie initiale au total, avec un minimum de 10 vies. Vérifie manuellement dans la Boutique ; aucun contrôle n’interrompt une partie.",
-    "Abonnement est vérifié uniquement à ta demande dans la Boutique, jamais automatiquement au début, pendant le jeu ou à la reprise. Les vies vérifiées durent cette session jusqu’à une nouvelle vérification manuelle, un changement de portefeuille, une déconnexion ou un rechargement. La partie en cours n’est pas affectée. La vérification lit les verrouillages sans signature de transaction ; les paiements Arcade nécessitent l’approbation du portefeuille.",
+    "Your SOL buys MEMEZZO for your wallet. It stays set aside for your subscription and its value can change. No automatic renewal.",
+    "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
+    "Subscription access is checked when connecting, after returning to the game and at expiry. An ongoing round keeps its lives.",
     "Mint MEMEZZO · Réseau principal Solana",
     "Copier le mint",
     "Déconnecter",
@@ -99,41 +109,153 @@
     "L’affichage graphique a cessé de fonctionner. Recharge la page pour continuer."
   ],
   "words": [
-    ["POU", "LET", "Jeune poule ou jeune coq"],
-    ["CHA", "T", "Animal qui miaule"],
-    ["CHI", "EN", "Animal qui aboie"],
-    ["CHE", "VAL", "Animal qui hennit"],
-    ["LA", "PIN", "Animal aux longues oreilles"],
-    ["TOR", "TUE", "Reptile à carapace"],
-    ["DAU", "PHIN", "Mammifère marin qui bondit"],
-    ["PAP", "ILLON", "Insecte aux ailes colorées"],
-    ["ZÈ", "BRE", "Équidé rayé de noir et blanc"],
-    ["TI", "GRE", "Grand félin rayé"],
-    ["LI", "ON", "Félin à crinière"],
-    ["MOU", "TON", "Animal élevé pour sa laine"],
-    ["CA", "NARD", "Oiseau qui fait coin-coin"],
-    ["AI", "GLE", "Grand oiseau de proie"],
-    ["ÉLÉ", "PHANT", "Animal à trompe"],
-    ["POM", "ME", "Fruit du pommier"],
-    ["ORAN", "GE", "Fruit de l’oranger"],
-    ["CIT", "RON", "Agrume jaune et acide"],
-    ["BA", "NANE", "Fruit jaune et courbé"],
-    ["FRO", "MAGE", "Aliment à base de lait caillé"],
-    ["CA", "ROTTE", "Racine comestible orange"],
-    ["É", "TOILE", "Astre qui produit sa lumière"],
-    ["LU", "NE", "Satellite naturel de la Terre"],
-    ["NU", "AGE", "Amas de gouttelettes dans le ciel"],
-    ["AR", "BRE", "Plante à tronc de bois"],
-    ["FEN", "ÊTRE", "Ouverture vitrée dans un mur"],
-    ["LI", "VRE", "Pages reliées à lire"],
-    ["CRA", "YON", "Outil d’écriture à mine de graphite"]
+    [
+      "POU",
+      "LET",
+      "Jeune poule ou jeune coq"
+    ],
+    [
+      "CHA",
+      "T",
+      "Animal qui miaule"
+    ],
+    [
+      "CHI",
+      "EN",
+      "Animal qui aboie"
+    ],
+    [
+      "CHE",
+      "VAL",
+      "Animal qui hennit"
+    ],
+    [
+      "LA",
+      "PIN",
+      "Animal aux longues oreilles"
+    ],
+    [
+      "TOR",
+      "TUE",
+      "Reptile à carapace"
+    ],
+    [
+      "DAU",
+      "PHIN",
+      "Mammifère marin qui bondit"
+    ],
+    [
+      "PAP",
+      "ILLON",
+      "Insecte aux ailes colorées"
+    ],
+    [
+      "ZÈ",
+      "BRE",
+      "Équidé rayé de noir et blanc"
+    ],
+    [
+      "TI",
+      "GRE",
+      "Grand félin rayé"
+    ],
+    [
+      "LI",
+      "ON",
+      "Félin à crinière"
+    ],
+    [
+      "MOU",
+      "TON",
+      "Animal élevé pour sa laine"
+    ],
+    [
+      "CA",
+      "NARD",
+      "Oiseau qui fait coin-coin"
+    ],
+    [
+      "AI",
+      "GLE",
+      "Grand oiseau de proie"
+    ],
+    [
+      "ÉLÉ",
+      "PHANT",
+      "Animal à trompe"
+    ],
+    [
+      "POM",
+      "ME",
+      "Fruit du pommier"
+    ],
+    [
+      "ORAN",
+      "GE",
+      "Fruit de l’oranger"
+    ],
+    [
+      "CIT",
+      "RON",
+      "Agrume jaune et acide"
+    ],
+    [
+      "BA",
+      "NANE",
+      "Fruit jaune et courbé"
+    ],
+    [
+      "FRO",
+      "MAGE",
+      "Aliment à base de lait caillé"
+    ],
+    [
+      "CA",
+      "ROTTE",
+      "Racine comestible orange"
+    ],
+    [
+      "É",
+      "TOILE",
+      "Astre qui produit sa lumière"
+    ],
+    [
+      "LU",
+      "NE",
+      "Satellite naturel de la Terre"
+    ],
+    [
+      "NU",
+      "AGE",
+      "Amas de gouttelettes dans le ciel"
+    ],
+    [
+      "AR",
+      "BRE",
+      "Plante à tronc de bois"
+    ],
+    [
+      "FEN",
+      "ÊTRE",
+      "Ouverture vitrée dans un mur"
+    ],
+    [
+      "LI",
+      "VRE",
+      "Pages reliées à lire"
+    ],
+    [
+      "CRA",
+      "YON",
+      "Outil d’écriture à mine de graphite"
+    ]
   ],
   "mode": {
     "community": "Rejoins le canal Telegram",
     "hard": "Arcade",
     "easy": "Abonnement",
     "hardDetail": "3 niveaux · dès 0,002 SOL",
-    "easyDetail": "10 M+ MEMEZZO verrouillés",
+    "easyDetail": "0.2 SOL · 30 days · 10 lives",
     "choose": "Choisis ton mode",
     "playHard": "Jouer en Arcade",
     "playEasy": "Jouer Abonnement · {count} {lives}",
@@ -141,22 +263,22 @@
     "shop": "Boutique · Abonnement",
     "tutorial": "Lancer le tutoriel",
     "hardHint": "Choisis un niveau Arcade. Chaque nouvelle partie nécessite un paiement en SOL. Aucun MEMEZZO requis.",
-    "easyHint": "Verrouille au moins 10 000 000 MEMEZZO sur DevFridge. Chaque million entier donne 1 vie initiale au total, avec un minimum de 10 vies. Vérifie manuellement dans la Boutique ; aucun contrôle n’interrompt une partie.",
-    "unlocked": "Abonnement vérifié pour cette session : {count} {lives} par partie. Aucun contrôle automatique.",
+    "easyHint": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
+    "unlocked": "Subscription active · {count} {lives} per round.",
     "hud": "{mode} · {count} {lives} au départ · Score local",
     "badge": "MODE {mode}",
-    "shopNote": "Les MEMEZZO restent verrouillés sur DevFridge. Abonnement ne demande pas de paiement en SOL par partie. Arcade demande un paiement pour chaque partie.",
+    "shopNote": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
     "link": "Essayer le tutoriel gratuit →",
-    "title": "MezzoPollo — Gratuit · Arcade · Abonnement",
+    "title": "MezzoPollo · Tutorial · Arcade · Subscription",
     "back": "Retour au jeu",
     "tutorialHud": "TUTORIEL · Entraînement sans perdre de vies",
     "tutorialQuestion": "Suis le guide ci-dessous",
     "shopLoading": "Ouverture de la boutique…",
     "shopError": "La Boutique n’a pas pu s’ouvrir. Réessaie ou joue au tutoriel gratuit.",
     "subscription": "Abonnement",
-    "subscriptionDetail": "10 M+ MEMEZZO verrouillés",
+    "subscriptionDetail": "0.2 SOL · 30 days · 10 lives",
     "playSubscription": "Jouer Abonnement · {count} {lives}",
-    "subscriptionHint": "Verrouille au moins 10 000 000 MEMEZZO sur DevFridge. Chaque million entier donne 1 vie initiale au total, avec un minimum de 10 vies. Vérifie manuellement dans la Boutique ; aucun contrôle n’interrompt une partie.",
+    "subscriptionHint": "Subscribe for 30 days at 0.2 SOL. Every round starts with 10 lives.",
     "free": "Gratuit",
     "freeDesc": "1 vie · Sans portefeuille ni paiement",
     "freeStart": "Jouer gratuitement",
@@ -174,7 +296,7 @@
     "finish": "Commencer à jouer",
     "retry": "Réessayer",
     "good": "Bien compris ! Place au défi suivant.",
-    "done": "Prêt ! Choisis Gratuit, Arcade ou Abonnement. Tu peux refaire le tutoriel gratuit à tout moment.",
+    "done": "Complete! Returning to the menu.",
     "again": "Pas de souci ! Essaie à nouveau le même défi.",
     "leftControl": "Aller à gauche",
     "rightControl": "Aller à droite",
@@ -184,12 +306,30 @@
     "reverseRule": "Inversé : choisis une MAUVAISE réponse",
     "wholeQuestion": "POULET ENTIER !",
     "wholeRule": "Garde ta voie jusqu’au passage de la statue",
-    "left": ["Va à gauche", "Essaie maintenant : balaie la piste vers la gauche, appuie sur ← ou A, ou touche la flèche gauche ci-dessous."],
-    "right": ["Maintenant, va à droite", "Balaie la piste vers la droite, appuie sur → ou D, ou touche la flèche droite ci-dessous."],
-    "jump": ["Fais sauter le poulet", "Balaie la piste vers le haut, appuie sur ↑, W ou Espace, ou touche Sauter. Saute par-dessus les bottes de foin pendant une partie."],
-    "gate": ["Trouve la moitié manquante", "Lis le panneau : la moitié de 8 est 4. Va dans la voie du milieu et franchis la porte marquée 4."],
-    "reverse": ["Attention : INVERSÉ !", "La règle s’est inversée ! La moitié de 8 est 4, alors choisis une MAUVAISE réponse : va à gauche vers le 2 ou à droite vers le 8."],
-    "whole": ["POULET ENTIER : garde ta voie", "Ne change plus de voie jusqu’au passage de la statue. Reste dans la voie où tu as commencé. Essaie maintenant !"]
+    "left": [
+      "Va à gauche",
+      "Essaie maintenant : balaie la piste vers la gauche, appuie sur ← ou A, ou touche la flèche gauche ci-dessous."
+    ],
+    "right": [
+      "Maintenant, va à droite",
+      "Balaie la piste vers la droite, appuie sur → ou D, ou touche la flèche droite ci-dessous."
+    ],
+    "jump": [
+      "Fais sauter le poulet",
+      "Balaie la piste vers le haut, appuie sur ↑, W ou Espace, ou touche Sauter. Saute par-dessus les bottes de foin pendant une partie."
+    ],
+    "gate": [
+      "Trouve la moitié manquante",
+      "Lis le panneau : la moitié de 8 est 4. Va dans la voie du milieu et franchis la porte marquée 4."
+    ],
+    "reverse": [
+      "Attention : INVERSÉ !",
+      "La règle s’est inversée ! La moitié de 8 est 4, alors choisis une MAUVAISE réponse : va à gauche vers le 2 ou à droite vers le 8."
+    ],
+    "whole": [
+      "POULET ENTIER : garde ta voie",
+      "Ne change plus de voie jusqu’au passage de la statue. Reste dans la voie où tu as commencé. Essaie maintenant !"
+    ]
   },
   "access": {
     "connect": "Connecter et vérifier",
@@ -200,12 +340,12 @@
     "copyMint": "Copier le mint",
     "copied": "Mint copié",
     "copyFallback": "Sélectionne et copie le mint ci-dessus",
-    "disconnected": "Connectez votre portefeuille Solana dans la Boutique pour vérifier au moins 10 000 000 MEMEZZO dans des verrouillages temporels actifs. La vérification dans la Boutique ne demande aucune transaction.",
-    "connected": "Portefeuille connecté. Choisis Vérifier Abonnement pour consulter les verrouillages MEMEZZO actifs de cette session.",
+    "disconnected": "Connect your wallet to verify your subscription.",
+    "connected": "Wallet connected. Verify your subscription.",
     "connecting": "Approuvez la connexion dans votre portefeuille. Aucune signature de transaction n’est nécessaire.",
-    "checking": "Vérification des verrouillages MEMEZZO de ce portefeuille sur Solana…",
-    "eligible": "Abonnement vérifié pour cette session de la page : {amount} MEMEZZO activement verrouillés lors de la vérification. Chaque nouvelle partie commence avec {lives} {lifeWord}. Aucun contrôle pendant le jeu.",
-    "insufficient": "Au moins {minimum} MEMEZZO dans des verrouillages actifs n’ont pas été confirmés pour Abonnement. Attends la confirmation du verrouillage puis vérifie à nouveau. Le tutoriel est gratuit.",
+    "checking": "Checking subscription…",
+    "eligible": "Subscription active · {lives} {lifeWord} per round.",
+    "insufficient": "No active subscription confirmed. Subscribe or check again.",
     "unavailable": "La vérification d’Abonnement est indisponible ou les données sont périmées. Réessaie bientôt dans la Boutique. Une partie en cours n’est pas affectée.",
     "rejected": "Connexion annulée dans votre portefeuille. Réessayez quand vous le souhaitez.",
     "missing-wallet": "Aucun portefeuille Solana compatible n’est disponible dans ce navigateur. Déverrouillez ou activez votre portefeuille, ou ouvrez le jeu dans Phantom sur votre téléphone. Le tutoriel ne nécessite aucun portefeuille.",
@@ -235,10 +375,10 @@
     "mobileNote": "Ancienne émulation dans le navigateur en 390 × 844 de l’interface anglaise, antérieure aux règles actuelles Arcade/Abonnement et au tutoriel, avec des preuves simulées de portefeuille et de verrouillage. Capture muette ; il ne s’agit pas d’un test sur téléphone physique ou avec un vrai portefeuille.",
     "downloadMobile": "Télécharger la capture mobile en anglais",
     "accessTitle": "Accès et limites",
-    "accessIntro": "Abonnement nécessite au moins 10 000 000 MEMEZZO dans les verrouillages DevFridge actifs du portefeuille connecté. Aucune durée minimale ; les verrouillages expirés ne comptent pas à la vérification. Adresse du jeton :",
+    "accessIntro": "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
     "accessOutro": ". Le tutoriel interactif gratuit peut être rejoué depuis le menu. Les records de chaque mode sont séparés, locaux et non vérifiés.",
-    "lives": "Gratuit: 1 vie par partie, avec une promotion OnlyFridge Club entre les parties. Aucun portefeuille ni paiement nécessaire. Abonnement donne 1 vie initiale au total par million entier de MEMEZZO, sans vies de base. Il faut au moins 10 000 000 MEMEZZO : 10 000 000 donne 10 vies, 10 999 999 donne 10 et 11 000 000 donne 11. Les vies initiales sont fixes pour chaque partie ; reprendre ou vérifier dans la Boutique ne les recharge pas. Arcade : Moyen — 3 vies pour 0,002 SOL ; Facile — 9 vies pour 0,003 SOL ; Divin — 32 vies pour 0,01 SOL. Chaque partie nécessite un nouveau paiement ; les frais de réseau sont facturés séparément.",
-    "verification": "Abonnement est vérifié uniquement à ta demande dans la Boutique, jamais automatiquement au début, pendant le jeu ou à la reprise. Les vies vérifiées durent cette session jusqu’à une nouvelle vérification manuelle, un changement de portefeuille, une déconnexion ou un rechargement. La partie en cours n’est pas affectée. La vérification lit les verrouillages sans signature de transaction ; les paiements Arcade nécessitent l’approbation du portefeuille.",
+    "lives": "Monthly subscription: 0.2 SOL for 30 days, 10 lives per round, and a social leaderboard with Cherry profiles.",
+    "verification": "Subscription access is checked when connecting, after returning to the game and at expiry. An ongoing round keeps its lives.",
     "fees": "Les verrouillages sont créés et les jetons retirés sur DevFridge, sans retrait anticipé et avec des frais de retrait de 2% pour acheter et brûler des PASTA, en plus des frais de réseau. Le retrait de MEMEZZO exige une route Jupiter exécutable. Les fonctions de portefeuille sont réservées aux adultes.",
     "team": "Équipe : Pappardelle · Contact public :",
     "submission": ". La candidature à la galerie est soumise à examen ; elle ne confirme ni l’admissibilité au concours ni l’obtention d’un prix."
@@ -246,7 +386,7 @@
   "native": {
     "menu": "Menu de l’application",
     "hard": "Arcade · 3 niveaux · dès 0,002 SOL",
-    "easy": "Abonnement · 10 M+ MEMEZZO verrouillés",
+    "easy": "0.2 SOL · 30 days · 10 lives",
     "reload": "Recharger",
     "privacy": "Confidentialité et informations sur l’application (en anglais)",
     "website": "Ouvrir le site web",
