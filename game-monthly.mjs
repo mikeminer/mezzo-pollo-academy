@@ -22,13 +22,17 @@ byId('monthlyBuy').onclick=()=>operation(async()=>{
  const epoch=shopEpoch;quote=null;
  byId('monthlyReview').textContent='';
  const provider=window.MezzoWallet?.getProvider();
+ if(!provider&&document.documentElement.dataset.cherryWallet===''){
+  status(window.MezzoLocale?.code==='it'?'Il wallet Cherry non è ancora collegato. Attendi che compaia «Wallet Cherry collegato» e riprova.':'The Cherry wallet is not connected yet. Wait for it to connect, then try again.');return;
+ }
  if(!provider||provider.isMezzoMobile){status(copy().unsupported);return;}
  status(copy().wait);
  // Preparing a new pass does not require an existing entitlement lookup.
  if(!provider.isConnected)await provider.connect();
  const wallet=provider.publicKey?.toString();
  if(!provider.isConnected||!wallet)throw Error('wallet_disconnected');
- quote=await exclusive(()=>client.prepare(wallet, {cherry: provider.isMezzoCherry===true}));
+ // An unsigned quote has no side effects. Keep the cross-tab lock for approval and recovery only.
+ quote=await client.prepare(wallet, {cherry: provider.isMezzoCherry===true});
  if(epoch!==shopEpoch){quote=null;return;}
  if(provider.publicKey?.toString()!==wallet){quote=null;throw Error('wallet_disconnected');}
  status('');
