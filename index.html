@@ -4,7 +4,7 @@
 <script>if (/^\/cherry\/?$/.test(location.pathname)) document.documentElement.dataset.cherry = '';</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MezzoPollo — Tutorial, Arcade &amp; Subscription</title>
+<title>MezzoPollo — Tutorial, Arcade &amp; Stake and Play</title>
 <meta name="description" content="Learn MezzoPollo with the free tutorial, then choose Arcade or Subscription. Available in 20 languages with 25 regional choices.">
 <base href="/">
 <link rel="stylesheet" href="locale.css">
@@ -166,13 +166,13 @@ html[data-cherry] [data-hide-in-cherry]{display:none!important}
       <div id="modeChoices" class="mode-choices" role="group" aria-label="Choose your mode">
         <button class="mode-choice" data-mode-select="tutorial" aria-pressed="true"><strong data-mode-text="tutorial">Tutorial</strong><small data-mode-text="tutorialHud">Tutorial</small></button>
         <button class="mode-choice" data-mode-select="arcade" data-hide-in-cherry aria-pressed="false"><strong data-arcade-text="name">Arcade</strong><small data-arcade-text="detail">3 levels · from 0.002 SOL</small></button>
-        <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Subscription</strong><small data-mode-text="subscriptionDetail">0.2 SOL · 30 days · 10 lives</small></button>
+        <button class="mode-choice" data-mode-select="subscription" aria-pressed="false"><strong data-mode-text="subscription">Stake and Play</strong><small data-mode-text="subscriptionDetail">0.2 SOL · 30 days · 10 lives</small></button>
       </div>
       <div class="mode-perks">
         <details data-hide-in-cherry><summary id="arcadePerksTitle">Arcade · Play and get noticed</summary><p id="arcadePerksText"></p></details>
-        <details><summary id="subscriptionPerksTitle">Subscription · Play and connect</summary><p id="subscriptionPerksText"></p></details>
+        <details><summary id="subscriptionPerksTitle">Stake and Play · Play and connect</summary><p id="subscriptionPerksText"></p></details>
       </div>
-      <details id="communityPanel" class="mode-perks"><summary id="communityTitle">Subscription community</summary><p id="communityDisclosure"></p><button class="btn" id="communityRefresh">Load leaderboard</button><p id="communityStatus" role="status"></p><ol id="communityScores"></ol></details>
+      <details id="communityPanel" class="mode-perks"><summary id="communityTitle">Stake and Play community</summary><p id="communityDisclosure"></p><button class="btn" id="communityRefresh">Load leaderboard</button><p id="communityStatus" role="status"></p><ol id="communityScores"></ol></details>
       <div class="btns">
         <button class="btn primary" id="btnPlay">Tutorial</button>
         <button class="btn" id="btnTutorial" data-mode-text="tutorial">Play the tutorial</button>
@@ -207,7 +207,7 @@ html[data-cherry] [data-hide-in-cherry]{display:none!important}
     </section>
 
     <section class="panel" id="scrAccess" hidden>
-      <div class="shop-heading"><h2 data-shop-title>Shop · Subscription</h2><button class="music-toggle" data-shop-back data-mode-text="back">Back to game</button></div>
+      <div class="shop-heading"><h2 data-shop-title data-mode-text="shop">Shop · Stake and Play</h2><button class="music-toggle" data-shop-back data-mode-text="back">Back to game</button></div>
       <p hidden>Timelock MEMEZZO on <b>DevFridge</b>, then verify here for Subscription. <b>Minimum 10,000,000 actively locked MEMEZZO.</b></p>
       <p hidden><b>Subscription: 1 total life per full million actively locked MEMEZZO.</b> At least 10 lives; no base lives. Expired locks do not count when verified.</p>
       <p hidden class="access-note">Only manual Shop checks; no automatic checks interrupt play. Subscription access lasts for this page session. Recheck to update; wallet changes, disconnection or reload clear future access. Ongoing runs continue with their remaining lives.</p>

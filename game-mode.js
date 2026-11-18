@@ -4,7 +4,8 @@
   const cherry = /^\/cherry\/?$/.test(window.location?.pathname || '');
   let selected = 'tutorial';
   const copy = Object.fromEntries(Object.entries(window.MezzoTranslations).map(([code,pack])=>[code,pack.mode]));
-  const text = (key, params = {}) => (key === 'arcade' ? (window.MezzoTranslations[window.MezzoLocale?.code] || window.MezzoTranslations.en).arcade.name : (copy[window.MezzoLocale?.code] || copy.en)[key] || key)
+  const brandLabels = {subscription:'Stake and Play',shop:'Shop · Stake and Play',playSubscription:'Stake and Play',unlock:'Stake and Play',subscriptionEnd:'Stake and Play'};
+  const text = (key, params = {}) => (brandLabels[key] || (key === 'arcade' ? (window.MezzoTranslations[window.MezzoLocale?.code] || window.MezzoTranslations.en).arcade.name : (copy[window.MezzoLocale?.code] || copy.en)[key] || key))
     .replace(/\{(\w+)\}/g, (match, name) => String(params[name] ?? match));
   function config(name = selected, unlockedLives = 0, arcadeTier = 'medium') {
     if (!['tutorial', 'arcade', 'subscription'].includes(name)) throw new TypeError('Unknown game mode');
